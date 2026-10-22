@@ -1,0 +1,9 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {"name": "release", "generator": "Ninja", "binaryDir": "${sourceDir}/cmake-build-release", "cacheVariables": {"CMAKE_BUILD_TYPE": "Release"}},
+    {"name": "debug", "inherits": "release", "binaryDir": "${sourceDir}/cmake-build-debug", "cacheVariables": {"CMAKE_BUILD_TYPE": "Debug"}}
+  ],
+  "buildPresets": [{"name": "release", "configurePreset": "release"}, {"name": "debug", "configurePreset": "debug"}],
+  "testPresets": [{"name": "release", "configurePreset": "release", "output": {"outputOnFailure": true}}]
+}

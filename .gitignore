@@ -1,0 +1,8 @@
+cmake-build-*/
+build/
+thirdparty/
+.cpm-cache/
+results/
+__pycache__/
+imgui.ini
+.idea/
