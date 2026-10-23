@@ -7,12 +7,20 @@ layout(location=1) out vec4 outDiagnostic;
 layout(binding=2) uniform sampler2DArray uMaps;
 uniform mat4 uLightVp;
 uniform vec3 uSun;
-uniform int uMapResolution,uFilterSamples,uBlockerSamples,uRotateSamples,uDpcfTaps,uSamplePattern,uSampleSeed;
+uniform int uMapResolution,uFilterSamples,uBlockerSamples,uRotateSamples,uDpcfTaps,uSamplePattern,uSampleSeed,uSharedSamples;
+uniform int uInnerPenumbra;
+uniform float uLayerSeparation,uVsmMinVariance,uBleedReduction,uEsmExponent,uCsmBias;
+uniform int uCsmTerms,uEsmFallback;
+layout(binding=3) uniform sampler2DArray uBasis;
+#if SHADOW_METHOD >= 8
+#include "prefilter_math.glsl"
+#endif
 const int uMethod=SHADOW_METHOD;
 const int uChsKernel=CHS_FILTER_SIZE;
 uniform float uTanAngle,uDepthRange,uExtent,uDepthBias,uMaxRadiusWorld,uFixedPcfRadius;
 uniform float uDpcfRadius,uDpcfRatioScale,uChsSunSize;
-#if (SHADOW_METHOD == 1 || SHADOW_METHOD == 2 || SHADOW_METHOD == 4) && SHADOW_SMOOTHING > 0
+#include "map_read.glsl"
+#if ((SHADOW_METHOD == 1 || SHADOW_METHOD == 2 || SHADOW_METHOD == 4) && SHADOW_SMOOTHING > 0) || SHADOW_METHOD == 7
 #include "smooth_depth.glsl"
 #endif
 vec2 receiverNormalGradient(vec3 normal){
@@ -25,7 +33,7 @@ float depthGap(vec2 p,float receiverDepth,vec2 origin,vec2 gradient){
     vec2 uv=warpPoint(p)*0.5+0.5;
     if(any(lessThan(uv,vec2(0)))||any(greaterThanEqual(uv,vec2(1))))return -1.0;
     ivec2 texel=clamp(ivec2(uv*float(uMapResolution)),ivec2(0),ivec2(uMapResolution-1));
-    float d=texelFetch(uMaps,ivec3(texel,0),0).r;if(d>=1.0)return -1.0;
+    float d=nearestMapDepth(texel);if(d>=1.0)return -1.0;
     vec2 center=unwarpPoint((vec2(texel)+0.5)/float(uMapResolution)*2.0-1.0);
     return receiverDepth+dot(gradient,center-origin)-d;
 }
@@ -40,7 +48,7 @@ float contactUv(vec2 uv,float depth,vec2 origin,vec2 gradient){
 float filtered(vec2 p,float depth,vec2 gradient,float radius,float angle,uint filterKey){
     vec2 warped=warpPoint(p);float step=2.0/float(uMapResolution);
     float footprint=0.5*min(length(unwarpPoint(warped+vec2(step,0))-p),length(unwarpPoint(warped+vec2(0,step))-p));
-#if (SHADOW_METHOD == 2 || SHADOW_METHOD == 4) && SHADOW_SMOOTHING > 0
+#if (SHADOW_METHOD == 2 || SHADOW_METHOD == 4 || SHADOW_METHOD == 7) && SHADOW_SMOOTHING > 0
     if(radius<=footprint*0.5)return smoothVisibility(warped*0.5+0.5,depth,p,gradient);
     float visible=0.0;
     for(int i=0;i<uFilterSamples;++i){
@@ -62,11 +70,15 @@ float filtered(vec2 p,float depth,vec2 gradient,float radius,float angle,uint fi
 #endif
 }
 float pcss(vec3 light,vec2 gradient,float angle,bool geometric){
+    // Artistic containment in the central hard-shadow mask. The same biased
+    // comparison is used by the Hard method, so no shadow can extend outside it.
+    bool inner=uInnerPenumbra!=0;
+    if(inner&&depthGap(light.xy,light.z,light.xy,gradient)<=uDepthBias)return 1.0;
     float scale=uDepthRange*uTanAngle/uExtent,maxRadius=uMaxRadiusWorld/uExtent;
     float searchRadius=min(max(light.z,0.0)*scale,maxRadius),sum=0.0,logs=0.0,count=0.0;
     uint blockerKey=0u,filterKey=0u;
     if(uSamplePattern!=0){
-        uvec2 pixel=uvec2(gl_FragCoord.xy);
+        uvec2 pixel=uSharedSamples!=0?uvec2(0):uvec2(gl_FragCoord.xy);
         blockerKey=diskSeed(pixel,uint(uSampleSeed),0u);
         filterKey=diskSeed(pixel,uint(uSampleSeed),1u);
     }
@@ -84,8 +96,15 @@ float pcss(vec3 light,vec2 gradient,float angle,bool geometric){
     float mean=sum/count,gap=geometric?min(mean,exp(logs/count)):mean;
     float radius=min(gap*scale,maxRadius);
     outDiagnostic=vec4(radius*uExtent,min(mean*scale,maxRadius)*uExtent,0,1);
-    return filtered(light.xy,light.z,gradient,radius,angle,filterKey);
+    float visibility=filtered(light.xy,light.z,gradient,radius,angle,filterKey);
+    // For a locally straight symmetric edge V=0.5 at the hard outline.
+    // Remap that value to 1 so the transition occupies the inside half.
+    // This is a heuristic for complex silhouettes, not area-light integration.
+    return inner?clamp(2.0*visibility,0.0,1.0):visibility;
 }
+#if SHADOW_METHOD == 7
+#include "geometric_layers.glsl"
+#endif
 #if SHADOW_METHOD == 5
 #include "dpcf.glsl"
 #elif SHADOW_METHOD == 6
@@ -121,7 +140,22 @@ void main(){
 #else
     float angle=0.0;
     if(uRotateSamples!=0||uMethod==5)angle=6.28318530718*fract(52.9829189*fract(dot(gl_FragCoord.xy,vec2(0.06711056,0.00583715))));
-#if SHADOW_METHOD == 2 || SHADOW_METHOD == 4
+#if SHADOW_METHOD == 7
+    outVisibility=geometricLayers(light,gradient,angle);
+#elif SHADOW_METHOD >= 8
+    float t=light.z-uDepthBias;
+#if SHADOW_METHOD == 8
+    outVisibility=varianceVisibility(texture(uBasis,vec3(uv,0)).xy,t,uVsmMinVariance,uBleedReduction);
+#elif SHADOW_METHOD == 9
+    outVisibility=fourierVisibility(uBasis,uv,t,uCsmTerms,uCsmBias);
+#else
+    float response=exponentialLogResponse(texture(uBasis,vec3(uv,0)).r,t,uEsmExponent);
+    if(uEsmFallback!=0&&response>log(1.02)){
+        // Annen 2008: clamp each exponential result BEFORE bilinear filtering.
+        outVisibility=exponentialFallback(uBasis,uv,t,uEsmExponent,uMapResolution);
+    }else outVisibility=exp(min(response,0.0));
+#endif
+#elif SHADOW_METHOD == 2 || SHADOW_METHOD == 4
     outVisibility=pcss(light,gradient,angle,uMethod==4);
 #else
     float lightScale=uTanAngle/tan(radians(1.5));

@@ -13,14 +13,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--profile", choices=["manual", "smoke", "quick", "full"], default="quick")
+    parser.add_argument("--profile", choices=["manual", "smoke", "quick", "full", "stress"], default="quick")
     parser.add_argument("--exe", type=Path, default=ROOT / "cmake-build-release" / ("gfx-research-shadows.exe" if sys.platform == "win32" else "gfx-research-shadows"))
     parser.add_argument("--output", type=Path)
     parser.add_argument("--headless", action="store_true")
     parser.add_argument("--analytic", action="store_true")
     args, extra = parser.parse_known_args()
     output = args.output or ROOT / "results" / args.profile
-    flag = {"manual": "--benchmark", "smoke": "--smoke", "quick": "--publication-quick", "full": "--publication-suite"}[args.profile]
+    flag = {"manual": "--benchmark", "smoke": "--smoke", "quick": "--publication-quick", "full": "--publication-suite", "stress": "--stress-benchmark"}[args.profile]
     command = [str(args.exe.resolve()), flag, f"--output={output.resolve()}"]
     if args.headless:
         command.append("--headless")

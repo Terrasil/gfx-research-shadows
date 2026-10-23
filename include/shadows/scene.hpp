@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <array>
 #include <cmath>
+#include <cstdint>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <limits>
@@ -11,6 +12,7 @@
 
 namespace shadows {
 constexpr int maxCasters = 32;
+constexpr int maxStressCasters = 10'000'000;
 constexpr double pi = 3.14159265358979323846;
 
 struct Box {
@@ -22,13 +24,44 @@ struct Scene {
     std::vector<Box> boxes;
     glm::vec3 target{-1.4f, 1.0f, -0.8f};
     float receiverTilt = 0.0f;
+    int stressObjects = 0;
+    bool isStress() const { return id == "dense-stress"; }
+    int casterCount() const { return isStress() ? stressObjects : int(boxes.size()); }
 };
-inline std::vector<std::string> sceneIds() {
-    return {"single-high", "single-low", "mixed-overlap", "crossing", "hidden-layer", "sloped", "dense"};
+inline int stressGrid(int count) {
+    if (count < 0 || count > maxStressCasters)
+        throw std::runtime_error("Stress object count must be 0..10000000");
+    return std::max(1, int(std::ceil(std::sqrt(double(count)))));
 }
-inline Scene makeScene(const std::string& id) {
+inline Box stressBox(int index, int count) {
+    const int grid = stressGrid(count);
+    if (index < 0 || index >= count)
+        throw std::runtime_error("Stress instance index outside population");
+    const int x = index % grid, z = index / grid, group = (x + z) % 2;
+    const float cell = 12.0f / float(grid), width = cell * 0.28f;
+    const glm::vec3 center{(float(x) + 0.5f) * cell - 6.0f, 0, (float(z) + 0.5f) * cell - 6.0f};
+    return {center + glm::vec3{-width * 0.5f, 0.1f, -width * 0.5f},
+            center + glm::vec3{width * 0.5f, group ? 3.6f : 0.75f, width * 0.5f},
+            group ? glm::vec3{0.82f, 0.55f, 0.19f} : glm::vec3{0.18f, 0.46f, 0.75f}, group};
+}
+inline std::vector<std::string> sceneIds(bool includeStress = true) {
+    std::vector<std::string> ids = {"single-high", "single-low", "mixed-overlap", "crossing", "hidden-layer", "sloped", "dense", "crossing-four"};
+    if (includeStress) ids.push_back("dense-stress");
+    return ids;
+}
+inline Scene makeScene(const std::string& id, int objects = 4096) {
     Scene s;
     s.id = id;
+    if (s.isStress()) {
+        (void)stressGrid(objects);
+        s.stressObjects = objects;
+        s.target = {0, 1, 0};
+        // Only small populations need an explicit list for the CPU/AABB oracle.
+        // Large scenes remain O(1) in CPU memory; the vertex shader generates them.
+        if (objects <= maxCasters)
+            for (int i = 0; i < objects; ++i) s.boxes.push_back(stressBox(i, objects));
+        return s;
+    }
     const glm::vec3 gold{0.82f, 0.55f, 0.19f}, blue{0.18f, 0.46f, 0.75f};
     auto add = [&](glm::vec3 lo, glm::vec3 hi, int group) { s.boxes.push_back({lo, hi, group ? gold : blue, group}); };
     if (id == "single-high" || id == "mixed-overlap" || id == "sloped")
@@ -38,6 +71,20 @@ inline Scene makeScene(const std::string& id) {
     if (id == "crossing") {
         add({-3, 4.5f, -0.5f}, {3, 4.8f, 0.5f}, 1);
         add({-2.6f, 0.2f, -4}, {-2.0f, 0.7f, 1.6f}, 0);
+    }
+    if (id == "crossing-four") {
+        // Four separate heights, alternating X/Z beams. Their projected shadows
+        // cross at (-2.5, 0, -2), and the central light ray meets all four beams.
+        const glm::vec3 colors[] = {blue, {0.25f, 0.66f, 0.42f}, gold, {0.65f, 0.35f, 0.72f}};
+        const float heights[] = {0.5f, 1.8f, 3.3f, 5.0f};
+        for (int i = 0; i < 4; ++i) {
+            const float h = heights[i];
+            const glm::vec3 center{-2.5f + 0.55f * h, h, -2.0f + 0.35f * h};
+            const glm::vec3 halfSize = i % 2 == 0 ? glm::vec3{3.0f, 0.15f, 0.22f}
+                                                 : glm::vec3{0.22f, 0.15f, 3.0f};
+            s.boxes.push_back({center - halfSize, center + halfSize, colors[i], i < 2 ? 0 : 1});
+        }
+        s.target = {-1.5f, 1.5f, -1.0f};
     }
     if (id == "hidden-layer") {
         add({-0.6f, 4.1f, -0.5f}, {0.6f, 4.6f, 0.5f}, 1);
@@ -106,6 +153,8 @@ inline bool rayBox(const glm::dvec3& o, const glm::dvec3& d, const Box& box, dou
 }
 inline double cpuVisibility(const Scene& scene, glm::dvec3 position, glm::dvec3 normal, int samples, double angle,
                             int droppedGroup = -1, double offset = 0.002) {
+    if (scene.isStress() && scene.casterCount() > maxCasters)
+        throw std::runtime_error("CPU reference is limited to 32 stress objects");
     double lit = 0, total = 0;
     position += normal * offset;
     for (int i = 0; i < samples; ++i) {

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
-project(gfx-research-shadows VERSION 0.12.0 LANGUAGES C CXX)
+project(gfx-research-shadows VERSION 0.16.1 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -35,7 +35,7 @@ if(GFX_RESEARCH_BASE_LOCAL_PATH)
     endif()
 endif()
 
-add_executable(gfx-research-shadows src/main.cpp src/renderer.cpp src/experiment.cpp)
+add_executable(gfx-research-shadows src/main.cpp src/renderer.cpp src/experiment.cpp src/performance.cpp)
 target_include_directories(gfx-research-shadows PRIVATE include)
 target_link_libraries(gfx-research-shadows PRIVATE gfx::research_base)
 if(UNIX AND NOT APPLE)

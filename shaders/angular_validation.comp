@@ -1,0 +1,37 @@
+#version 460 core
+layout(local_size_x=64) in;
+uniform vec3 uSun;
+uniform float uTanAngle;
+uniform int uTestKind;
+#include "boxes.glsl"
+#include "tri_reconstruction.glsl"
+#include "tri_geometry.glsl"
+layout(std430,binding=0) buffer OutputValues {vec4 valuesOut[];};
+void main(){
+    int i=int(gl_GlobalInvocationID.x);
+    if(uTestKind==0){
+        if(i>=32)return;
+        vec3 plane=vec3(cos(float(i)*0.49),sin(float(i)*0.49),float(i%17-8)*0.17);
+        vec2 points[TRI_COUNT];float values[TRI_COUNT];trianglePoints(0.8,0.37,points);
+        for(int k=0;k<TRI_COUNT;++k)values[k]=dot(plane,vec3(points[k],1));
+        valuesOut[i*3]=vec4(plane,triangulatedVisibility(points,values,uSun));
+    }else if(uTestKind==1){
+        if(i>=96)return;
+        vec3 origin=vec3(-6.0+float((i*7)%19)*0.45,float(i%5)*0.13,-4.0+float((i*11)%23)*0.35);
+        vec2 p=0.95*vec2(cos(float(i)*1.7),sin(float(i)*1.7));
+        vec2 points[TRI_COUNT];float values[TRI_COUNT];for(int k=0;k<TRI_COUNT;++k)points[k]=p;
+        coneMargins(origin,points,values);
+        valuesOut[i*3]=vec4(origin,values[0]);valuesOut[i*3+1]=vec4(p,0,0);
+    }else{
+        if(i>=32)return;
+        // Straddle the projected edges of both the high box and the low bar.
+        // Include full light, full shadow, and partial visibility at each budget.
+        vec3 origin=i<16?vec3(-4.55+(float(i%8)-3.5)*0.06,0.002,-2.0+float(i/8)*0.5):
+            vec3(-2.5+float((i-16)/8)*0.5,0.002,-3.395+(float(i%8)-3.5)*0.008);
+        vec3 normal=normalize(vec3(float(i%3-1)*0.2,1.0,float(i%5-2)*0.1));
+        vec2 points[TRI_COUNT];trianglePoints(0.8,0.37,points);
+        vec2 sums=rayMaskSums(origin,points,normal);
+        valuesOut[i*3]=vec4(normal,sums.y>1e-12?sums.x/sums.y:1.0);
+        valuesOut[i*3+1]=vec4(origin,0);
+    }
+}

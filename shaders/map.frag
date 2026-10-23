@@ -3,6 +3,10 @@
 flat in vec4 tePlane;
 uniform mat4 uLightVp,uInverseLightVp;
 uniform int uMapResolution;
+#ifdef PACKED_INTERVALS
+#define INTERVAL_WRITER 1
+#include "packed_depth.glsl"
+#endif
 void main(){
     vec2 p=unwarpPoint(gl_FragCoord.xy/float(uMapResolution)*2.0-1.0);
     vec4 a=uInverseLightVp*vec4(p,-1,1),b=uInverseLightVp*vec4(p,1,1);
@@ -11,5 +15,9 @@ void main(){
     float t=-(dot(tePlane.xyz,origin)+tePlane.w)/den;
     vec4 clip=uLightVp*vec4(origin+direction*t,1);
     float d=clip.z/clip.w*0.5+0.5;
+#ifdef PACKED_INTERVALS
+    recordDepthAt(ivec3(ivec2(gl_FragCoord.xy),0),d);
+#else
     gl_FragDepth=d;
+#endif
 }

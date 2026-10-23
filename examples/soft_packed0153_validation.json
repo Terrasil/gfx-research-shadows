@@ -1,0 +1,4695 @@
+{
+  "version": "0.15.3",
+  "native_render_cases": 51,
+  "ctest": {
+    "passed": 3,
+    "failed": 0
+  },
+  "invalid_cli_values_rejected": [
+    "--layer-min-filter=-1",
+    "--layer-min-filter=5",
+    "--layer-min-filter=nan",
+    "--shared-pattern=2"
+  ],
+  "environment": {
+    "MESA_GL_VERSION_OVERRIDE": "4.6",
+    "MESA_GLSL_VERSION_OVERRIDE": "460"
+  },
+  "software_timings_only": true,
+  "source_sha256": {
+    "src/experiment.cpp": "9d7f72eb2b29d876c7335d5e7e487dfa9cc93a2a12f19083921fd38876b285ab",
+    "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+    "src/main.cpp": "14991f339b6a7f3a0fb0e6e0c54066495db51cf1508d7d4f4afcdd7a275fac8b",
+    "src/renderer.cpp": "efa3b1d1d32318968d4ffc1c1e9372bea6ded8a889e890664051804af7e5d229",
+    "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+    "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+    "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+    "include/shadows/renderer.hpp": "6a3264af0dfd1b206386fda0c09a55dd72d1e77026689c15a515ce959715b5f6",
+    "include/shadows/scene.hpp": "ad0c691cae6be897f85efbdab38a2a25207b215cab5dad47de3eeb64bdde6564",
+    "shaders/angular.frag": "daedfc012924bbae4886bca4472f93f705f90fd56892e9480cc9c27356540ffc",
+    "shaders/angular_resolve.frag": "bd48d5e34237f842f981c1370d2df4a3bb52c496caf0806b6c9d3ce1ad66956f",
+    "shaders/angular_validation.comp": "a9bb4388e0b48ab872765e407919ec935b4ce571a400c2804ef4556393b3aa65",
+    "shaders/basis_blur.comp": "42d7c1b328360681673a347d203c16e6739d30c74d64aa6f602a360b870d404f",
+    "shaders/basis_encode.comp": "db64e9aefd92c55b927325640c8b77cc29eb0771b00a5f0a0de95a08c9090e08",
+    "shaders/basis_validation.comp": "2c8cc6f16a7e7cf65c1169598ecb442a3f99bcea1ac25535ddac24404ebbde88",
+    "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+    "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+    "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+    "shaders/cubic_visibility.glsl": "7e821ecb482c180786754b4f46272241fa61863f5b4aa6c6f4b3248230f96bf0",
+    "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+    "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+    "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+    "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+    "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+    "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+    "shaders/geometric_layers.glsl": "f279c862abb4dc076938082c45c7946c1de1d5e1c80c25b058daa69d970db25d",
+    "shaders/interval_validation.comp": "7430fd7b85fcbf82d12cdeaa6423c9836b18a0d500c0e6f08b8209e20bf27793",
+    "shaders/map.frag": "042e09b57f0e4454b1fa97e47e3192d29cb7f51cb80af52dcd78bdeb9e9b19da",
+    "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+    "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+    "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+    "shaders/map_analytic.frag": "93dbb6f1da5707da985ca7046501d6f85674352ada29c8d6bbeb409be3f0e1f7",
+    "shaders/map_read.glsl": "275e1d7dc21237089634d8d2325fefca1e1631044e21a402422be8a975462f68",
+    "shaders/packed_depth.glsl": "0db90c8ae68ef3980ea69826db5bf08baa912a1ad66dff543deb0fa60f9c350c",
+    "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+    "shaders/prefilter_math.glsl": "3588154171ef0bcadc7aa06963ae25251df3e8900ed86f9bf5ba9df24afec0d6",
+    "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+    "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+    "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+    "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+    "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+    "shaders/shadow.frag": "390caa2ef1ca2431a1f6de5636aac6a8665307064ea6ac63d0acfb04c571cc3d",
+    "shaders/smooth_depth.glsl": "21569490ced074468fc1d7fa8e06f8ce2115c293e848cb6cd3f6a13bfdf68711",
+    "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+    "shaders/tri_area.glsl": "b37be3204c5087acdeca9a1f09bc58faad4a6d973440f6c8172af9ea15babefe",
+    "shaders/tri_geometry.glsl": "189964aeb1516955ae9d29c0f33802d88e38b9d9ebd7684594ccfa82455fc72c",
+    "shaders/tri_reconstruction.glsl": "f00b49988d674fc6c7f2d36bfac4ddd42749968c7175d91883edaf881a40b10e",
+    "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+    "tools/analyze_results.py": "027f6e6099fb314fe41c912db214e1638688d99928fce2107ad10bb6701058cd",
+    "tools/compare_near_shadow.py": "23a650f7ae1ca9f6511d1e2f7b6466209f5d8a93cc905e1fdc9725b15515dc44",
+    "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+    "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+    "tools/verify_angular.py": "02415f6c73dcb6f7149a3d0bb11a9d22ce63c19194b2fe892396fb14265f3e13",
+    "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+    "tools/verify_intervals.py": "bdf8f86a11f5ae3f350c074f9d5e67901aa2d7a6eaa2f56d00447b1c67914517",
+    "tools/verify_prefilter.py": "08b77737ab91adf1f832617a342c86fcc6be7b8d47f2ac9c8c0c3aea26228a59",
+    "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+    "tests/test_analyzer.py": "6fc232227d3e66bb11e992afa2425f7ae556d199f70c97f49b59ad0a16848a13",
+    "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+    "tests/test_geometry.cpp": "61da539d317228fffc6e57ad18db5193ecbd7d7b35d1da5fd453c1bf4bec3f2e",
+    "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+    "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+    "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+    "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+    "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+    "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+    "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+    "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+    "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+    "CMakeLists.txt": "2d27661ae2a3022e7b7861ff0d23f79012f4a44054946bbeee748a4d3c62cdd5"
+  },
+  "executable_sha256": "cbf9b3aed57cf50c34f176961faf4c943abf0cb8f9f60c7605aa72c35f731c59",
+  "dependencies": {
+    "tinyobjloader": "4464aa5b401f26330583fd995f7ba6df3592653a",
+    "glad": "73db193f853e2ee079bf3ca8a64aa2eaf6459043",
+    "tinygltf": "488a70a3df62a4df1a736e9e56fb8836580c4888",
+    "glm": "0af55ccecd98d4e5a8d1fad7de25ba429d60e863",
+    "glfw": "7b6aead9fb88b3623e3b3725ebb42670cbe4c579",
+    "imgui": "9b4eb24cee2071e61dc1f9ef3e5228097cdde720"
+  },
+  "baseline_0152_identical_shaded_images": {
+    "c0-arr-shaded.png": true,
+    "c0-arr-triangulation-shaded.png": true,
+    "c0-chs-shaded.png": true,
+    "c0-csm-shaded.png": true,
+    "c0-dpcf-shaded.png": true,
+    "c0-esm-shaded.png": true,
+    "c0-geometric-layered-shaded.png": true,
+    "c0-geometric-shaded.png": true,
+    "c0-hard-shaded.png": true,
+    "c0-pcf-shaded.png": true,
+    "c0-pcss-shaded.png": true,
+    "c0-vsm-shaded.png": true
+  },
+  "baseline_oracle_identical": true,
+  "candidate_setting_changes_preserve_reference": true,
+  "highpass_definition": "RMS of (V-Vref) minus its four-neighbor mean; ground receiver, reference visibility 0.05..0.95, valid ground neighbors. Measures high-frequency error, not a pure noise estimator.",
+  "four_beams": {
+    "scene": "crossing-four",
+    "heights": [
+      0.5,
+      1.8,
+      3.3,
+      5
+    ],
+    "common_ground_ray": [
+      -2.5,
+      0,
+      -2
+    ],
+    "all_four_intersections_verified_by_geometry_ctest": true,
+    "limitation": "One min/max texture retains only outer surface endpoints. Middle layers and general multi-occluder visibility remain approximate. Smoothing does not recover missing depths."
+  },
+  "runs": [
+    {
+      "run": "mixed-point",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-mixed-point",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--scene=mixed-overlap",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=.4",
+        "--camera-target-z=-2.95",
+        "--arr-samples=4",
+        "--soft-packed",
+        "--layer-separation=5.24",
+        "--angle=1",
+        "--smoothing=0",
+        "--samples=32",
+        "--blocker-samples=32",
+        "--shared-pattern=0",
+        "--layer-min-filter=0"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 2,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 0,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "stratified",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": false,
+        "layer_min_filter_texels": 0,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": true,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.164677,
+            "mean_rmse": 0.01078306664,
+            "mean_penumbra_rmse": 0.1109087205,
+            "max_abs_error": 0.3581576049,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 43.561874,
+            "mean_rmse": 0.00944544662,
+            "mean_penumbra_rmse": 0.09514247018,
+            "max_abs_error": 0.6475607753,
+            "max_brightening": 0.03125
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000364214",
+          "max_abs_error": "0.0117308",
+          "cpu_gpu_max_abs_error": "0"
+        }
+      ],
+      "reference_pfm_sha256": "7dc006c9f098eca3a50d2f5937a609b5cb14dd5faf6deae8068be2b3bfa49573",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "fc556db70691a40b7da6efd358c136907249813ba56da15b9116b45abbee44cf",
+        "c0-geometric-layered-shaded.png": "6dc02dc67d9621b850b4864a38b236c4889cbfd5ceb3795d269e816b56b41828"
+      }
+    },
+    {
+      "run": "mixed-independent",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-mixed-independent",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=mixed-overlap",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=.4",
+        "--camera-target-z=-2.95",
+        "--soft-packed",
+        "--angle=1",
+        "--layer-separation=5.24",
+        "--shared-pattern=0"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 2,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 3,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "stratified",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": false,
+        "layer_min_filter_texels": 1,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": true,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.145278,
+            "mean_rmse": 0.01078306664,
+            "mean_penumbra_rmse": 0.1109087205,
+            "max_abs_error": 0.3581576049,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 88.047078,
+            "mean_rmse": 0.007206433735,
+            "mean_penumbra_rmse": 0.0694930276,
+            "max_abs_error": 0.4677530229,
+            "max_brightening": 0.006494283676
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000364214",
+          "max_abs_error": "0.0117308",
+          "cpu_gpu_max_abs_error": "0"
+        }
+      ],
+      "reference_pfm_sha256": "7dc006c9f098eca3a50d2f5937a609b5cb14dd5faf6deae8068be2b3bfa49573",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "fc556db70691a40b7da6efd358c136907249813ba56da15b9116b45abbee44cf",
+        "c0-geometric-layered-shaded.png": "6ef2fada26453c26147fd81cf6342ab976c6baa1e4beb17e65f69132a9d4c99a"
+      }
+    },
+    {
+      "run": "mixed-no-floor",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-mixed-no-floor",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=mixed-overlap",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=.4",
+        "--camera-target-z=-2.95",
+        "--soft-packed",
+        "--angle=1",
+        "--layer-separation=5.24",
+        "--layer-min-filter=0"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 2,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 3,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "stratified",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": true,
+        "layer_min_filter_texels": 0,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": true,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.133584,
+            "mean_rmse": 0.01078306664,
+            "mean_penumbra_rmse": 0.1109087205,
+            "max_abs_error": 0.3581576049,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 86.480288,
+            "mean_rmse": 0.008164030552,
+            "mean_penumbra_rmse": 0.08120397136,
+            "max_abs_error": 0.5342897698,
+            "max_brightening": 0.008244633675
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000364214",
+          "max_abs_error": "0.0117308",
+          "cpu_gpu_max_abs_error": "0"
+        }
+      ],
+      "reference_pfm_sha256": "7dc006c9f098eca3a50d2f5937a609b5cb14dd5faf6deae8068be2b3bfa49573",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "fc556db70691a40b7da6efd358c136907249813ba56da15b9116b45abbee44cf",
+        "c0-geometric-layered-shaded.png": "b1a229791b601e149c0c9c8fbe56b835129147115818b5a81a87409e5fe13fd0"
+      }
+    },
+    {
+      "run": "mixed-soft",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-mixed-soft",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=mixed-overlap",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=.4",
+        "--camera-target-z=-2.95",
+        "--soft-packed",
+        "--angle=1",
+        "--layer-separation=5.24"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 2,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 3,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "stratified",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": true,
+        "layer_min_filter_texels": 1,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": true,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.218483,
+            "mean_rmse": 0.01078306664,
+            "mean_penumbra_rmse": 0.1109087205,
+            "max_abs_error": 0.3581576049,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 175.690536,
+            "mean_rmse": 0.007107472104,
+            "mean_penumbra_rmse": 0.06845339276,
+            "max_abs_error": 0.4590170681,
+            "max_brightening": 0.008244633675
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000364214",
+          "max_abs_error": "0.0117308",
+          "cpu_gpu_max_abs_error": "0"
+        }
+      ],
+      "reference_pfm_sha256": "7dc006c9f098eca3a50d2f5937a609b5cb14dd5faf6deae8068be2b3bfa49573",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "fc556db70691a40b7da6efd358c136907249813ba56da15b9116b45abbee44cf",
+        "c0-geometric-layered-shaded.png": "f84bfa412760adcf399cd999d5476ac1b5269fa63a69b06000160ebb3f2b59d4"
+      }
+    },
+    {
+      "run": "mixed-vogel",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-mixed-vogel",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=mixed-overlap",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=.4",
+        "--camera-target-z=-2.95",
+        "--soft-packed",
+        "--angle=1",
+        "--layer-separation=5.24",
+        "--sample-pattern=vogel"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 2,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 3,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "vogel",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": true,
+        "layer_min_filter_texels": 1,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": true,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.308152,
+            "mean_rmse": 0.01078306664,
+            "mean_penumbra_rmse": 0.1109087205,
+            "max_abs_error": 0.3581576049,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 121.064126,
+            "mean_rmse": 0.007107202966,
+            "mean_penumbra_rmse": 0.06840180451,
+            "max_abs_error": 0.4675099254,
+            "max_brightening": 0.004326462746
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000364214",
+          "max_abs_error": "0.0117308",
+          "cpu_gpu_max_abs_error": "0"
+        }
+      ],
+      "reference_pfm_sha256": "7dc006c9f098eca3a50d2f5937a609b5cb14dd5faf6deae8068be2b3bfa49573",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "fc556db70691a40b7da6efd358c136907249813ba56da15b9116b45abbee44cf",
+        "c0-geometric-layered-shaded.png": "cadbd34dc96f80ac00c2d916afc7e6681c036690914f5b0f68c09469fde76a82"
+      }
+    },
+    {
+      "run": "four-point",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-four-point",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=crossing-four",
+        "--soft-packed",
+        "--angle=1",
+        "--layer-separation=5.24",
+        "--smoothing=0",
+        "--samples=32",
+        "--blocker-samples=32",
+        "--shared-pattern=0",
+        "--layer-min-filter=0"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 2,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 0,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "stratified",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": false,
+        "layer_min_filter_texels": 0,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": false,
+        "camera_yaw": -2.1,
+        "camera_pitch": 0.65,
+        "camera_distance": 16,
+        "camera_target": [
+          -1.4,
+          1,
+          -0.8
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.565754,
+            "mean_rmse": 0.008749327963,
+            "mean_penumbra_rmse": 0.1048080835,
+            "max_abs_error": 0.3186184168,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 64.746322,
+            "mean_rmse": 0.009108457187,
+            "mean_penumbra_rmse": 0.1004658311,
+            "max_abs_error": 0.3743270598,
+            "max_brightening": 0.28125
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000311255",
+          "max_abs_error": "0.0107145",
+          "cpu_gpu_max_abs_error": "0"
+        }
+      ],
+      "reference_pfm_sha256": "d0341850407c929100703081e067c72bbcfeffa1274a2cecc3a3de8228291eaf",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "56e806fb6eba4da0185be48358eb5857810724052a11bcc91ebd8f9547c7a10b",
+        "c0-geometric-layered-shaded.png": "99c7214aa49c80650fe67c925a8a5ef1dc3c2b11e48ef1cd37e88d01399d3d9d"
+      }
+    },
+    {
+      "run": "four-independent",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-four-independent",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=crossing-four",
+        "--soft-packed",
+        "--angle=1",
+        "--layer-separation=5.24",
+        "--shared-pattern=0"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 2,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 3,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "stratified",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": false,
+        "layer_min_filter_texels": 1,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": false,
+        "camera_yaw": -2.1,
+        "camera_pitch": 0.65,
+        "camera_distance": 16,
+        "camera_target": [
+          -1.4,
+          1,
+          -0.8
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.143287,
+            "mean_rmse": 0.008749327963,
+            "mean_penumbra_rmse": 0.1048080835,
+            "max_abs_error": 0.3186184168,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 79.552595,
+            "mean_rmse": 0.008909869799,
+            "mean_penumbra_rmse": 0.09720624664,
+            "max_abs_error": 0.365585655,
+            "max_brightening": 0.2068032026
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000311255",
+          "max_abs_error": "0.0107145",
+          "cpu_gpu_max_abs_error": "0"
+        }
+      ],
+      "reference_pfm_sha256": "d0341850407c929100703081e067c72bbcfeffa1274a2cecc3a3de8228291eaf",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "56e806fb6eba4da0185be48358eb5857810724052a11bcc91ebd8f9547c7a10b",
+        "c0-geometric-layered-shaded.png": "77c669f83766c2e81674d31e0498d84ed6e787bb24cf7cdaa426351a6a824871"
+      }
+    },
+    {
+      "run": "four-no-floor",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-four-no-floor",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=crossing-four",
+        "--soft-packed",
+        "--angle=1",
+        "--layer-separation=5.24",
+        "--layer-min-filter=0"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 2,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 3,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "stratified",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": true,
+        "layer_min_filter_texels": 0,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": false,
+        "camera_yaw": -2.1,
+        "camera_pitch": 0.65,
+        "camera_distance": 16,
+        "camera_target": [
+          -1.4,
+          1,
+          -0.8
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.224126,
+            "mean_rmse": 0.008749327963,
+            "mean_penumbra_rmse": 0.1048080835,
+            "max_abs_error": 0.3186184168,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 78.777029,
+            "mean_rmse": 0.008800059482,
+            "mean_penumbra_rmse": 0.09582179625,
+            "max_abs_error": 0.3613862693,
+            "max_brightening": 0.178640902
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000311255",
+          "max_abs_error": "0.0107145",
+          "cpu_gpu_max_abs_error": "0"
+        }
+      ],
+      "reference_pfm_sha256": "d0341850407c929100703081e067c72bbcfeffa1274a2cecc3a3de8228291eaf",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "56e806fb6eba4da0185be48358eb5857810724052a11bcc91ebd8f9547c7a10b",
+        "c0-geometric-layered-shaded.png": "b12289bd119cf1d3a09448f4918af6d6bc5b967944ab58c47174e14d367f4c91"
+      }
+    },
+    {
+      "run": "four-all",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-four-all",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=crossing-four",
+        "--soft-packed",
+        "--angle=1",
+        "--layer-separation=5.24",
+        "--method=all"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 12,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 3,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "stratified",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": true,
+        "layer_min_filter_texels": 1,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": false,
+        "camera_yaw": -2.1,
+        "camera_pitch": 0.65,
+        "camera_distance": 16,
+        "camera_target": [
+          -1.4,
+          1,
+          -0.8
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 12,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "hard": {
+            "cases": 1,
+            "median_total_gpu_ms": 13.314508,
+            "mean_rmse": 0.02295082564,
+            "mean_penumbra_rmse": 0.2749593809,
+            "max_abs_error": 0.6813815832,
+            "max_brightening": 0.0
+          },
+          "pcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 23.408302,
+            "mean_rmse": 0.01409641796,
+            "mean_penumbra_rmse": 0.161283929,
+            "max_abs_error": 0.5823912323,
+            "max_brightening": 0.0
+          },
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 60.717055,
+            "mean_rmse": 0.01381063104,
+            "mean_penumbra_rmse": 0.09859641363,
+            "max_abs_error": 0.4819315784,
+            "max_brightening": 0.0
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.194892,
+            "mean_rmse": 0.008749327963,
+            "mean_penumbra_rmse": 0.1048080835,
+            "max_abs_error": 0.3186184168,
+            "max_brightening": 0.0
+          },
+          "geometric": {
+            "cases": 1,
+            "median_total_gpu_ms": 65.626235,
+            "mean_rmse": 0.01379036798,
+            "mean_penumbra_rmse": 0.0985342288,
+            "max_abs_error": 0.481885802,
+            "max_brightening": 0.0
+          },
+          "dpcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 14.656421,
+            "mean_rmse": 0.0269048548,
+            "mean_penumbra_rmse": 0.3001450616,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "chs": {
+            "cases": 1,
+            "median_total_gpu_ms": 18.363366,
+            "mean_rmse": 0.01433784263,
+            "mean_penumbra_rmse": 0.1197999131,
+            "max_abs_error": 0.6870348752,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 77.74432,
+            "mean_rmse": 0.008785455968,
+            "mean_penumbra_rmse": 0.09562750365,
+            "max_abs_error": 0.3613862693,
+            "max_brightening": 0.178640902
+          },
+          "vsm": {
+            "cases": 1,
+            "median_total_gpu_ms": 43.476216,
+            "mean_rmse": 0.01310469868,
+            "mean_penumbra_rmse": 0.1440485931,
+            "max_abs_error": 0.589333564,
+            "max_brightening": 0.0
+          },
+          "csm": {
+            "cases": 1,
+            "median_total_gpu_ms": 254.833193,
+            "mean_rmse": 0.01527964346,
+            "mean_penumbra_rmse": 0.1669676396,
+            "max_abs_error": 0.6742688119,
+            "max_brightening": 0.0
+          },
+          "esm": {
+            "cases": 1,
+            "median_total_gpu_ms": 35.685782,
+            "mean_rmse": 0.01377127175,
+            "mean_penumbra_rmse": 0.1483171878,
+            "max_abs_error": 0.6046075523,
+            "max_brightening": 0.0
+          },
+          "arr-triangulation": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.254382,
+            "mean_rmse": 0.001634710467,
+            "mean_penumbra_rmse": 0.01903636799,
+            "max_abs_error": 0.226990819,
+            "max_brightening": 0.01020476222
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000311255",
+          "max_abs_error": "0.0107145",
+          "cpu_gpu_max_abs_error": "0"
+        }
+      ],
+      "reference_pfm_sha256": "d0341850407c929100703081e067c72bbcfeffa1274a2cecc3a3de8228291eaf",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "56e806fb6eba4da0185be48358eb5857810724052a11bcc91ebd8f9547c7a10b",
+        "c0-arr-triangulation-shaded.png": "129e1c04f7d7e908dc48232086f846d04964f69d663b21289b74692360b737a3",
+        "c0-chs-shaded.png": "f770655ca5e54aca4ccccaff519fe4f9b8c09a8496d9780d5dd5665d4ad29500",
+        "c0-csm-shaded.png": "2931930ee6b7176cd802f500a2383670fdac0d2a3611ff45ba782d3814ae2f79",
+        "c0-dpcf-shaded.png": "d5ac38f74662744c89e521b2b427c87d95c6c8dd6d48e10c950396c61ba79995",
+        "c0-esm-shaded.png": "6e75a374469c00aedbeff55b65affb9bac20526b68926281c9a06b4adefa420b",
+        "c0-geometric-layered-shaded.png": "482a2db03c62125a2b2e0fe8d2070ed8e6572b9afe2318b9ddcdc11cfcb1d944",
+        "c0-geometric-shaded.png": "f8ee535d5723b0dda9775657c2227ad6d2285ef79cb47d6e6cf3b5808749f5af",
+        "c0-hard-shaded.png": "372d6743c3cc4d90b0b31d94dc1cb5a6ae62daad9f26f47c6a96cc2513e8dc87",
+        "c0-pcf-shaded.png": "629d8372188ab86dcc7bf7ca37b4babdb48c7b39cd6ca30296e4c300459ad340",
+        "c0-pcss-shaded.png": "bd86973e1911355fd0ba198747347e452439f4307268e7c4cc6bd660a0526b40",
+        "c0-vsm-shaded.png": "3c73f4889479731ed248d5e6c230dd52d2f57e828e79c4def1830aedad827a4c"
+      }
+    },
+    {
+      "run": "baseline",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-baseline",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=mixed-overlap",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=.4",
+        "--camera-target-z=-2.95",
+        "--method=all",
+        "--tri-samples=4",
+        "--tri-result-masks=0"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 12,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "nearest",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 1,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "vogel",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": false,
+        "layer_min_filter_texels": 0,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": true,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 12,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "hard": {
+            "cases": 1,
+            "median_total_gpu_ms": 7.797067,
+            "mean_rmse": 0.03156398379,
+            "mean_penumbra_rmse": 0.2550196746,
+            "max_abs_error": 0.9316404983,
+            "max_brightening": 0.0
+          },
+          "pcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 35.904144,
+            "mean_rmse": 0.0241434688,
+            "mean_penumbra_rmse": 0.1788658326,
+            "max_abs_error": 0.580691576,
+            "max_brightening": 0.0
+          },
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 31.364828,
+            "mean_rmse": 0.02251620898,
+            "mean_penumbra_rmse": 0.1052214891,
+            "max_abs_error": 0.5482540131,
+            "max_brightening": 0.06535971165
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.235422,
+            "mean_rmse": 0.0132127499,
+            "mean_penumbra_rmse": 0.106739533,
+            "max_abs_error": 0.3297919929,
+            "max_brightening": 0.0
+          },
+          "geometric": {
+            "cases": 1,
+            "median_total_gpu_ms": 34.088691,
+            "mean_rmse": 0.01997797086,
+            "mean_penumbra_rmse": 0.09384049488,
+            "max_abs_error": 0.5417093635,
+            "max_brightening": 0.09246438742
+          },
+          "dpcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 8.814128,
+            "mean_rmse": 0.05246994712,
+            "mean_penumbra_rmse": 0.3305128267,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "chs": {
+            "cases": 1,
+            "median_total_gpu_ms": 11.469861,
+            "mean_rmse": 0.02764343133,
+            "mean_penumbra_rmse": 0.1610120019,
+            "max_abs_error": 0.580691576,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 41.854325,
+            "mean_rmse": 0.01661065854,
+            "mean_penumbra_rmse": 0.05252399032,
+            "max_abs_error": 0.539647162,
+            "max_brightening": 0.0
+          },
+          "vsm": {
+            "cases": 1,
+            "median_total_gpu_ms": 33.45596,
+            "mean_rmse": 0.03617978792,
+            "mean_penumbra_rmse": 0.2076395057,
+            "max_abs_error": 0.6790032983,
+            "max_brightening": 0.0
+          },
+          "csm": {
+            "cases": 1,
+            "median_total_gpu_ms": 246.68857,
+            "mean_rmse": 0.08706172252,
+            "mean_penumbra_rmse": 0.2834434501,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "esm": {
+            "cases": 1,
+            "median_total_gpu_ms": 38.635848,
+            "mean_rmse": 0.04675240334,
+            "mean_penumbra_rmse": 0.2025835441,
+            "max_abs_error": 0.9102082849,
+            "max_brightening": 0.0
+          },
+          "arr-triangulation": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.25315,
+            "mean_rmse": 0.002490157752,
+            "mean_penumbra_rmse": 0.01972068446,
+            "max_abs_error": 0.2712454796,
+            "max_brightening": 4.768371582e-07
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000461656",
+          "max_abs_error": "0.0107031",
+          "cpu_gpu_max_abs_error": "0"
+        }
+      ],
+      "reference_pfm_sha256": "4b8eda1962ff1847153ae13bdba009d884963de92c558edccee295e8c496c233",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "daaa6728e25ad529cd92b0642a86334857eb0f93b1d3105d70d64e5e2c8b57e3",
+        "c0-arr-triangulation-shaded.png": "16ea3164e6a8b7c102d567ceb3b3338929682478b2c4fbf7321aa1855f5dfcb3",
+        "c0-chs-shaded.png": "68c98b9c83dfa238ff645ec146332ae160bb7f27dd1383bc5dae480709dad3c9",
+        "c0-csm-shaded.png": "642bf10ab259a1bfa9572d150b4950a174006f8d1fb8be2ba3c0e92d225d7844",
+        "c0-dpcf-shaded.png": "4ab71007797826304d33631f78f7271f411c33cd0682b26ae419545db08e3641",
+        "c0-esm-shaded.png": "580645976f625ca8eae040b5ff342a13072266e4b4a388c42079a070bc231c1d",
+        "c0-geometric-layered-shaded.png": "5833e488d3c8a037075198780568762c3767d453d18eccc79b3bb19df2bb0c26",
+        "c0-geometric-shaded.png": "b52c81d79b331080ee240eff3b79a569a883f83372e0fda40a3325a4cca0b3d8",
+        "c0-hard-shaded.png": "1134a3b0ae01b9f63796c8275165844a58605750107786b2ba064adfe19a962b",
+        "c0-pcf-shaded.png": "230d701c6551c6706bb1b6c199ca9aaf011b0800898c18843db498a4fba63a54",
+        "c0-pcss-shaded.png": "dae260514001541715b179e27d1fc17194f3c5cb702d3cc9cd30cb67f055cc22",
+        "c0-vsm-shaded.png": "f7ffa5c77ad3f742da517cec9e9525895a7e94b64de7b18d657b290e1b2bd070"
+      }
+    },
+    {
+      "run": "close-point",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-close-point",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=mixed-overlap",
+        "--camera-yaw=-1.3",
+        "--camera-pitch=.85",
+        "--camera-distance=4",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=.4",
+        "--camera-target-z=-2.95",
+        "--soft-packed",
+        "--angle=1",
+        "--layer-separation=5.24",
+        "--smoothing=0",
+        "--samples=32",
+        "--blocker-samples=32",
+        "--shared-pattern=0",
+        "--layer-min-filter=0"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 2,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 0,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "stratified",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": false,
+        "layer_min_filter_texels": 0,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": true,
+        "camera_yaw": -1.3,
+        "camera_pitch": 0.85,
+        "camera_distance": 4,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.212436,
+            "mean_rmse": 0.01622683019,
+            "mean_penumbra_rmse": 0.1017147908,
+            "max_abs_error": 0.3196020722,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 67.102929,
+            "mean_rmse": 0.01248967106,
+            "mean_penumbra_rmse": 0.07812967952,
+            "max_abs_error": 0.5912662148,
+            "max_brightening": 0.09375
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000578599",
+          "max_abs_error": "0.0116941",
+          "cpu_gpu_max_abs_error": "4.46092e-07"
+        }
+      ],
+      "reference_pfm_sha256": "94a7abab3533754494bcaa5e9ef14d9e49c0e09d4fb80e1acb45e70606013707",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "d539113ca24757c8a13b564d57fe0c80afe88ad426f735884822fca26b991401",
+        "c0-geometric-layered-shaded.png": "57d12a4d1a7700bfc8a344717a3026bf87465c57b14e139aa8e5841f718421e0"
+      }
+    },
+    {
+      "run": "close-independent",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-close-independent",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=mixed-overlap",
+        "--camera-yaw=-1.3",
+        "--camera-pitch=.85",
+        "--camera-distance=4",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=.4",
+        "--camera-target-z=-2.95",
+        "--soft-packed",
+        "--angle=1",
+        "--layer-separation=5.24",
+        "--shared-pattern=0"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 2,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 3,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "stratified",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": false,
+        "layer_min_filter_texels": 1,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": true,
+        "camera_yaw": -1.3,
+        "camera_pitch": 0.85,
+        "camera_distance": 4,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.273817,
+            "mean_rmse": 0.01622683019,
+            "mean_penumbra_rmse": 0.1017147908,
+            "max_abs_error": 0.3196020722,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 144.826879,
+            "mean_rmse": 0.00859531142,
+            "mean_penumbra_rmse": 0.05369419731,
+            "max_abs_error": 0.4672456235,
+            "max_brightening": 0.03933110833
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000578599",
+          "max_abs_error": "0.0116941",
+          "cpu_gpu_max_abs_error": "4.46092e-07"
+        }
+      ],
+      "reference_pfm_sha256": "94a7abab3533754494bcaa5e9ef14d9e49c0e09d4fb80e1acb45e70606013707",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "d539113ca24757c8a13b564d57fe0c80afe88ad426f735884822fca26b991401",
+        "c0-geometric-layered-shaded.png": "0f42e8168c88cf466345010faaf084f02b01ed96d4d6c1d0f71acf618de53c59"
+      }
+    },
+    {
+      "run": "close-soft",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-close-soft",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=mixed-overlap",
+        "--camera-yaw=-1.3",
+        "--camera-pitch=.85",
+        "--camera-distance=4",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=.4",
+        "--camera-target-z=-2.95",
+        "--soft-packed",
+        "--angle=1",
+        "--layer-separation=5.24"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 2,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 3,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "stratified",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": true,
+        "layer_min_filter_texels": 1,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": true,
+        "camera_yaw": -1.3,
+        "camera_pitch": 0.85,
+        "camera_distance": 4,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.212788,
+            "mean_rmse": 0.01622683019,
+            "mean_penumbra_rmse": 0.1017147908,
+            "max_abs_error": 0.3196020722,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 147.926539,
+            "mean_rmse": 0.008422414435,
+            "mean_penumbra_rmse": 0.05268645187,
+            "max_abs_error": 0.4690564126,
+            "max_brightening": 0.03407025337
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000578599",
+          "max_abs_error": "0.0116941",
+          "cpu_gpu_max_abs_error": "4.46092e-07"
+        }
+      ],
+      "reference_pfm_sha256": "94a7abab3533754494bcaa5e9ef14d9e49c0e09d4fb80e1acb45e70606013707",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "d539113ca24757c8a13b564d57fe0c80afe88ad426f735884822fca26b991401",
+        "c0-geometric-layered-shaded.png": "538446e3daa213120509d580072ad8d488299457a406711919b6f01cd9aa7763"
+      }
+    },
+    {
+      "run": "close-bspline",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-close-bspline",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=mixed-overlap",
+        "--camera-yaw=-1.3",
+        "--camera-pitch=.85",
+        "--camera-distance=4",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=.4",
+        "--camera-target-z=-2.95",
+        "--soft-packed",
+        "--angle=1",
+        "--layer-separation=5.24",
+        "--smoothing=4"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 2,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 4,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "stratified",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": true,
+        "layer_min_filter_texels": 1,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": true,
+        "camera_yaw": -1.3,
+        "camera_pitch": 0.85,
+        "camera_distance": 4,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.191846,
+            "mean_rmse": 0.01622683019,
+            "mean_penumbra_rmse": 0.1017147908,
+            "max_abs_error": 0.3196020722,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 170.794592,
+            "mean_rmse": 0.008053962581,
+            "mean_penumbra_rmse": 0.05014175201,
+            "max_abs_error": 0.3710607886,
+            "max_brightening": 0.02459596097
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000578599",
+          "max_abs_error": "0.0116941",
+          "cpu_gpu_max_abs_error": "4.46092e-07"
+        }
+      ],
+      "reference_pfm_sha256": "94a7abab3533754494bcaa5e9ef14d9e49c0e09d4fb80e1acb45e70606013707",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "d539113ca24757c8a13b564d57fe0c80afe88ad426f735884822fca26b991401",
+        "c0-geometric-layered-shaded.png": "1193012c4cc22beeb6b786e24c2374ce75da966366928007050b46b6a62c80c2"
+      }
+    },
+    {
+      "run": "four-reference",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-four-reference",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=crossing-four",
+        "--method=arr",
+        "--angle=1",
+        "--arr-samples=1024"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 1,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "nearest",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 1,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "vogel",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": false,
+        "layer_min_filter_texels": 0,
+        "arr_samples": 1024,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": false,
+        "camera_yaw": -2.1,
+        "camera_pitch": 0.65,
+        "camera_distance": 16,
+        "camera_target": [
+          -1.4,
+          1,
+          -0.8
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 1,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 53.866355,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000311255",
+          "max_abs_error": "0.0107145",
+          "cpu_gpu_max_abs_error": "0"
+        }
+      ],
+      "reference_pfm_sha256": "d0341850407c929100703081e067c72bbcfeffa1274a2cecc3a3de8228291eaf",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "765d187133c334be9e5c5b538fbe820d952be619177660da81eec5ef2158fec1"
+      }
+    },
+    {
+      "run": "four-wide",
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0153-four-wide",
+        "--headless",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--warmup=1",
+        "--measure=3",
+        "--arr-samples=4",
+        "--scene=crossing-four",
+        "--soft-packed",
+        "--angle=1",
+        "--layer-separation=5.24",
+        "--angle=3"
+      ],
+      "manifest": {
+        "version": "0.15.3",
+        "completed": true,
+        "expected_cases": 2,
+        "gpu": "llvmpipe (LLVM 20.1.2, 256 bits)",
+        "software_renderer": true,
+        "gl_version": "4.6 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2",
+        "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
+        "compiler": "GNU-13.3.0",
+        "build_type": "Release",
+        "profile": "manual",
+        "method_count": 12,
+        "filter_validation_cases": 320,
+        "sampling_validation_cases": 1568,
+        "prefilter_validation_cases": 384,
+        "dpcf_source": "Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+        "chs_source": "AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4",
+        "chs_constant_buffer_bytes": 10400,
+        "shader_programs": "separate method programs; CHS kernel and PCF/PCSS smoothing specialized at compile time",
+        "interval_validation_cases": 256,
+        "configured_layer_depth": "interval",
+        "layer_mixing": "conditional-visibility",
+        "prefilter_radius": 4,
+        "csm_terms": 16,
+        "smoothing": 3,
+        "configured_penumbra": "full",
+        "configured_sample_pattern": "stratified",
+        "sample_seed": 0,
+        "rotate_samples": false,
+        "shared_sample_pattern": true,
+        "layer_min_filter_texels": 1,
+        "arr_samples": 4,
+        "tri_samples": 4,
+        "tri_result_masks": 0,
+        "arr_smoothing": 0,
+        "arr_smoothing_radius": 0.75,
+        "angular_sampling": "deterministic radical inverse + golden angle; triangle fan for triangulation",
+        "oracle_smoothing": 0,
+        "angular_validation_cases": 416,
+        "angular_filter_validation_cases": 1024,
+        "reference_samples": 1024,
+        "warmup": 1,
+        "measure": 3,
+        "warp": 8,
+        "custom_camera": false,
+        "camera_yaw": -2.1,
+        "camera_pitch": 0.65,
+        "camera_distance": 16,
+        "camera_target": [
+          -1.4,
+          1,
+          -0.8
+        ],
+        "map_backend": "raster-tessellated",
+        "receiver_metrics_only": true,
+        "temporal_reuse": false,
+        "timing_scope": "map generation + shadow evaluation, excludes shared G-buffer, UI and readback",
+        "reference_model": "irradiance-weighted angular disk, exact AABB intersections"
+      },
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "angular_oracles": {
+          "cases": 416,
+          "circle_planes": 160,
+          "ray_box_signs": 96,
+          "max_coverage_error": 2.563000000010973e-06,
+          "ray_mask_cases": 160,
+          "max_mask_error": 1.5052938262538618e-07
+        },
+        "angular_filter_oracles": {
+          "cases": 1024,
+          "max_abs_error": 3.0078717816461875e-07,
+          "depth_step_guard": true
+        },
+        "interval_oracles": {
+          "cases": 256,
+          "concurrent_updates": 4096,
+          "exact": true
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 0.482117,
+            "mean_rmse": 0.0154662741,
+            "mean_penumbra_rmse": 0.1051922544,
+            "max_abs_error": 0.3486912549,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 92.824223,
+            "mean_rmse": 0.01534943386,
+            "mean_penumbra_rmse": 0.08600273841,
+            "max_abs_error": 0.3043794967,
+            "max_brightening": 0.1887732148
+          }
+        }
+      },
+      "convergence": [
+        {
+          "config_id": "c0",
+          "lower_samples": "512",
+          "reference_samples": "1024",
+          "rmse": "0.000528139",
+          "max_abs_error": "0.0116474",
+          "cpu_gpu_max_abs_error": "0"
+        }
+      ],
+      "reference_pfm_sha256": "a86fcb50a5bb2a8e49f3fd7d15e0bd7ffd73bef140503eb5f009ca026ecd4567",
+      "shaded_png_sha256": {
+        "c0-arr-shaded.png": "bf8171d553aad6cbfb830580c5cb20a4e6f728b8de8466ac46da340ce8b24175",
+        "c0-geometric-layered-shaded.png": "6d1ee1bc46a9361b50ff63d3768cadcf091d6f1b1991de555aabf0be5ca4087e"
+      }
+    }
+  ]
+}

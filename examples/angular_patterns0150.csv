@@ -1,0 +1,12 @@
+pattern,index,disk_x,disk_y
+Current ARR / first four directions,0,-0.2562377421076373,0.6590464471640675
+Current ARR / first four directions,1,0.44839141118263826,-0.2212354907731629
+Current ARR / first four directions,2,-0.8315096124246844,-0.2420573577591705
+Current ARR / first four directions,3,0.18355737782888032,0.3021699671452901
+Triangle / 3 queries,0,0.8,0.0
+Triangle / 3 queries,1,-0.39999999999999986,0.692820323027551
+Triangle / 3 queries,2,-0.40000000000000036,-0.6928203230275507
+Triangle + center / 4 queries,0,0,0
+Triangle + center / 4 queries,1,0.8,0.0
+Triangle + center / 4 queries,2,-0.39999999999999986,0.692820323027551
+Triangle + center / 4 queries,3,-0.40000000000000036,-0.6928203230275507

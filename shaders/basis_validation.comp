@@ -1,0 +1,17 @@
+#version 460 core
+layout(local_size_x=1) in;
+layout(binding=3) uniform sampler2DArray uBasis;
+layout(std430,binding=0) buffer Results{float values[];};
+#include "prefilter_math.glsl"
+void main(){
+    int i=int(gl_GlobalInvocationID.x);ivec2 p=ivec2((i*7)%32,(i*13+i/32)%32);
+    vec2 uv=(vec2(p)+0.5)/32.0;float t=float(i%17)/16.0,v;
+#if BASIS_METHOD == 0
+    v=varianceVisibility(texture(uBasis,vec3(uv,0)).xy,t,1e-7,0.0);
+#elif BASIS_METHOD == 1
+    v=fourierVisibility(uBasis,uv,t,8,0.015);
+#else
+    v=exp(min(0.0,exponentialLogResponse(texture(uBasis,vec3(uv,0)).r,t,80.0)));
+#endif
+    values[i]=v;
+}

@@ -1,0 +1,3132 @@
+{
+  "version": "0.14.0",
+  "ctest": {
+    "passed": 3,
+    "total": 3
+  },
+  "render_cases": 101,
+  "unchanged_v0130_images": 28,
+  "filter_fixture_cases_per_run": 320,
+  "sampling_fixture_cases_per_run": 1568,
+  "prefilter_fixture_cases_per_run": 384,
+  "hardware_timings": false,
+  "near_shadow": [
+    {
+      "method": "pcf",
+      "near_core_pixels": 1939,
+      "near_core_rmse": 0.10594763900014295,
+      "brightening_after_upper_mean": 0.0,
+      "affected_pixels": 368,
+      "affected_mean_visibility": 0.16323890730627286
+    },
+    {
+      "method": "pcss",
+      "near_core_pixels": 1939,
+      "near_core_rmse": 0.15646132771044793,
+      "brightening_after_upper_mean": 0.07143784819217669,
+      "affected_pixels": 368,
+      "affected_mean_visibility": 0.34562520261691965
+    },
+    {
+      "method": "arr",
+      "near_core_pixels": 1939,
+      "near_core_rmse": 0.0,
+      "brightening_after_upper_mean": 0.0,
+      "affected_pixels": 368,
+      "affected_mean_visibility": 0.00015501079589897847
+    },
+    {
+      "method": "geometric",
+      "near_core_pixels": 1939,
+      "near_core_rmse": 0.13532594631029607,
+      "brightening_after_upper_mean": 0.05362511616726689,
+      "affected_pixels": 368,
+      "affected_mean_visibility": 0.2936701586814192
+    },
+    {
+      "method": "dpcf",
+      "near_core_pixels": 1939,
+      "near_core_rmse": 0.36143828303737335,
+      "brightening_after_upper_mean": 0.00025598722490347063,
+      "affected_pixels": 368,
+      "affected_mean_visibility": 0.3922789600556311
+    },
+    {
+      "method": "chs",
+      "near_core_pixels": 1939,
+      "near_core_rmse": 0.2017559218556354,
+      "brightening_after_upper_mean": 0.004417255882014313,
+      "affected_pixels": 368,
+      "affected_mean_visibility": 0.329585257269766
+    },
+    {
+      "method": "geometric-layered",
+      "near_core_pixels": 1939,
+      "near_core_rmse": 0.03216105907179668,
+      "brightening_after_upper_mean": 0.0041487087379273304,
+      "affected_pixels": 368,
+      "affected_mean_visibility": 0.03584644031186316
+    },
+    {
+      "method": "vsm",
+      "near_core_pixels": 1939,
+      "near_core_rmse": 0.2310478484088713,
+      "brightening_after_upper_mean": 0.042919064156784106,
+      "affected_pixels": 368,
+      "affected_mean_visibility": 0.45688687370199227
+    },
+    {
+      "method": "csm",
+      "near_core_pixels": 1939,
+      "near_core_rmse": 0.9611011251476472,
+      "brightening_after_upper_mean": 0.0,
+      "affected_pixels": 368,
+      "affected_mean_visibility": 0.7531978440187548
+    },
+    {
+      "method": "esm",
+      "near_core_pixels": 1939,
+      "near_core_rmse": 0.499341601005913,
+      "brightening_after_upper_mean": 0.0,
+      "affected_pixels": 368,
+      "affected_mean_visibility": 0.4860817445847003
+    },
+    {
+      "method": "hard",
+      "near_core_pixels": 1939,
+      "near_core_rmse": 0.00048208233128965895,
+      "brightening_after_upper_mean": 0.0,
+      "affected_pixels": 368,
+      "affected_mean_visibility": 0.0
+    }
+  ],
+  "runs": [
+    {
+      "name": "quick",
+      "summary": {
+        "cases": 44,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "hard": {
+            "cases": 4,
+            "median_total_gpu_ms": 5.4440495,
+            "mean_rmse": 0.02137541019275,
+            "mean_penumbra_rmse": 0.277504948075,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "pcf": {
+            "cases": 4,
+            "median_total_gpu_ms": 17.271757,
+            "mean_rmse": 0.0161909068855,
+            "mean_penumbra_rmse": 0.185065465575,
+            "max_abs_error": 0.6023421288,
+            "max_brightening": 0.0
+          },
+          "pcss": {
+            "cases": 4,
+            "median_total_gpu_ms": 10.048402,
+            "mean_rmse": 0.01054908313475,
+            "mean_penumbra_rmse": 0.11611608715499999,
+            "max_abs_error": 0.5714321136,
+            "max_brightening": 0.1175746322
+          },
+          "arr": {
+            "cases": 4,
+            "median_total_gpu_ms": 201.1736335,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "geometric": {
+            "cases": 4,
+            "median_total_gpu_ms": 8.379771,
+            "mean_rmse": 0.00942491923525,
+            "mean_penumbra_rmse": 0.1003388346275,
+            "max_abs_error": 0.5730438232,
+            "max_brightening": 0.1920215487
+          },
+          "dpcf": {
+            "cases": 4,
+            "median_total_gpu_ms": 5.741198499999999,
+            "mean_rmse": 0.039790985645,
+            "mean_penumbra_rmse": 0.409953008025,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "chs": {
+            "cases": 4,
+            "median_total_gpu_ms": 6.7559795000000005,
+            "mean_rmse": 0.02099014729,
+            "mean_penumbra_rmse": 0.18746134055000002,
+            "max_abs_error": 0.5565977879,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 4,
+            "median_total_gpu_ms": 11.471658999999999,
+            "mean_rmse": 0.00963288278325,
+            "mean_penumbra_rmse": 0.0802435862425,
+            "max_abs_error": 0.5974087119,
+            "max_brightening": 0.0
+          },
+          "vsm": {
+            "cases": 4,
+            "median_total_gpu_ms": 16.2288885,
+            "mean_rmse": 0.0203543374275,
+            "mean_penumbra_rmse": 0.183101539175,
+            "max_abs_error": 0.6886281371,
+            "max_brightening": 0.0
+          },
+          "csm": {
+            "cases": 4,
+            "median_total_gpu_ms": 60.058185,
+            "mean_rmse": 0.0546534461875,
+            "mean_penumbra_rmse": 0.321559748725,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "esm": {
+            "cases": 4,
+            "median_total_gpu_ms": 12.38287,
+            "mean_rmse": 0.0294090050025,
+            "mean_penumbra_rmse": 0.2195100542,
+            "max_abs_error": 0.89728719,
+            "max_brightening": 0.005259990692
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--publication-quick",
+        "--output=/tmp/shadows-0140-final-quick",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--warmup=0",
+        "--measure=1",
+        "--method=all"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "5da43b93d3d9d5b028dd49059a220ae8e187fd65f5b1aae8bc3e99990c81d336",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "6b04b1a4b7f4d7e1a68bb51f950b134432cb8fa23e5db8669731709b1cfe665a",
+        "src/renderer.cpp": "7712e723ac2b549b987e92abb49b0688b7c1a6349d1e5c7e7ee1a73029af4045",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "87ef9020a74c5f910ca87f12d6ded0f39c117db329b83ffc24d1c5ec89eb1611",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/basis_blur.comp": "42d7c1b328360681673a347d203c16e6739d30c74d64aa6f602a360b870d404f",
+        "shaders/basis_encode.comp": "db64e9aefd92c55b927325640c8b77cc29eb0771b00a5f0a0de95a08c9090e08",
+        "shaders/basis_validation.comp": "2c8cc6f16a7e7cf65c1169598ecb442a3f99bcea1ac25535ddac24404ebbde88",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/geometric_layers.glsl": "d37d0bc0769691021355c44cc35d8c12ddafd1235cd2d6c0bc8bfffe0fc1468a",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "23714ef45d7674a8e0a5f9ad0dfba276a555d5f92f00a017e05def578b294975",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/prefilter_math.glsl": "3588154171ef0bcadc7aa06963ae25251df3e8900ed86f9bf5ba9df24afec0d6",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "3ff5f8cb764eca36f8c4acaa5930a45422c20672509e4cdfb8c9e3afdb4f30a1",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "93d1ab3db38b6fa5c69acd52cc0333de809e7e2ff091f7f9644a85e4c516aea0",
+        "tools/compare_near_shadow.py": "23a650f7ae1ca9f6511d1e2f7b6466209f5d8a93cc905e1fdc9725b15515dc44",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_prefilter.py": "08b77737ab91adf1f832617a342c86fcc6be7b8d47f2ac9c8c0c3aea26228a59",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "4cae9e6fbd354e3f6d1f7262da6b8d65945d5b2e0fd4242d1e18c6ff8ed774b1",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "8d110747e82a1fc4d48fa86e39f00ea1c7e97881c57f60d795d614ea61eb9dcc"
+      },
+      "executable_sha256": "e534da646a9a307383ba0203ff7cd569ffc4c90131783c27a6a3472ab223b2a3"
+    },
+    {
+      "name": "close-mixed",
+      "summary": {
+        "cases": 11,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "hard": {
+            "cases": 1,
+            "median_total_gpu_ms": 11.889143,
+            "mean_rmse": 0.05891241893,
+            "mean_penumbra_rmse": 0.2675970422,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "pcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 50.544883,
+            "mean_rmse": 0.0432500833,
+            "mean_penumbra_rmse": 0.1883685056,
+            "max_abs_error": 0.6228445172,
+            "max_brightening": 0.0
+          },
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 129.472921,
+            "mean_rmse": 0.02146843781,
+            "mean_penumbra_rmse": 0.06851545492,
+            "max_abs_error": 0.4847482443,
+            "max_brightening": 0.129114151
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 1191.792029,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "geometric": {
+            "cases": 1,
+            "median_total_gpu_ms": 125.473791,
+            "mean_rmse": 0.01899154061,
+            "mean_penumbra_rmse": 0.06618749861,
+            "max_abs_error": 0.4744383879,
+            "max_brightening": 0.214720428
+          },
+          "dpcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 10.540338,
+            "mean_rmse": 0.07762137575,
+            "mean_penumbra_rmse": 0.3037545197,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "chs": {
+            "cases": 1,
+            "median_total_gpu_ms": 16.707729,
+            "mean_rmse": 0.03890219045,
+            "mean_penumbra_rmse": 0.1468341954,
+            "max_abs_error": 0.5817734003,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 156.716255,
+            "mean_rmse": 0.008553342679,
+            "mean_penumbra_rmse": 0.0345333583,
+            "max_abs_error": 0.4744383879,
+            "max_brightening": 0.0
+          },
+          "vsm": {
+            "cases": 1,
+            "median_total_gpu_ms": 40.980415,
+            "mean_rmse": 0.04589458277,
+            "mean_penumbra_rmse": 0.1873188486,
+            "max_abs_error": 0.6748708547,
+            "max_brightening": 0.0
+          },
+          "csm": {
+            "cases": 1,
+            "median_total_gpu_ms": 197.099356,
+            "mean_rmse": 0.09335758992,
+            "mean_penumbra_rmse": 0.2351441737,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "esm": {
+            "cases": 1,
+            "median_total_gpu_ms": 30.862158,
+            "mean_rmse": 0.05802495585,
+            "mean_penumbra_rmse": 0.188268433,
+            "max_abs_error": 0.9181909561,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0140-final-close-mixed",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--warmup=0",
+        "--measure=1",
+        "--method=all",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--samples=96",
+        "--blocker-samples=96",
+        "--sample-pattern=stratified",
+        "--sample-seed=35",
+        "--camera-yaw=-1.3",
+        "--camera-pitch=0.85",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--scene=mixed-overlap"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "5da43b93d3d9d5b028dd49059a220ae8e187fd65f5b1aae8bc3e99990c81d336",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "6b04b1a4b7f4d7e1a68bb51f950b134432cb8fa23e5db8669731709b1cfe665a",
+        "src/renderer.cpp": "7712e723ac2b549b987e92abb49b0688b7c1a6349d1e5c7e7ee1a73029af4045",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "87ef9020a74c5f910ca87f12d6ded0f39c117db329b83ffc24d1c5ec89eb1611",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/basis_blur.comp": "42d7c1b328360681673a347d203c16e6739d30c74d64aa6f602a360b870d404f",
+        "shaders/basis_encode.comp": "db64e9aefd92c55b927325640c8b77cc29eb0771b00a5f0a0de95a08c9090e08",
+        "shaders/basis_validation.comp": "2c8cc6f16a7e7cf65c1169598ecb442a3f99bcea1ac25535ddac24404ebbde88",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/geometric_layers.glsl": "d37d0bc0769691021355c44cc35d8c12ddafd1235cd2d6c0bc8bfffe0fc1468a",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "23714ef45d7674a8e0a5f9ad0dfba276a555d5f92f00a017e05def578b294975",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/prefilter_math.glsl": "3588154171ef0bcadc7aa06963ae25251df3e8900ed86f9bf5ba9df24afec0d6",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "3ff5f8cb764eca36f8c4acaa5930a45422c20672509e4cdfb8c9e3afdb4f30a1",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "93d1ab3db38b6fa5c69acd52cc0333de809e7e2ff091f7f9644a85e4c516aea0",
+        "tools/compare_near_shadow.py": "23a650f7ae1ca9f6511d1e2f7b6466209f5d8a93cc905e1fdc9725b15515dc44",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_prefilter.py": "08b77737ab91adf1f832617a342c86fcc6be7b8d47f2ac9c8c0c3aea26228a59",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "4cae9e6fbd354e3f6d1f7262da6b8d65945d5b2e0fd4242d1e18c6ff8ed774b1",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "8d110747e82a1fc4d48fa86e39f00ea1c7e97881c57f60d795d614ea61eb9dcc"
+      },
+      "executable_sha256": "e534da646a9a307383ba0203ff7cd569ffc4c90131783c27a6a3472ab223b2a3"
+    },
+    {
+      "name": "close-low",
+      "summary": {
+        "cases": 11,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "hard": {
+            "cases": 1,
+            "median_total_gpu_ms": 8.18198,
+            "mean_rmse": 0.01880797872,
+            "mean_penumbra_rmse": 0.3171818266,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "pcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 51.370483,
+            "mean_rmse": 0.01741475709,
+            "mean_penumbra_rmse": 0.1844835618,
+            "max_abs_error": 0.5401167274,
+            "max_brightening": 0.0
+          },
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 102.801171,
+            "mean_rmse": 0.007107356884,
+            "mean_penumbra_rmse": 0.1068850192,
+            "max_abs_error": 0.4245892763,
+            "max_brightening": 0.0
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 838.585511,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "geometric": {
+            "cases": 1,
+            "median_total_gpu_ms": 105.31617,
+            "mean_rmse": 0.007151730826,
+            "mean_penumbra_rmse": 0.108950815,
+            "max_abs_error": 0.4272220731,
+            "max_brightening": 0.0
+          },
+          "dpcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 5.861109,
+            "mean_rmse": 0.05643847809,
+            "mean_penumbra_rmse": 0.5197791552,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "chs": {
+            "cases": 1,
+            "median_total_gpu_ms": 17.770588,
+            "mean_rmse": 0.02834694793,
+            "mean_penumbra_rmse": 0.2333281544,
+            "max_abs_error": 0.5817734003,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 143.857235,
+            "mean_rmse": 0.007048940549,
+            "mean_penumbra_rmse": 0.1053761008,
+            "max_abs_error": 0.5122781992,
+            "max_brightening": 0.0
+          },
+          "vsm": {
+            "cases": 1,
+            "median_total_gpu_ms": 41.945421,
+            "mean_rmse": 0.01885804164,
+            "mean_penumbra_rmse": 0.189785212,
+            "max_abs_error": 0.6734325886,
+            "max_brightening": 0.0
+          },
+          "csm": {
+            "cases": 1,
+            "median_total_gpu_ms": 189.242138,
+            "mean_rmse": 0.08786480532,
+            "mean_penumbra_rmse": 0.5830138715,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "esm": {
+            "cases": 1,
+            "median_total_gpu_ms": 26.268609,
+            "mean_rmse": 0.04661194365,
+            "mean_penumbra_rmse": 0.3344984405,
+            "max_abs_error": 0.9181909561,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0140-final-close-low",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--warmup=0",
+        "--measure=1",
+        "--method=all",
+        "--width=640",
+        "--height=480",
+        "--shadow-resolution=1024",
+        "--samples=96",
+        "--blocker-samples=96",
+        "--sample-pattern=stratified",
+        "--sample-seed=35",
+        "--camera-yaw=-1.3",
+        "--camera-pitch=0.85",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--scene=single-low"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "5da43b93d3d9d5b028dd49059a220ae8e187fd65f5b1aae8bc3e99990c81d336",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "6b04b1a4b7f4d7e1a68bb51f950b134432cb8fa23e5db8669731709b1cfe665a",
+        "src/renderer.cpp": "7712e723ac2b549b987e92abb49b0688b7c1a6349d1e5c7e7ee1a73029af4045",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "87ef9020a74c5f910ca87f12d6ded0f39c117db329b83ffc24d1c5ec89eb1611",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/basis_blur.comp": "42d7c1b328360681673a347d203c16e6739d30c74d64aa6f602a360b870d404f",
+        "shaders/basis_encode.comp": "db64e9aefd92c55b927325640c8b77cc29eb0771b00a5f0a0de95a08c9090e08",
+        "shaders/basis_validation.comp": "2c8cc6f16a7e7cf65c1169598ecb442a3f99bcea1ac25535ddac24404ebbde88",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/geometric_layers.glsl": "d37d0bc0769691021355c44cc35d8c12ddafd1235cd2d6c0bc8bfffe0fc1468a",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "23714ef45d7674a8e0a5f9ad0dfba276a555d5f92f00a017e05def578b294975",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/prefilter_math.glsl": "3588154171ef0bcadc7aa06963ae25251df3e8900ed86f9bf5ba9df24afec0d6",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "3ff5f8cb764eca36f8c4acaa5930a45422c20672509e4cdfb8c9e3afdb4f30a1",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "93d1ab3db38b6fa5c69acd52cc0333de809e7e2ff091f7f9644a85e4c516aea0",
+        "tools/compare_near_shadow.py": "23a650f7ae1ca9f6511d1e2f7b6466209f5d8a93cc905e1fdc9725b15515dc44",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_prefilter.py": "08b77737ab91adf1f832617a342c86fcc6be7b8d47f2ac9c8c0c3aea26228a59",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "4cae9e6fbd354e3f6d1f7262da6b8d65945d5b2e0fd4242d1e18c6ff8ed774b1",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "8d110747e82a1fc4d48fa86e39f00ea1c7e97881c57f60d795d614ea61eb9dcc"
+      },
+      "executable_sha256": "e534da646a9a307383ba0203ff7cd569ffc4c90131783c27a6a3472ab223b2a3"
+    },
+    {
+      "name": "hidden",
+      "summary": {
+        "cases": 11,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "hard": {
+            "cases": 1,
+            "median_total_gpu_ms": 12.022648,
+            "mean_rmse": 0.005875997101,
+            "mean_penumbra_rmse": 0.2862428634,
+            "max_abs_error": 0.6289858222,
+            "max_brightening": 0.0
+          },
+          "pcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 21.840858,
+            "mean_rmse": 0.008658773552,
+            "mean_penumbra_rmse": 0.2327439662,
+            "max_abs_error": 0.440808177,
+            "max_brightening": 0.0
+          },
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 15.375711,
+            "mean_rmse": 0.007807049387,
+            "mean_penumbra_rmse": 0.2066906136,
+            "max_abs_error": 0.4808023274,
+            "max_brightening": 0.0
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 240.076241,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "geometric": {
+            "cases": 1,
+            "median_total_gpu_ms": 18.043993,
+            "mean_rmse": 0.00556673532,
+            "mean_penumbra_rmse": 0.1483489019,
+            "max_abs_error": 0.398902446,
+            "max_brightening": 1.24176347e-09
+          },
+          "dpcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 8.287762,
+            "mean_rmse": 0.02310053259,
+            "mean_penumbra_rmse": 0.5422185206,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "chs": {
+            "cases": 1,
+            "median_total_gpu_ms": 9.37919,
+            "mean_rmse": 0.01304265586,
+            "mean_penumbra_rmse": 0.2706264742,
+            "max_abs_error": 0.5096824765,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 11.827628,
+            "mean_rmse": 0.00609763463,
+            "mean_penumbra_rmse": 0.1180859588,
+            "max_abs_error": 0.4410632551,
+            "max_brightening": 0.0
+          },
+          "vsm": {
+            "cases": 1,
+            "median_total_gpu_ms": 16.319717,
+            "mean_rmse": 0.01534305918,
+            "mean_penumbra_rmse": 0.2364881205,
+            "max_abs_error": 0.5832719803,
+            "max_brightening": 0.0
+          },
+          "csm": {
+            "cases": 1,
+            "median_total_gpu_ms": 71.122404,
+            "mean_rmse": 0.04932651272,
+            "mean_penumbra_rmse": 0.6097135503,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "esm": {
+            "cases": 1,
+            "median_total_gpu_ms": 16.055645,
+            "mean_rmse": 0.02613464052,
+            "mean_penumbra_rmse": 0.3669547417,
+            "max_abs_error": 0.89728719,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0140-final-hidden",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--warmup=0",
+        "--measure=1",
+        "--method=all",
+        "--scene=hidden-layer"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "5da43b93d3d9d5b028dd49059a220ae8e187fd65f5b1aae8bc3e99990c81d336",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "6b04b1a4b7f4d7e1a68bb51f950b134432cb8fa23e5db8669731709b1cfe665a",
+        "src/renderer.cpp": "7712e723ac2b549b987e92abb49b0688b7c1a6349d1e5c7e7ee1a73029af4045",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "87ef9020a74c5f910ca87f12d6ded0f39c117db329b83ffc24d1c5ec89eb1611",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/basis_blur.comp": "42d7c1b328360681673a347d203c16e6739d30c74d64aa6f602a360b870d404f",
+        "shaders/basis_encode.comp": "db64e9aefd92c55b927325640c8b77cc29eb0771b00a5f0a0de95a08c9090e08",
+        "shaders/basis_validation.comp": "2c8cc6f16a7e7cf65c1169598ecb442a3f99bcea1ac25535ddac24404ebbde88",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/geometric_layers.glsl": "d37d0bc0769691021355c44cc35d8c12ddafd1235cd2d6c0bc8bfffe0fc1468a",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "23714ef45d7674a8e0a5f9ad0dfba276a555d5f92f00a017e05def578b294975",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/prefilter_math.glsl": "3588154171ef0bcadc7aa06963ae25251df3e8900ed86f9bf5ba9df24afec0d6",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "3ff5f8cb764eca36f8c4acaa5930a45422c20672509e4cdfb8c9e3afdb4f30a1",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "93d1ab3db38b6fa5c69acd52cc0333de809e7e2ff091f7f9644a85e4c516aea0",
+        "tools/compare_near_shadow.py": "23a650f7ae1ca9f6511d1e2f7b6466209f5d8a93cc905e1fdc9725b15515dc44",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_prefilter.py": "08b77737ab91adf1f832617a342c86fcc6be7b8d47f2ac9c8c0c3aea26228a59",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "4cae9e6fbd354e3f6d1f7262da6b8d65945d5b2e0fd4242d1e18c6ff8ed774b1",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "8d110747e82a1fc4d48fa86e39f00ea1c7e97881c57f60d795d614ea61eb9dcc"
+      },
+      "executable_sha256": "e534da646a9a307383ba0203ff7cd569ffc4c90131783c27a6a3472ab223b2a3"
+    },
+    {
+      "name": "layered-3",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 127.879405,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 258.23313,
+            "mean_rmse": 0.01039026978,
+            "mean_penumbra_rmse": 0.0507247447,
+            "max_abs_error": 0.3960599899,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0140-final-layered-3",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--warmup=0",
+        "--measure=1",
+        "--method=all",
+        "--method=geometric-layered",
+        "--scene=crossing",
+        "--smoothing=3",
+        "--width=160",
+        "--height=90",
+        "--shadow-resolution=256",
+        "--samples=24",
+        "--blocker-samples=24",
+        "--angle=3"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "5da43b93d3d9d5b028dd49059a220ae8e187fd65f5b1aae8bc3e99990c81d336",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "6b04b1a4b7f4d7e1a68bb51f950b134432cb8fa23e5db8669731709b1cfe665a",
+        "src/renderer.cpp": "7712e723ac2b549b987e92abb49b0688b7c1a6349d1e5c7e7ee1a73029af4045",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "87ef9020a74c5f910ca87f12d6ded0f39c117db329b83ffc24d1c5ec89eb1611",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/basis_blur.comp": "42d7c1b328360681673a347d203c16e6739d30c74d64aa6f602a360b870d404f",
+        "shaders/basis_encode.comp": "db64e9aefd92c55b927325640c8b77cc29eb0771b00a5f0a0de95a08c9090e08",
+        "shaders/basis_validation.comp": "2c8cc6f16a7e7cf65c1169598ecb442a3f99bcea1ac25535ddac24404ebbde88",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/geometric_layers.glsl": "d37d0bc0769691021355c44cc35d8c12ddafd1235cd2d6c0bc8bfffe0fc1468a",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "23714ef45d7674a8e0a5f9ad0dfba276a555d5f92f00a017e05def578b294975",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/prefilter_math.glsl": "3588154171ef0bcadc7aa06963ae25251df3e8900ed86f9bf5ba9df24afec0d6",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "3ff5f8cb764eca36f8c4acaa5930a45422c20672509e4cdfb8c9e3afdb4f30a1",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "93d1ab3db38b6fa5c69acd52cc0333de809e7e2ff091f7f9644a85e4c516aea0",
+        "tools/compare_near_shadow.py": "23a650f7ae1ca9f6511d1e2f7b6466209f5d8a93cc905e1fdc9725b15515dc44",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_prefilter.py": "08b77737ab91adf1f832617a342c86fcc6be7b8d47f2ac9c8c0c3aea26228a59",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "4cae9e6fbd354e3f6d1f7262da6b8d65945d5b2e0fd4242d1e18c6ff8ed774b1",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "8d110747e82a1fc4d48fa86e39f00ea1c7e97881c57f60d795d614ea61eb9dcc"
+      },
+      "executable_sha256": "e534da646a9a307383ba0203ff7cd569ffc4c90131783c27a6a3472ab223b2a3"
+    },
+    {
+      "name": "layered-5",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 141.083738,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 238.200166,
+            "mean_rmse": 0.0104194344,
+            "mean_penumbra_rmse": 0.0506606809,
+            "max_abs_error": 0.3928301334,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0140-final-layered-5",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--warmup=0",
+        "--measure=1",
+        "--method=all",
+        "--method=geometric-layered",
+        "--scene=crossing",
+        "--smoothing=5",
+        "--width=160",
+        "--height=90",
+        "--shadow-resolution=256",
+        "--samples=24",
+        "--blocker-samples=24",
+        "--angle=3"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "5da43b93d3d9d5b028dd49059a220ae8e187fd65f5b1aae8bc3e99990c81d336",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "6b04b1a4b7f4d7e1a68bb51f950b134432cb8fa23e5db8669731709b1cfe665a",
+        "src/renderer.cpp": "7712e723ac2b549b987e92abb49b0688b7c1a6349d1e5c7e7ee1a73029af4045",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "87ef9020a74c5f910ca87f12d6ded0f39c117db329b83ffc24d1c5ec89eb1611",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/basis_blur.comp": "42d7c1b328360681673a347d203c16e6739d30c74d64aa6f602a360b870d404f",
+        "shaders/basis_encode.comp": "db64e9aefd92c55b927325640c8b77cc29eb0771b00a5f0a0de95a08c9090e08",
+        "shaders/basis_validation.comp": "2c8cc6f16a7e7cf65c1169598ecb442a3f99bcea1ac25535ddac24404ebbde88",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/geometric_layers.glsl": "d37d0bc0769691021355c44cc35d8c12ddafd1235cd2d6c0bc8bfffe0fc1468a",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "23714ef45d7674a8e0a5f9ad0dfba276a555d5f92f00a017e05def578b294975",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/prefilter_math.glsl": "3588154171ef0bcadc7aa06963ae25251df3e8900ed86f9bf5ba9df24afec0d6",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "3ff5f8cb764eca36f8c4acaa5930a45422c20672509e4cdfb8c9e3afdb4f30a1",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "93d1ab3db38b6fa5c69acd52cc0333de809e7e2ff091f7f9644a85e4c516aea0",
+        "tools/compare_near_shadow.py": "23a650f7ae1ca9f6511d1e2f7b6466209f5d8a93cc905e1fdc9725b15515dc44",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_prefilter.py": "08b77737ab91adf1f832617a342c86fcc6be7b8d47f2ac9c8c0c3aea26228a59",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "4cae9e6fbd354e3f6d1f7262da6b8d65945d5b2e0fd4242d1e18c6ff8ed774b1",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "8d110747e82a1fc4d48fa86e39f00ea1c7e97881c57f60d795d614ea61eb9dcc"
+      },
+      "executable_sha256": "e534da646a9a307383ba0203ff7cd569ffc4c90131783c27a6a3472ab223b2a3"
+    },
+    {
+      "name": "inner",
+      "summary": {
+        "cases": 3,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 1,
+          "outside_pixels": 55904,
+          "violations": 0
+        },
+        "methods": {
+          "hard": {
+            "cases": 1,
+            "median_total_gpu_ms": 11.832176,
+            "mean_rmse": 0.02342347107,
+            "mean_penumbra_rmse": 0.2654075273,
+            "max_abs_error": 0.7600897253,
+            "max_brightening": 0.0
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 209.747312,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 11.778605,
+            "mean_rmse": 0.03192384258,
+            "mean_penumbra_rmse": 0.2963088379,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0140-final-inner",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--warmup=0",
+        "--measure=1",
+        "--method=all",
+        "--method=geometric-layered",
+        "--penumbra=inner"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "5da43b93d3d9d5b028dd49059a220ae8e187fd65f5b1aae8bc3e99990c81d336",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "6b04b1a4b7f4d7e1a68bb51f950b134432cb8fa23e5db8669731709b1cfe665a",
+        "src/renderer.cpp": "7712e723ac2b549b987e92abb49b0688b7c1a6349d1e5c7e7ee1a73029af4045",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "87ef9020a74c5f910ca87f12d6ded0f39c117db329b83ffc24d1c5ec89eb1611",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/basis_blur.comp": "42d7c1b328360681673a347d203c16e6739d30c74d64aa6f602a360b870d404f",
+        "shaders/basis_encode.comp": "db64e9aefd92c55b927325640c8b77cc29eb0771b00a5f0a0de95a08c9090e08",
+        "shaders/basis_validation.comp": "2c8cc6f16a7e7cf65c1169598ecb442a3f99bcea1ac25535ddac24404ebbde88",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/geometric_layers.glsl": "d37d0bc0769691021355c44cc35d8c12ddafd1235cd2d6c0bc8bfffe0fc1468a",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "23714ef45d7674a8e0a5f9ad0dfba276a555d5f92f00a017e05def578b294975",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/prefilter_math.glsl": "3588154171ef0bcadc7aa06963ae25251df3e8900ed86f9bf5ba9df24afec0d6",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "3ff5f8cb764eca36f8c4acaa5930a45422c20672509e4cdfb8c9e3afdb4f30a1",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "93d1ab3db38b6fa5c69acd52cc0333de809e7e2ff091f7f9644a85e4c516aea0",
+        "tools/compare_near_shadow.py": "23a650f7ae1ca9f6511d1e2f7b6466209f5d8a93cc905e1fdc9725b15515dc44",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_prefilter.py": "08b77737ab91adf1f832617a342c86fcc6be7b8d47f2ac9c8c0c3aea26228a59",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "4cae9e6fbd354e3f6d1f7262da6b8d65945d5b2e0fd4242d1e18c6ff8ed774b1",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "8d110747e82a1fc4d48fa86e39f00ea1c7e97881c57f60d795d614ea61eb9dcc"
+      },
+      "executable_sha256": "e534da646a9a307383ba0203ff7cd569ffc4c90131783c27a6a3472ab223b2a3"
+    },
+    {
+      "name": "vsm-zero",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 209.326343,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "vsm": {
+            "cases": 1,
+            "median_total_gpu_ms": 14.987528,
+            "mean_rmse": 0.02416491626,
+            "mean_penumbra_rmse": 0.2392510494,
+            "max_abs_error": 0.846377179,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0140-final-vsm-zero",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--warmup=0",
+        "--measure=1",
+        "--method=all",
+        "--method=vsm",
+        "--prefilter-radius=0"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "5da43b93d3d9d5b028dd49059a220ae8e187fd65f5b1aae8bc3e99990c81d336",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "6b04b1a4b7f4d7e1a68bb51f950b134432cb8fa23e5db8669731709b1cfe665a",
+        "src/renderer.cpp": "7712e723ac2b549b987e92abb49b0688b7c1a6349d1e5c7e7ee1a73029af4045",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "87ef9020a74c5f910ca87f12d6ded0f39c117db329b83ffc24d1c5ec89eb1611",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/basis_blur.comp": "42d7c1b328360681673a347d203c16e6739d30c74d64aa6f602a360b870d404f",
+        "shaders/basis_encode.comp": "db64e9aefd92c55b927325640c8b77cc29eb0771b00a5f0a0de95a08c9090e08",
+        "shaders/basis_validation.comp": "2c8cc6f16a7e7cf65c1169598ecb442a3f99bcea1ac25535ddac24404ebbde88",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/geometric_layers.glsl": "d37d0bc0769691021355c44cc35d8c12ddafd1235cd2d6c0bc8bfffe0fc1468a",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "23714ef45d7674a8e0a5f9ad0dfba276a555d5f92f00a017e05def578b294975",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/prefilter_math.glsl": "3588154171ef0bcadc7aa06963ae25251df3e8900ed86f9bf5ba9df24afec0d6",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "3ff5f8cb764eca36f8c4acaa5930a45422c20672509e4cdfb8c9e3afdb4f30a1",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "93d1ab3db38b6fa5c69acd52cc0333de809e7e2ff091f7f9644a85e4c516aea0",
+        "tools/compare_near_shadow.py": "23a650f7ae1ca9f6511d1e2f7b6466209f5d8a93cc905e1fdc9725b15515dc44",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_prefilter.py": "08b77737ab91adf1f832617a342c86fcc6be7b8d47f2ac9c8c0c3aea26228a59",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "4cae9e6fbd354e3f6d1f7262da6b8d65945d5b2e0fd4242d1e18c6ff8ed774b1",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "8d110747e82a1fc4d48fa86e39f00ea1c7e97881c57f60d795d614ea61eb9dcc"
+      },
+      "executable_sha256": "e534da646a9a307383ba0203ff7cd569ffc4c90131783c27a6a3472ab223b2a3"
+    },
+    {
+      "name": "csm-four",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 206.388947,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "csm": {
+            "cases": 1,
+            "median_total_gpu_ms": 28.456857,
+            "mean_rmse": 0.2720638274,
+            "mean_penumbra_rmse": 0.1790142477,
+            "max_abs_error": 0.7116561532,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0140-final-csm-four",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--warmup=0",
+        "--measure=1",
+        "--method=all",
+        "--method=csm",
+        "--csm-terms=4"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "5da43b93d3d9d5b028dd49059a220ae8e187fd65f5b1aae8bc3e99990c81d336",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "6b04b1a4b7f4d7e1a68bb51f950b134432cb8fa23e5db8669731709b1cfe665a",
+        "src/renderer.cpp": "7712e723ac2b549b987e92abb49b0688b7c1a6349d1e5c7e7ee1a73029af4045",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "87ef9020a74c5f910ca87f12d6ded0f39c117db329b83ffc24d1c5ec89eb1611",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/basis_blur.comp": "42d7c1b328360681673a347d203c16e6739d30c74d64aa6f602a360b870d404f",
+        "shaders/basis_encode.comp": "db64e9aefd92c55b927325640c8b77cc29eb0771b00a5f0a0de95a08c9090e08",
+        "shaders/basis_validation.comp": "2c8cc6f16a7e7cf65c1169598ecb442a3f99bcea1ac25535ddac24404ebbde88",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/geometric_layers.glsl": "d37d0bc0769691021355c44cc35d8c12ddafd1235cd2d6c0bc8bfffe0fc1468a",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "23714ef45d7674a8e0a5f9ad0dfba276a555d5f92f00a017e05def578b294975",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/prefilter_math.glsl": "3588154171ef0bcadc7aa06963ae25251df3e8900ed86f9bf5ba9df24afec0d6",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "3ff5f8cb764eca36f8c4acaa5930a45422c20672509e4cdfb8c9e3afdb4f30a1",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "93d1ab3db38b6fa5c69acd52cc0333de809e7e2ff091f7f9644a85e4c516aea0",
+        "tools/compare_near_shadow.py": "23a650f7ae1ca9f6511d1e2f7b6466209f5d8a93cc905e1fdc9725b15515dc44",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_prefilter.py": "08b77737ab91adf1f832617a342c86fcc6be7b8d47f2ac9c8c0c3aea26228a59",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "4cae9e6fbd354e3f6d1f7262da6b8d65945d5b2e0fd4242d1e18c6ff8ed774b1",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "8d110747e82a1fc4d48fa86e39f00ea1c7e97881c57f60d795d614ea61eb9dcc"
+      },
+      "executable_sha256": "e534da646a9a307383ba0203ff7cd569ffc4c90131783c27a6a3472ab223b2a3"
+    },
+    {
+      "name": "esm-base",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 214.972184,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "esm": {
+            "cases": 1,
+            "median_total_gpu_ms": 16.697628,
+            "mean_rmse": 0.03467471848,
+            "mean_penumbra_rmse": 0.1782623965,
+            "max_abs_error": 0.9330222607,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0140-final-esm-base",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--warmup=0",
+        "--measure=1",
+        "--method=all",
+        "--method=esm",
+        "--esm-exponent=40",
+        "--esm-fallback=0"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "5da43b93d3d9d5b028dd49059a220ae8e187fd65f5b1aae8bc3e99990c81d336",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "6b04b1a4b7f4d7e1a68bb51f950b134432cb8fa23e5db8669731709b1cfe665a",
+        "src/renderer.cpp": "7712e723ac2b549b987e92abb49b0688b7c1a6349d1e5c7e7ee1a73029af4045",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "87ef9020a74c5f910ca87f12d6ded0f39c117db329b83ffc24d1c5ec89eb1611",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/basis_blur.comp": "42d7c1b328360681673a347d203c16e6739d30c74d64aa6f602a360b870d404f",
+        "shaders/basis_encode.comp": "db64e9aefd92c55b927325640c8b77cc29eb0771b00a5f0a0de95a08c9090e08",
+        "shaders/basis_validation.comp": "2c8cc6f16a7e7cf65c1169598ecb442a3f99bcea1ac25535ddac24404ebbde88",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/geometric_layers.glsl": "d37d0bc0769691021355c44cc35d8c12ddafd1235cd2d6c0bc8bfffe0fc1468a",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "23714ef45d7674a8e0a5f9ad0dfba276a555d5f92f00a017e05def578b294975",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/prefilter_math.glsl": "3588154171ef0bcadc7aa06963ae25251df3e8900ed86f9bf5ba9df24afec0d6",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "3ff5f8cb764eca36f8c4acaa5930a45422c20672509e4cdfb8c9e3afdb4f30a1",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "93d1ab3db38b6fa5c69acd52cc0333de809e7e2ff091f7f9644a85e4c516aea0",
+        "tools/compare_near_shadow.py": "23a650f7ae1ca9f6511d1e2f7b6466209f5d8a93cc905e1fdc9725b15515dc44",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_prefilter.py": "08b77737ab91adf1f832617a342c86fcc6be7b8d47f2ac9c8c0c3aea26228a59",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "4cae9e6fbd354e3f6d1f7262da6b8d65945d5b2e0fd4242d1e18c6ff8ed774b1",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "8d110747e82a1fc4d48fa86e39f00ea1c7e97881c57f60d795d614ea61eb9dcc"
+      },
+      "executable_sha256": "e534da646a9a307383ba0203ff7cd569ffc4c90131783c27a6a3472ab223b2a3"
+    },
+    {
+      "name": "analytic",
+      "summary": {
+        "cases": 11,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "prefilter_oracles": {
+          "cases": 384,
+          "basis_max_abs_error": {
+            "vsm": 1.398246112227497e-07,
+            "csm": 6.321189156832663e-07,
+            "esm": 9.590815327250451e-11
+          },
+          "visibility_max_abs_error": {
+            "vsm": 3.3113885843094604e-07,
+            "csm": 1.9979845178319522e-07,
+            "esm": 5.731307624046167e-07
+          }
+        },
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "outline_checks": {
+          "cases": 0,
+          "outside_pixels": 0,
+          "violations": 0
+        },
+        "methods": {
+          "hard": {
+            "cases": 1,
+            "median_total_gpu_ms": 1.131699,
+            "mean_rmse": 0.03642676971,
+            "mean_penumbra_rmse": 0.3213485222,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "pcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 44.805101,
+            "mean_rmse": 0.03956468609,
+            "mean_penumbra_rmse": 0.2006381939,
+            "max_abs_error": 0.561966747,
+            "max_brightening": 0.0
+          },
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 6.9371,
+            "mean_rmse": 0.01906360458,
+            "mean_penumbra_rmse": 0.1272975867,
+            "max_abs_error": 0.5226051509,
+            "max_brightening": 0.0393447876
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 125.069719,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "geometric": {
+            "cases": 1,
+            "median_total_gpu_ms": 3.032674,
+            "mean_rmse": 0.01853224008,
+            "mean_penumbra_rmse": 0.1260090675,
+            "max_abs_error": 0.5225899816,
+            "max_brightening": 0.05789279938
+          },
+          "dpcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 1.236014,
+            "mean_rmse": 0.1040172222,
+            "mean_penumbra_rmse": 0.4999628314,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "chs": {
+            "cases": 1,
+            "median_total_gpu_ms": 2.684956,
+            "mean_rmse": 0.06456744277,
+            "mean_penumbra_rmse": 0.2435757891,
+            "max_abs_error": 0.6899865866,
+            "max_brightening": 0.0
+          },
+          "geometric-layered": {
+            "cases": 1,
+            "median_total_gpu_ms": 4.042132,
+            "mean_rmse": 0.02015417539,
+            "mean_penumbra_rmse": 0.1304443029,
+            "max_abs_error": 0.5225899816,
+            "max_brightening": 0.0
+          },
+          "vsm": {
+            "cases": 1,
+            "median_total_gpu_ms": 3.108638,
+            "mean_rmse": 0.04911455388,
+            "mean_penumbra_rmse": 0.1975036136,
+            "max_abs_error": 0.7663930655,
+            "max_brightening": 0.0
+          },
+          "csm": {
+            "cases": 1,
+            "median_total_gpu_ms": 5.089414,
+            "mean_rmse": 0.05074240296,
+            "mean_penumbra_rmse": 0.2054791189,
+            "max_abs_error": 0.8779053092,
+            "max_brightening": 0.0
+          },
+          "esm": {
+            "cases": 1,
+            "median_total_gpu_ms": 2.321929,
+            "mean_rmse": 0.04784198791,
+            "mean_penumbra_rmse": 0.2161210257,
+            "max_abs_error": 0.86281389,
+            "max_brightening": 0.01834905148
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/shadow-outline-fix/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0140-final-analytic",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--warmup=0",
+        "--measure=1",
+        "--method=all",
+        "--scene=sloped",
+        "--map-backend=analytic",
+        "--width=160",
+        "--height=90",
+        "--shadow-resolution=128",
+        "--samples=24",
+        "--blocker-samples=24"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "5da43b93d3d9d5b028dd49059a220ae8e187fd65f5b1aae8bc3e99990c81d336",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "6b04b1a4b7f4d7e1a68bb51f950b134432cb8fa23e5db8669731709b1cfe665a",
+        "src/renderer.cpp": "7712e723ac2b549b987e92abb49b0688b7c1a6349d1e5c7e7ee1a73029af4045",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "87ef9020a74c5f910ca87f12d6ded0f39c117db329b83ffc24d1c5ec89eb1611",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/basis_blur.comp": "42d7c1b328360681673a347d203c16e6739d30c74d64aa6f602a360b870d404f",
+        "shaders/basis_encode.comp": "db64e9aefd92c55b927325640c8b77cc29eb0771b00a5f0a0de95a08c9090e08",
+        "shaders/basis_validation.comp": "2c8cc6f16a7e7cf65c1169598ecb442a3f99bcea1ac25535ddac24404ebbde88",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/geometric_layers.glsl": "d37d0bc0769691021355c44cc35d8c12ddafd1235cd2d6c0bc8bfffe0fc1468a",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "23714ef45d7674a8e0a5f9ad0dfba276a555d5f92f00a017e05def578b294975",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/prefilter_math.glsl": "3588154171ef0bcadc7aa06963ae25251df3e8900ed86f9bf5ba9df24afec0d6",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "3ff5f8cb764eca36f8c4acaa5930a45422c20672509e4cdfb8c9e3afdb4f30a1",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "93d1ab3db38b6fa5c69acd52cc0333de809e7e2ff091f7f9644a85e4c516aea0",
+        "tools/compare_near_shadow.py": "23a650f7ae1ca9f6511d1e2f7b6466209f5d8a93cc905e1fdc9725b15515dc44",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_prefilter.py": "08b77737ab91adf1f832617a342c86fcc6be7b8d47f2ac9c8c0c3aea26228a59",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "4cae9e6fbd354e3f6d1f7262da6b8d65945d5b2e0fd4242d1e18c6ff8ed774b1",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "8d110747e82a1fc4d48fa86e39f00ea1c7e97881c57f60d795d614ea61eb9dcc"
+      },
+      "executable_sha256": "e534da646a9a307383ba0203ff7cd569ffc4c90131783c27a6a3472ab223b2a3"
+    }
+  ]
+}

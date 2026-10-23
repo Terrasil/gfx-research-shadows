@@ -28,9 +28,9 @@ float cubicVisibility(vec2 uv,float depth,vec2 origin,vec2 gradient){
     vec2 p2=unwarpPoint(clamp((base+1.5)/size*2.0-1.0,vec2(-1),vec2(1)));
     vec2 p3=unwarpPoint(clamp((base+2.5)/size*2.0-1.0,vec2(-1),vec2(1)));
     vec3 lookup=vec3(uv,0);
-    float occluded=cubicQuad(textureGatherOffset(uMaps,lookup,ivec2(-1,-1),0),vec2(p0.x,p1.x),vec2(p0.y,p1.y),wx.xy,wy.xy,depth,origin,gradient);
-    occluded+=cubicQuad(textureGatherOffset(uMaps,lookup,ivec2(1,-1),0),vec2(p2.x,p3.x),vec2(p0.y,p1.y),wx.zw,wy.xy,depth,origin,gradient);
-    occluded+=cubicQuad(textureGatherOffset(uMaps,lookup,ivec2(-1,1),0),vec2(p0.x,p1.x),vec2(p2.y,p3.y),wx.xy,wy.zw,depth,origin,gradient);
-    occluded+=cubicQuad(textureGatherOffset(uMaps,lookup,ivec2(1,1),0),vec2(p2.x,p3.x),vec2(p2.y,p3.y),wx.zw,wy.zw,depth,origin,gradient);
+    float occluded=cubicQuad(shadowGatherOffset(lookup,ivec2(-1,-1)),vec2(p0.x,p1.x),vec2(p0.y,p1.y),wx.xy,wy.xy,depth,origin,gradient);
+    occluded+=cubicQuad(shadowGatherOffset(lookup,ivec2(1,-1)),vec2(p2.x,p3.x),vec2(p0.y,p1.y),wx.zw,wy.xy,depth,origin,gradient);
+    occluded+=cubicQuad(shadowGatherOffset(lookup,ivec2(-1,1)),vec2(p0.x,p1.x),vec2(p2.y,p3.y),wx.xy,wy.zw,depth,origin,gradient);
+    occluded+=cubicQuad(shadowGatherOffset(lookup,ivec2(1,1)),vec2(p2.x,p3.x),vec2(p2.y,p3.y),wx.zw,wy.zw,depth,origin,gradient);
     return clamp(1.0-occluded,0.0,1.0);
 }

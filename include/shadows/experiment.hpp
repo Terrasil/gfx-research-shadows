@@ -6,6 +6,8 @@ namespace shadows {
 struct Options {
     Settings settings;
     bool benchmark = false, quick = false, full = false, smoke = false, headless = false;
+    bool performanceOnly = false;
+    std::vector<int> objectCounts;
     std::string scene = "mixed-overlap", method = "geometric";
     std::filesystem::path output = "results/manual";
     int warmup = 12, measure = 30;
@@ -13,5 +15,6 @@ struct Options {
 Options parseOptions(int argc, char** argv);
 void printHelp();
 void runExperiment(Renderer&, const Options&);
+void runStressBenchmark(Renderer&, const Options&);
 int runHeadlessEgl(const Options&);
 } // namespace shadows

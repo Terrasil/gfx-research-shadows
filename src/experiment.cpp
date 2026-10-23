@@ -112,9 +112,9 @@ struct Case {
 };
 std::vector<Case> cases(const Options& o) {
     std::vector<Case> out;
-    auto scenes = o.full    ? sceneIds()
-                  : o.quick ? std::vector<std::string>{"mixed-overlap", "crossing", "hidden-layer", "sloped"}
-                  : o.smoke ? std::vector<std::string>{"mixed-overlap", "hidden-layer"}
+    auto scenes = o.full    ? sceneIds(false)
+                  : o.quick ? std::vector<std::string>{"mixed-overlap", "crossing", "hidden-layer", "sloped", "crossing-four"}
+                  : o.smoke ? std::vector<std::string>{"mixed-overlap", "hidden-layer", "crossing-four"}
                             : std::vector<std::string>{o.scene};
     auto resolutions = o.full ? std::vector<std::pair<int, int>>{{1280, 720}, {1920, 1080}}
                               : std::vector<std::pair<int, int>>{{o.settings.width, o.settings.height}};
@@ -142,6 +142,8 @@ std::vector<Method> methods(const Options& o) {
         out.push_back(parseMethod(o.method));
         if (out[0] != Method::Reference)
             out.push_back(Method::Reference);
+        if (o.settings.innerPenumbra && (out[0] == Method::Pcss || out[0] == Method::Geometric || out[0] == Method::GeometricLayered))
+            out.push_back(Method::Hard);
     }
     return out;
 }
@@ -149,7 +151,7 @@ void manifest(const std::filesystem::path& path, const Options& o, int planned, 
     std::ofstream out(path);
     std::string gpu = glString(GL_RENDERER);
     bool software = gpu.find("llvmpipe") != std::string::npos || gpu.find("softpipe") != std::string::npos;
-    out << "{\n\"version\":\"0.12.0\",\n\"completed\":" << (completed ? "true" : "false")
+    out << "{\n\"version\":\"0.16.1\",\n\"completed\":" << (completed ? "true" : "false")
         << ",\n\"expected_cases\":" << planned << ",\n\"gpu\":" << jsonString(gpu)
         << ",\n\"software_renderer\":" << (software ? "true" : "false")
         << ",\n\"gl_version\":" << jsonString(glString(GL_VERSION))
@@ -160,16 +162,34 @@ void manifest(const std::filesystem::path& path, const Options& o, int planned, 
                       : o.quick ? "quick"
                       : o.smoke ? "smoke"
                                 : "manual")
-        << ",\n\"method_count\":7,\n\"filter_validation_cases\":320,\n\"sampling_validation_cases\":1568"
+        << ",\n\"method_count\":12,\n\"filter_validation_cases\":320,\n\"sampling_validation_cases\":1568,\n\"prefilter_validation_cases\":384"
+        << ",\n\"stress_objects\":" << o.settings.stressObjects
+        << ",\n\"stress_tessellation\":" << o.settings.stressTessellation
+        << ",\n\"stress_adaptive_tessellation\":" << (o.settings.stressAdaptiveTessellation ? "true" : "false")
         << ",\n\"dpcf_source\":\"Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a\""
         << ",\n\"chs_source\":\"AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4\""
         << ",\n\"chs_constant_buffer_bytes\":" << sizeof(chsKernelData)
         << ",\n\"shader_programs\":\"separate method programs; CHS kernel and PCF/PCSS smoothing specialized at "
            "compile time\""
+        << ",\n\"interval_validation_cases\":256"
+        << ",\n\"configured_layer_depth\":" << jsonString(o.settings.packedIntervals?"interval":"nearest")
+        << ",\n\"layer_mixing\":\"conditional-visibility\""
+        << ",\n\"prefilter_radius\":" << o.settings.prefilterRadius
+        << ",\n\"csm_terms\":" << o.settings.csmTerms
         << ",\n\"smoothing\":" << o.settings.smoothing
+        << ",\n\"configured_penumbra\":" << jsonString(o.settings.innerPenumbra ? "inner" : "full")
         << ",\n\"configured_sample_pattern\":" << jsonString(samplePatternId(o.settings.samplePattern))
         << ",\n\"sample_seed\":" << o.settings.sampleSeed
         << ",\n\"rotate_samples\":" << (o.settings.rotateSamples ? "true" : "false")
+        << ",\n\"shared_sample_pattern\":" << (o.settings.sharedSamplePattern ? "true" : "false")
+        << ",\n\"layer_min_filter_texels\":" << o.settings.layerMinFilterTexels
+        << ",\n\"arr_samples\":" << o.settings.arrSamples
+        << ",\n\"tri_samples\":" << o.settings.triSamples
+        << ",\n\"tri_result_masks\":" << (o.settings.triResultMasks?1:0)
+        << ",\n\"arr_smoothing\":" << o.settings.arrSmoothing
+        << ",\n\"arr_smoothing_radius\":" << o.settings.arrSmoothingRadius
+        << ",\n\"angular_sampling\":\"deterministic radical inverse + golden angle; triangle fan for triangulation\""
+        << ",\n\"oracle_smoothing\":0,\n\"angular_validation_cases\":416,\n\"angular_filter_validation_cases\":1024"
         << ",\n\"reference_samples\":" << o.settings.referenceSamples << ",\n\"warmup\":" << o.warmup
         << ",\n\"measure\":" << o.measure << ",\n\"warp\":" << o.settings.warp
         << ",\n\"custom_camera\":" << (o.settings.customCamera ? "true" : "false")
@@ -204,9 +224,12 @@ double cpuCheck(Renderer& renderer, const Image& reference) {
 } // namespace
 void printHelp() {
     std::cout
-        << "gfx-research-shadows 0.12.0\n"
-           "Methods: hard | pcf | pcss | arr | geometric | dpcf | chs\n"
+        << "gfx-research-shadows 0.16.1\n"
+           "Methods: hard | pcf | pcss | arr | geometric | dpcf | chs | geometric-layered | vsm | csm | esm | arr-triangulation\n"
            "Interactive: --scene=crossing --method=geometric\n"
+           "Stress: --scene=dense-stress --objects=1000000 (0..10000000, procedural instancing)\n"
+           "--stress-benchmark --object-counts=1000,10000,1000000 --method=all (all 12 methods; timing only)\n"
+           "--stress-tessellation=32 --stress-adaptive-tessellation=1|0 (stress scene only)\n"
            "Experiments: --benchmark | --smoke | --publication-quick | --publication-suite, --method=all\n"
            "--width=1280 --height=720 --shadow-resolution=1024 --angle=1.5 --warp=8\n"
            "--samples=48 --blocker-samples=48 --reference-samples=512 --pcf-radius=2\n"
@@ -216,7 +239,15 @@ void printHelp() {
            "Smoothing: point | bilinear | bilinear+blockers | Hermite | B-spline | bicubic Catmull-Rom.\n"
            "Presets 6/7: bilinear + random/stratified samples (PCSS and geometric).\n"
            "--geometric-smoothing is a compatibility alias for --smoothing.\n"
+           "--penumbra=inner|full (default full; PCSS and geometric only).\n"
+           "--layer-separation=3 --layer-depth=nearest|interval --prefilter-radius=4 --csm-terms=16 --csm-bias=0.032\n"
+           "--soft-packed (select geometric-layered; Hermite, shared stratified 64/64, min radius 1 texel)\n"
+           "--layer-min-filter=0 (0..4 local map texels; geometric-layered only) --scene=crossing-four\n"
+           "--vsm-min-variance=1e-7 --bleed-reduction=0 --esm-exponent=80 --esm-fallback=1\n"
+           "--arr-samples=0 (inherit oracle count) --tri-samples=4 --tri-radius=0.8 --tri-rotation=0\n"
+           "--tri-result-masks=0|1 (raw ray-mask blend) --tri-signed-margin=1 --arr-smoothing=0|1|3|4|5 --arr-smoothing-radius=0.75\n"
            "--sample-pattern=vogel|random|stratified --sample-seed=0 (PCSS and geometric).\n"
+           "--shared-pattern=0|1 (same random disk at each pixel; use rotation off for less grain).\n"
            "--depth-bias=0.00015 --normal-bias=0.002 --max-radius=3 --rotate-samples\n"
            "--map-backend=raster|analytic --camera=0|1 --warmup=12 --measure=30 --output=results/manual\n"
            "--camera-yaw=-2.1 --camera-pitch=0.65 --camera-distance=16\n"
@@ -234,7 +265,7 @@ Options parseOptions(int argc, char** argv) {
             std::exit(0);
         }
         if (key == "--version") {
-            std::cout << "gfx-research-shadows 0.12.0, " << GFX_SHADOWS_COMPILER << ", " << GFX_SHADOWS_BUILD_TYPE
+            std::cout << "gfx-research-shadows 0.16.1, " << GFX_SHADOWS_COMPILER << ", " << GFX_SHADOWS_BUILD_TYPE
                       << ", base " << GFX_SHADOWS_BASE_REVISION << '\n';
             std::exit(0);
         }
@@ -256,8 +287,19 @@ Options parseOptions(int argc, char** argv) {
             o.benchmark = true;
             continue;
         }
+        if (key == "--stress-benchmark") {
+            o.benchmark = o.performanceOnly = true;
+            o.scene = "dense-stress";
+            o.output = "results/stress";
+            continue;
+        }
         if (key == "--headless") {
             o.headless = true;
+            continue;
+        }
+        if (key == "--soft-packed") {
+            applySoftPackedPreset(o.settings);
+            o.method = "geometric-layered";
             continue;
         }
         if (key == "--rotate-samples") {
@@ -271,6 +313,22 @@ Options parseOptions(int argc, char** argv) {
         auto& t = o.settings;
         if (key == "--width")
             t.width = std::stoi(value);
+        else if (key == "--objects") t.stressObjects = std::stoi(value);
+        else if (key == "--stress-tessellation") t.stressTessellation = std::stoi(value);
+        else if (key == "--stress-adaptive-tessellation") {
+            if(value!="0"&&value!="1")throw std::runtime_error("Expected --stress-adaptive-tessellation=0|1");
+            t.stressAdaptiveTessellation=value=="1";
+        }
+        else if (key == "--object-counts") {
+            o.objectCounts.clear();
+            std::istringstream values(value);std::string item;
+            while(std::getline(values,item,',')) {
+                std::size_t used=0;int count=std::stoi(item,&used);
+                if(used!=item.size())throw std::runtime_error("Invalid object count list");
+                o.objectCounts.push_back(count);
+            }
+            if(o.objectCounts.empty()||value.back()==',')throw std::runtime_error("Empty object count in list");
+        }
         else if (key == "--height")
             t.height = std::stoi(value);
         else if (key == "--shadow-resolution")
@@ -281,6 +339,20 @@ Options parseOptions(int argc, char** argv) {
             t.blockerSamples = std::stoi(value);
         else if (key == "--reference-samples")
             t.referenceSamples = std::stoi(value);
+        else if (key == "--arr-samples") t.arrSamples=std::stoi(value);
+        else if (key == "--tri-samples") t.triSamples=std::stoi(value);
+        else if (key == "--tri-result-masks") {
+            if(value!="0"&&value!="1")throw std::runtime_error("Expected --tri-result-masks=0|1");
+            t.triResultMasks=value=="1";
+        }
+        else if (key == "--tri-radius") t.triRadius=std::stof(value);
+        else if (key == "--tri-rotation") t.triRotation=std::stof(value);
+        else if (key == "--arr-smoothing") t.arrSmoothing=std::stoi(value);
+        else if (key == "--arr-smoothing-radius") t.arrSmoothingRadius=std::stof(value);
+        else if (key == "--tri-signed-margin") {
+            if(value!="0"&&value!="1")throw std::runtime_error("Expected --tri-signed-margin=0|1");
+            t.triSignedMargin=value=="1";
+        }
         else if (key == "--dpcf-taps")
             t.dpcfTaps = std::stoi(value);
         else if (key == "--chs-kernel")
@@ -291,6 +363,31 @@ Options parseOptions(int argc, char** argv) {
             t.samplePattern = parseSamplePattern(value);
         else if (key == "--sample-seed")
             t.sampleSeed = std::stoi(value);
+        else if (key == "--shared-pattern") {
+            if(value!="0"&&value!="1")throw std::runtime_error("Expected --shared-pattern=0|1");
+            t.sharedSamplePattern=value=="1";
+        }
+        else if (key == "--penumbra") {
+            if (value != "inner" && value != "full")
+                throw std::runtime_error("Unknown penumbra mode: " + value);
+            t.innerPenumbra = value == "inner";
+        }
+        else if (key == "--layer-separation") t.layerSeparation = std::stof(value);
+        else if (key == "--layer-min-filter") t.layerMinFilterTexels = std::stof(value);
+        else if (key == "--layer-depth") {
+            if(value!="nearest"&&value!="interval")throw std::runtime_error("--layer-depth must be nearest or interval");
+            t.packedIntervals=value=="interval";
+        }
+        else if (key == "--prefilter-radius") t.prefilterRadius = std::stoi(value);
+        else if (key == "--csm-terms") t.csmTerms = std::stoi(value);
+        else if (key == "--csm-bias") t.csmBias = std::stof(value);
+        else if (key == "--vsm-min-variance") t.vsmMinVariance = std::stof(value);
+        else if (key == "--bleed-reduction") t.bleedReduction = std::stof(value);
+        else if (key == "--esm-exponent") t.esmExponent = std::stof(value);
+        else if (key == "--esm-fallback") {
+            if (value != "0" && value != "1") throw std::runtime_error("Expected --esm-fallback=0|1");
+            t.esmFallback = value == "1";
+        }
         else if (key == "--camera")
             t.camera = std::stoi(value);
         else if (key == "--pcf-radius")
@@ -347,7 +444,7 @@ Options parseOptions(int argc, char** argv) {
     const auto& t = o.settings;
     for (float v : {t.angle, t.warp, t.depthBias, t.normalBias, t.maxRadiusWorld, t.fixedPcfRadius, t.dpcfRadius,
                     t.dpcfRatioScale, t.chsSunSize, t.cameraYaw, t.cameraPitch, t.cameraDistance, t.cameraTarget.x,
-                    t.cameraTarget.y, t.cameraTarget.z})
+                    t.cameraTarget.y, t.cameraTarget.z, t.triRadius, t.triRotation, t.arrSmoothingRadius, t.layerSeparation, t.layerMinFilterTexels, t.vsmMinVariance, t.bleedReduction, t.esmExponent, t.csmBias})
         if (!std::isfinite(v))
             throw std::runtime_error("Non-finite argument");
     if (t.width < 16 || t.width > 8192 || t.height < 16 || t.height > 8192 || t.mapResolution < 32 ||
@@ -362,14 +459,39 @@ Options parseOptions(int argc, char** argv) {
         (t.chsKernel != 7 && t.chsKernel != 9 && t.chsKernel != 11 && t.chsKernel != 13 && t.chsKernel != 15) ||
         t.cameraPitch < -1.45 || t.cameraPitch > 1.45 || t.cameraDistance < 0.5 || t.cameraDistance > 60)
         throw std::runtime_error("Argument outside supported range");
+    if (t.prefilterRadius < 0 || t.prefilterRadius > 16 || t.csmTerms < 4 || t.csmTerms > 16 || t.csmTerms % 2 ||
+        t.layerSeparation < 1.5f || t.layerSeparation > 32 || t.layerMinFilterTexels < 0 || t.layerMinFilterTexels > 4 || t.vsmMinVariance < 1e-10f || t.vsmMinVariance > 0.01f ||
+        t.bleedReduction < 0 || t.bleedReduction > 0.95f || t.esmExponent < 1 || t.esmExponent > 80 || t.csmBias < 0 || t.csmBias > 0.1f)
+        throw std::runtime_error("Prefilter/layer argument outside supported range");
+    if(t.arrSamples<0||t.arrSamples>16384||t.triSamples<3||t.triSamples>65||t.triRadius<0.1f||t.triRadius>1||
+        t.triRotation<-180||t.triRotation>180||t.arrSmoothingRadius<0||t.arrSmoothingRadius>4||
+        (t.arrSmoothing!=0&&t.arrSmoothing!=1&&t.arrSmoothing!=3&&t.arrSmoothing!=4&&t.arrSmoothing!=5))
+        throw std::runtime_error("Angular sampling/filter argument outside supported range");
     if (o.headless && !o.benchmark)
         throw std::runtime_error("--headless requires an experiment mode");
-    (void)makeScene(o.scene);
+    (void)stressGrid(t.stressObjects);
+    for (int count : o.objectCounts) (void)stressGrid(count);
+    auto uniqueCounts = o.objectCounts;
+    std::sort(uniqueCounts.begin(), uniqueCounts.end());
+    if (std::adjacent_find(uniqueCounts.begin(), uniqueCounts.end()) != uniqueCounts.end())
+        throw std::runtime_error("Object count list contains duplicates");
+    if (t.stressTessellation < 1 || t.stressTessellation > 32)
+        throw std::runtime_error("Stress tessellation must be 1..32");
+    if (o.scene=="dense-stress" && o.benchmark && !o.quick && !o.full && !o.smoke && t.stressObjects>maxCasters)
+        o.performanceOnly=true;
+    if (o.performanceOnly && (o.scene!="dense-stress"||o.quick||o.full||o.smoke||t.analyticMaps))
+        throw std::runtime_error("Stress benchmark requires dense-stress with raster maps and no quality profile");
+    if (!o.objectCounts.empty() && !o.performanceOnly)
+        throw std::runtime_error("--object-counts requires --stress-benchmark");
+    const auto scene = makeScene(o.scene,t.stressObjects);
+    if (scene.isStress() && scene.casterCount()>maxCasters && t.analyticMaps)
+        throw std::runtime_error("Analytic diagnostic maps support 32 objects; use the raster map backend");
     if (o.method != "all")
         (void)parseMethod(o.method);
     return o;
 }
 void runExperiment(Renderer& renderer, const Options& o) {
+    if (o.performanceOnly) { runStressBenchmark(renderer,o); return; }
     std::filesystem::create_directories(o.output / "captures");
     auto configs = cases(o);
     auto selected = methods(o);
@@ -377,6 +499,9 @@ void runExperiment(Renderer& renderer, const Options& o) {
     manifest(o.output / "run_manifest.json", o, expected, false);
     renderer.validateFilters(o.output / "filter_gpu.csv");
     renderer.validateSampling(o.output / "sampling_gpu.csv");
+    renderer.validatePrefilter(o.output / "prefilter_gpu.csv");
+    renderer.validateIntervals(o.output / "interval_gpu.csv");
+    renderer.validateAngular(o.output / "angular_gpu.csv");
     std::ofstream raw(o.output / "raw.csv"), timings(o.output / "timings.csv"),
         captures(o.output / "capture_manifest.csv"), convergence(o.output / "reference_convergence.csv");
     if (!raw || !timings || !captures || !convergence)
@@ -388,14 +513,14 @@ void runExperiment(Renderer& renderer, const Options& o) {
            "dpcf_taps,dpcf_radius,"
            "dpcf_ratio_scale,chs_kernel,chs_sun_size,warp,smoothing,smoothing_kernel,configured_sample_pattern,"
            "sample_pattern,sample_seed,rotate_"
-           "samples\n";
+           "samples,penumbra_mode,prefilter_passes,prefilter_radius,csm_terms,csm_bias,vsm_min_variance,bleed_reduction,esm_exponent,esm_fallback,layer_separation,map_storage,stored_depth_components,angular_queries,angular_smoothing,angular_smoothing_width,screen_filter_bytes,angular_direction_bytes,tri_signed_margin,tri_radius,tri_rotation,tri_result_masks,layer_min_filter_texels,shared_sample_pattern\n";
     timings << "case_id,sample,map_gpu_ms,shadow_gpu_ms,total_gpu_ms\n";
     captures << "case_id,kind,width,height,path\n";
     convergence << "config_id,lower_samples,reference_samples,rmse,max_abs_error,cpu_gpu_max_abs_error\n";
     for (const auto& c : configs) {
-        renderer.prepare(makeScene(c.scene), c.settings);
+        renderer.prepare(makeScene(c.scene,c.settings.stressObjects), c.settings);
         std::string config = "c" + std::to_string(index++);
-        renderer.render(Method::Reference);
+        renderer.render(Method::Reference,-1,false,true);
         auto reference = renderer.read();
         unsigned refTexture = renderer.copyResult();
         double cpuError = cpuCheck(renderer, reference);
@@ -408,21 +533,21 @@ void runExperiment(Renderer& renderer, const Options& o) {
                      << config << '-' << suffix << ".pfm\n";
         auto lower = c.settings;
         lower.referenceSamples = std::max(8, c.settings.referenceSamples / 2);
-        renderer.prepare(makeScene(c.scene), lower);
-        renderer.render(Method::Reference);
+        renderer.prepare(makeScene(c.scene,c.settings.stressObjects), lower);
+        renderer.render(Method::Reference,-1,false,true);
         auto delta = compare(renderer.read(), reference);
         convergence << config << ',' << lower.referenceSamples << ',' << c.settings.referenceSamples << ','
                     << delta.rmse << ',' << delta.maxError << ',' << cpuError << '\n';
-        renderer.prepare(makeScene(c.scene), c.settings);
+        renderer.prepare(makeScene(c.scene,c.settings.stressObjects), c.settings);
         std::rotate(selected.begin(), selected.begin() + 1, selected.end());
         for (Method method : selected) {
             std::string id = config + "-" + methodId(method);
-            bool arr = method == Method::Reference;
-            for (int i = 0; i < (arr ? 0 : o.warmup); ++i)
+            bool arr = isAngularRayMethod(method);
+            for (int i = 0; i < o.warmup; ++i)
                 renderer.render(method);
             glFinish();
             std::vector<double> mt, st, tt;
-            int samples = arr ? 1 : o.measure;
+            int samples = o.measure;
             for (int i = 0; i < samples; ++i) {
                 auto t = renderer.render(method, -1, true);
                 mt.push_back(t.mapMs);
@@ -451,17 +576,28 @@ void runExperiment(Renderer& renderer, const Options& o) {
             raw << id << ',' << c.scene << ',' << methodId(method) << ',' << c.settings.width << ','
                 << c.settings.height << ',' << c.settings.mapResolution << ',' << c.settings.angle << ','
                 << c.settings.camera << ',' << (c.settings.analyticMaps ? "analytic" : "raster") << ',' << count << ','
-                << activeMapBytes(method, c.settings) << ',' << (arr ? c.settings.referenceSamples + 1 : 1) << ','
+                << activeMapBytes(method, c.settings) << ',' << shadowPasses(method,c.settings) << ','
                 << samples << ',' << std::setprecision(10) << median(mt) << ',' << median(st) << ',' << median(tt)
                 << ',' << m.rmse << ',' << m.penumbraRmse << ',' << m.gradientRmse << ',' << m.maxError << ','
                 << m.pixels << ',' << m.penumbraPixels << ',' << m.invalid << ',' << m.brightening << ','
-                << m.brighteningRate << ',' << mapGenerationPasses(method, c.settings) << ",0," << count << ','
+                << m.brighteningRate << ',' << mapGenerationPasses(method, c.settings) << ',' << auxiliaryMapBytes(method, c.settings) << ',' << count << ','
                 << c.settings.filterSamples << ',' << c.settings.blockerSamples << ',' << c.settings.dpcfTaps << ','
                 << c.settings.dpcfRadius << ',' << c.settings.dpcfRatioScale << ',' << c.settings.chsKernel << ','
                 << c.settings.chsSunSize << ',' << c.settings.warp << ',' << c.settings.smoothing << ','
                 << smoothingKernel(method, c.settings) << ',' << samplePatternId(c.settings.samplePattern) << ','
                 << samplePatternId(effectiveSamplePattern(method, c.settings)) << ',' << c.settings.sampleSeed << ','
-                << (c.settings.rotateSamples ? 1 : 0) << '\n';
+                << (c.settings.rotateSamples ? 1 : 0) << ',' << penumbraModeId(method, c.settings) << ',' << prefilterPasses(method) << ','
+                << c.settings.prefilterRadius << ',' << c.settings.csmTerms << ',' << c.settings.csmBias << ','
+                << c.settings.vsmMinVariance << ',' << c.settings.bleedReduction << ',' << c.settings.esmExponent << ','
+                << (c.settings.esmFallback ? 1 : 0) << ',' << c.settings.layerSeparation << ','
+                << (arr?"none":method==Method::GeometricLayered&&c.settings.packedIntervals?"r32ui-unorm16-minmax":"d32f") << ','
+                << (arr?0:method==Method::GeometricLayered&&c.settings.packedIntervals?2:1) << ','
+                << angularSamples(method,c.settings) << ',' << angularSmoothing(method,c.settings) << ',' << c.settings.arrSmoothingRadius << ','
+                << (angularSmoothing(method,c.settings)?std::uint64_t(c.settings.width)*c.settings.height*8:0) << ','
+                << (method==Method::Reference?16384*16:0) << ',' << (c.settings.triSignedMargin?1:0) << ','
+                << c.settings.triRadius << ',' << c.settings.triRotation << ',' << (method==Method::ArrTriangulation&&c.settings.triResultMasks?1:0) << ','
+                << (method==Method::GeometricLayered?c.settings.layerMinFilterTexels:0.0f) << ','
+                << (effectiveSamplePattern(method,c.settings)!=0&&c.settings.sharedSamplePattern?1:0) << '\n';
             raw.flush();
             std::cout << '[' << ++done << '/' << expected << "] " << c.scene << " / " << methodId(method)
                       << " RMSE=" << m.rmse << " GPU=" << median(tt) << " ms\n"
