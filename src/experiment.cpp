@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <bit>
 #include <chrono>
 #include <cmath>
 #include <cstdlib>
@@ -7,6 +8,7 @@
 #include <iomanip>
 #include <iostream>
 #include <numeric>
+#include <shadows/chs_weights.hpp>
 #include <shadows/experiment.hpp>
 #include <sstream>
 #include <stdexcept>
@@ -147,29 +149,37 @@ void manifest(const std::filesystem::path& path, const Options& o, int planned, 
     std::ofstream out(path);
     std::string gpu = glString(GL_RENDERER);
     bool software = gpu.find("llvmpipe") != std::string::npos || gpu.find("softpipe") != std::string::npos;
-    out << "{\n  \"project\": \"gfx-research-shadows\",\n  \"version\": \"0.1.0\",\n  \"base_revision\": "
-        << jsonString(GFX_SHADOWS_BASE_REVISION) << ",\n  \"profile\": "
+    out << "{\n\"version\":\"0.12.0\",\n\"completed\":" << (completed ? "true" : "false")
+        << ",\n\"expected_cases\":" << planned << ",\n\"gpu\":" << jsonString(gpu)
+        << ",\n\"software_renderer\":" << (software ? "true" : "false")
+        << ",\n\"gl_version\":" << jsonString(glString(GL_VERSION))
+        << ",\n\"base_revision\":" << jsonString(GFX_SHADOWS_BASE_REVISION)
+        << ",\n\"compiler\":" << jsonString(GFX_SHADOWS_COMPILER)
+        << ",\n\"build_type\":" << jsonString(GFX_SHADOWS_BUILD_TYPE) << ",\n\"profile\":"
         << jsonString(o.full    ? "publication"
                       : o.quick ? "quick"
                       : o.smoke ? "smoke"
                                 : "manual")
-        << ",\n  \"completed\": " << (completed ? "true" : "false") << ",\n  \"expected_cases\": " << planned
-        << ",\n  \"gpu\": " << jsonString(gpu) << ",\n  \"vendor\": " << jsonString(glString(GL_VENDOR))
-        << ",\n  \"gl_version\": " << jsonString(glString(GL_VERSION))
-        << ",\n  \"software_renderer\": " << (software ? "true" : "false")
-        << ",\n  \"compiler\": " << jsonString(GFX_SHADOWS_COMPILER)
-        << ",\n  \"build_type\": " << jsonString(GFX_SHADOWS_BUILD_TYPE) << ",\n  \"map_backend\": "
-        << jsonString(o.settings.analyticMaps ? "analytic-box-oracle" : "raster-tessellated")
-        << ",\n  \"reference_samples\": " << o.settings.referenceSamples
-        << ",\n  \"filter_samples\": " << o.settings.filterSamples
-        << ",\n  \"blocker_samples\": " << o.settings.blockerSamples << ",\n  \"warmup\": " << o.warmup
-        << ",\n  \"measure\": " << o.measure << ",\n  \"warp\": " << o.settings.warp
-        << ",\n  \"normal_bias\": " << o.settings.normalBias << ",\n  \"depth_bias\": " << o.settings.depthBias
-        << ",\n  \"max_radius_world\": " << o.settings.maxRadiusWorld << ",\n  \"camera\": " << o.settings.camera
-        << ",\n  \"rotated_samples\": " << (o.settings.rotateSamples ? "true" : "false")
-        << ",\n  \"receiver_metrics_only\": true,\n  \"timing_scope\": \"map generation + shadow evaluation; excludes "
-           "shared G-buffer, UI and readback\",\n  \"reference_model\": \"irradiance-weighted angular disk, exact AABB "
-           "intersections, one direction per fullscreen pass\",\n  \"temporal_reuse\": false\n}\n";
+        << ",\n\"method_count\":7,\n\"filter_validation_cases\":320,\n\"sampling_validation_cases\":1568"
+        << ",\n\"dpcf_source\":\"Filament v1.23.1 a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a\""
+        << ",\n\"chs_source\":\"AMD ShadowFX c6d931c27275b1bb65ba0abfb71eaba86f355387 contactFixedGather4\""
+        << ",\n\"chs_constant_buffer_bytes\":" << sizeof(chsKernelData)
+        << ",\n\"shader_programs\":\"separate method programs; CHS kernel and PCF/PCSS smoothing specialized at "
+           "compile time\""
+        << ",\n\"smoothing\":" << o.settings.smoothing
+        << ",\n\"configured_sample_pattern\":" << jsonString(samplePatternId(o.settings.samplePattern))
+        << ",\n\"sample_seed\":" << o.settings.sampleSeed
+        << ",\n\"rotate_samples\":" << (o.settings.rotateSamples ? "true" : "false")
+        << ",\n\"reference_samples\":" << o.settings.referenceSamples << ",\n\"warmup\":" << o.warmup
+        << ",\n\"measure\":" << o.measure << ",\n\"warp\":" << o.settings.warp
+        << ",\n\"custom_camera\":" << (o.settings.customCamera ? "true" : "false")
+        << ",\n\"camera_yaw\":" << o.settings.cameraYaw << ",\n\"camera_pitch\":" << o.settings.cameraPitch
+        << ",\n\"camera_distance\":" << o.settings.cameraDistance << ",\n\"camera_target\":["
+        << o.settings.cameraTarget.x << ',' << o.settings.cameraTarget.y << ',' << o.settings.cameraTarget.z << ']'
+        << ",\n\"map_backend\":" << jsonString(o.settings.analyticMaps ? "analytic-box-oracle" : "raster-tessellated")
+        << ",\n\"receiver_metrics_only\":true,\n\"temporal_reuse\":false,"
+           "\n\"timing_scope\":\"map generation + shadow evaluation, excludes shared G-buffer, UI and readback\","
+           "\n\"reference_model\":\"irradiance-weighted angular disk, exact AABB intersections\"\n}\n";
 }
 double cpuCheck(Renderer& renderer, const Image& reference) {
     const auto positions = renderer.positions(), normals = renderer.normals();
@@ -194,14 +204,24 @@ double cpuCheck(Renderer& renderer, const Image& reference) {
 } // namespace
 void printHelp() {
     std::cout
-        << "gfx-research-shadows\n"
-        << "Interactive: gfx-research-shadows [--scene=mixed-overlap] [--method=ndc-pcss]\n"
-        << "Experiments: --publication-quick | --publication-suite | --smoke | --benchmark\n"
-        << "  --method=all|hard|pcf|pcss|pcss-min-gap|ndc-pcss|split-min|split-product|binned-min|ray16|reference\n"
-        << "  --scene=single-high|single-low|mixed-overlap|crossing|hidden-layer|sloped|dense\n"
-        << "  --width=1280 --height=720 --shadow-resolution=1024 --angle=1.5 --warp=8\n"
-        << "  --samples=48 --blocker-samples=24 --reference-samples=256 --warmup=12 --measure=30\n"
-        << "  --map-backend=raster|analytic --camera=0|1 --rotate-samples --headless --output=results/manual\n";
+        << "gfx-research-shadows 0.12.0\n"
+           "Methods: hard | pcf | pcss | arr | geometric | dpcf | chs\n"
+           "Interactive: --scene=crossing --method=geometric\n"
+           "Experiments: --benchmark | --smoke | --publication-quick | --publication-suite, --method=all\n"
+           "--width=1280 --height=720 --shadow-resolution=1024 --angle=1.5 --warp=8\n"
+           "--samples=48 --blocker-samples=48 --reference-samples=512 --pcf-radius=2\n"
+           "--dpcf-taps=12 --dpcf-radius=6 --dpcf-ratio-scale=1 --chs-kernel=11 --chs-sun-size=4\n"
+           "DPCF radius and AMD sun size are calibrated at 1.5 degrees; scaled with tan(angle).\n"
+           "CHS kernels: 7,9,11,13,15. --smoothing=0|1|2|3|4|5|6|7 (PCF, PCSS, geometric).\n"
+           "Smoothing: point | bilinear | bilinear+blockers | Hermite | B-spline | bicubic Catmull-Rom.\n"
+           "Presets 6/7: bilinear + random/stratified samples (PCSS and geometric).\n"
+           "--geometric-smoothing is a compatibility alias for --smoothing.\n"
+           "--sample-pattern=vogel|random|stratified --sample-seed=0 (PCSS and geometric).\n"
+           "--depth-bias=0.00015 --normal-bias=0.002 --max-radius=3 --rotate-samples\n"
+           "--map-backend=raster|analytic --camera=0|1 --warmup=12 --measure=30 --output=results/manual\n"
+           "--camera-yaw=-2.1 --camera-pitch=0.65 --camera-distance=16\n"
+           "--camera-target-x=-1.4 --camera-target-y=1 --camera-target-z=-0.8 --headless\n"
+           "Controls: RMB orbit, MMB pan, wheel zoom, WASD move, QE vertical, Shift faster, R reset, P capture.\n";
 }
 Options parseOptions(int argc, char** argv) {
     Options o;
@@ -214,41 +234,22 @@ Options parseOptions(int argc, char** argv) {
             std::exit(0);
         }
         if (key == "--version") {
-            std::cout << "gfx-research-shadows 0.1.0, " << GFX_SHADOWS_COMPILER << ", " << GFX_SHADOWS_BUILD_TYPE
+            std::cout << "gfx-research-shadows 0.12.0, " << GFX_SHADOWS_COMPILER << ", " << GFX_SHADOWS_BUILD_TYPE
                       << ", base " << GFX_SHADOWS_BASE_REVISION << '\n';
             std::exit(0);
         }
-        if (key == "--publication-quick") {
-            o.quick = true;
+        if (key == "--publication-quick" || key == "--publication-suite" || key == "--smoke") {
             o.benchmark = true;
-            o.settings.width = 640;
-            o.settings.height = 360;
-            o.settings.mapResolution = 512;
-            o.settings.referenceSamples = 128;
-            o.warmup = 3;
-            o.measure = 8;
-            o.output = "results/quick";
-            continue;
-        }
-        if (key == "--publication-suite") {
-            o.full = true;
-            o.benchmark = true;
-            o.settings.referenceSamples = 1024;
-            o.warmup = 120;
-            o.measure = 300;
-            o.output = "results/publication";
-            continue;
-        }
-        if (key == "--smoke") {
-            o.smoke = true;
-            o.benchmark = true;
-            o.settings.width = 320;
-            o.settings.height = 180;
-            o.settings.mapResolution = 256;
-            o.settings.referenceSamples = 64;
-            o.warmup = 0;
-            o.measure = 1;
-            o.output = "results/smoke";
+            o.quick = key == "--publication-quick";
+            o.full = key == "--publication-suite";
+            o.smoke = key == "--smoke";
+            o.settings.width = o.full ? 1280 : o.quick ? 640 : 320;
+            o.settings.height = o.full ? 720 : o.quick ? 360 : 180;
+            o.settings.mapResolution = o.full ? 1024 : o.quick ? 512 : 256;
+            o.settings.referenceSamples = o.full ? 1024 : o.quick ? 512 : 128;
+            o.warmup = o.full ? 120 : o.quick ? 3 : 0;
+            o.measure = o.full ? 300 : o.quick ? 8 : 1;
+            o.output = o.full ? "results/publication" : o.quick ? "results/quick" : "results/smoke";
             continue;
         }
         if (key == "--benchmark") {
@@ -267,28 +268,53 @@ Options parseOptions(int argc, char** argv) {
             value = argv[++i];
         if (value.empty())
             throw std::runtime_error("Missing value: " + key);
+        auto& t = o.settings;
         if (key == "--width")
-            o.settings.width = std::stoi(value);
+            t.width = std::stoi(value);
         else if (key == "--height")
-            o.settings.height = std::stoi(value);
+            t.height = std::stoi(value);
         else if (key == "--shadow-resolution")
-            o.settings.mapResolution = std::stoi(value);
+            t.mapResolution = std::stoi(value);
         else if (key == "--samples")
-            o.settings.filterSamples = std::stoi(value);
+            t.filterSamples = std::stoi(value);
         else if (key == "--blocker-samples")
-            o.settings.blockerSamples = std::stoi(value);
+            t.blockerSamples = std::stoi(value);
         else if (key == "--reference-samples")
-            o.settings.referenceSamples = std::stoi(value);
+            t.referenceSamples = std::stoi(value);
+        else if (key == "--dpcf-taps")
+            t.dpcfTaps = std::stoi(value);
+        else if (key == "--chs-kernel")
+            t.chsKernel = std::stoi(value);
+        else if (key == "--smoothing" || key == "--geometric-smoothing")
+            t.smoothing = std::stoi(value);
+        else if (key == "--sample-pattern")
+            t.samplePattern = parseSamplePattern(value);
+        else if (key == "--sample-seed")
+            t.sampleSeed = std::stoi(value);
+        else if (key == "--camera")
+            t.camera = std::stoi(value);
+        else if (key == "--pcf-radius")
+            t.fixedPcfRadius = std::stof(value);
+        else if (key == "--angle")
+            t.angle = std::stof(value);
+        else if (key == "--warp")
+            t.warp = std::stof(value);
+        else if (key == "--depth-bias")
+            t.depthBias = std::stof(value);
+        else if (key == "--normal-bias")
+            t.normalBias = std::stof(value);
+        else if (key == "--max-radius")
+            t.maxRadiusWorld = std::stof(value);
+        else if (key == "--dpcf-radius")
+            t.dpcfRadius = std::stof(value);
+        else if (key == "--dpcf-ratio-scale")
+            t.dpcfRatioScale = std::stof(value);
+        else if (key == "--chs-sun-size")
+            t.chsSunSize = std::stof(value);
         else if (key == "--warmup")
             o.warmup = std::stoi(value);
         else if (key == "--measure")
             o.measure = std::stoi(value);
-        else if (key == "--angle")
-            o.settings.angle = std::stof(value);
-        else if (key == "--warp")
-            o.settings.warp = std::stof(value);
-        else if (key == "--camera")
-            o.settings.camera = std::stoi(value);
         else if (key == "--scene")
             o.scene = value;
         else if (key == "--method")
@@ -298,20 +324,46 @@ Options parseOptions(int argc, char** argv) {
         else if (key == "--map-backend") {
             if (value != "raster" && value != "analytic")
                 throw std::runtime_error("Unknown map backend");
-            o.settings.analyticMaps = value == "analytic";
+            t.analyticMaps = value == "analytic";
+        } else if (key == "--camera-yaw" || key == "--camera-pitch" || key == "--camera-distance" ||
+                   key == "--camera-target-x" || key == "--camera-target-y" || key == "--camera-target-z") {
+            t.customCamera = true;
+            float v = std::stof(value);
+            if (key == "--camera-yaw")
+                t.cameraYaw = v;
+            if (key == "--camera-pitch")
+                t.cameraPitch = v;
+            if (key == "--camera-distance")
+                t.cameraDistance = v;
+            if (key == "--camera-target-x")
+                t.cameraTarget.x = v;
+            if (key == "--camera-target-y")
+                t.cameraTarget.y = v;
+            if (key == "--camera-target-z")
+                t.cameraTarget.z = v;
         } else
             throw std::runtime_error("Unknown option: " + key);
     }
-    if (int(o.quick) + int(o.full) + int(o.smoke) > 1)
-        throw std::runtime_error("Select one suite profile");
+    const auto& t = o.settings;
+    for (float v : {t.angle, t.warp, t.depthBias, t.normalBias, t.maxRadiusWorld, t.fixedPcfRadius, t.dpcfRadius,
+                    t.dpcfRatioScale, t.chsSunSize, t.cameraYaw, t.cameraPitch, t.cameraDistance, t.cameraTarget.x,
+                    t.cameraTarget.y, t.cameraTarget.z})
+        if (!std::isfinite(v))
+            throw std::runtime_error("Non-finite argument");
+    if (t.width < 16 || t.width > 8192 || t.height < 16 || t.height > 8192 || t.mapResolution < 32 ||
+        t.mapResolution > 8192 || !std::has_single_bit(unsigned(t.mapResolution)) || t.filterSamples < 1 ||
+        t.filterSamples > 256 || t.blockerSamples < 1 || t.blockerSamples > 256 || t.referenceSamples < 16 ||
+        t.referenceSamples > 16384 || t.angle <= 0 || t.angle > 10 || t.warp < 0 || t.warp > 16 || t.camera < 0 ||
+        t.camera > 1 || o.measure < 1 || o.warmup < 0 || t.fixedPcfRadius < 0 || t.fixedPcfRadius > 8 ||
+        t.depthBias < 0 || t.depthBias > 0.01 || t.normalBias < 0 || t.normalBias > 0.1 || t.maxRadiusWorld <= 0 ||
+        t.maxRadiusWorld > 20 || t.smoothing < 0 || t.smoothing > 7 || t.samplePattern < 0 || t.samplePattern > 2 ||
+        t.sampleSeed < 0 || t.dpcfTaps < 1 || t.dpcfTaps > 64 || t.dpcfRadius <= 0 || t.dpcfRadius > 128 ||
+        t.dpcfRatioScale < 1 || t.dpcfRatioScale > 1000 || t.chsSunSize <= 0 || t.chsSunSize > 100 ||
+        (t.chsKernel != 7 && t.chsKernel != 9 && t.chsKernel != 11 && t.chsKernel != 13 && t.chsKernel != 15) ||
+        t.cameraPitch < -1.45 || t.cameraPitch > 1.45 || t.cameraDistance < 0.5 || t.cameraDistance > 60)
+        throw std::runtime_error("Argument outside supported range");
     if (o.headless && !o.benchmark)
         throw std::runtime_error("--headless requires an experiment mode");
-    const auto& s = o.settings;
-    if (s.width < 16 || s.width > 8192 || s.height < 16 || s.height > 8192 || s.mapResolution < 32 ||
-        s.mapResolution > 8192 || s.filterSamples < 1 || s.filterSamples > 256 || s.blockerSamples < 1 ||
-        s.blockerSamples > 256 || s.referenceSamples < 16 || s.referenceSamples > 16384 || s.angle <= 0 ||
-        s.angle > 10 || s.warp < 0 || s.warp > 16 || s.camera < 0 || s.camera > 1 || o.measure < 1 || o.warmup < 0)
-        throw std::runtime_error("Argument outside supported range");
     (void)makeScene(o.scene);
     if (o.method != "all")
         (void)parseMethod(o.method);
@@ -319,102 +371,107 @@ Options parseOptions(int argc, char** argv) {
 }
 void runExperiment(Renderer& renderer, const Options& o) {
     std::filesystem::create_directories(o.output / "captures");
-    const auto configs = cases(o);
+    auto configs = cases(o);
     auto selected = methods(o);
-    const int expected = int(configs.size() * selected.size());
+    int expected = int(configs.size() * selected.size()), done = 0, index = 0;
     manifest(o.output / "run_manifest.json", o, expected, false);
+    renderer.validateFilters(o.output / "filter_gpu.csv");
+    renderer.validateSampling(o.output / "sampling_gpu.csv");
     std::ofstream raw(o.output / "raw.csv"), timings(o.output / "timings.csv"),
         captures(o.output / "capture_manifest.csv"), convergence(o.output / "reference_convergence.csv");
     if (!raw || !timings || !captures || !convergence)
         throw std::runtime_error("Cannot create experiment outputs");
     raw << "case_id,scene,method,width,height,map_resolution,angle,camera,map_backend,map_count,map_bytes,shadow_"
            "passes,timing_samples,map_gpu_ms,shadow_gpu_ms,total_gpu_ms,rmse,penumbra_rmse,gradient_rmse,max_abs_error,"
-           "receiver_pixels,penumbra_pixels,invalid_pixels,monotonic_max_brightening,monotonic_violation_fraction\n";
+           "receiver_pixels,penumbra_pixels,invalid_pixels,monotonic_max_brightening,monotonic_violation_fraction,map_"
+           "generation_passes,auxiliary_map_bytes,depth_layers,configured_filter_samples,configured_blocker_samples,"
+           "dpcf_taps,dpcf_radius,"
+           "dpcf_ratio_scale,chs_kernel,chs_sun_size,warp,smoothing,smoothing_kernel,configured_sample_pattern,"
+           "sample_pattern,sample_seed,rotate_"
+           "samples\n";
     timings << "case_id,sample,map_gpu_ms,shadow_gpu_ms,total_gpu_ms\n";
     captures << "case_id,kind,width,height,path\n";
     convergence << "config_id,lower_samples,reference_samples,rmse,max_abs_error,cpu_gpu_max_abs_error\n";
-    int configIndex = 0, done = 0;
     for (const auto& c : configs) {
         renderer.prepare(makeScene(c.scene), c.settings);
-        const std::string config = "c" + std::to_string(configIndex++);
+        std::string config = "c" + std::to_string(index++);
         renderer.render(Method::Reference);
-        Image reference = renderer.read();
-        unsigned referenceTexture = renderer.copyResult();
+        auto reference = renderer.read();
+        unsigned refTexture = renderer.copyResult();
+        double cpuError = cpuCheck(renderer, reference);
+        pfm(o.output / "captures" / (config + "-reference.pfm"), reference.visibility, c.settings.width,
+            c.settings.height);
         pfm(o.output / "captures" / (config + "-receiver.pfm"), reference.receiver, c.settings.width,
             c.settings.height);
-        captures << config << ",receiver-mask," << c.settings.width << ',' << c.settings.height << ",captures/"
-                 << config << "-receiver.pfm\n";
-        const double cpuError = cpuCheck(renderer, reference);
+        for (const auto& suffix : {"reference", "receiver"})
+            captures << config << ',' << suffix << ',' << c.settings.width << ',' << c.settings.height << ",captures/"
+                     << config << '-' << suffix << ".pfm\n";
         auto lower = c.settings;
         lower.referenceSamples = std::max(8, c.settings.referenceSamples / 2);
         renderer.prepare(makeScene(c.scene), lower);
         renderer.render(Method::Reference);
-        auto lowerImage = renderer.read();
-        const auto delta = compare(lowerImage, reference);
+        auto delta = compare(renderer.read(), reference);
         convergence << config << ',' << lower.referenceSamples << ',' << c.settings.referenceSamples << ','
                     << delta.rmse << ',' << delta.maxError << ',' << cpuError << '\n';
         renderer.prepare(makeScene(c.scene), c.settings);
-        // Rotate the order between configurations to reduce fixed-order thermal bias.
         std::rotate(selected.begin(), selected.begin() + 1, selected.end());
         for (Method method : selected) {
-            const std::string id = config + "-" + methodId(method);
-            for (int i = 0; i < (method == Method::Reference ? 0 : o.warmup); ++i)
+            std::string id = config + "-" + methodId(method);
+            bool arr = method == Method::Reference;
+            for (int i = 0; i < (arr ? 0 : o.warmup); ++i)
                 renderer.render(method);
             glFinish();
-            std::vector<double> mapTimes, shadowTimes, totalTimes;
-            const int samples = method == Method::Reference ? 1 : o.measure;
+            std::vector<double> mt, st, tt;
+            int samples = arr ? 1 : o.measure;
             for (int i = 0; i < samples; ++i) {
                 auto t = renderer.render(method, -1, true);
-                mapTimes.push_back(t.mapMs);
-                shadowTimes.push_back(t.shadowMs);
-                totalTimes.push_back(t.mapMs + t.shadowMs);
+                mt.push_back(t.mapMs);
+                st.push_back(t.shadowMs);
+                tt.push_back(t.mapMs + t.shadowMs);
                 timings << id << ',' << i << ',' << std::setprecision(10) << t.mapMs << ',' << t.shadowMs << ','
                         << t.mapMs + t.shadowMs << '\n';
             }
-            const Image image = renderer.read();
+            auto image = renderer.read();
             pfm(o.output / "captures" / (id + ".pfm"), image.visibility, c.settings.width, c.settings.height);
             captures << id << ",visibility-pfm," << c.settings.width << ',' << c.settings.height << ",captures/" << id
                      << ".pfm\n";
             for (int view = 0; view < 3; ++view) {
-                const std::string name = id + (view == 0   ? "-shaded.png"
-                                               : view == 1 ? "-visibility.png"
-                                                           : "-difference.png");
-                renderer.capture(o.output / "captures" / name, view, referenceTexture);
-                captures << id << ','
-                         << (view == 0   ? "shaded-png"
-                             : view == 1 ? "visibility-png"
-                                         : "difference-png")
-                         << ',' << c.settings.width << ',' << c.settings.height << ",captures/" << name << '\n';
+                std::string suffix = view == 0   ? "shaded"
+                                     : view == 1 ? "visibility"
+                                                 : "difference",
+                            name = id + "-" + suffix + ".png";
+                renderer.capture(o.output / "captures" / name, view, refTexture);
+                captures << id << ',' << suffix << ',' << c.settings.width << ',' << c.settings.height << ",captures/"
+                         << name << '\n';
             }
             renderer.render(method, 0);
-            const Image without = renderer.read();
-            const auto m = compare(image, reference, &without);
-            const int mapCount = (method == Method::Reference || method == Method::Ray16)         ? 0
-                                 : (method == Method::SplitMin || method == Method::SplitProduct) ? 2
-                                                                                                  : 1;
+            auto without = renderer.read();
+            auto m = compare(image, reference, &without);
+            int count = activeMapLayers(method, c.settings);
             raw << id << ',' << c.scene << ',' << methodId(method) << ',' << c.settings.width << ','
                 << c.settings.height << ',' << c.settings.mapResolution << ',' << c.settings.angle << ','
-                << c.settings.camera << ',' << (c.settings.analyticMaps ? "analytic" : "raster") << ',' << mapCount
-                << ','
-                << std::uint64_t(mapCount) * std::uint64_t(c.settings.mapResolution) *
-                       std::uint64_t(c.settings.mapResolution) * 4u
-                << ',' << (method == Method::Reference ? c.settings.referenceSamples + 1 : 1) << ',' << samples << ','
-                << std::setprecision(10) << median(mapTimes) << ',' << median(shadowTimes) << ',' << median(totalTimes)
+                << c.settings.camera << ',' << (c.settings.analyticMaps ? "analytic" : "raster") << ',' << count << ','
+                << activeMapBytes(method, c.settings) << ',' << (arr ? c.settings.referenceSamples + 1 : 1) << ','
+                << samples << ',' << std::setprecision(10) << median(mt) << ',' << median(st) << ',' << median(tt)
                 << ',' << m.rmse << ',' << m.penumbraRmse << ',' << m.gradientRmse << ',' << m.maxError << ','
                 << m.pixels << ',' << m.penumbraPixels << ',' << m.invalid << ',' << m.brightening << ','
-                << m.brighteningRate << '\n';
+                << m.brighteningRate << ',' << mapGenerationPasses(method, c.settings) << ",0," << count << ','
+                << c.settings.filterSamples << ',' << c.settings.blockerSamples << ',' << c.settings.dpcfTaps << ','
+                << c.settings.dpcfRadius << ',' << c.settings.dpcfRatioScale << ',' << c.settings.chsKernel << ','
+                << c.settings.chsSunSize << ',' << c.settings.warp << ',' << c.settings.smoothing << ','
+                << smoothingKernel(method, c.settings) << ',' << samplePatternId(c.settings.samplePattern) << ','
+                << samplePatternId(effectiveSamplePattern(method, c.settings)) << ',' << c.settings.sampleSeed << ','
+                << (c.settings.rotateSamples ? 1 : 0) << '\n';
             raw.flush();
-            ++done;
-            std::cout << '[' << done << '/' << expected << "] " << c.scene << " / " << methodId(method)
-                      << " RMSE=" << m.rmse << " GPU=" << median(totalTimes) << " ms\n"
+            std::cout << '[' << ++done << '/' << expected << "] " << c.scene << " / " << methodId(method)
+                      << " RMSE=" << m.rmse << " GPU=" << median(tt) << " ms\n"
                       << std::flush;
             if (m.invalid)
-                throw std::runtime_error("Non-finite or out-of-range visibility detected");
+                throw std::runtime_error("Invalid visibility");
             if (cpuError > 0.025)
-                throw std::runtime_error(
-                    "GPU reference disagrees with independent CPU oracle; inspect reference_convergence.csv");
+                throw std::runtime_error("ARR disagrees with CPU oracle");
         }
-        glDeleteTextures(1, &referenceTexture);
+        glDeleteTextures(1, &refTexture);
     }
     if (done != expected)
         throw std::runtime_error("Incomplete case matrix");

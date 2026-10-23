@@ -1,0 +1,652 @@
+{
+  "version": "0.7.0",
+  "native_cases": 173,
+  "old_method_images_bit_identical": 150,
+  "source_hashes_match": true,
+  "single_map_contract": true,
+  "ctest_suites": [
+    "shadows-geometry",
+    "shadows-camera",
+    "shadows-analyzer"
+  ],
+  "gpu_math_test_sets_per_run": 71,
+  "runs": {
+    "quick": {
+      "cases": 124,
+      "hardware_timings": false,
+      "reference_converged": true,
+      "methods": {
+        "adaptive-min-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 17.817,
+          "mean_rmse": 0.01083031176525,
+          "mean_penumbra_rmse": 0.08913865727,
+          "max_brightening": 0.04166668653
+        },
+        "adaptive-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 14.650506499999999,
+          "mean_rmse": 0.01082587548825,
+          "mean_penumbra_rmse": 0.089041449725,
+          "max_brightening": 0.04166668653
+        },
+        "angular-maps": {
+          "cases": 4,
+          "median_total_gpu_ms": 90.3235565,
+          "mean_rmse": 0.00515339570575,
+          "mean_penumbra_rmse": 0.0691230738075,
+          "max_brightening": 0.0
+        },
+        "binned-min": {
+          "cases": 4,
+          "median_total_gpu_ms": 14.432099999999998,
+          "mean_rmse": 0.025016726273,
+          "mean_penumbra_rmse": 0.147997158975,
+          "max_brightening": 0.04166668653
+        },
+        "bitmask-layered": {
+          "cases": 4,
+          "median_total_gpu_ms": 103.75030050000001,
+          "mean_rmse": 0.021958802535,
+          "mean_penumbra_rmse": 0.27379583715,
+          "max_brightening": 0.0
+        },
+        "chs-ndc": {
+          "cases": 4,
+          "median_total_gpu_ms": 15.389262500000001,
+          "mean_rmse": 0.012808227960000002,
+          "mean_penumbra_rmse": 0.1253250576725,
+          "max_brightening": 0.0
+        },
+        "coherent-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 136.077255,
+          "mean_rmse": 0.007202076059250001,
+          "mean_penumbra_rmse": 0.087781702495,
+          "max_brightening": 5.960464478e-08
+        },
+        "contour-fill-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 52.198085500000005,
+          "mean_rmse": 0.0079210911425,
+          "mean_penumbra_rmse": 0.099321745655,
+          "max_brightening": 0.04057848454
+        },
+        "contour-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 47.568441,
+          "mean_rmse": 0.0090474893635,
+          "mean_penumbra_rmse": 0.09749628559,
+          "max_brightening": 0.04057848454
+        },
+        "distance-inverse-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 15.0594325,
+          "mean_rmse": 0.00889439008625,
+          "mean_penumbra_rmse": 0.1014720778575,
+          "max_brightening": 0.3541666865
+        },
+        "distance-power-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 15.8765385,
+          "mean_rmse": 0.0086917235465,
+          "mean_penumbra_rmse": 0.0974086850275,
+          "max_brightening": 0.3541666865
+        },
+        "dpcf-ndc": {
+          "cases": 4,
+          "median_total_gpu_ms": 13.969446999999999,
+          "mean_rmse": 0.013761410969999999,
+          "mean_penumbra_rmse": 0.131329434325,
+          "max_brightening": 0.0
+        },
+        "geometric-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 16.0765195,
+          "mean_rmse": 0.00915147768825,
+          "mean_penumbra_rmse": 0.09989979594000001,
+          "max_brightening": 0.2291666865
+        },
+        "hard": {
+          "cases": 4,
+          "median_total_gpu_ms": 3.181486,
+          "mean_rmse": 0.023568845918250002,
+          "mean_penumbra_rmse": 0.3101800952,
+          "max_brightening": 0.0
+        },
+        "harmonic-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 15.935741,
+          "mean_rmse": 0.008590649310750001,
+          "mean_penumbra_rmse": 0.098507168135,
+          "max_brightening": 0.3125
+        },
+        "inverse-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 13.193411999999999,
+          "mean_rmse": 0.00916334678125,
+          "mean_penumbra_rmse": 0.1005058869275,
+          "max_brightening": 0.2291666865
+        },
+        "local-geometric-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 16.186878,
+          "mean_rmse": 0.00858249794625,
+          "mean_penumbra_rmse": 0.0945459021275,
+          "max_brightening": 0.04166668653
+        },
+        "multilayer-filtered": {
+          "cases": 4,
+          "median_total_gpu_ms": 15.9777795,
+          "mean_rmse": 0.01707235392,
+          "mean_penumbra_rmse": 0.1628277585,
+          "max_brightening": 0.0
+        },
+        "ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 12.621903,
+          "mean_rmse": 0.01027265508625,
+          "mean_penumbra_rmse": 0.112206155195,
+          "max_brightening": 0.1041666865
+        },
+        "pcf": {
+          "cases": 4,
+          "median_total_gpu_ms": 14.720351,
+          "mean_rmse": 0.0165415050625,
+          "mean_penumbra_rmse": 0.1389480206125,
+          "max_brightening": 0.0
+        },
+        "pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 11.082018,
+          "mean_rmse": 0.01157516816875,
+          "mean_penumbra_rmse": 0.117258255525,
+          "max_brightening": 0.1458333135
+        },
+        "pcss-min-gap": {
+          "cases": 4,
+          "median_total_gpu_ms": 9.9736885,
+          "mean_rmse": 0.010954945975500001,
+          "mean_penumbra_rmse": 0.1269560903,
+          "max_brightening": 0.4791666865
+        },
+        "power-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 16.818111000000002,
+          "mean_rmse": 0.0087690299285,
+          "mean_penumbra_rmse": 0.09824960907250001,
+          "max_brightening": 0.25
+        },
+        "power025-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 18.5840375,
+          "mean_rmse": 0.00895791110125,
+          "mean_penumbra_rmse": 0.0992540318825,
+          "max_brightening": 0.25
+        },
+        "power05-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 15.2963935,
+          "mean_rmse": 0.0087690299285,
+          "mean_penumbra_rmse": 0.09824960907250001,
+          "max_brightening": 0.25
+        },
+        "power2-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 15.791722,
+          "mean_rmse": 0.00853885372525,
+          "mean_penumbra_rmse": 0.1038211811875,
+          "max_brightening": 0.3541666865
+        },
+        "quantile-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 18.077925,
+          "mean_rmse": 0.00880249262625,
+          "mean_penumbra_rmse": 0.0999779914375,
+          "max_brightening": 0.375
+        },
+        "ray16": {
+          "cases": 4,
+          "median_total_gpu_ms": 0.8356865,
+          "mean_rmse": 0.003563085894075,
+          "mean_penumbra_rmse": 0.045590897392499996,
+          "max_brightening": 0.0
+        },
+        "reference": {
+          "cases": 4,
+          "median_total_gpu_ms": 195.9900895,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        },
+        "split-min": {
+          "cases": 4,
+          "median_total_gpu_ms": 19.806095499999998,
+          "mean_rmse": 0.006076665874,
+          "mean_penumbra_rmse": 0.088582443335,
+          "max_brightening": 0.0
+        },
+        "split-product": {
+          "cases": 4,
+          "median_total_gpu_ms": 22.361213499999998,
+          "mean_rmse": 0.006241555256,
+          "mean_penumbra_rmse": 0.090562803735,
+          "max_brightening": 0.0
+        }
+      }
+    },
+    "close": {
+      "cases": 31,
+      "hardware_timings": false,
+      "reference_converged": true,
+      "methods": {
+        "adaptive-min-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 177.858563,
+          "mean_rmse": 0.01821361471,
+          "mean_penumbra_rmse": 0.02656518814,
+          "max_brightening": 0.03125
+        },
+        "adaptive-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 128.104783,
+          "mean_rmse": 0.01822960381,
+          "mean_penumbra_rmse": 0.02652145748,
+          "max_brightening": 0.03125
+        },
+        "angular-maps": {
+          "cases": 1,
+          "median_total_gpu_ms": 258.279586,
+          "mean_rmse": 0.007860116004,
+          "mean_penumbra_rmse": 0.022809548,
+          "max_brightening": 0.0
+        },
+        "binned-min": {
+          "cases": 1,
+          "median_total_gpu_ms": 171.287672,
+          "mean_rmse": 0.0414422367,
+          "mean_penumbra_rmse": 0.1103129183,
+          "max_brightening": 0.0
+        },
+        "bitmask-layered": {
+          "cases": 1,
+          "median_total_gpu_ms": 758.509074,
+          "mean_rmse": 0.04524451686,
+          "mean_penumbra_rmse": 0.1143834977,
+          "max_brightening": 0.0
+        },
+        "chs-ndc": {
+          "cases": 1,
+          "median_total_gpu_ms": 92.313694,
+          "mean_rmse": 0.03590687163,
+          "mean_penumbra_rmse": 0.05879201009,
+          "max_brightening": 0.0
+        },
+        "coherent-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 1449.018251,
+          "mean_rmse": 0.009235404031,
+          "mean_penumbra_rmse": 0.02570131622,
+          "max_brightening": 2.980232239e-08
+        },
+        "contour-fill-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 449.948544,
+          "mean_rmse": 0.01518711891,
+          "mean_penumbra_rmse": 0.04628017329,
+          "max_brightening": 6.109476089e-05
+        },
+        "contour-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 363.624341,
+          "mean_rmse": 0.02159602457,
+          "mean_penumbra_rmse": 0.04652057333,
+          "max_brightening": 2.443790436e-06
+        },
+        "distance-inverse-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 117.617489,
+          "mean_rmse": 0.015755702,
+          "mean_penumbra_rmse": 0.04817488773,
+          "max_brightening": 0.3541666269
+        },
+        "distance-power-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 124.632055,
+          "mean_rmse": 0.01627782071,
+          "mean_penumbra_rmse": 0.04959192695,
+          "max_brightening": 0.34375
+        },
+        "dpcf-ndc": {
+          "cases": 1,
+          "median_total_gpu_ms": 74.337726,
+          "mean_rmse": 0.03647363056,
+          "mean_penumbra_rmse": 0.06177609124,
+          "max_brightening": 0.0
+        },
+        "geometric-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 111.303899,
+          "mean_rmse": 0.01475028616,
+          "mean_penumbra_rmse": 0.04057635654,
+          "max_brightening": 0.2395833135
+        },
+        "hard": {
+          "cases": 1,
+          "median_total_gpu_ms": 8.481486,
+          "mean_rmse": 0.09024895972,
+          "mean_penumbra_rmse": 0.2791485755,
+          "max_brightening": 0.0
+        },
+        "harmonic-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 117.792823,
+          "mean_rmse": 0.0178086414,
+          "mean_penumbra_rmse": 0.05403364995,
+          "max_brightening": 0.3333333135
+        },
+        "inverse-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 120.430488,
+          "mean_rmse": 0.0150119741,
+          "mean_penumbra_rmse": 0.04153825257,
+          "max_brightening": 0.2395833135
+        },
+        "local-geometric-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 111.277028,
+          "mean_rmse": 0.01336203161,
+          "mean_penumbra_rmse": 0.0334932959,
+          "max_brightening": 0.04166668653
+        },
+        "multilayer-filtered": {
+          "cases": 1,
+          "median_total_gpu_ms": 55.535106,
+          "mean_rmse": 0.06130545225,
+          "mean_penumbra_rmse": 0.1374334851,
+          "max_brightening": 0.0
+        },
+        "ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 116.249663,
+          "mean_rmse": 0.016570551,
+          "mean_penumbra_rmse": 0.03797956286,
+          "max_brightening": 0.1458333731
+        },
+        "pcf": {
+          "cases": 1,
+          "median_total_gpu_ms": 49.123368,
+          "mean_rmse": 0.04754484459,
+          "mean_penumbra_rmse": 0.1270267392,
+          "max_brightening": 0.0
+        },
+        "pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 112.553869,
+          "mean_rmse": 0.01880998037,
+          "mean_penumbra_rmse": 0.04553567125,
+          "max_brightening": 0.1458333135
+        },
+        "pcss-min-gap": {
+          "cases": 1,
+          "median_total_gpu_ms": 101.908064,
+          "mean_rmse": 0.03237357337,
+          "mean_penumbra_rmse": 0.0997685874,
+          "max_brightening": 0.4895833135
+        },
+        "power-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 102.345248,
+          "mean_rmse": 0.01570295146,
+          "mean_penumbra_rmse": 0.04624625885,
+          "max_brightening": 0.2708333135
+        },
+        "power025-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 117.325245,
+          "mean_rmse": 0.0150380507,
+          "mean_penumbra_rmse": 0.04305924262,
+          "max_brightening": 0.25
+        },
+        "power05-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 143.728408,
+          "mean_rmse": 0.01570295146,
+          "mean_penumbra_rmse": 0.04624625885,
+          "max_brightening": 0.2708333135
+        },
+        "power2-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 116.45038,
+          "mean_rmse": 0.0223233726,
+          "mean_penumbra_rmse": 0.06870969717,
+          "max_brightening": 0.3645833135
+        },
+        "quantile-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 165.030933,
+          "mean_rmse": 0.01601278848,
+          "mean_penumbra_rmse": 0.04910240419,
+          "max_brightening": 0.4166666865
+        },
+        "ray16": {
+          "cases": 1,
+          "median_total_gpu_ms": 1.106419,
+          "mean_rmse": 0.01472894249,
+          "mean_penumbra_rmse": 0.04556323124,
+          "max_brightening": 0.0
+        },
+        "reference": {
+          "cases": 1,
+          "median_total_gpu_ms": 1740.352507,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        },
+        "split-min": {
+          "cases": 1,
+          "median_total_gpu_ms": 169.330077,
+          "mean_rmse": 0.009387310067,
+          "mean_penumbra_rmse": 0.0280710478,
+          "max_brightening": 0.0
+        },
+        "split-product": {
+          "cases": 1,
+          "median_total_gpu_ms": 199.115681,
+          "mean_rmse": 0.0088026294,
+          "mean_penumbra_rmse": 0.02628913049,
+          "max_brightening": 0.0
+        }
+      }
+    },
+    "single-high-geometric-ndc-pcss": {
+      "cases": 2,
+      "hardware_timings": false,
+      "reference_converged": true,
+      "methods": {
+        "geometric-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 8.083368,
+          "mean_rmse": 0.006100178271,
+          "mean_penumbra_rmse": 0.05173097151,
+          "max_brightening": 0.0
+        },
+        "reference": {
+          "cases": 1,
+          "median_total_gpu_ms": 184.452972,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        }
+      }
+    },
+    "single-high-local-geometric-ndc-pcss": {
+      "cases": 2,
+      "hardware_timings": false,
+      "reference_converged": true,
+      "methods": {
+        "local-geometric-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 8.855541,
+          "mean_rmse": 0.005995612664,
+          "mean_penumbra_rmse": 0.05091249962,
+          "max_brightening": 0.0
+        },
+        "reference": {
+          "cases": 1,
+          "median_total_gpu_ms": 179.781582,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        }
+      }
+    },
+    "single-low-geometric-ndc-pcss": {
+      "cases": 2,
+      "hardware_timings": false,
+      "reference_converged": true,
+      "methods": {
+        "geometric-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 9.150835,
+          "mean_rmse": 0.007484466309,
+          "mean_penumbra_rmse": 0.2188353063,
+          "max_brightening": 0.0
+        },
+        "reference": {
+          "cases": 1,
+          "median_total_gpu_ms": 190.021214,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        }
+      }
+    },
+    "single-low-local-geometric-ndc-pcss": {
+      "cases": 2,
+      "hardware_timings": false,
+      "reference_converged": true,
+      "methods": {
+        "local-geometric-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 7.182721,
+          "mean_rmse": 0.006853101448,
+          "mean_penumbra_rmse": 0.1959343316,
+          "max_brightening": 0.0
+        },
+        "reference": {
+          "cases": 1,
+          "median_total_gpu_ms": 180.997276,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        }
+      }
+    },
+    "dense-geometric-ndc-pcss": {
+      "cases": 2,
+      "hardware_timings": false,
+      "reference_converged": true,
+      "methods": {
+        "geometric-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 46.585841,
+          "mean_rmse": 0.01229146498,
+          "mean_penumbra_rmse": 0.08503385288,
+          "max_brightening": 0.1875
+        },
+        "reference": {
+          "cases": 1,
+          "median_total_gpu_ms": 1318.585844,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        }
+      }
+    },
+    "dense-local-geometric-ndc-pcss": {
+      "cases": 2,
+      "hardware_timings": false,
+      "reference_converged": true,
+      "methods": {
+        "local-geometric-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 38.422841,
+          "mean_rmse": 0.01035494079,
+          "mean_penumbra_rmse": 0.06779559843,
+          "max_brightening": 0.04166668653
+        },
+        "reference": {
+          "cases": 1,
+          "median_total_gpu_ms": 1343.507042,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        }
+      }
+    },
+    "one-sample": {
+      "cases": 2,
+      "hardware_timings": false,
+      "reference_converged": true,
+      "methods": {
+        "local-geometric-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 2.042148,
+          "mean_rmse": 0.01508755965,
+          "mean_penumbra_rmse": 0.3840408252,
+          "max_brightening": 0.0
+        },
+        "reference": {
+          "cases": 1,
+          "median_total_gpu_ms": 190.65395,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        }
+      }
+    },
+    "stress-geometric-ndc-pcss": {
+      "cases": 2,
+      "hardware_timings": false,
+      "reference_converged": true,
+      "methods": {
+        "geometric-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 70.492872,
+          "mean_rmse": 0.02428733566,
+          "mean_penumbra_rmse": 0.1343301553,
+          "max_brightening": 0.17578125
+        },
+        "reference": {
+          "cases": 1,
+          "median_total_gpu_ms": 1295.799499,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        }
+      }
+    },
+    "stress-local-geometric-ndc-pcss": {
+      "cases": 2,
+      "hardware_timings": false,
+      "reference_converged": true,
+      "methods": {
+        "local-geometric-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 65.277317,
+          "mean_rmse": 0.01290389563,
+          "mean_penumbra_rmse": 0.06022815467,
+          "max_brightening": 0.03125
+        },
+        "reference": {
+          "cases": 1,
+          "median_total_gpu_ms": 1369.453088,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        }
+      }
+    }
+  }
+}

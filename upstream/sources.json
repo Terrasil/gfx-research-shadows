@@ -1,0 +1,24 @@
+{
+  "filament": {
+    "version": "v1.23.1",
+    "commit": "a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a",
+    "url": "https://github.com/google/filament/blob/v1.23.1/shaders/src/shadowing.fs",
+    "license": "Apache-2.0"
+  },
+  "shadowfx": {
+    "commit": "c6d931c27275b1bb65ba0abfb71eaba86f355387",
+    "url": "https://github.com/GPUOpen-Effects/ShadowFX",
+    "license": "MIT"
+  },
+  "files": {
+    "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+    "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+    "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+    "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+    "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+    "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+    "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+    "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a"
+  }
+}

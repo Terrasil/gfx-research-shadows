@@ -10,5 +10,6 @@ void main(){
     float den=dot(tePlane.xyz,direction);if(abs(den)<1e-8)discard;
     float t=-(dot(tePlane.xyz,origin)+tePlane.w)/den;
     vec4 clip=uLightVp*vec4(origin+direction*t,1);
-    gl_FragDepth=clip.z/clip.w*0.5+0.5;
+    float d=clip.z/clip.w*0.5+0.5;
+    gl_FragDepth=d;
 }

@@ -1,0 +1,3735 @@
+{
+  "version": "0.12.0",
+  "ctest": {
+    "passed": 3,
+    "total": 3
+  },
+  "render_cases": 60,
+  "filter_fixture_cases_per_run": 320,
+  "sampling_fixture_cases_per_run": 1568,
+  "hardware_timings": false,
+  "unchanged_v0110_control_images": 24,
+  "mean_mode0_matches_v0110": true,
+  "mean_presets_match_explicit_sampling": true,
+  "geometric_presets_match_v0110": true,
+  "runs": [
+    {
+      "name": "quick",
+      "summary": {
+        "cases": 28,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "hard": {
+            "cases": 4,
+            "median_total_gpu_ms": 5.84279,
+            "mean_rmse": 0.02137541019275,
+            "mean_penumbra_rmse": 0.277504948075,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "pcf": {
+            "cases": 4,
+            "median_total_gpu_ms": 11.0895345,
+            "mean_rmse": 0.0161909068855,
+            "mean_penumbra_rmse": 0.185065465575,
+            "max_abs_error": 0.6023421288,
+            "max_brightening": 0.0
+          },
+          "pcss": {
+            "cases": 4,
+            "median_total_gpu_ms": 9.4166545,
+            "mean_rmse": 0.01054908313475,
+            "mean_penumbra_rmse": 0.11611608715499999,
+            "max_abs_error": 0.5714321136,
+            "max_brightening": 0.1175746322
+          },
+          "arr": {
+            "cases": 4,
+            "median_total_gpu_ms": 200.053653,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "geometric": {
+            "cases": 4,
+            "median_total_gpu_ms": 9.4391915,
+            "mean_rmse": 0.00942491923525,
+            "mean_penumbra_rmse": 0.1003388346275,
+            "max_abs_error": 0.5730438232,
+            "max_brightening": 0.1920215487
+          },
+          "dpcf": {
+            "cases": 4,
+            "median_total_gpu_ms": 5.111928000000001,
+            "mean_rmse": 0.039790985645,
+            "mean_penumbra_rmse": 0.409953008025,
+            "max_abs_error": 1.0,
+            "max_brightening": 0.0
+          },
+          "chs": {
+            "cases": 4,
+            "median_total_gpu_ms": 7.8796289999999996,
+            "mean_rmse": 0.02099014729,
+            "mean_penumbra_rmse": 0.18746134055000002,
+            "max_abs_error": 0.5565977879,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--publication-quick",
+        "--output=/tmp/shadows-0120-quick",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "mean-0",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 123.238226,
+            "mean_rmse": 0.009208431658,
+            "mean_penumbra_rmse": 0.08574360324,
+            "max_abs_error": 0.5833333135,
+            "max_brightening": 0.125
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 216.003722,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-mean-0",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcss",
+        "--smoothing=0",
+        "--sample-seed=37"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "mean-1",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 19.743883,
+            "mean_rmse": 0.008748285432,
+            "mean_penumbra_rmse": 0.0786034601,
+            "max_abs_error": 0.5714321136,
+            "max_brightening": 0.1175746322
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 205.333754,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-mean-1",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcss",
+        "--smoothing=1",
+        "--sample-seed=37"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "mean-2",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 120.900968,
+            "mean_rmse": 0.008747415778,
+            "mean_penumbra_rmse": 0.07862675307,
+            "max_abs_error": 0.5710303187,
+            "max_brightening": 0.1189603806
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 207.785785,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-mean-2",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcss",
+        "--smoothing=2",
+        "--sample-seed=37"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "mean-3",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 121.383902,
+            "mean_rmse": 0.008865122064,
+            "mean_penumbra_rmse": 0.08089393866,
+            "max_abs_error": 0.5750994086,
+            "max_brightening": 0.1222236753
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 211.871045,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-mean-3",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcss",
+        "--smoothing=3",
+        "--sample-seed=37"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "mean-4",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 138.466309,
+            "mean_rmse": 0.008738435331,
+            "mean_penumbra_rmse": 0.07472741387,
+            "max_abs_error": 0.5514098406,
+            "max_brightening": 0.1079648137
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 208.776231,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-mean-4",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcss",
+        "--smoothing=4",
+        "--sample-seed=37"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "mean-5",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 137.392159,
+            "mean_rmse": 0.008820706855,
+            "mean_penumbra_rmse": 0.08001107135,
+            "max_abs_error": 0.5734173656,
+            "max_brightening": 0.1211535931
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 209.788181,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-mean-5",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcss",
+        "--smoothing=5",
+        "--sample-seed=37"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "mean-6",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 18.464762,
+            "mean_rmse": 0.01001571063,
+            "mean_penumbra_rmse": 0.09541173461,
+            "max_abs_error": 0.569694519,
+            "max_brightening": 0.1945314407
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 204.690469,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-mean-6",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcss",
+        "--smoothing=6",
+        "--sample-seed=37"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "mean-7",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 21.587323,
+            "mean_rmse": 0.009032922158,
+            "mean_penumbra_rmse": 0.08205655234,
+            "max_abs_error": 0.5758005977,
+            "max_brightening": 0.1087451577
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 198.607327,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-mean-7",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcss",
+        "--smoothing=7",
+        "--sample-seed=37"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "mean-explicit-random",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 19.467926,
+            "mean_rmse": 0.01001571063,
+            "mean_penumbra_rmse": 0.09541173461,
+            "max_abs_error": 0.569694519,
+            "max_brightening": 0.1945314407
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 212.643424,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-mean-explicit-random",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcss",
+        "--smoothing=1",
+        "--sample-pattern=random",
+        "--sample-seed=37"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "mean-explicit-stratified",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcss": {
+            "cases": 1,
+            "median_total_gpu_ms": 23.203871,
+            "mean_rmse": 0.009032922158,
+            "mean_penumbra_rmse": 0.08205655234,
+            "max_abs_error": 0.5758005977,
+            "max_brightening": 0.1087451577
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 208.415103,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-mean-explicit-stratified",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcss",
+        "--smoothing=1",
+        "--sample-pattern=stratified",
+        "--sample-seed=37"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "pcf-0",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 60.827656,
+            "mean_rmse": 0.0200958591,
+            "mean_penumbra_rmse": 0.1866976272,
+            "max_abs_error": 0.6000000238,
+            "max_brightening": 0.0
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 209.626808,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-pcf-0",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcf",
+        "--smoothing=0"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "pcf-3",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 68.612851,
+            "mean_rmse": 0.01956025287,
+            "mean_penumbra_rmse": 0.1819304448,
+            "max_abs_error": 0.5249303579,
+            "max_brightening": 0.0
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 210.356763,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-pcf-3",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcf",
+        "--smoothing=3"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "pcf-4",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 63.362026,
+            "mean_rmse": 0.01939508843,
+            "mean_penumbra_rmse": 0.1795637398,
+            "max_abs_error": 0.5242272615,
+            "max_brightening": 0.0
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 208.405975,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-pcf-4",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcf",
+        "--smoothing=4"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "pcf-5",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "pcf": {
+            "cases": 1,
+            "median_total_gpu_ms": 61.083587,
+            "mean_rmse": 0.01955728994,
+            "mean_penumbra_rmse": 0.1820354734,
+            "max_abs_error": 0.5210968256,
+            "max_brightening": 0.0002033138444
+          },
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 218.069245,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-pcf-5",
+        "--headless",
+        "--width=320",
+        "--height=180",
+        "--shadow-resolution=512",
+        "--reference-samples=1024",
+        "--samples=48",
+        "--blocker-samples=48",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=crossing",
+        "--method=pcf",
+        "--smoothing=5"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "geo-6",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 1696.767131,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "geometric": {
+            "cases": 1,
+            "median_total_gpu_ms": 129.302797,
+            "mean_rmse": 0.01923345925,
+            "mean_penumbra_rmse": 0.05534481078,
+            "max_abs_error": 0.4094606861,
+            "max_brightening": 0.2932633758
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-geo-6",
+        "--headless",
+        "--scene=crossing",
+        "--width=729",
+        "--height=593",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--samples=96",
+        "--blocker-samples=96",
+        "--sample-seed=37",
+        "--camera-yaw=-2.15369033813",
+        "--camera-pitch=0.842411875725",
+        "--camera-distance=7",
+        "--camera-target-x=-2.40854740143",
+        "--camera-target-y=-1.41449725628",
+        "--camera-target-z=-0.55213958025",
+        "--warmup=0",
+        "--measure=1",
+        "--method=geometric",
+        "--smoothing=6"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    },
+    {
+      "name": "geo-7",
+      "summary": {
+        "cases": 2,
+        "hardware_timings": false,
+        "reference_converged": true,
+        "filter_oracles": {
+          "cases": 320,
+          "max_abs_error": {
+            "dpcf": 9.841014469991194e-08,
+            "chs": 2.1846677977777063e-07,
+            "smooth_visibility": 1.0672222064411763e-07,
+            "smooth_gap": 1.0742797984519825e-07,
+            "smooth_mean_gap": 1.2198937993090908e-07
+          }
+        },
+        "sampling_oracles": {
+          "cases": 1568,
+          "max_abs_coordinate_error": {
+            "vogel": 4.178330975476707e-05,
+            "random": 5.185277473507277e-07,
+            "stratified": 5.508414513688553e-07
+          },
+          "disk_sets": {
+            "random-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5207329767633073,
+              "centroid": [
+                -0.09163320584291666,
+                0.013475170047083332
+              ]
+            },
+            "random-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.4739021851557851,
+              "centroid": [
+                -0.04761590769664582,
+                -0.003994119490416666
+              ]
+            },
+            "random-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.49828468991477076,
+              "centroid": [
+                -0.04567442810228125,
+                0.027286502037083334
+              ]
+            },
+            "random-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4714895147036033,
+              "centroid": [
+                -0.025873509992260412,
+                -0.020147743719114583
+              ]
+            },
+            "random-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5107742652920823,
+              "centroid": [
+                -0.023800404502648437,
+                0.05672949677042187
+              ]
+            },
+            "random-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.4869679603900945,
+              "centroid": [
+                -0.03787882126527734,
+                -0.03979215239631641
+              ]
+            },
+            "stratified-48-stream0": {
+              "points": 48,
+              "mean_radius_squared": 0.5025867756902468,
+              "centroid": [
+                -0.00013371305166666385,
+                -0.00025759222291666994
+              ]
+            },
+            "stratified-48-stream1": {
+              "points": 48,
+              "mean_radius_squared": 0.49027235850916895,
+              "centroid": [
+                -0.004658486379527087,
+                -0.013483769571666667
+              ]
+            },
+            "stratified-96-stream0": {
+              "points": 96,
+              "mean_radius_squared": 0.4969455466112395,
+              "centroid": [
+                0.0069302310073125,
+                0.0005945465704166671
+              ]
+            },
+            "stratified-96-stream1": {
+              "points": 96,
+              "mean_radius_squared": 0.4929816566749114,
+              "centroid": [
+                0.002671310001020837,
+                -0.006057874826875
+              ]
+            },
+            "stratified-256-stream0": {
+              "points": 256,
+              "mean_radius_squared": 0.5020638850827697,
+              "centroid": [
+                -0.0026891397608593734,
+                0.001125249329496093
+              ]
+            },
+            "stratified-256-stream1": {
+              "points": 256,
+              "mean_radius_squared": 0.49872110456670793,
+              "centroid": [
+                -0.0026054637494921876,
+                -0.0022350997259335927
+              ]
+            }
+          }
+        },
+        "methods": {
+          "arr": {
+            "cases": 1,
+            "median_total_gpu_ms": 1668.629952,
+            "mean_rmse": 0.0,
+            "mean_penumbra_rmse": 0.0,
+            "max_abs_error": 0.0,
+            "max_brightening": 0.0
+          },
+          "geometric": {
+            "cases": 1,
+            "median_total_gpu_ms": 204.564781,
+            "mean_rmse": 0.01472154465,
+            "mean_penumbra_rmse": 0.04056074404,
+            "max_abs_error": 0.4077206179,
+            "max_brightening": 0.2465000153
+          }
+        }
+      },
+      "command": [
+        "/workspace/scratch/0943d3846609/gfx-research-shadows/build/gfx-research-shadows",
+        "--benchmark",
+        "--output=/tmp/shadows-0120-geo-7",
+        "--headless",
+        "--scene=crossing",
+        "--width=729",
+        "--height=593",
+        "--shadow-resolution=1024",
+        "--reference-samples=1024",
+        "--samples=96",
+        "--blocker-samples=96",
+        "--sample-seed=37",
+        "--camera-yaw=-2.15369033813",
+        "--camera-pitch=0.842411875725",
+        "--camera-distance=7",
+        "--camera-target-x=-2.40854740143",
+        "--camera-target-y=-1.41449725628",
+        "--camera-target-z=-0.55213958025",
+        "--warmup=0",
+        "--measure=1",
+        "--method=geometric",
+        "--smoothing=7"
+      ],
+      "source_sha256": {
+        "src/experiment.cpp": "df49ccaca725bb2a1224453add2b8aea890ec0fa8a25fc8217c5492d5088dd39",
+        "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
+        "src/main.cpp": "0a4346699410df77439c7604ccca5e56720bf251663701d1eb88e2669d32c338",
+        "src/renderer.cpp": "86317c181cc4b3339d5408eb59606e07c7bdf74af56cc86b6e4db22aad61cd87",
+        "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
+        "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
+        "include/shadows/experiment.hpp": "cb28fb24346eefa186572d703685df1ccf617bb9d241bfdfe89c8d0f0d76e4aa",
+        "include/shadows/renderer.hpp": "81e56ce3ad65e947d92821ba9af3e7eee24a34b6c356e641f7d70026d2bd6f9d",
+        "include/shadows/scene.hpp": "8151295b77299fa09e88b23bca4a4fe6ee53efeade0dd6c0a1e84604cc3006b5",
+        "shaders/boxes.glsl": "5be8c9b5a698190fc4edfd08e42edc77e2f62fc3f4e3a5dc9cf324193b8680eb",
+        "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
+        "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+        "shaders/cubic_visibility.glsl": "44fc6ddc75989427fa350085c829928432ae9d9c8d68aebfdceedbf29e84e3f5",
+        "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
+        "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
+        "shaders/dpcf_disk.glsl": "fddc23ffa4f4a276df57418e40db09ab0947c1e9094350cf22d7ee65501e1300",
+        "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
+        "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
+        "shaders/gbuffer.frag": "1fa15561895b005c74a26e4c8bd8138e74418d542dacc99e1817176a095c6063",
+        "shaders/map.frag": "960a790d8a4127eb7b6f1021267b1b60b238b6c9e6709ecc49911010f155998a",
+        "shaders/map.tesc": "7ecbd08e4ef911f7e5ef52469cdee864a442eb97d14bef7c537372fbfb7fb83e",
+        "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
+        "shaders/map.vert": "15fd158a54de5544f0b601ac563cdf3b278bb26fd64696529d73209e1c576162",
+        "shaders/map_analytic.frag": "38dd390040e9e7290543f3325499362a44853956248e6b9e3f03883ae6894152",
+        "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+        "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
+        "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+        "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
+        "shaders/scene.vert": "3a59651ec81680bfd487593310bb71a001a2dc01e2a69d6b016362df2af6e454",
+        "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
+        "shaders/shadow.frag": "2b967047fced2a20187043f6a1af05eed206663eca5884f4e0cc872ad15649c6",
+        "shaders/smooth_depth.glsl": "7e174954f9110d1e704c5dd7ef82dc726944dcc91929872007c6326617c1f695",
+        "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
+        "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
+        "tools/analyze_results.py": "4a5ffc46eeebbb2923a57049aa527cd92dbe8880326fcf3b575128669fa2573a",
+        "tools/run_experiment.py": "147d3383cb95652a26a64bdafa4385bf4e367e10bf80c1790d2902e934265db5",
+        "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
+        "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
+        "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
+        "tests/test_analyzer.py": "e4d1d16183559d36fbcd26d647f0d3808f64a5599ac28e845cc47a67c080800a",
+        "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
+        "tests/test_geometry.cpp": "60c9a1155bcc50eabcbd115f4d8604e4caa64b31c7e62bbc094687827f96cd8c",
+        "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_11_FIXED.inc": "30fe245b0f6499614177cc6ae218bd71cef9a9cb964c7b3866f1f3d58e326571",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_13_FIXED.inc": "69d355239acc40c3b25fa5821eee0df404452560d9c43113d3cfefa0d506325e",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_15_FIXED.inc": "e341cbcc2c7358a7546d4629c076fca3a647d73052d09a607e23835e1a6767df",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_7_FIXED.inc": "aaa9633476fba62b368402df5d3e30f741f778a301956d97f6ec27e77e26f995",
+        "upstream/shadowfx/AMD_SHADOWFX_FILTER_SIZE_9_FIXED.inc": "cb0bdc7265308a71e10f91c9df8792cc7886ff9225f9444c3b7ef5c839a998d5",
+        "upstream/shadowfx/AMD_ShadowFX_Common.hlsl": "ef1f2e6365a19fb4b4a77d5d42f17566670445aa8538c2cefc39604ffd567186",
+        "upstream/shadowfx/LICENSE.txt": "0d244afd5ab03f10e052eb21a5a8219788752b44c2f2c9acbf9ff4febd872c1a",
+        "upstream/sources.json": "1c9188e5b61645ae2e804e022d1b600476611029e2850baa938e4464d6bb97cb",
+        "CMakeLists.txt": "f891505a5bb8ce2c4b24772ecaae178823c59265a460d421e3bf9271c02e38b5"
+      },
+      "executable_sha256": "d3c03a257eb130587addea60991ed021db04075f968d860ec58c80e86fd5a4ff"
+    }
+  ]
+}

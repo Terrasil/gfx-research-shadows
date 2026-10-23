@@ -1,0 +1,24 @@
+#version 460 core
+layout(local_size_x=1) in;
+layout(binding=2) uniform sampler2DArray uMaps;
+layout(std430,binding=0) buffer Results{vec4 values[];};
+uniform int uMapResolution;
+uniform int uResultOffset;
+uniform float uDepthBias;
+#include "warp.glsl"
+#include "dpcf.glsl"
+#include "chs.glsl"
+#include "smooth_depth.glsl"
+void main(){
+    int i=int(gl_GlobalInvocationID.x);
+    vec3 p=vec3((float((i*7)%29)+0.37)/32.0,(float((i*11)%29)+0.61)/32.0,float(i%8)*0.1477+0.053);
+    vec2 slope=vec2(float(i%3)-1.0,float((i/3)%3)-1.0)*0.017;
+    float d=dpcfFilter(p,slope,2.75,1+(i*11)%64,1.0+float(i%4)*1.5,0.21*float(i%7));
+    float c=chsFilter(p,0.00015,0.25+float(i%9)*3.0,7+2*(i%5));
+    vec2 origin=unwarpPoint(p.xy*2.0-1.0);
+    float a=smoothVisibility(p.xy,p.z,origin,slope);
+    vec3 stats=smoothBlockers(p.xy,p.z,origin,slope);
+    float g=stats.z>0.0?exp(stats.x/stats.z):0.0;
+    values[i+uResultOffset]=vec4(d,c,a,g);
+    values[i+uResultOffset+320]=vec4(stats.z>0.0?stats.y/stats.z:0.0,0,0,0);
+}

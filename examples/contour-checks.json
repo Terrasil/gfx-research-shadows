@@ -1,0 +1,323 @@
+{
+  "version": "0.4.0",
+  "native_cases": 94,
+  "gpu_area_test_cases": 15,
+  "software_renderer": true,
+  "runs": {
+    "quick": {
+      "cases": 72,
+      "reference_converged": true,
+      "max_gpu_area_error": 2.14576721191e-06,
+      "methods": {
+        "adaptive-min-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 30.878385,
+          "mean_rmse": 0.01083031176525,
+          "mean_penumbra_rmse": 0.08913865727,
+          "max_brightening": 0.04166668653
+        },
+        "adaptive-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 29.737196500000003,
+          "mean_rmse": 0.01082587548825,
+          "mean_penumbra_rmse": 0.089041449725,
+          "max_brightening": 0.04166668653
+        },
+        "angular-maps": {
+          "cases": 4,
+          "median_total_gpu_ms": 232.2276735,
+          "mean_rmse": 0.00515339570575,
+          "mean_penumbra_rmse": 0.0691230738075,
+          "max_brightening": 0.0
+        },
+        "binned-min": {
+          "cases": 4,
+          "median_total_gpu_ms": 31.532351,
+          "mean_rmse": 0.025016726273,
+          "mean_penumbra_rmse": 0.147997158975,
+          "max_brightening": 0.04166668653
+        },
+        "bitmask-layered": {
+          "cases": 4,
+          "median_total_gpu_ms": 215.1865635,
+          "mean_rmse": 0.021958802535,
+          "mean_penumbra_rmse": 0.27379583715,
+          "max_brightening": 0.0
+        },
+        "coherent-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 240.305997,
+          "mean_rmse": 0.007202076059250001,
+          "mean_penumbra_rmse": 0.087781702495,
+          "max_brightening": 5.960464478e-08
+        },
+        "contour-fill-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 66.0245075,
+          "mean_rmse": 0.0079210911425,
+          "mean_penumbra_rmse": 0.099321745655,
+          "max_brightening": 0.04057848454
+        },
+        "contour-ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 56.913704499999994,
+          "mean_rmse": 0.0090474893635,
+          "mean_penumbra_rmse": 0.09749628559,
+          "max_brightening": 0.04057848454
+        },
+        "hard": {
+          "cases": 4,
+          "median_total_gpu_ms": 10.959187,
+          "mean_rmse": 0.023568845918250002,
+          "mean_penumbra_rmse": 0.3101800952,
+          "max_brightening": 0.0
+        },
+        "multilayer-filtered": {
+          "cases": 4,
+          "median_total_gpu_ms": 52.76702,
+          "mean_rmse": 0.01707235392,
+          "mean_penumbra_rmse": 0.1628277585,
+          "max_brightening": 0.0
+        },
+        "ndc-pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 27.3600785,
+          "mean_rmse": 0.01027265508625,
+          "mean_penumbra_rmse": 0.112206155195,
+          "max_brightening": 0.1041666865
+        },
+        "pcf": {
+          "cases": 4,
+          "median_total_gpu_ms": 27.008761,
+          "mean_rmse": 0.0165415050625,
+          "mean_penumbra_rmse": 0.1389480206125,
+          "max_brightening": 0.0
+        },
+        "pcss": {
+          "cases": 4,
+          "median_total_gpu_ms": 18.7135695,
+          "mean_rmse": 0.01157516816875,
+          "mean_penumbra_rmse": 0.117258255525,
+          "max_brightening": 0.1458333135
+        },
+        "pcss-min-gap": {
+          "cases": 4,
+          "median_total_gpu_ms": 18.204237499999998,
+          "mean_rmse": 0.010954945975500001,
+          "mean_penumbra_rmse": 0.1269560903,
+          "max_brightening": 0.4791666865
+        },
+        "ray16": {
+          "cases": 4,
+          "median_total_gpu_ms": 1.8552715000000002,
+          "mean_rmse": 0.003563085894075,
+          "mean_penumbra_rmse": 0.045590897392499996,
+          "max_brightening": 0.0
+        },
+        "reference": {
+          "cases": 4,
+          "median_total_gpu_ms": 335.4550725,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        },
+        "split-min": {
+          "cases": 4,
+          "median_total_gpu_ms": 50.6149245,
+          "mean_rmse": 0.006076665874,
+          "mean_penumbra_rmse": 0.088582443335,
+          "max_brightening": 0.0
+        },
+        "split-product": {
+          "cases": 4,
+          "median_total_gpu_ms": 46.940059500000004,
+          "mean_rmse": 0.006241555256,
+          "mean_penumbra_rmse": 0.090562803735,
+          "max_brightening": 0.0
+        }
+      }
+    },
+    "close": {
+      "cases": 18,
+      "reference_converged": true,
+      "max_gpu_area_error": 2.14576721191e-06,
+      "methods": {
+        "adaptive-min-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 319.642831,
+          "mean_rmse": 0.01821361471,
+          "mean_penumbra_rmse": 0.02656518814,
+          "max_brightening": 0.03125
+        },
+        "adaptive-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 286.424181,
+          "mean_rmse": 0.01822960381,
+          "mean_penumbra_rmse": 0.02652145748,
+          "max_brightening": 0.03125
+        },
+        "angular-maps": {
+          "cases": 1,
+          "median_total_gpu_ms": 476.65727,
+          "mean_rmse": 0.007860116004,
+          "mean_penumbra_rmse": 0.022809548,
+          "max_brightening": 0.0
+        },
+        "binned-min": {
+          "cases": 1,
+          "median_total_gpu_ms": 419.923262,
+          "mean_rmse": 0.0414422367,
+          "mean_penumbra_rmse": 0.1103129183,
+          "max_brightening": 0.0
+        },
+        "bitmask-layered": {
+          "cases": 1,
+          "median_total_gpu_ms": 1681.66831,
+          "mean_rmse": 0.04524451686,
+          "mean_penumbra_rmse": 0.1143834977,
+          "max_brightening": 0.0
+        },
+        "coherent-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 2426.162787,
+          "mean_rmse": 0.009235404031,
+          "mean_penumbra_rmse": 0.02570131622,
+          "max_brightening": 2.980232239e-08
+        },
+        "contour-fill-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 692.345117,
+          "mean_rmse": 0.01518711891,
+          "mean_penumbra_rmse": 0.04628017329,
+          "max_brightening": 6.109476089e-05
+        },
+        "contour-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 505.505825,
+          "mean_rmse": 0.02159602457,
+          "mean_penumbra_rmse": 0.04652057333,
+          "max_brightening": 2.443790436e-06
+        },
+        "hard": {
+          "cases": 1,
+          "median_total_gpu_ms": 12.339831,
+          "mean_rmse": 0.09024895972,
+          "mean_penumbra_rmse": 0.2791485755,
+          "max_brightening": 0.0
+        },
+        "multilayer-filtered": {
+          "cases": 1,
+          "median_total_gpu_ms": 128.436369,
+          "mean_rmse": 0.06130545225,
+          "mean_penumbra_rmse": 0.1374334851,
+          "max_brightening": 0.0
+        },
+        "ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 211.864199,
+          "mean_rmse": 0.016570551,
+          "mean_penumbra_rmse": 0.03797956286,
+          "max_brightening": 0.1458333731
+        },
+        "pcf": {
+          "cases": 1,
+          "median_total_gpu_ms": 113.801081,
+          "mean_rmse": 0.04754484459,
+          "mean_penumbra_rmse": 0.1270267392,
+          "max_brightening": 0.0
+        },
+        "pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 183.509983,
+          "mean_rmse": 0.01880998037,
+          "mean_penumbra_rmse": 0.04553567125,
+          "max_brightening": 0.1458333135
+        },
+        "pcss-min-gap": {
+          "cases": 1,
+          "median_total_gpu_ms": 172.230081,
+          "mean_rmse": 0.03237357337,
+          "mean_penumbra_rmse": 0.0997685874,
+          "max_brightening": 0.4895833135
+        },
+        "ray16": {
+          "cases": 1,
+          "median_total_gpu_ms": 1.365804,
+          "mean_rmse": 0.01472894249,
+          "mean_penumbra_rmse": 0.04556323124,
+          "max_brightening": 0.0
+        },
+        "reference": {
+          "cases": 1,
+          "median_total_gpu_ms": 3062.224065,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        },
+        "split-min": {
+          "cases": 1,
+          "median_total_gpu_ms": 340.990555,
+          "mean_rmse": 0.009387310067,
+          "mean_penumbra_rmse": 0.0280710478,
+          "max_brightening": 0.0
+        },
+        "split-product": {
+          "cases": 1,
+          "median_total_gpu_ms": 345.515733,
+          "mean_rmse": 0.0088026294,
+          "mean_penumbra_rmse": 0.02628913049,
+          "max_brightening": 0.0
+        }
+      }
+    },
+    "one": {
+      "cases": 2,
+      "reference_converged": true,
+      "max_gpu_area_error": 2.14576721191e-06,
+      "methods": {
+        "contour-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 15.26998,
+          "mean_rmse": 0.01336686232,
+          "mean_penumbra_rmse": 0.2935944623,
+          "max_brightening": 0.0
+        },
+        "reference": {
+          "cases": 1,
+          "median_total_gpu_ms": 301.907558,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        }
+      }
+    },
+    "dense": {
+      "cases": 2,
+      "reference_converged": true,
+      "max_gpu_area_error": 2.14576721191e-06,
+      "methods": {
+        "contour-fill-ndc-pcss": {
+          "cases": 1,
+          "median_total_gpu_ms": 324.706229,
+          "mean_rmse": 0.02961172377,
+          "mean_penumbra_rmse": 0.1364177671,
+          "max_brightening": 0.9968044162
+        },
+        "reference": {
+          "cases": 1,
+          "median_total_gpu_ms": 2450.613807,
+          "mean_rmse": 0.0,
+          "mean_penumbra_rmse": 0.0,
+          "max_brightening": 0.0
+        }
+      }
+    }
+  },
+  "ctest_suites": [
+    "shadows-geometry",
+    "shadows-camera",
+    "shadows-analyzer"
+  ],
+  "single_map_contract": true,
+  "source_hashes_match": true
+}

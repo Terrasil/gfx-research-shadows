@@ -1,0 +1,18 @@
+#version 460 core
+layout(local_size_x=1) in;
+layout(std430,binding=0) buffer Results{vec4 values[];};
+#include "pcss_sampling.glsl"
+void main(){
+    int c=int(gl_GlobalInvocationID.x),pattern,count,index;
+    uvec2 pixel;uint seed;float angle;
+    if(c<768){
+        pattern=c/256;count=c%256+1;index=(c*37+3)%count;
+        pixel=uvec2((c*13)%1024,(c*7)%1024);seed=uint(c%11)*17u;angle=0.21*float(c%7);
+    }else{
+        pattern=1+(c-768)/400;int k=(c-768)%400;
+        count=k<48?48:k<144?96:256;index=k-(k<48?0:k<144?48:144);
+        pixel=uvec2(145,87);seed=19u;angle=0.37;
+    }
+    values[c]=vec4(diskSample(index,count,angle,pattern,diskSeed(pixel,seed,0u)),
+                   diskSample(index,count,angle,pattern,diskSeed(pixel,seed,1u)));
+}

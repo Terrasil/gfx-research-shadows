@@ -13,14 +13,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--profile", choices=["smoke", "quick", "full"], default="quick")
+    parser.add_argument("--profile", choices=["manual", "smoke", "quick", "full"], default="quick")
     parser.add_argument("--exe", type=Path, default=ROOT / "cmake-build-release" / ("gfx-research-shadows.exe" if sys.platform == "win32" else "gfx-research-shadows"))
     parser.add_argument("--output", type=Path)
     parser.add_argument("--headless", action="store_true")
     parser.add_argument("--analytic", action="store_true")
     args, extra = parser.parse_known_args()
     output = args.output or ROOT / "results" / args.profile
-    flag = {"smoke": "--smoke", "quick": "--publication-quick", "full": "--publication-suite"}[args.profile]
+    flag = {"manual": "--benchmark", "smoke": "--smoke", "quick": "--publication-quick", "full": "--publication-suite"}[args.profile]
     command = [str(args.exe.resolve()), flag, f"--output={output.resolve()}"]
     if args.headless:
         command.append("--headless")
@@ -28,7 +28,7 @@ def main():
         command.append("--map-backend=analytic")
     command += extra
     source_hashes = {}
-    for directory in ("src", "include", "shaders", "tools", "tests", "docs"):
+    for directory in ("src", "include", "shaders", "tools", "tests", "upstream"):
         for path in sorted((ROOT / directory).rglob("*")):
             if path.is_file() and "__pycache__" not in path.parts:
                 source_hashes[str(path.relative_to(ROOT)).replace("\\", "/")] = hashlib.sha256(path.read_bytes()).hexdigest()

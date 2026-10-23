@@ -6,7 +6,7 @@ namespace shadows {
 struct Options {
     Settings settings;
     bool benchmark = false, quick = false, full = false, smoke = false, headless = false;
-    std::string scene = "mixed-overlap", method = "ndc-pcss";
+    std::string scene = "mixed-overlap", method = "geometric";
     std::filesystem::path output = "results/manual";
     int warmup = 12, measure = 30;
 };

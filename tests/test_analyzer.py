@@ -33,6 +33,17 @@ class AnalyzerRejectionTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "payload"):
                 analyzer.read_pfm(path)
 
+    def test_old_catalog_is_rejected(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "run_manifest.json").write_text(json.dumps({"completed":True,"version":"0.7.0","method_count":31}))
+            with self.assertRaisesRegex(ValueError,"catalog"):
+                analyzer.analyze(root)
+
+    def test_catalog_has_only_seven_methods(self):
+        self.assertEqual(len(analyzer.METHODS),7)
+        self.assertEqual(set(analyzer.METHODS),{"hard","pcf","pcss","arr","geometric","dpcf","chs"})
+
 
 if __name__ == "__main__":
     unittest.main()

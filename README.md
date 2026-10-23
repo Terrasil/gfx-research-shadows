@@ -1,143 +1,115 @@
 # gfx-research-shadows
 
-Projekt badawczy C++20 / OpenGL 4.6 oparty na **gfx-research-base**. Służy do porównywania metod miękkich cieni w etapie deferred, ze szczególnym uwzględnieniem nakładania szerokiego półcienia wysokiej przeszkody i ostrzejszego cienia przeszkody blisko podłoża.
+Laboratorium cieni C++20 / OpenGL 4.6 na [gfx-research-base](https://github.com/Terrasil/gfx-research-base), rewizja `a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c`. Wersja 0.12.0 udostępnia wspólne menu `Smoothing` dla PCSS mean blocker, geometric i fixed PCF. Dodaje też presety losowych próbek bezpośrednio w tym menu. Badamy nakładanie ostrych cieni bliskich przeszkód i szerokich półcieni dalszych obiektów. Backprojection usunięto.
 
-To działający renderer i zestaw eksperymentów. Żaden wariant eksperymentalny nie jest przedstawiany jako potwierdzona nowa metoda ani rozwiązanie wszystkich artefaktów LoM.
+| ID CLI | Metoda |
+| --- | --- |
+| `hard` | Hard shadow |
+| `pcf` | Fixed PCF, stały promień w tekslach mapy |
+| `pcss` | PCSS mean blocker, średnia arytmetyczna odległości, z wyborem wygładzania |
+| `arr` | Angular ray reference, przecięcia promieni z bryłami AABB |
+| `geometric` | PCSS geometric mean z wygładzaniem, domyślna metoda |
+| `dpcf` | Pełny filtr kierunkowy DPCF z Filament v1.23.1 |
+| `chs` | Pełny wariant `contactFixedGather4` z AMD ShadowFX |
 
-## Powiązanie z bazą
+Metody mapowe korzystają z tej samej kamery światła, projekcji NDC i jednej warstwy D32F. `--warp=0` wyłącza zagęszczenie mapy. Generowanie mapy to jeden przebieg, ewaluacja cienia to osobny, pojedynczy przebieg deferred. G-buffer kamery jest wspólny. Nie ma dodatkowej mapy cieni ani czasowego odszumiania.
 
-Projekt używa `gfx::research_base`, `Application`, `OrbitCamera`, `Shader`, `Mesh`, `Framebuffer`, `FullscreenTriangle`, obsługi zrzutów PNG i GUI ImGui dostarczanych przez bazę. CMake domyślnie pobiera repozytorium `Terrasil/gfx-research-base` z przypiętym commitem `a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c`.
+## Budowanie i obsługa
 
-Można wskazać lokalny checkout. W takim przypadku manifest zapisuje jego rzeczywisty commit zamiast udawać, że użyto wersji domyślnej.
-
-## Budowanie na Windows / MinGW
-
-Wymagania: CMake 3.25+, Ninja, kompilator C++20, Python 3 oraz sterownik OpenGL 4.6. Możesz użyć swojego GCC 16.2. Pierwsza konfiguracja pobiera zależności bazy. Generator GLAD wymaga modułu Python `jinja2`.
-
-```powershell
-python -m pip install jinja2
+```sh
 cmake --preset release
 cmake --build --preset release
 ctest --preset release
+cmake-build-release/gfx-research-shadows --scene=crossing --method=geometric
 ```
 
-Z własną bazą:
+Windows: plik wykonywalny ma rozszerzenie `.exe`. CLion obsługuje presety CMake. Lokalną bazę można podać przez `-DGFX_RESEARCH_BASE_LOCAL_PATH=/sciezka/gfx-research-base`.
 
-```powershell
-cmake --preset release -DGFX_RESEARCH_BASE_LOCAL_PATH=E:/gfx-research-base
-cmake --build --preset release
-```
+Kamera: prawy przycisk myszy obraca, środkowy przesuwa, kółko przybliża. WASD przesuwa, Q/E zmienia wysokość, Shift przyspiesza, R resetuje, P zapisuje obraz bez GUI. Parametry CLI: `--camera-yaw`, `--camera-pitch`, `--camera-distance`, `--camera-target-x`, `--camera-target-y`, `--camera-target-z`. Sceny: `single-high`, `single-low`, `mixed-overlap`, `crossing`, `hidden-layer`, `sloped`, `dense`.
 
-Cel wykonywalny: `gfx-research-shadows`. Baza zachowuje swoje ustawienia statycznego runtime na Windows.
+## Smoothing: mean blocker, geometric i fixed PCF
 
-Na Linux potrzebne są zależności kompilacji GLFW. Przykład dla Ubuntu:
+W `pcss` promień wynika ze średniej arytmetycznej dodatnich, skorygowanych o płaszczyznę odbiornika odstępów: `A = sum(g) / count`. W `geometric` używamy `G = exp(sum(log(g)) / count)`. Wygładzanie widoczności jest dostępne dla obu metod oraz dla stałego PCF. Hard shadow i ARR pozostają metodami kontrolnymi, a DPCF i CHS korzystają ze swoich oryginalnych rekonstrukcji.
 
-```bash
-sudo apt install build-essential cmake ninja-build python3-jinja2 libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
-cmake --preset release -DGLFW_BUILD_WAYLAND=OFF
-cmake --build --preset release
-ctest --preset release
-```
+Każdy tap końcowego PCF w trybie bilinearnym pobiera sąsiedztwo 2×2 przez gather4. Dla każdej głębokości osobno liczymy test zasłonięcia z korekcją płaszczyzny, a następnie interpolujemy cztery wyniki. Przy małym promieniu PCSS przejście między kontaktem a filtrem dyskowym jest płynne. Nie interpolujemy surowych głębokości pomiędzy obiektami ani nie zmieniamy kontrastu końcowego cienia.
 
-## Uruchomienie interaktywne
+Tryb wybiera się w panelu `Smoothing` lub przez `--smoothing`. Dawne `--geometric-smoothing` pozostaje aliasem tego samego ustawienia:
 
-```powershell
-.\cmake-build-release\gfx-research-shadows.exe
-```
-
-Panel pozwala zmieniać metodę, scenę, promień kątowy słońca, siłę zagęszczenia NDC, liczbę próbek, rodzaj generacji map i preset kamery. Dostępny jest widok oświetlony i surowa widoczność światła. Przycisk zapisu tworzy obraz bez GUI.
-
-## Metody
-
-Wartość widoczności `0` oznacza całkowite zasłonięcie, a `1` pełną widoczność źródła.
-
-| Identyfikator | Metoda | Używane mapy | Przebiegi ewaluacji |
-| --- | --- | ---: | ---: |
-| `hard` | Pojedynczy test głębokości | 1 | 1 |
-| `pcf` | PCF o stałym promieniu | 1 | 1 |
-| `pcss` | PCSS ze średnią odległością przeszkód | 1 | 1 |
-| `pcss-min-gap` | PCSS z minimalną odległością przeszkody od odbiornika | 1 | 1 |
-| `ndc-pcss` | Ten sam PCSS w nieliniowo zagęszczonej mapie | 1 | 1 |
-| `split-min` | Dwie niezależne grupy przeszkód, PCSS każdej, minimum widoczności | 2 | 1 |
-| `split-product` | Te same dwie grupy, iloczyn widoczności | 2 | 1 |
-| `binned-min` | Jedna mapa, dwa przedziały odległości, minimum ich estymat | 1 | 1 |
-| `ray16` | 16 kierunków źródła, dokładne przecięcia z bryłami sceny | 0 | 1 |
-| `reference` | Wieloprzebiegowa całka widoczności całej sceny | 0 | N + rozstrzygnięcie sum |
-
-`split-min`, `split-product` i `binned-min` używają zagęszczenia NDC. `ray16` ma dostęp do całej listy brył. To kontrolny punkt porównania dla tej sceny, a nie zamiennik dowolnego renderera siatek.
-
-Grupy w metodach `split-*` są **jawnie oznaczone w scenie**, nie są automatycznie rozpoznawane na podstawie obrazu. Nie należy porównywać ich kosztu jako metody z jedną mapą. `binned-min` ma wyłącznie najbliższą warstwę głębokości, przez co może zgubić przesłonięte powierzchnie. Te ograniczenia są celowo zachowane w badaniu.
-
-## Sceny
-
-| Scena | Badany przypadek |
+| Wartość | Wygładzanie |
 | --- | --- |
-| `single-high` | Szeroki półcień pojedynczej wysokiej przeszkody |
-| `single-low` | Wąski półcień przeszkody przy podłożu |
-| `mixed-overlap` | Podstawowy problem LoM: szeroki i ostry cień w tym samym obszarze |
-| `crossing` | Przecinające się cienie poprzecznych przeszkód |
-| `hidden-layer` | Istotna powierzchnia ukryta w mapie głębokości |
-| `sloped` | Pochylona powierzchnia przyjmująca cień |
-| `dense` | Wiele przeszkód o różnych wysokościach |
+| `0` | Punktowe porównania; w PCSS przywraca wcześniejszy wariant bez dodatkowego smoothingu |
+| `1` | Bilinearne wyniki PCF, pierwotna statystyka blockerów, domyślne |
+| `2` | Jak 1, dodatkowo bilinearnie ważone statystyki blockerów |
+| `3` | Monotoniczna interpolacja Hermite'a `h(t)=3t²-2t³`, w PCSS również ważone statystyki blockerów |
+| `4` | Rekonstrukcja widoczności B-spline 4×4, pierwotna statystyka blockerów |
+| `5` | Bicubic Catmull-Rom 4×4, pierwotna statystyka blockerów |
+| `6` | Preset: bilinear + losowe próbki dysku, dla mean i geometric |
+| `7` | Preset: bilinear + stratyfikowane losowe próbki dysku, dla mean i geometric |
 
-Sceny są proceduralne. Składają się z prostopadłościanów i planarnego odbiornika. Ta ograniczona geometria pozwala policzyć niezależną referencję bez korzystania z map cieni. Baza jest gotowa do dalszego dodania siatek, lecz aktualna referencja dotyczy wyłącznie opisanych brył. Płaszczyzna odbiornika nie rzuca cienia.
+W trybach 2 i 3 mean blocker używa `A = sum(w*g) / sum(w)`, a geometric `G = exp(sum(w*log(g)) / sum(w))`. Każdy odstęp zachowuje własny wkład. Wagi opisują położenie próbek, nie preferencję dużego lub małego odstępu. Tryb Hermite'a przenosi pomysł rekonstrukcji tekstur terenu na wyniki porównań. Nieujemne wagi zachowują zakres [0,1], ale nie gwarantują lepszego dopasowania do ARR.
 
-## Generowanie map
+Fixed PCF udostępnia tryby 0, 1, 3, 4 i 5. Zachowuje stały promień i siatkę tapów; nie wykonuje blocker search. Ustawienia 2, 6 i 7 są dla niego równoważne trybowi 1. Presety 6 i 7 wybierają bilinear oraz wzorzec próbek, więc nie są osobnymi algorytmami wygładzania. Poza presetami każdy filtr mean/geometric można łączyć z dowolnym `PCSS sample pattern`, również bicubic z próbkami losowymi.
 
-Domyślny backend `raster` rysuje rzeczywistą geometrię do mapy głębokości. Przy aktywnym NDC używa teselacji do przybliżenia zakrzywionych krawędzi projekcji. Głębokość fragmentu jest odtwarzana przez przecięcie promienia z płaszczyzną ściany. Poziom teselacji wynosi 32, a przy projekcji liniowej 1.
-
-Backend `analytic` buduje mapę przez dokładne przecięcia promieni z tymi samymi prostopadłościanami. To diagnostyka wpływu rasteryzacji i odkształcenia NDC. Wyników czasu tego backendu nie wolno opisywać jako kosztu rasteryzacji dowolnej sceny gry.
-
-Próbki PCSS są rozmieszczane w niezdeformowanej przestrzeni światła i dopiero potem mapowane do tekstury. Maksymalny promień jest wyrażony w jednostkach świata. Pozwala to uniknąć zmiany fizycznej szerokości półcienia tylko z powodu zagęszczenia NDC. Korekcja płaszczyzny odbiornika jest wspólna dla metod opartych na mapach.
-
-## Eksperymenty
-
-Krótka kontrola wszystkich metod:
-
-```powershell
-python tools/run_experiment.py --profile smoke
+```sh
+cmake-build-release/gfx-research-shadows --method=pcss --smoothing=5
+cmake-build-release/gfx-research-shadows --method=pcss --smoothing=7 --sample-seed=37
+cmake-build-release/gfx-research-shadows --method=pcf --smoothing=3
 ```
 
-Szybka seria: 4 sceny, 640x360, mapa 512, 128 kierunków referencji, 3 klatki rozgrzewki i 8 pomiarów dla przybliżeń. Łącznie **40 przypadków**.
+Zmiana dotyczy rekonstrukcji i statystyki PCSS, nie reprezentacji mapy analogicznej do VSM, Convolution Shadow Maps czy ESM. Materiały: [Fernando, PCSS](https://developer.download.nvidia.com/shaderlibrary/docs/shadow_PCSS.pdf), [Romain Vergne, Shadows](http://romain.vergne.free.fr/teaching/IS/SI08-shadows.html), [GPU Gems 2, rozdział 17](https://developer.nvidia.com/gpugems/gpugems2/part-ii-shading-lighting-and-shadows/chapter-17-efficient-soft-edged-shadows-using).
 
-```powershell
-python tools/run_experiment.py --profile quick --output results/quick-raster
-python tools/run_experiment.py --profile quick --analytic --output results/quick-analytic
+**B-spline 4×4.** Tryb 4 rekonstruuje maskę widoczności sześciennym filtrem B-spline z 16 osobnych porównań głębokości. Nie zmienia wyszukiwania blockerów ani wzoru na promień wybranej metody PCSS. Wagi są nieujemne i sumują się do jedności, więc filtr nie tworzy oscylacji charakterystycznych dla jąder z ujemnymi wagami. Szersza rekonstrukcja może dodatkowo zmiękczać bliskie cienie. Koszt wynosi cztery gather4 na tap PCF, w porównaniu z jednym w trybie 1. Nie wymaga dodatkowej tekstury ani przebiegu. Definicja filtra: [Sigg i Hadwiger, Fast Third-Order Texture Filtering](https://developer.nvidia.com/gpugems/gpugems2/part-iii-high-quality-rendering/chapter-20-fast-third-order-texture-filtering).
+
+```sh
+cmake-build-release/gfx-research-shadows --method=geometric --smoothing=4
 ```
 
-Pełna seria: 7 scen, 1280x720 i 1920x1080, mapy 1024 i 2048, promienie kątowe 0.27, 1.5 i 3 stopnie, 10 metod. Łącznie **840 przypadków**. Przybliżenia mają 120 klatek rozgrzewki i 300 pomiarów. Kosztowna referencja ma jeden zarejestrowany pomiar na konfigurację i 1024 kierunki. Liczba ta jest zapisana osobno w CSV.
+Parametry: `--samples=48`, `--blocker-samples=48`, `--max-radius=3`. Gather4 oznacza cztery porównania zamiast jednego, a tryby 2 i 3 dodatkowe obliczenia logarytmów. Wygładzanie nie jest bezkosztowe. Nie usuwa też utraty geometrii ukrytej w jednej mapie ani ograniczenia PCSS do pojedynczego promienia przy mieszaniu różnych przeszkód.
 
-```powershell
-python tools/run_experiment.py --profile full --output results/publication-raster
-python tools/analyze_results.py results/publication-raster --publication
+**Bicubic Catmull-Rom 4×4.** Tryb 5 używa interpolującego jądra Keys z parametrem `a=-0.5`. Podobnie jak B-spline pobiera 16 wyników porównań, ale zachowuje wartości w środkach tekseli. Ujemne wagi mogą powodować oscylacje przy nieciągłościach. Wynik każdego tapu jest ograniczany do [0,1]; nie oznacza to usunięcia wszystkich aureoli. Koszt to cztery gather4 na tap. B-spline także jest filtrem bikubicznym; nazwy w menu rozróżniają użyte jądra.
+
+## Próbkowanie PCSS
+
+| `--sample-pattern` | Rozmieszczenie |
+| --- | --- |
+| `vogel` | Poprzedni deterministyczny dysk Vogela, domyślne |
+| `random` | Losowanie równomierne względem pola dysku |
+| `stratified` | Jedna losowa próbka w każdej komórce pierścienia i sektora |
+
+Parametr `--sample-seed=0` wybiera ziarno; dostępny jest też w panelu. Losowania zależą od piksela i ziarna, więc nieruchoma scena daje powtarzalny obraz. Blocker search i końcowy PCF korzystają z oddzielnych strumieni. `--rotate-samples` nadal pozwala obracać wzorzec. Losowe pozycje wyznacza całkowitoliczbowy hash PCG, bez tekstury szumu i bez kolejnego przebiegu. Źródło: [Jarzynski i Olano, Hash Functions for GPU Rendering](https://jcgt.org/published/0009/03/02/).
+
+Wzór `r=sqrt(u)` zapewnia poprawny rozkład pola dysku. Wariant stratyfikowany dzieli dysk na komórki o polu `pi/N`, również gdy liczba próbek nie jest kwadratem. To ogranicza skupiska i puste obszary w porównaniu z niezależnym losowaniem. Losowanie może zamieniać pasma w ziarno; nie ma akumulacji czasowej. Ustawienia dotyczą `pcss` i `geometric`; DPCF, CHS oraz ARR zachowują swoje oryginalne wzorce.
+
+```sh
+cmake-build-release/gfx-research-shadows --method=geometric --smoothing=5 --sample-pattern=stratified --sample-seed=37
 ```
 
-Własny przypadek, np. większy budżet referencji:
+## Pozostałe filtry
 
-```powershell
-.\cmake-build-release\gfx-research-shadows.exe --benchmark --method=all --scene=mixed-overlap --reference-samples=2048 --angle=3 --output=results/overlap
-python tools/analyze_results.py results/overlap
+**DPCF.** Port całego kierunkowego `ShadowSample_DPCF` z [Filament v1.23.1](https://github.com/google/filament/blob/v1.23.1/shaders/src/shadowing.fs), commit `a67d50b9e29cf7bf2f0a6f0b7bf4668cdb87770a`. Oryginalny dysk Poissona, wspólne próbki PCF i średniej głębokości blockerów, receiver-plane bias, penumbra ratio i sześcienny `hardenedKernel`. Dysk zawsze obraca przestrzenny interleaved gradient noise. Parametry: `--dpcf-taps=12` (1..64), `--dpcf-radius=6`, `--dpcf-ratio-scale=1`. [Shadows of Cold War](https://research.activision.com/publications/2021/10/shadows-of-cold-war--a-scalable-approach-to-shadowing).
+
+**CHS.** Port `contactFixedGather4` z [AMD ShadowFX](https://github.com/GPUOpen-Effects/ShadowFX), commit `c6d931c27275b1bb65ba0abfb71eaba86f355387`. Zachowuje `uniformBlockerSearch`, oryginalne macierze wag 7, 9, 11, 13, 15, sześcienną interpolację Bezier i normalizację. Parametry: `--chs-kernel=11`, `--chs-sun-size=4`; do filtra trafia kwadrat rozmiaru, jak w przykładzie AMD. Macierze umieszczono w stałym UBO o rozmiarze 10400 bajtów. Rekonstrukcja sumuje bezpośrednio wkłady gather4, eliminując dynamicznie indeksowaną tablicę lokalną. To przekształcenie tego samego filtra, kontrolowane względem oryginalnego backendu AMD PCF.
+
+Każda metoda ma osobny, buforowany program shadera. CHS ma wariant kompilowany dla wybranego rozmiaru jądra, a PCF, mean i geometric dla wybranego wygładzania. Presety losowe korzystają z istniejącego programu bilinear i uniformów. Kod CHS nie obciąża programu geometric. Kompilacja odbywa się przed zakresem pomiarów GPU. Pierwsze wybranie nieużywanego wariantu może wymagać kompilacji.
+
+Porty dotyczą filtrów, nie całych silników i SDK. Integracja używa naszego G-buffera, forward Z i ortograficznej mapy NDC. DPCF przelicza znak biasu i penumbra ratio z reverse Z. Promień DPCF i rozmiar Słońca CHS skalujemy przez `tan(angle)/tan(1.5°)`. Jest to kalibracja laboratorium, nie identyczne fizyczne odwzorowanie Słońca we wszystkich metodach. CHS zachowuje oryginalne porównania głębokości bez dodatkowej korekcji płaszczyzny odbiornika. Źródła, identyfikatory i licencje są w `upstream/`.
+
+**ARR.** Dokładne przecięcia promień-AABB dla skończonej liczby kierunków na dysku kątowym. Wynik uwzględnia cosinus odbiornika i miarę kąta bryłowego. `--reference-samples=512` steruje przybliżeniem całki; 1024 lub 4096 pozwala sprawdzić zbieżność. ARR korzysta z geometrii i stanowi referencję, nie metodę z jednej mapy.
+
+## Pomiary
+
+```sh
+python tools/run_experiment.py --profile quick --exe cmake-build-release/gfx-research-shadows --reference-samples=1024
+python tools/run_experiment.py --profile manual --exe cmake-build-release/gfx-research-shadows --scene=crossing --method=geometric --geometric-smoothing=0 --output=results/point
+python tools/run_experiment.py --profile manual --exe cmake-build-release/gfx-research-shadows --scene=crossing --method=geometric --geometric-smoothing=1 --output=results/linear
 ```
 
-Opcje profilu podawaj przed opcjami nadpisującymi jego ustawienia. Na Windows `--headless` ukrywa okno GLFW. Na Linux ten przełącznik uruchamia kontekst EGL bez serwera okien i używa tego samego renderera oraz tych samych klas bazy. Wymaga `libEGL.so.1` i obsługi OpenGL 4.6 przez sterownik. Domyślne uruchomienie interaktywne korzysta z aplikacji GLFW/ImGui z bazy.
+Profile: `smoke` to 14 przypadków, `quick` 28, `full` 588. Linux obsługuje bezokienkowy EGL przez `--headless`. Domyślnie używamy rasteryzacji; `--map-backend=analytic` to oddzielny oracle brył do diagnostyki mapy.
 
-## Zapisywane materiały
+Runner zapisuje żądany smoothing, faktyczne jądro rekonstrukcji, skonfigurowany i faktyczny wzorzec próbek, ziarno oraz kamerę, hashe źródeł i programu, surowe czasy, PNG, liniowe PFM oraz RMSE, błąd półcienia i gradientów, maksymalny błąd i rozjaśnienie po dodaniu przeszkody. `configured_filter_samples` i `configured_blocker_samples` opisują ustawienia PCSS; DPCF używa `dpcf_taps`, CHS dwóch etapów po `((kernel+1)/2)^2` gather4 bez wcześniejszego zakończenia. Czas obejmuje mapę i ewaluację cienia, bez wspólnego G-buffera, kompilacji, odczytu i GUI.
 
-- `raw.csv`: wynik każdego przypadku, dokładne wymiary, RMSE, RMSE półcienia, błąd gradientu, błąd maksymalny, naruszenia monotoniczności i mediany czasu GPU.
-- `timings.csv`: każdy pomiar znaczników GPU, oddzielnie generacja map i ewaluacja cienia.
-- `reference_convergence.csv`: porównanie N/2 i N kierunków oraz kontrola referencji przez niezależny kod CPU w podwójnej precyzji.
-- `run_manifest.json`: wersje, rzeczywisty renderer, ustawienia, profil i znacznik ukończenia.
-- `source_manifest.json`: komenda i hashe źródeł, gdy użyto wrappera Python.
-- `capture_manifest.csv`: indeks wszystkich materiałów obrazowych.
-- `captures/`: surowa widoczność PFM, maska odbiornika oraz PNG oświetlenia, widoczności i różnicy względem referencji.
-- `summary.json` i `report.html`: wyniki walidatora i zestawienie pomiarów.
+Przed pomiarami GPU wykonuje 320 kontroli filtrów i 1568 kontroli pozycji próbek. Niezależny oracle CPU porównuje DPCF z jego definicją, CHS gather4 z oryginalnym `contactFixedPCF`, a rekonstrukcję bilinearną i Hermite'a z osobnymi testami czterech tekseli oraz ważonymi średnimi arytmetyczną i geometryczną. B-spline i Catmull-Rom 4×4 porównywane są z niezależnymi, skalarnymi definicjami funkcji bazowych i 16 osobnymi testami CPU. Samplery mają kontrolę pozycji GPU/CPU, zakresu dysku i statystyk pełnych zestawów dla 48, 96 i 256 próbek. Analyzer odrzuca niezgodności, niepełne serie i naruszenie kontraktu jednej mapy. ARR ma niezależny ray-box CPU i test zbieżności. `--publication` oraz `--require-hardware` odrzucają czasy renderera programowego.
 
-PFM zachowuje wartości liniowe, bez gammy i tonemappingu. Czas GPU obejmuje generację wymaganych map i ewaluację cienia; wyłącza wspólny G-buffer, GUI, odczyty i zapis plików. Jednoprzebiegowość dotyczy ewaluacji deferred, a nie przygotowania wszystkich danych.
+Przykłady, porównania filtrów i rozmieszczenie próbek są w `examples/`. Pliki bez prefiksu `smoothing` dokumentują wersję 0.11.0; nowe wyniki, porównanie i zapis weryfikacji mają prefiks `smoothing`. Domyślny pozostaje tryb bilinearny z dyskiem Vogela. Wyższy rząd filtra i losowanie nie gwarantują mniejszego błędu względem ARR w każdej scenie. Wydajność sprawdzono na llvmpipe, nie na RX 9070 XT.
 
-Pole `map_bytes` opisuje używane warstwy głębokości. Implementacja rezerwuje wspólną pulę dwóch warstw także dla metod używających jednej, aby przełączanie w GUI nie wymagało ponownej alokacji. Pamięć G-buffera i obrazów referencyjnych nie jest w tym polu uwzględniona.
-
-Test monotoniczności zachowuje identyczną kamerę i G-buffer, wyłączając jedynie rzucanie cienia przez grupę niskich przeszkód. Dodanie nieprzezroczystej przeszkody nie powinno zwiększać widoczności światła. Metryki są liczone na widocznym odbiorniku, bez tła i brył zasłaniających odbiornik.
-
-Walidator odrzuca niekompletne serie, NaN/Inf, błędne zakresy, brakujące pomiary i zrzuty oraz niezgodność metryk z zapisanymi obrazami. `--publication` dodatkowo wymaga pełnego profilu, renderera sprzętowego i spełnienia jawnego kryterium zbieżności referencji. Próby wykonane przez llvmpipe służą weryfikacji działania i nie są wynikami wydajności na RX 9070 XT.
-
-Plan badań, źródła i ograniczenia znajdują się w `docs/RESEARCH_PLAN.md` i `docs/RELATED_WORK.md`.
+Weryfikacja 0.12.0 objęła 60 przypadków renderowania, 320 kontroli filtrów i 1568 kontroli próbek GPU/CPU na serię oraz 3 testy CTest. Weighted mean ma dodatkowy niezależny oracle arytmetycznej średniej blockerów. Wszystkie 24 obrazy metod kontrolnych pozostały identyczne z 0.11.0; tryb 0 odtwarza poprzedni mean. Presety 6 i 7 dały identyczny PFM jak ręcznie ustawione bilinear z odpowiednim wzorcem. W jednym teście `crossing` RMSE mean zmalał z 0.009208 do 0.008748 po włączeniu bilinear. To wynik dla jednej konfiguracji, nie gwarancja poprawy wszystkich scen.
