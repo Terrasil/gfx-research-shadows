@@ -44,6 +44,24 @@ inline Box stressBox(int index, int count) {
             center + glm::vec3{width * 0.5f, group ? 3.6f : 0.75f, width * 0.5f},
             group ? glm::vec3{0.82f, 0.55f, 0.19f} : glm::vec3{0.18f, 0.46f, 0.75f}, group};
 }
+inline float casterNearDepth(const Scene& scene,const glm::mat4& lightVp,int droppedGroup=-1) {
+    double nearest=1.0;
+    const glm::dmat4 vp(lightVp);
+    auto include=[&](const Box& box){
+        for(int k=0;k<8;++k){
+            const glm::dvec3 p{(k&1)?box.hi.x:box.lo.x,(k&2)?box.hi.y:box.lo.y,(k&4)?box.hi.z:box.lo.z};
+            const auto clip=vp*glm::dvec4(p,1);
+            nearest=std::min(nearest,(clip.z/clip.w)*0.5+0.5);
+        }
+    };
+    if(scene.isStress()&&scene.casterCount()>maxCasters){
+        // Conservative field bound, O(1) even for ten million procedural boxes.
+        include(Box{{-6,0.1f,-6},{6,droppedGroup==1?0.75f:3.6f,6},{},0});
+    }else for(const auto& box:scene.boxes)if(box.group!=droppedGroup)include(box);
+    if(nearest>=1.0)return 1.0f;
+    // Round toward the light so the bound cannot exclude a stored surface.
+    return std::nextafter(float(std::clamp(nearest,0.0,1.0)),0.0f);
+}
 inline std::vector<std::string> sceneIds(bool includeStress = true) {
     std::vector<std::string> ids = {"single-high", "single-low", "mixed-overlap", "crossing", "hidden-layer", "sloped", "dense", "crossing-four"};
     if (includeStress) ids.push_back("dense-stress");

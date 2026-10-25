@@ -7,6 +7,9 @@ uniform int uMapResolution;
 #define INTERVAL_WRITER 1
 #include "packed_depth.glsl"
 #endif
+#ifdef RGBA_DEPTH
+layout(location=0) out vec4 outDepth;
+#endif
 void main(){
     vec2 p=unwarpPoint(gl_FragCoord.xy/float(uMapResolution)*2.0-1.0);
     vec4 a=uInverseLightVp*vec4(p,-1,1),b=uInverseLightVp*vec4(p,1,1);
@@ -18,6 +21,11 @@ void main(){
 #ifdef PACKED_INTERVALS
     recordDepthAt(ivec3(ivec2(gl_FragCoord.xy),0),d);
 #else
+#ifdef RGBA_DEPTH
+    if(d<0.0||d>1.0)discard;
+    outDepth=vec4(d);
+#else
     gl_FragDepth=d;
+#endif
 #endif
 }

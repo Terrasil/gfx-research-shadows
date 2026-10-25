@@ -1,8 +1,8 @@
 {
   "project": "gfx-research-shadows",
-  "version": "0.16.1",
+  "version": "0.31.0",
   "base_revision": "a419073ff7c5fd781ef52a4ff9fcdb0c67c5275c",
-  "method_count": 12,
+  "method_count": 14,
   "smoothing_mode_count": 8,
   "smoothing_kernel_count": 6,
   "smoothing_methods": [
@@ -14,7 +14,8 @@
   "sample_patterns": [
     "vogel",
     "random",
-    "stratified"
+    "stratified",
+    "blue-noise"
   ],
   "penumbra_modes": [
     "full",
@@ -24,7 +25,8 @@
   "prefilter_methods": [
     "vsm",
     "csm",
-    "esm"
+    "esm",
+    "gsm"
   ],
   "default_csm_harmonics": 16,
   "layer_depth_modes": [
@@ -37,17 +39,34 @@
   "sha256": {
     ".clang-format": "969cd61e2d207fa30f6c7e336588feff8edc0dfc9bd20e44d087c1b9e5e97062",
     ".gitignore": "ab06b41c7172896b1debbdd48edda04e9d74f7992ac4a3caa934ac1a171caedf",
-    "CMakeLists.txt": "3188e21393e63ec574e92d3e075f91f498836d7819cb64bf56a7e17aa0f3c55b",
+    "CMakeLists.txt": "44c7d9e6b663693eca352bbd94d25347c2ae34bd4185982677227bedea6ade1a",
     "CMakePresets.json": "43b93ddd1ffb710c91e32c4d0900b474882feb5b51f08733535051355bc5bc5e",
-    "README.md": "73e4f022b70188143661ed5213ecb8d32507d2a3c010e9a8655fcff070732e1c",
+    "README.md": "9b2259c3ea95dd3e76eb7f79dc05489fec297a5eb3b1b1b48fe78d4cffad46dd",
+    "assets/blue_noise.png": "865eee9d601cd4d8c038c22c0984ddfd3e7a8e8d2feeb50dd5ca1ba00c54dfb3",
     "examples/angular0150.png": "4f691475bd0540aff0f3f69d9ef965a2f264e5245d284d89817cc80be2d3c7f1",
     "examples/angular0150_gpu.csv": "a53487145157cd146888bf919d73debe7d54d5fd486ebc5a7b17924e3617f0de",
+    "examples/angular0190_all_methods.csv": "7e0b7b6b24c128898b33e4d44528f085ad4a6f6f68c21f74bb3bc4ec065c0ab7",
+    "examples/angular0190_depth_gpu.csv": "b31bb22fe508d85b2795a3a6b376f4046e9b482483bb39b0448f2a7ff6ed0166",
+    "examples/angular0190_stress.csv": "90d22ea0531e7318b9c25cab138fe6d2e4763f32a4e22daf298ffc4aeee4fb9f",
+    "examples/angular0190_validation.json": "e85f79d9e9c839b154ec4c77bc863a0a8e33818aaa4b78d06fad9726cfdd5964",
     "examples/angular_budgets0150.csv": "eddf1891442e5a3c77b32fa5ba0918593669cc375a4e90059b1fb753301270ec",
     "examples/angular_filter0150_gpu.csv": "d3e41b180bbebd02aa0268ad57c8068311713e7c6ac5dc40bcca007a932d188f",
     "examples/angular_patterns0150.csv": "6f4d962868aa055d327f8e14a390a86473bb0756247f7069cc41a082ae67573d",
     "examples/angular_patterns0150.png": "4db62eaf2215d156fcf7a895d478fc3e8f83663917ce83febba5132235435a3a",
     "examples/arr_dense0161.csv": "7d6546cb88783d8c3e57143d4c2a0c165577e4c64fc97aca9a45dd5d0de46730",
     "examples/arr_dense0161_validation.json": "f877a943e52e45dd22d6c4802d9c729c8d52bc9ab2b4bb43e8885d5b52a8e4ba",
+    "examples/blue_noise0170.csv": "4bf35bede25f9ae8822bcba4bdfee5909b7309127808b9e1a56e9e29db1da928",
+    "examples/blue_noise0170.png": "71f76f978063df764cd472ae2b87dfae847c99d7d8079b73402cbbe250d2313d",
+    "examples/blue_noise0170_gpu.csv": "0913da377f1281c66924d1a0bb6c109b5d6a58150127c3dddc637f7da1b5dc1a",
+    "examples/blue_noise0170_validation.json": "fc2f6b39ac810cf77d90a4bd0b5f0769e2c9e66b4470beb938c69cc87e58f86d",
+    "examples/cascade0200_depth_gpu.csv": "4de547b3d0a8c92c4b0d7fb36e5d54b6f20786d6d497760781104517ba39db04",
+    "examples/cascade0200_mix_gpu.csv": "38cbfdb2c174c8979bee890b2cb583ceebaf5772ea0604fd309e55ca109275f6",
+    "examples/cascade0200_stress.csv": "83ec8a818c507c163e631c333a701526bfa7340f59e097ab35d6eeda1d92f8a4",
+    "examples/cascade0200_validation.json": "5b017145b27e3b257fdc5aa59dd92ba65643b84e181c6058006b250b5f325ca4",
+    "examples/cascade0280_gpu.csv": "7f4fc0025dced0fae17783b18cd2ebd2c3d4e9b0d296582831f40e16541e0b31",
+    "examples/cascade0280_quality.csv": "53f270ed78992e33c05535f135ca3ea7a91652e2f7405df4e3519321630b1117",
+    "examples/cascade0280_stress.csv": "1cc895a343ab92a8791355079c29148b5bae9586ddceb686d4c472ac6ca6ccc5",
+    "examples/cascade0280_validation.json": "3dc2e6297bc6299fe79ec0d2c5b1d510ef15898e614558e92353d82547b47bc1",
     "examples/close.csv": "1f0ed2f695b41f57f8839fd25e95eda30f9a88fcb36b749cecfa9c10b8e528b2",
     "examples/comparison.png": "34699185e09175bff18b693e31e8c6aa52f2e8586aa092cce81bf19eec863b04",
     "examples/comparison0140.csv": "d10a42dde95e3c5f8f21547869d5a25676daf04a25b8fdeb2676363b9ad1372a",
@@ -57,17 +76,52 @@
     "examples/comparison0141_validation.json": "bb713e3b2ea6d96d09a5c94fb0da47b36040e6eba134cb29ceaf3b697d27c1bd",
     "examples/comparison0150.csv": "02f7f94cb5014beadc2b46bc5b4dff2487afa78bef0222ca0ca86ba1078de2aa",
     "examples/comparison0150_validation.json": "bd5fe776895ad1b2eabc312638cc189f939164cce1a499e8a2f792acbd34a9d4",
+    "examples/contact0180_gpu.csv": "5247d61755a038a7d714b5a4b97f6bae13f3a992af87426ec9a464fff0aacc2c",
+    "examples/contact0180_regions.json": "b236c8f743b10e96ce7095b41adbea394135f74fef6fa378ef75abf4654c67e1",
+    "examples/contact0180_validation.json": "1eb8279ef2930cb15b29975831c0e84cf7198787194eb6b00e7a99b5ddbf5ad5",
     "examples/controls.csv": "9f9ee24c28d6de6401e4513d7cb03a6005d596284cb22e17e4f93e2994acd8e3",
     "examples/crossing_four0153.png": "b4d796eda30566ebeb92563e61ab1d4d9bf228d5b578d3e7239696cf07b4c0fd",
+    "examples/edge0210_gpu.csv": "5cce5c3d064413d5c9e4b5915b3f7e1d9a090fd552a6e984b55550cefa138e34",
+    "examples/edge0210_oracles.json": "75838d355c1c2005d3366c486552b0c306baa464f71d68671327de7176dfd73c",
+    "examples/edge0210_regions.json": "b01fa2080113573af8bdea4cc25c79716583f873941a7f236f29868a5d7f0c25",
+    "examples/edge0210_stress.csv": "47c8ed1668bdfddabfcd272d5ee49b1eddeb4bed11a304b34b0e688ae3f10573",
+    "examples/edge0210_validation.json": "4d39366553cdf4025292600b21a8cee818836b5533406afe8061372e634d0c7f",
     "examples/filter_gpu.csv": "ee9c5732fc35e49e100345fb87e65a30e07b21dbaed423b348c334cf3391dd98",
+    "examples/gsm0310_four_variants.csv": "085c1204d407271ff1b8246c8eec6cf5c5d30f918c8def7ef553a3d79ae7b215",
+    "examples/gsm0310_gpu.csv": "46bc6476778db8f0cca2bbb2254ba22368e2d6ee1e10d3774345f47c6c97cd70",
+    "examples/gsm0310_quality.csv": "be147e79560967e729822cf8f654bff3c512c05d34bac5defcc545a44efabfbf",
+    "examples/gsm0310_stress.csv": "09c53bd67690b603bfc2ea10b3a977a21fea5dbd6f1dce7793ce5563089d0151",
+    "examples/gsm0310_validation.json": "0325f867a03f961f7cb588a598041587d9af6975e750fb8ad007c541d213e862",
     "examples/interval0141_gpu.csv": "6a6ca3581d8e4458b741737b5479ca55a151eca42ecb0a6f9ac3856a02e4ff36",
+    "examples/joint0230_gpu.csv": "31bf0ddf8f43a0b407a5427ca31a4ec23586835f0070230a53484f368e45e08a",
+    "examples/joint0230_quality.csv": "a62b759b59a15f8b1f548ea7ce5b0f54115f33e1e6f6eea37269df1f87ffdcbb",
+    "examples/joint0230_stress.csv": "839bc6a2b8162a1ada211ea0f3b4b157a11ded939f6a69b22e3f2347ca4c8602",
+    "examples/joint0230_validation.json": "d34386a7e78ad1cc05b5a95a5e4470cb5cf9144ffd83bf4b70d2bff822933bc8",
     "examples/mixing0141.csv": "0f19b130894e732839ed2c4678beb5d471ed0137f1466b02914107ef63a2a3ce",
     "examples/mixing0141.png": "afdcc5d7e32cc78de3ca5d3d1da9e45f3ead2dd1fced944f1ad4be03171b5ac0",
+    "examples/mixing0260_gpu.csv": "92c1528d2b83618f4c2bff78eb9ab20de4dbab4e0615cfcd89d8cbf7de5da545",
+    "examples/mixing0260_pcf_gpu.csv": "a070b4937ebf995627547f0313504b1c77bfab8be4d9f6581c6b29150d10de43",
+    "examples/mixing0260_quality.csv": "3e6f80b0a8731d6d33b33f282d7318c19c0411ba3de1b578445e7db638820088",
+    "examples/mixing0260_stress.csv": "61b2d9493ded7156a24b2189ca270ac2ddcbc93ce148f5efa3615cc3831a880f",
+    "examples/mixing0260_validation.json": "5f8adadabc83671f92f1af0b5513ec590d1234324046b4e4ba1e749b01eeadfd",
+    "examples/moments0250_gpu.csv": "34c956d1637a263107b147f0c014fe71fa1878d5689f94b82c5b021ed80df05a",
+    "examples/moments0250_quality.csv": "af5115fe4836806d8e9feaa5f73ae2c9cd76a3ae48b962bd5506f4b778ec50f6",
+    "examples/moments0250_stress.csv": "a011551f3e4cbd92e412bd324648cf9250cd4ec094a647099d92bcbff8ad7934",
+    "examples/moments0250_validation.json": "261e457f2101edb41832747ead708b2ae623db139efdd9f5470c7384a4e83404",
     "examples/near_shadow.csv": "de4088fb9a92023342e88e175357b4c8d0bbf0be0683ea3b2db3f5cd398abd61",
     "examples/near_shadow0141.csv": "1b041e8ca7b188cd2a32958628e985d8cf5a16d2d6b28c8b964365ef45ed4bb0",
     "examples/outline.csv": "0f4deec0b19de0b4b77578063db9c5d60afa55326c9a0f1cdf9cd9b2f742b39a",
     "examples/outline.png": "5d2aa6ad96fa298e0cb40eb8c8c29b92638db76f04e6bc973c79d76fbbfdb731",
     "examples/outline_validation.json": "95da1ab82ebf82c93c6114edf6b99607704828e8a78ba32752cfc09ee4e429d4",
+    "examples/pcf0220_gpu.csv": "4c8c685d7bd23cd9ae355c2866b1f2dcdfb7e762aa23069663a41b65a0d695b0",
+    "examples/pcf0220_oracle.json": "490aab0d0bdaeee307942dd86fce49e204d3a8f2921192cacd9ded46dc0a90af",
+    "examples/pcf0220_regions.json": "f4abe92387ac08169cd41dd8da7aa66f71be074f0b6171e5ae2f2f67f8510edd",
+    "examples/pcf0220_stress.csv": "07a57f43327a482b5b6f2738c64b12dcde9c358a138ea43c6f119e772a03eb5f",
+    "examples/pcf0220_validation.json": "50d2f171ed31c1dd44733d0297816907e287af20b1a9470e877458ba29c2bd51",
+    "examples/pcss0270_gpu.csv": "486c64c53eb9cb17b07d4258452a8910fcc9b543479fa065b1e599cd53aa502e",
+    "examples/pcss0270_quality.csv": "b01247b55a9ac11c0877e32993afacad4faabdd29e1ac3fb6634c852b7a1b6e7",
+    "examples/pcss0270_stress.csv": "5b3c1588d630625a8e3760361b81b27486bad79422daf8981a8bb789256460b7",
+    "examples/pcss0270_validation.json": "cf51c17d9a4439fd367a63478540ad4845cb5425caaa32ba07f00e61e4c3e41b",
     "examples/prefilter0140.png": "c00f2de310baf6c33afa6de6e9c38fa2c8bc49327b16646314cee9a1ab81cccd",
     "examples/prefilter0140_gpu.csv": "37cc3f11e3da665b39f49b008aa041455047804c68249c421532ffd5a6cbd4cf",
     "examples/quick-baseline.csv": "917484a687b73f21d477fc9f969ee63a665d0a7283ac29e831d9c59b8433a006",
@@ -79,6 +133,10 @@
     "examples/result_masks0152_validation.json": "89fdf49e5f6b069144de25dd2cbc1a20f15a68d1f53cc25833268d1db919d43e",
     "examples/sample_patterns.png": "5465cdd46a48c7b974a253280530f838697a9e30e52472c91e935095813e66d9",
     "examples/sampling_gpu.csv": "9da3b28bb3916753201ba0e2d20f28a961cf993b6b88eb8216e4f5756b2407e6",
+    "examples/shared0240_gpu.csv": "1db9435f9b34976e9b1ca5161b32b78bc442258e4aaecc70fc6d2be984bdd2a7",
+    "examples/shared0240_quality.csv": "b8a2e935dfdee09eed94a8bd11c5b8862fcb476ac609c3b18369c15da8f71b42",
+    "examples/shared0240_stress.csv": "6f340ca92f39bb7e480064489ee21e4dae3812b40814806a55e9e34c7061c1ba",
+    "examples/shared0240_validation.json": "9afa77296cb1237338ce37c822aee72622e540243820a7281717b12833e06083",
     "examples/smoothing.csv": "bddf38bcf65e2ae16d238a1d2c904f940ac810ec0104bb7850a4d3764abcd480",
     "examples/smoothing.png": "8c99dcb381a500b24c5455012594479b35ca3f1ced7a38af815a130f915d7be9",
     "examples/smoothing_filter_gpu.csv": "09a039849b8587eabe58633b222709ea4692c13527788a9bfe85b94f77b85a77",
@@ -86,25 +144,42 @@
     "examples/soft_packed0153.csv": "13e4c5b6e202bce7bd723c911e59a3cf9e1b7b36d0041756e075fb06c01fa6f8",
     "examples/soft_packed0153.png": "20e04eebef854abe527300f676965329a127422a2a9b098e674ded57b21864e4",
     "examples/soft_packed0153_validation.json": "05b8e7e9fde81224633c1c9f4b4b142e4e036e3669c1fd6f62300e83772bf005",
+    "examples/storage0290_catalog_quality.csv": "b1230856d78458e22bb0511a1c11c863c5dc49db7e8ed2dc233d7e04606cd8a0",
+    "examples/storage0290_catalog_stress.csv": "83f29011e181747b2869d930bfd295f45e7e4e72a3f03157e018f56b519580e0",
+    "examples/storage0290_gpu.csv": "ed6601c9da92cd58e35ee70a0896aae2c386bacfa1ffd4ee08eafea7e0f3466d",
+    "examples/storage0290_performance.csv": "86bccd0c68fa6793ebfa870a00701242ff9f44a2b7e86548d9d1a9c5a061177d",
+    "examples/storage0290_quality.csv": "31bf545283e8c9a5fd963ed7fe83aa76baa273eb1773228ec0679ee4f20c4a40",
+    "examples/storage0290_validation.json": "12776fe1feb5237c772e17d3a2babc02790f980fe70110c11e8bdf026289fca5",
     "examples/stress0160.csv": "99c8f121ef91f3e3f4b72af66d6346b1aebbf85d69184f48da4f8d094aee0eba",
     "examples/stress0160.png": "fc6bf6f57fcef40b04fc09a8ff16058eeb6046b6c8e75c60f3be150afba2b46a",
     "examples/stress0160_validation.json": "72eaac38fb968e01fbb69401ea6410d4044b5ea70d308eedd94480ada5f3c909",
     "examples/stress_quality0160.csv": "5d1ac9a690539c1ae8264b12ed671ced93817bdc49678bed61895580625a7f82",
     "examples/validation.json": "0fbccc20d9ca7d4e9d69572fa963063e7f436d2ffcee053662a9a21c60b7433f",
+    "examples/variants0300_array_diagnostic.csv": "7e132d0135fbde84e3cc97aae8639ef789a9db7823e54067abf3e4c814afd3cc",
+    "examples/variants0300_catalog_stress.csv": "d34a147f26b034f21b3b5c4fc16dec1758742646a6d5d121149555faebf3d06e",
+    "examples/variants0300_gpu.csv": "ed6601c9da92cd58e35ee70a0896aae2c386bacfa1ffd4ee08eafea7e0f3466d",
+    "examples/variants0300_performance.csv": "426518e59dfd2011c4a0c0e9c51c120a2ce2107104c9c4fe9326dceb1d8e7973",
+    "examples/variants0300_quality.csv": "defb5565224c37f058b093cb9ac2d82127f7c828fbf94eb235e16fd4f0a32f0d",
+    "examples/variants0300_validation.json": "a30066e8c96a7e13a67e0812060a5a0aa6351cbcc07b9c42a95054d5cade012d",
     "include/shadows/camera.hpp": "80f87fef79875252378a3efa1df3168aa48f64b389ae823bfb094045569bd94d",
     "include/shadows/chs_weights.hpp": "fb00f11250e77d47f46354c2addd11201e3646aacd0c548af67106a8220073af",
     "include/shadows/experiment.hpp": "573e77f68dac56ef9fe0a00953ceaa2d8c92014e5086fcd1bab24218cbb141db",
-    "include/shadows/renderer.hpp": "94020c324842b34050bbba58abb408574345899b3b7c98f0cfae6cf87e3a750f",
-    "include/shadows/scene.hpp": "42477632c61226f679e715d5ec42a658dc0995aa5349b076a2435b406f790739",
+    "include/shadows/renderer.hpp": "09bf2704e4286e38a7e7aeb54ab8db55883028dfeca67d88bdc030451e8df6dc",
+    "include/shadows/scene.hpp": "b43b47c61afd22395041dced2aaaec10d4ea9a1293a875111b2f4bdbf4177489",
     "shaders/angular.frag": "daedfc012924bbae4886bca4472f93f705f90fd56892e9480cc9c27356540ffc",
     "shaders/angular_resolve.frag": "bd48d5e34237f842f981c1370d2df4a3bb52c496caf0806b6c9d3ce1ad66956f",
+    "shaders/angular_rgba.frag": "ef6bbffb23290e633d3848e2b6b76bb9feee4b05a5329c447622daaf810c4889",
     "shaders/angular_validation.comp": "a9bb4388e0b48ab872765e407919ec935b4ce571a400c2804ef4556393b3aa65",
     "shaders/basis_blur.comp": "42d7c1b328360681673a347d203c16e6739d30c74d64aa6f602a360b870d404f",
-    "shaders/basis_encode.comp": "db64e9aefd92c55b927325640c8b77cc29eb0771b00a5f0a0de95a08c9090e08",
-    "shaders/basis_validation.comp": "2c8cc6f16a7e7cf65c1169598ecb442a3f99bcea1ac25535ddac24404ebbde88",
+    "shaders/basis_encode.comp": "7f9c8ca11f82abbad457b491b4a427d6e14c8124c88edaa1e61e38484859066f",
+    "shaders/basis_validation.comp": "a68fa30e2e470fb2c75a86a528b4c5fc42dfc739cafeb81cc59a10e9aa53b389",
+    "shaders/blue_noise.glsl": "3273c9a511eb62c1972532285958a109d2480acc89f466d0475e0ce0a9aa2bfa",
+    "shaders/blue_noise_validation.comp": "ef7a0acbe5c87373cf46948865fbd48d81107ba9cafa39a03f172757964ce34b",
     "shaders/boxes.glsl": "b3adc25c7a871fce3cf12ab5384807ee99ce18a33984ec8f812ba99e7db80a3c",
     "shaders/chs.glsl": "fe1f84c0d767efe1d33415a6e6c20f8b86bc4a908e6c5e36efca771d31374a1c",
     "shaders/chs_tables.glsl": "51b9ada430c03e2b0dc6bbe835c551695c1254a2df08b08db31d031801af91d5",
+    "shaders/contact_guard.glsl": "4f7ab5d4ada0a263eb4b491fa6243ab22fc7b1d0e81d8dcdac087c4d44a902f1",
+    "shaders/contact_validation.comp": "c872ccaf80e6605d6979a23d069d68be203eac66f4756de7b86dd109da95b062",
     "shaders/cubic_visibility.glsl": "7e821ecb482c180786754b4f46272241fa61863f5b4aa6c6f4b3248230f96bf0",
     "shaders/display.frag": "3f399d5c3e37d4311712f0bd13feb9801c9fdc5fb16f429322d7f7f03f64a37c",
     "shaders/dpcf.glsl": "dfd1705b13e6cad1f31b7b20299a2a4e3943f9bb7198bed92870635480fb8eed",
@@ -112,23 +187,42 @@
     "shaders/filter_validation.comp": "f0080288d55418c3f2a5f5e71af1892b6f5c0d93ddf81057bb5f3b96793fd898",
     "shaders/fullscreen.vert": "bb9e237437e87b55bba063126fb76fa4ef41ee71bc42815282f6d1b2801e1814",
     "shaders/gbuffer.frag": "c1fbde9dd9cdcbbd72a7c64806f1390acc1715caaddf337983192ea63307ce83",
-    "shaders/geometric_layers.glsl": "f279c862abb4dc076938082c45c7946c1de1d5e1c80c25b058daa69d970db25d",
+    "shaders/geometric_layers.glsl": "c04857132f6a99b24d175166710abd885deda3e26998a4cab231681ce78bdaf0",
+    "shaders/geometric_map.glsl": "6bd94b694f856d2a3421b165dae93896f0ea10c89e41da3e1a5851386c5c672c",
     "shaders/interval_validation.comp": "7430fd7b85fcbf82d12cdeaa6423c9836b18a0d500c0e6f08b8209e20bf27793",
-    "shaders/map.frag": "042e09b57f0e4454b1fa97e47e3192d29cb7f51cb80af52dcd78bdeb9e9b19da",
+    "shaders/map.frag": "0982b9986a0c9b9f73153b6966cd88df0c2096f57739f44b5adb63f177d22199",
     "shaders/map.tesc": "ec8b29d92170ece816b62dc0924782bf35768e205d619e46b5b8bcda7a1b5c89",
     "shaders/map.tese": "87fd8971439daea57700a8af625acd1554f5c8bc0b328163a4dc346e7ad83cab",
     "shaders/map.vert": "46e9120558e06d52d3316ba1793776db9c81b7c7a44a16fe28a95ee8e95e406b",
-    "shaders/map_analytic.frag": "ea6e0eda8c4df14baefc4964712151fd3c53f5ab75bd945eeb7dd0d5696122be",
+    "shaders/map_analytic.frag": "fe12ebad2936d0f6bf1992e23d4eb44ce3868d1e5a8f4a5abf1f3d693623ed85",
     "shaders/map_read.glsl": "275e1d7dc21237089634d8d2325fefca1e1631044e21a402422be8a975462f68",
     "shaders/packed_depth.glsl": "0db90c8ae68ef3980ea69826db5bf08baa912a1ad66dff543deb0fa60f9c350c",
-    "shaders/pcss_sampling.glsl": "b12371c444207d7ddd0c7422d4b886d9c02862bb7eaf3377673b0ee06abd9574",
+    "shaders/pcss_sampling.glsl": "cff20454a232c00d34454a807d6ce4f207a7495d112f121c6e3f40c6410e4084",
     "shaders/prefilter_math.glsl": "3588154171ef0bcadc7aa06963ae25251df3e8900ed86f9bf5ba9df24afec0d6",
     "shaders/reference.frag": "c177cf7caedfeef4a01602b942ff4795226726f7a856eaa22548d46cc8d45df5",
     "shaders/resolve.frag": "03153402e7ab1eee9bce73826f56955e111a127745b00e81b229f9b06333b472",
+    "shaders/result_blend.frag": "ebc6a5ae766112bb965c20d2ac6abf73f18fb220604eaa8a2901c104b192f25b",
+    "shaders/rgba_blend.frag": "4407fc38c90a24585cd5768b23c6aeb73795edecf3c5437dc0bd73be466d3c1b",
+    "shaders/rgba_depth_read.glsl": "570d3723b21b8f0e8b59409464f4ed379282ed9fa21d6a4d9568aaf52252e663",
+    "shaders/rgba_depth_scale_validation.comp": "99f062befbabb1fc7dd8796e90db81541cb44f2178c56d8b90d11f49108c2cf1",
+    "shaders/rgba_edge.glsl": "94db1b62c1a3d9e423b443ec122dadee1b68c40af4f43c5ab81801386fcb773d",
+    "shaders/rgba_edge_validation.comp": "146811e35bf3dba55b5e45683e3e56c7854cc91d8bfc6a64fce179c14b29475e",
+    "shaders/rgba_mix_validation.comp": "0880d4e411a00e95d5b771d6e217d077cf600c39fd0b01f4f7bdd9665474ca9f",
+    "shaders/rgba_mixing.glsl": "2c8bbc898b05698e4f9030aff72aa1e82aa397d8f23fe97e46106b96ee415065",
+    "shaders/rgba_moment_sampling.glsl": "a969944982be848c6607400eac6d0f167ee16f357b31905f2cb19a6f47215a59",
+    "shaders/rgba_moments.glsl": "a32a0e36f108b33d73c2b1ac8331117b8924cb4c79b90f4e4f69dd12c48feb52",
+    "shaders/rgba_moments_validation.comp": "4aaaa8e2e02d1530365616079b42d22ed069d8c22394021f549c4f1fe5ddfc7d",
+    "shaders/rgba_pcf.glsl": "b8335062bc1fbd3113374b40e695d904ee2f233b30b5087673c9059a59852fe3",
+    "shaders/rgba_pcf_validation.comp": "098d4443577d471cceab92761d3b0bd6872cdf01a2b01ecd77cc2f8855c02dfb",
+    "shaders/rgba_pcss.glsl": "1ba4653f02ed50db6475f8a5e4299b1ceca603f9caa6102e37ce3024c8ebe9f5",
+    "shaders/rgba_pcss_validation.comp": "f1efc0325bf6a5ce4b781f43ed007c0c069ed2b419919fecdce28651a6ffb8bd",
+    "shaders/rgba_shared.glsl": "ad72f99b9296391c0b4ee0187214035cf9a4c3f132a3410c407efca82d8b1ab8",
+    "shaders/rgba_shared_validation.comp": "19d24d2b53fa699922992cafcf1ffa0b95d38c39e388f616475ee397cc80ee4e",
+    "shaders/rgba_visibility.glsl": "7fcc205ae1cdb83671145069ece71e2cd0c0c29f85724382ad8e100056952adc",
     "shaders/sampling_validation.comp": "1e03c62c8bc41b6da0790a706cef54ea85760bd3b1eebba693808bd60145ae6d",
     "shaders/scene.vert": "795f5fbd7d2877e970799f7416dd0d285a09e175806438fbc56346af75daaeae",
     "shaders/screen.glsl": "a678307b1e2f5ed6f24d93bc58be8e5aa6a5d12f0569d708e4dd20db7399629c",
-    "shaders/shadow.frag": "390caa2ef1ca2431a1f6de5636aac6a8665307064ea6ac63d0acfb04c571cc3d",
+    "shaders/shadow.frag": "a4bcf7a8435d5007c646276d6ae82ecea4a44c82fd2b829161e00d5f771c9127",
     "shaders/smooth_depth.glsl": "21569490ced074468fc1d7fa8e06f8ce2115c293e848cb6cd3f6a13bfdf68711",
     "shaders/source.glsl": "2d007b5730d4c4d2049f7ef5fa8b4946505aee7aec4305878dbc2aea042d5c58",
     "shaders/stress_instances.glsl": "0ed5f411458f3b3a9182bc540c32ef89b4e0eb5d968c1fe3ddf27bc35670dea6",
@@ -137,22 +231,37 @@
     "shaders/tri_geometry.glsl": "5f381c24c2b778ed46f8495eb3826d5eb739d129d93ff041992af981d531e879",
     "shaders/tri_reconstruction.glsl": "f00b49988d674fc6c7f2d36bfac4ddd42749968c7175d91883edaf881a40b10e",
     "shaders/warp.glsl": "7b2feb1105072f61f413b861a09ce1478fdd8291a67e2ffca9de9019ff9dc55c",
-    "src/experiment.cpp": "04c2eee3f9b917905cbfb10baff665a67c8b4e06cb01925c91e51dacfc641435",
+    "src/experiment.cpp": "76331895b8061bf9c070d5d26daec8ef5fde32670a65fb699c8b27d1dbe9f533",
     "src/headless_egl.cpp": "b7dcf40a22f6826537a424346b07e53414c386e9ad11e2e996dabe71a5116418",
-    "src/main.cpp": "18fb1e658a1c1aead98d039326163f4b8ba10cba7587b45d4f5012968406f529",
-    "src/performance.cpp": "f3695262b872071f5040cae84aefad3189c9070c4669e25fed0cfc6bf000061c",
-    "src/renderer.cpp": "783c382a6597bb86a1abf79a9c2bd973e64ef28b9d3b4a8f57c5e00c425ea6a2",
-    "tests/test_analyzer.py": "e4b95d5ff770015ffb463074c1ad33d288ec7b8a614182258b7a0d5c3bd1bf54",
+    "src/main.cpp": "4fccf665199b9caf8af26a1c0bfc9fed6fc9f0caa13722c203467b0032cd1869",
+    "src/multiview_validation.cpp": "e77f96428321071f5c3324a86c6a7ebaf3d1ca71b0890a6f81d26383e925caf8",
+    "src/performance.cpp": "f221de0a5dc0f58f2611523d64ce8a9cb643a2ee2463a8878d204109f6be426d",
+    "src/renderer.cpp": "2dac0d0eca7ba75317c324cece9b3c2bde2d90c3ded06d48679b7d6585508098",
+    "tests/test_analyzer.py": "23aebb84035bebcd4cbf3721bad71fee32babecefba182839afdd5d9d39898f4",
     "tests/test_camera.cpp": "2462b441c9a903d224bc4b108ecd02f090ff4b30bc886a77bd3d91c92ef56da3",
-    "tests/test_geometry.cpp": "af118bf8fe1b3d5ff38984cbfd83bc2996cc03601751769860b63aa264eaa8c0",
-    "tools/analyze_results.py": "c47321670ad9066232dc9ebc682f9639ac18668784b334ae37134ba331983e25",
+    "tests/test_geometry.cpp": "ee397b6383c1d3d0b0a13f4c7295455769d6cc9814af20a442b4382df39bf982",
+    "tools/analyze_results.py": "42ea71a8e9266887aa37b2ed958b22e15266433de5b67adda0929118dbd64cf0",
+    "tools/compare_blue_noise.py": "e3422a43fe49359b9202cc39e2472097b295f9259eaad0a7fd1500802c87b0a4",
+    "tools/compare_multiview_storage.py": "e59320002031f19d497d0961328a5b92433b1cbe3197ef15606704a3e7f9ec18",
+    "tools/compare_multiview_variants.py": "4b1e8a292ecabfb53fb9fc13135d610354a0d56810ecede42bd6f292e2d4e4c1",
     "tools/compare_near_shadow.py": "23a650f7ae1ca9f6511d1e2f7b6466209f5d8a93cc905e1fdc9725b15515dc44",
-    "tools/run_experiment.py": "6f115e58d05bb31497b8684532506dfec5145733e60a032f5731afa772537573",
+    "tools/run_experiment.py": "3e66ae28f870a8ffbf24be66cf8a288d2330713824476bb16615c1ae4df77c3b",
     "tools/run_publication.ps1": "0decc0254d0d717aecf8105d8baad6a32d9e07890a8d89dae69452ec03fe7168",
     "tools/verify_angular.py": "02415f6c73dcb6f7149a3d0bb11a9d22ce63c19194b2fe892396fb14265f3e13",
+    "tools/verify_blue_noise.py": "bf21a564005e924fea98e87cdbb21a7a0b3339510679ee7dd7b3138be5f75157",
+    "tools/verify_contact_blend.py": "f37d8035e4c286d71f1b2fc245af2dd0a0fa7f5ba59442f3ae0e2e265b9c39b4",
     "tools/verify_filters.py": "ae4678f7de7de705885c788fb1a0e592042486d8d95a84fddfe679c6418acb78",
     "tools/verify_intervals.py": "bdf8f86a11f5ae3f350c074f9d5e67901aa2d7a6eaa2f56d00447b1c67914517",
-    "tools/verify_prefilter.py": "08b77737ab91adf1f832617a342c86fcc6be7b8d47f2ac9c8c0c3aea26228a59",
+    "tools/verify_multiview_storage.py": "f628f0887f74727508c69b8a2d088a5f45b330236c662f409a404d1b9583d323",
+    "tools/verify_prefilter.py": "77391b7991bf39b50736dbd60e3f3598b88c8030200fd8d8f91312760f18d7f4",
+    "tools/verify_rgba.py": "d6ea081540e91b4c100dac40406edfb81f77c2614d24339f9eb64f86b1d8f38d",
+    "tools/verify_rgba_blend.py": "4070fa156660f898d19ea53049a01f7e167d26d76ae82e06c24ca3799ba2c981",
+    "tools/verify_rgba_depth_scale.py": "e8aa0c81dd1dda271d615c1499b6b28b0e9fa108be3a88ee181825fb7a2b5cae",
+    "tools/verify_rgba_edge.py": "96c04aefe2a42604c0c3ecc83f9d8981701c23efabe645561154931597b71647",
+    "tools/verify_rgba_moments.py": "0b683c81ee3f460f90bf20608016f7cc723c6de5ede2efd5290993d9cfc5394c",
+    "tools/verify_rgba_pcf.py": "43868d5eac233f4b291a3bca0ab18bbaf07f3e27b8c9d4d25c5a72f749f2e230",
+    "tools/verify_rgba_pcss.py": "a2b8716335b9663f92224d91841467d6fef73233d6a26df482a8e88565e38543",
+    "tools/verify_rgba_shared.py": "23257ce66be9d7a6de78ddd47e9f008566999e8eda45125805fc6eff581fe6fe",
     "tools/verify_sampling.py": "d261012973ad676cb9dc2b8b143e2c61bf4ba1554caf0ae5e4afc89a2290538d",
     "upstream/filament/LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
     "upstream/filament/shadowing.fs": "457437c5e6592552b2b1ab195d35a4e487258b153983314388b96b780655e526",
@@ -200,9 +309,10 @@
     "dense-stress"
   ],
   "profiles": {
-    "smoke_cases": 36,
-    "quick_cases": 60,
-    "full_cases": 1152
+    "smoke_cases": 42,
+    "quick_cases": 70,
+    "full_cases": 1344,
+    "performance_all_method_count": 14
   },
   "soft_packed_preset": {
     "layer_depth": "interval",
@@ -225,12 +335,449 @@
     "base_triangles_per_object": 12,
     "adaptive_tessellation_default": true,
     "tessellation_limit": 32,
-    "performance_all_method_count": 12,
+    "performance_all_method_count": 14,
     "quality_metrics_in_performance": false,
     "analytic_map_limit": 32,
     "cpu_reference_limit": 32,
     "arr_object_limit": 10000000,
     "angular_scene_backend": "procedural full-population box scan",
     "automatically_change_arr_method_or_budget": false
+  },
+  "blue_noise": {
+    "asset": "assets/blue_noise.png",
+    "default_tile_m": 1.0,
+    "gpu_format": "R8",
+    "gpu_bytes": 4194304,
+    "world_projection": "XZ",
+    "sampler": "two scalar blue-noise rotations of Vogel disks",
+    "validation_cases": 128
+  },
+  "angular_rgba": {
+    "format": "RGBA32F",
+    "bytes_per_texel": 16,
+    "channels": [
+      "central",
+      "ring0",
+      "ring120",
+      "ring240"
+    ],
+    "map_generation_passes": 4,
+    "shadow_passes": 1,
+    "distance_cascades": false,
+    "radius_fraction_default": 1,
+    "center_weight_default": 0.25,
+    "offset_enabled_default": true,
+    "visibility_reconstruction": [
+      "nearest",
+      "bilinear",
+      "Hermite",
+      "bicubic B-spline"
+    ],
+    "depth_cpu_comparisons": 16384,
+    "nested_coverage_optional": true,
+    "cascade_extent_half_width_default_m": 14,
+    "cascade_extent_multiplier_default": 2,
+    "cascade_transition_default": 0.15,
+    "angular_mix_over_cascades_default": 1,
+    "mixing_modes": [
+      "weighted",
+      "min",
+      "product",
+      "geometric",
+      "hybrid"
+    ],
+    "mixing_cpu_comparisons": 3936,
+    "bias_scaling": "constant world-unit depth bias per view",
+    "edge_reconstruction": {
+      "experimental": true,
+      "enabled_default": false,
+      "preset_strength": 0.5,
+      "search_radius_texels_default": 64,
+      "contact_range_m_default": 1,
+      "requires_four_available_views": true,
+      "additional_render_passes": 0,
+      "signed_edge_search_directions": 8,
+      "refinement_steps": 4,
+      "synthetic_reference_cases": 384,
+      "confidence_guards": [
+        "opposed boundaries",
+        "edge orientation disagreement",
+        "mixed blocker gaps",
+        "subtexel penumbra"
+      ]
+    },
+    "channel_pcf": {
+      "modes": [
+        "off",
+        "fixed",
+        "adaptive",
+        "shared",
+        "pcss"
+      ],
+      "default": "off",
+      "preset_mode": "adaptive",
+      "preset_samples": 16,
+      "preset_strength": 0.5,
+      "preset_max_radius_local_texels": 16,
+      "subpixel_sharp_guard_default": true,
+      "sample_budgets": [
+        8,
+        16,
+        32,
+        64
+      ],
+      "lit_center_blocker_search_samples": 8,
+      "raster_passes": 4,
+      "screen_passes": 1,
+      "additional_textures": 0,
+      "edge_reconstruction_mutually_exclusive": true,
+      "cpu_gpu_validation_cases": 18432,
+      "fixed_radius_units": [
+        "texels",
+        "world meters"
+      ],
+      "fixed_world_radius_default_m": 0.25
+    },
+    "joint_smoothing": {
+      "default_strength": 0,
+      "preset_strength": 0.85,
+      "preset_radius_pixels": 2,
+      "preset_visibility_tolerance": 0.35,
+      "requires_active_channel_pcf": true,
+      "screen_neighborhoods": [
+        9,
+        25
+      ],
+      "physical_support_sources": "available per-view blocker gap estimates and projected pixel footprints",
+      "conflicting_width_ratio_transition": [
+        1.5,
+        3.0
+      ],
+      "near_protection_radius_transition_pixels": [
+        1,
+        4
+      ],
+      "preserves_exact_visibility_endpoints": true,
+      "geometry_and_coverage_guards": true,
+      "additional_screen_passes": 1,
+      "additional_screen_bytes_per_pixel": 4,
+      "additional_light_views": 0,
+      "synthetic_validation_cases": 6144,
+      "quality_comparison_cases": 42,
+      "stress_method_count": 13,
+      "universal_rmse_improvement": false
+    },
+    "shared_world_pcf": {
+      "preset_samples": 16,
+      "preset_strength": 0.5,
+      "preset_adaptive": true,
+      "preset_radius_limit_m": 0.25,
+      "kernel_space": "sun-perpendicular world disk projected onto the local receiver plane",
+      "per_sample_channel_projections": 4,
+      "combine_channels_before_spatial_average": true,
+      "radius_modes": [
+        "manual",
+        "minimum positive per-view physical estimate"
+      ],
+      "grazing_fallback_abs_normal_dot_sun": 0.1,
+      "coverage_renormalization": true,
+      "additional_geometry_passes": 0,
+      "screen_passes_without_optional_joint_blend": 1,
+      "additional_textures": 0,
+      "cpu_gpu_validation_cases": 6656,
+      "quality_cases": 44,
+      "stress_method_count": 13,
+      "universal_quality_improvement": false
+    },
+    "pcf_moment_reconstruction": {
+      "enabled_default": false,
+      "preset_pcf_samples": 32,
+      "preset_strength": 0.5,
+      "supported_filter": "fixed/adaptive PCF and independent per-channel PCSS",
+      "moments": [
+        "coverage",
+        "lit spatial first moment",
+        "kernel covariance"
+      ],
+      "local_model": "straight edge, inverse disk coverage, common angular half-plane",
+      "confidence_guards": [
+        "two reliable partial views",
+        "orientation coherence",
+        "blocker-gap agreement",
+        "predicted coverage residual",
+        "resolved penumbra",
+        "complete kernel",
+        "existing sharp-shadow protection"
+      ],
+      "requires_all_four_views": true,
+      "additional_geometry_passes": 0,
+      "additional_screen_passes": 0,
+      "additional_textures": 0,
+      "synthetic_validation_cases": 3120,
+      "quality_cases": 40,
+      "stress_methods": 13,
+      "universal_accuracy_guarantee": false,
+      "additional_adaptive_depth_queries_at_equal_pcf_budget": 0,
+      "fixed_blocker_search_max_depth_queries_per_view": 9,
+      "fixed_near_protection_center_visibility_query": true,
+      "explicit_ui_activation_status": true,
+      "fixed_contact_guard_changes_only_moment_correction": true,
+      "additional_pcss_depth_queries_at_equal_filter_budget": 0
+    },
+    "channel_mixing_comparison": {
+      "geometric_blend_default": 0.25,
+      "geometric_blend_range": [
+        0,
+        1
+      ],
+      "zero_visibility_preserved": true,
+      "zero_weight_channels_ignored": true,
+      "missing_channel_weights_renormalized": true,
+      "hybrid_0_matches_arithmetic_without_reconstruction": true,
+      "hybrid_1_matches_geometric_without_reconstruction": true,
+      "fixed_test_preset_samples": 32,
+      "fixed_test_preset_radius_texels": 2,
+      "world_test_preset_radius_m": 0.25,
+      "test_preset_strength": 0.5,
+      "test_presets_preserve_camera_and_light": true,
+      "test_preset_map_widths_m": [
+        28,
+        112,
+        448,
+        1792
+      ],
+      "extra_geometry_passes": 0,
+      "extra_screen_passes": 0,
+      "extra_pcf_samples_for_mixing": 0,
+      "quality_cases": 40,
+      "stress_methods": 13,
+      "universal_quality_improvement": false
+    },
+    "per_channel_pcss": {
+      "filter_mode": 4,
+      "pipeline": [
+        "per-channel blocker search",
+        "per-channel penumbra estimate",
+        "per-channel visibility PCF",
+        "combine finished channel visibility"
+      ],
+      "blocker_statistics": [
+        "arithmetic gap",
+        "geometric gap"
+      ],
+      "blocker_budget_range": [
+        1,
+        128
+      ],
+      "default_blocker_samples": 32,
+      "preset_filter_samples": 32,
+      "preset_penumbra_scale": 0.5,
+      "default_search_limit_m": 3,
+      "search_limit_range_m": [
+        0,
+        20
+      ],
+      "search_samples": "center plus N-1 deterministic Vogel points, equal sample weights",
+      "center_blocker_early_exit": false,
+      "penumbra_world_radius": "mean positive gap * tan(sun angular radius) * scale",
+      "radius_cap": "local NDC texel footprint * configured cap",
+      "optional_contact_protection_scope": "each channel before visibility mixing",
+      "optional_moments_reuse_blocker_search": true,
+      "additional_map_textures": 0,
+      "geometry_passes": 4,
+      "screen_passes_without_joint_blend": 1,
+      "cpu_gpu_validation_cases": 18432,
+      "quality_cases": 50,
+      "stress_methods": 13,
+      "universal_accuracy_guarantee": false,
+      "camera_independent_search_default": true,
+      "search_depth_origin": "closest conservative caster bound in each view, not the shadow camera near plane",
+      "large_procedural_population_bound_cost": "O(1) CPU, fixed field box",
+      "caster_bound_gpu_bytes": 16
+    },
+    "cascade_coordinate_corrections": {
+      "enabled_default": true,
+      "flags": [
+        "rgba-pcss-bounds",
+        "rgba-stable-focus"
+      ],
+      "stable_focus_world": [
+        0,
+        1.5,
+        0
+      ],
+      "legacy_behavior_available": true,
+      "cpu_gpu_depth_encoding_cases": 6144,
+      "quality_cases": 40,
+      "stress_methods": 13,
+      "equal_coverage_max_pixel_difference": 2.9802322387695312e-08,
+      "camera_invariance": {
+        "cases": 6144,
+        "max_search_reference_error": 4.57672094666961e-11,
+        "max_radius_reference_error": 1.8415924271653061e-09,
+        "max_plane_gap_reference_error": 1.7529999998266987e-06,
+        "bounded_max_camera_changes": {
+          "visibility": 5.722000000041305e-06,
+          "mean_gap": 3.1829000000094254e-05,
+          "filter_radius_m": 4.13500000000927e-07,
+          "search_radius_m": 0.0
+        },
+        "legacy_max_camera_visibility_change": 0.3549594878999999,
+        "legacy_max_camera_search_change_m": 2.7919999957
+      },
+      "additional_textures": 0,
+      "additional_geometry_passes": 0,
+      "additional_screen_passes": 0,
+      "coarse_channel_resolution_loss_remains": true,
+      "universal_quality_improvement": false
+    },
+    "default_storage": "rgba",
+    "storage_backends": [
+      {
+        "id": "rgba",
+        "format": "RGBA32F",
+        "textures": 1,
+        "layers": 1,
+        "stored_depth_components": 4,
+        "raster": "color MIN"
+      },
+      {
+        "id": "array",
+        "format": "D32F",
+        "textures": 1,
+        "layers": 4,
+        "stored_depth_components": 4,
+        "raster": "depth test"
+      },
+      {
+        "id": "separate",
+        "format": "D32F",
+        "textures": 4,
+        "layers": 4,
+        "stored_depth_components": 4,
+        "raster": "depth test"
+      }
+    ],
+    "storage_validation": {
+      "configurations": 60,
+      "renders": 240,
+      "raster_and_analytic": true,
+      "filters": 5,
+      "max_depth_error": 0.0,
+      "max_visibility_error": 0.0,
+      "max_guide_error": 0.0,
+      "switch_back_to_rgba": true,
+      "quality_rows": 8,
+      "stress_rows": 28,
+      "hardware_timings": false
+    },
+    "explicit_variant_selection_preserves_filter_camera_light": true,
+    "ui_filter_presets_preserve_selected_storage_and_cascades": true,
+    "capture_filename_includes_variant": true
+  },
+  "method_groups": [
+    {
+      "label": "Basic",
+      "methods": [
+        "hard",
+        "pcf"
+      ]
+    },
+    {
+      "label": "PCSS",
+      "methods": [
+        "pcss",
+        "geometric",
+        "geometric-layered",
+        "dpcf",
+        "chs"
+      ]
+    },
+    {
+      "label": "Filtered maps",
+      "methods": [
+        "vsm",
+        "csm",
+        "esm",
+        "gsm"
+      ]
+    },
+    {
+      "label": "Multiple light view",
+      "methods": [
+        "angular-rgba"
+      ],
+      "variants": [
+        "rgba",
+        "separate",
+        "rgba-cascaded",
+        "separate-cascaded"
+      ]
+    },
+    {
+      "label": "Geometry reference",
+      "methods": [
+        "arr",
+        "arr-triangulation"
+      ]
+    }
+  ],
+  "method_aliases": {
+    "multiple-light-view": "angular-rgba",
+    "geometry-reference": "arr",
+    "pcss-geometric": "geometric"
+  },
+  "ui_method_entries": 17,
+  "multiple_light_view_variants": [
+    {
+      "id": "rgba",
+      "label": "Angular RGBA (one texture)",
+      "storage": "rgba",
+      "cascades": false
+    },
+    {
+      "id": "separate",
+      "label": "Angular separate (one texture per view)",
+      "storage": "separate",
+      "cascades": false
+    },
+    {
+      "id": "rgba-cascaded",
+      "label": "Angular RGBA cascaded (one texture)",
+      "storage": "rgba",
+      "cascades": true
+    },
+    {
+      "id": "separate-cascaded",
+      "label": "Angular separate cascaded (one texture per view)",
+      "storage": "separate",
+      "cascades": true
+    }
+  ],
+  "gsm": {
+    "label": "GSM (prefiltered geometric mean)",
+    "project_experimental_method": true,
+    "encoding": "log(1+normalized depth)",
+    "decoded_statistic": "exp(filtered log depth)",
+    "visibility": "min(1,(G/(1+max(t,0)))^k)",
+    "default_sharpness": 64,
+    "sharpness_range": [
+      1,
+      128
+    ],
+    "prefilter_radius_range": [
+      0,
+      16
+    ],
+    "auxiliary_format": "R32F",
+    "auxiliary_bytes_per_texel": 8,
+    "total_map_bytes_per_texel": 12,
+    "geometry_passes": 1,
+    "encoding_and_blur_passes": 3,
+    "shadow_passes": 1,
+    "blocker_search": false,
+    "adaptive_penumbra": false,
+    "independent_gpu_cpu_cases": 1152,
+    "universal_accuracy_claim": false
   }
 }

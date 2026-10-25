@@ -95,13 +95,13 @@ vec3 bandSample(vec2 p,float depth,vec2 origin,vec2 gradient,float split,bool co
     return bandCoverage(gaps,backGaps,weights,split);
 #endif
 }
-float geometricLayers(vec3 light,vec2 gradient,float angle){
+float geometricLayers(vec3 light,vec2 gradient,vec2 angles){
     bool inner=uInnerPenumbra!=0;
     if(inner&&depthGap(light.xy,light.z,light.xy,gradient)<=uDepthBias)return 1.0;
     float scale=uDepthRange*uTanAngle/uExtent,maxRadius=uMaxRadiusWorld/uExtent;
     float searchRadius=min(max(light.z,0.0)*scale,maxRadius),lo=1e30,hi=0.0;
     uint bk=0u,fk=0u;
-    if(uSamplePattern!=0){
+    if(uSamplePattern==1||uSamplePattern==2){
         // A shared randomized quadrature avoids decorrelation grain without a
         // screen-space blur. The two bands still use paired filter directions.
         uvec2 pixel=uSharedSamples!=0?uvec2(0):uvec2(gl_FragCoord.xy);
@@ -109,17 +109,17 @@ float geometricLayers(vec3 light,vec2 gradient,float angle){
     }
     vec2 logs=vec2(0),sums=vec2(0),counts=vec2(0);
     for(int i=0;i<uBlockerSamples;++i)
-        layerSearch(light.xy+diskSample(i,uBlockerSamples,angle,uSamplePattern,bk)*searchRadius,light.z,light.xy,gradient,1e30,logs,sums,counts,lo,hi);
+        layerSearch(light.xy+diskSample(i,uBlockerSamples,angles.x,uSamplePattern,bk)*searchRadius,light.z,light.xy,gradient,1e30,logs,sums,counts,lo,hi);
     if(counts.x<=0.0)return 1.0;
     float minimumRadius=minimumLayerRadius(light.xy);
     float globalRadius=max(minimumRadius,min(min(sums.x/counts.x,exp(logs.x/counts.x))*scale,maxRadius));
     if(hi<lo*uLayerSeparation){
         outDiagnostic=vec4(globalRadius*uExtent,globalRadius*uExtent,0,1);
-        float v=filtered(light.xy,light.z,gradient,globalRadius,angle,fk);return inner?clamp(2.0*v,0.0,1.0):v;
+        float v=filtered(light.xy,light.z,gradient,globalRadius,angles.y,fk);return inner?clamp(2.0*v,0.0,1.0):v;
     }
     float split=sqrt(lo*hi);logs=vec2(0);sums=vec2(0);counts=vec2(0);
     for(int i=0;i<uBlockerSamples;++i)
-        layerSearch(light.xy+diskSample(i,uBlockerSamples,angle,uSamplePattern,bk)*searchRadius,light.z,light.xy,gradient,split,logs,sums,counts,lo,hi);
+        layerSearch(light.xy+diskSample(i,uBlockerSamples,angles.x,uSamplePattern,bk)*searchRadius,light.z,light.xy,gradient,split,logs,sums,counts,lo,hi);
     vec2 radii=max(vec2(minimumRadius),min(min(sums/max(counts,vec2(1e-8)),exp(logs/max(counts,vec2(1e-8))))*scale,vec2(maxRadius)));
     outDiagnostic=vec4(radii*uExtent,counts.x/(counts.x+counts.y),1);
     vec2 warped=warpPoint(light.xy);float step=2.0/float(uMapResolution);
@@ -128,7 +128,7 @@ float geometricLayers(vec3 light,vec2 gradient,float angle){
     vec3 contactBands=bandSample(light.xy,light.z,light.xy,gradient,split,true);
     float known=0.0,unknown=0.0,nearSum=0.0,openSum=0.0;
     for(int i=0;i<uFilterSamples;++i){
-        vec2 omega=diskSample(i,uFilterSamples,angle,uSamplePattern,fk);
+        vec2 omega=diskSample(i,uFilterSamples,angles.y,uSamplePattern,fk);
         vec3 nearBands=mix(contactBands,bandSample(light.xy+omega*radii.x,light.z,light.xy,gradient,split,false),blend.x);
         float vf=1.0-mix(contactBands.y,bandSample(light.xy+omega*radii.y,light.z,light.xy,gradient,split,false).y,blend.y);
         float open=max(0.0,1.0-nearBands.x-nearBands.z);

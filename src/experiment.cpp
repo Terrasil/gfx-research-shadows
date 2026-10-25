@@ -151,7 +151,7 @@ void manifest(const std::filesystem::path& path, const Options& o, int planned, 
     std::ofstream out(path);
     std::string gpu = glString(GL_RENDERER);
     bool software = gpu.find("llvmpipe") != std::string::npos || gpu.find("softpipe") != std::string::npos;
-    out << "{\n\"version\":\"0.16.1\",\n\"completed\":" << (completed ? "true" : "false")
+    out << "{\n\"version\":\"0.31.0\",\n\"completed\":" << (completed ? "true" : "false")
         << ",\n\"expected_cases\":" << planned << ",\n\"gpu\":" << jsonString(gpu)
         << ",\n\"software_renderer\":" << (software ? "true" : "false")
         << ",\n\"gl_version\":" << jsonString(glString(GL_VERSION))
@@ -162,7 +162,7 @@ void manifest(const std::filesystem::path& path, const Options& o, int planned, 
                       : o.quick ? "quick"
                       : o.smoke ? "smoke"
                                 : "manual")
-        << ",\n\"method_count\":12,\n\"filter_validation_cases\":320,\n\"sampling_validation_cases\":1568,\n\"prefilter_validation_cases\":384"
+        << ",\n\"method_count\":14,\n\"filter_validation_cases\":320,\n\"sampling_validation_cases\":1568,\n\"prefilter_validation_cases\":1536"
         << ",\n\"stress_objects\":" << o.settings.stressObjects
         << ",\n\"stress_tessellation\":" << o.settings.stressTessellation
         << ",\n\"stress_adaptive_tessellation\":" << (o.settings.stressAdaptiveTessellation ? "true" : "false")
@@ -179,6 +179,52 @@ void manifest(const std::filesystem::path& path, const Options& o, int planned, 
         << ",\n\"smoothing\":" << o.settings.smoothing
         << ",\n\"configured_penumbra\":" << jsonString(o.settings.innerPenumbra ? "inner" : "full")
         << ",\n\"configured_sample_pattern\":" << jsonString(samplePatternId(o.settings.samplePattern))
+        << ",\n\"result_blend\":" << o.settings.resultBlend
+        << ",\n\"result_blend_radius\":" << o.settings.resultBlendRadius
+        << ",\n\"result_blend_sigma\":" << o.settings.resultBlendSigma
+        << ",\n\"contact_guard\":" << o.settings.contactGuard
+        << ",\n\"contact_max_gap\":" << o.settings.contactMaxGap
+        << ",\"gsm_sharpness\":" << o.settings.gsmSharpness
+        << ",\"gsm_prefilter_radius\":" << o.settings.prefilterRadius
+        << ",\"multiview_storage\":" << std::quoted(multiViewStorageId(o.settings.multiViewStorage))
+        << ",\"multiview_variant\":" << std::quoted(multiViewVariantId(o.settings))
+        << ",\"rgba_offset\":" << (o.settings.rgbaOffset?1:0)
+        << ",\"rgba_radius\":" << o.settings.rgbaRadius
+        << ",\"rgba_rotation\":" << o.settings.rgbaRotation
+        << ",\"rgba_center_weight\":" << o.settings.rgbaCenterWeight
+        << ",\"rgba_smoothing\":" << o.settings.rgbaSmoothing
+        << ",\"rgba_cascades\":" << (o.settings.rgbaCascades?1:0)
+        << ",\"rgba_extent\":" << o.settings.rgbaExtent
+        << ",\"rgba_cascade_scale\":" << o.settings.rgbaCascadeScale
+        << ",\"rgba_cascade_blend\":" << o.settings.rgbaCascadeBlend
+        << ",\"rgba_angular_mix\":" << o.settings.rgbaAngularMix
+        << ",\"rgba_mix_mode\":" << o.settings.rgbaMixMode
+        << ",\"rgba_geometric_blend\":" << o.settings.rgbaGeometricBlend
+        << ",\"rgba_reconstruct\":" << (o.settings.rgbaReconstruct?1:0)
+        << ",\"rgba_reconstruct_strength\":" << o.settings.rgbaReconstructStrength
+        << ",\"rgba_edge_search\":" << o.settings.rgbaEdgeSearch
+        << ",\"rgba_edge_contact\":" << o.settings.rgbaEdgeContactRange
+        << ",\"rgba_pcf_mode\":" << o.settings.rgbaPcfMode
+        << ",\"rgba_pcf_samples\":" << o.settings.rgbaPcfSamples
+        << ",\"rgba_pcf_strength\":" << o.settings.rgbaPcfStrength
+        << ",\"rgba_pcf_radius\":" << o.settings.rgbaPcfRadius
+        << ",\"rgba_pcf_world_units\":" << (o.settings.rgbaPcfWorldUnits?1:0)
+        << ",\"rgba_pcf_world_radius_m\":" << o.settings.rgbaPcfWorldRadius
+        << ",\"rgba_pcf_max_radius\":" << o.settings.rgbaPcfMaxRadius
+        << ",\"rgba_pcf_sharp\":" << (o.settings.rgbaPcfSharp?1:0)
+        << ",\"rgba_pcss_blocker_samples\":" << o.settings.rgbaPcssBlockerSamples
+        << ",\"rgba_pcss_mean\":" << o.settings.rgbaPcssMean
+        << ",\"rgba_pcss_search_radius_m\":" << o.settings.rgbaPcssSearchRadius
+        << ",\"rgba_pcss_bounds\":" << (o.settings.rgbaPcssCasterBounds?1:0)
+        << ",\"rgba_stable_focus\":" << (o.settings.rgbaStableFocus?1:0)
+        << ",\"rgba_shared_adaptive\":" << (o.settings.rgbaSharedAdaptive?1:0)
+        << ",\"rgba_shared_radius_m\":" << o.settings.rgbaSharedRadius
+        << ",\"rgba_moments\":" << (o.settings.rgbaMoments?1:0)
+        << ",\"rgba_moment_strength\":" << o.settings.rgbaMomentStrength
+        << ",\n\"contact_guard_samples\":12,\n\"contact_blend_validation_cases\":1152"
+        << ",\n\"blue_noise_tile_m\":" << o.settings.blueNoiseTile
+        << ",\n\"blue_noise_validation_cases\":128,\n\"blue_noise_sampler\":\"world-XZ scalar blue-noise rotations of Vogel disks\""
+        << ",\n\"blue_noise_asset\":\"assets/blue_noise.png\",\n\"blue_noise_asset_sha256\":\"865eee9d601cd4d8c038c22c0984ddfd3e7a8e8d2feeb50dd5ca1ba00c54dfb3\""
         << ",\n\"sample_seed\":" << o.settings.sampleSeed
         << ",\n\"rotate_samples\":" << (o.settings.rotateSamples ? "true" : "false")
         << ",\n\"shared_sample_pattern\":" << (o.settings.sharedSamplePattern ? "true" : "false")
@@ -224,11 +270,11 @@ double cpuCheck(Renderer& renderer, const Image& reference) {
 } // namespace
 void printHelp() {
     std::cout
-        << "gfx-research-shadows 0.16.1\n"
-           "Methods: hard | pcf | pcss | arr | geometric | dpcf | chs | geometric-layered | vsm | csm | esm | arr-triangulation\n"
+        << "gfx-research-shadows 0.31.0\n"
+           "Methods: hard | pcf | pcss | arr | geometric | dpcf | chs | geometric-layered | vsm | csm | esm | arr-triangulation | angular-rgba | gsm\n"
            "Interactive: --scene=crossing --method=geometric\n"
            "Stress: --scene=dense-stress --objects=1000000 (0..10000000, procedural instancing)\n"
-           "--stress-benchmark --object-counts=1000,10000,1000000 --method=all (all 12 methods; timing only)\n"
+           "--stress-benchmark --object-counts=1000,10000,1000000 --method=all (all 14 methods; timing only)\n"
            "--stress-tessellation=32 --stress-adaptive-tessellation=1|0 (stress scene only)\n"
            "Experiments: --benchmark | --smoke | --publication-quick | --publication-suite, --method=all\n"
            "--width=1280 --height=720 --shadow-resolution=1024 --angle=1.5 --warp=8\n"
@@ -243,10 +289,33 @@ void printHelp() {
            "--layer-separation=3 --layer-depth=nearest|interval --prefilter-radius=4 --csm-terms=16 --csm-bias=0.032\n"
            "--soft-packed (select geometric-layered; Hermite, shared stratified 64/64, min radius 1 texel)\n"
            "--layer-min-filter=0 (0..4 local map texels; geometric-layered only) --scene=crossing-four\n"
+           "--gsm-sharpness=64 (1..128; prefiltered geometric map, separate from PCSS geometric).\n"
            "--vsm-min-variance=1e-7 --bleed-reduction=0 --esm-exponent=80 --esm-fallback=1\n"
            "--arr-samples=0 (inherit oracle count) --tri-samples=4 --tri-radius=0.8 --tri-rotation=0\n"
            "--tri-result-masks=0|1 (raw ray-mask blend) --tri-signed-margin=1 --arr-smoothing=0|1|3|4|5 --arr-smoothing-radius=0.75\n"
-           "--sample-pattern=vogel|random|stratified --sample-seed=0 (PCSS and geometric).\n"
+           "--sample-pattern=vogel|random|stratified|blue-noise --sample-seed=0 (PCSS and geometric).\n"
+           "Groups: Basic; PCSS; Filtered maps; Multiple light view; Geometry reference.\n"
+           "Aliases: pcss-geometric=geometric; multiple-light-view=angular-rgba; geometry-reference=arr.\n"
+           "--multiview-variant=rgba|separate|rgba-cascaded|separate-cascaded (four explicit comparison variants).\n"
+           "--multiview-storage=rgba|array|separate (one RGBA32F / one D32F array / four D32F textures).\n"
+           "--rgba-pcss-bounds=1 (camera-independent caster depth bound); --rgba-stable-focus=1 (same light focus across coverage modes).\n"
+           "--pcss-angular (PCSS per channel preset); --rgba-filter=pcss (alias --rgba-pcf=pcss).\n"
+           "--rgba-pcss-blockers=32 (1..128) --rgba-pcss-mean=arithmetic|geometric --rgba-pcss-search-radius=3 (0..20 m).\n"
+           "--rgba-pcss-strength=0.5 (alias --rgba-pcf-strength); filter budget --rgba-pcf-samples=8|16|32|64.\n"
+           "--fixed-angular (screenshot fixed-PCF baseline); --world-angular (same preset with world radius).\n"
+           "--rgba-pcf-units=texels|world --rgba-pcf-world-radius=0.25 (0..3 m, fixed PCF).\n"
+           "--rgba-geometric-blend=0.25 (0 arithmetic, 1 geometric; hybrid mode).\n"
+           "--moment-angular (PCF moment reconstruction preset); --rgba-moments=0|1 --rgba-moment-strength=0.5 (0..1).\n"
+           "--shared-angular (shared world PCF preset); --rgba-shared-radius=0.25 (0..3 m) --rgba-shared-adaptive=1|0.\n"
+           "--smooth-angular (Angular RGBA, adaptive PCF 16/bilinear and joint guided smoothing).\n"
+           "--rgba-pcf=off|fixed|adaptive|shared|pcss --rgba-pcf-sharp=1 --rgba-pcf-samples=16 (8|16|32|64) --rgba-pcf-strength=0.5 --rgba-pcf-radius=2 --rgba-pcf-max-radius=16.\n"
+           "--rgba-reconstruct=0 --rgba-edge-contact=1 (0..3 m) --rgba-reconstruct-strength=0.5 --rgba-edge-search=64 (2..128 texels).\n"
+           "--rgba-cascades=0 --rgba-extent=14 (half width, m) --rgba-cascade-scale=2 --rgba-cascade-blend=0.15 --rgba-angular-mix=1 --rgba-mix=weighted|min|product|geometric|hybrid.\n"
+           "--rgba-offset=1 --rgba-radius=1 (0..1 of sun radius) --rgba-rotation=0 (degrees) --rgba-center-weight=0.25 --rgba-smoothing=1 (0 nearest,1 bilinear,2 Hermite,3 B-spline).\n"
+           "--blue-noise-tile=1 (0.01..64 m, world XZ tile).\n"
+           "--clean-blue-noise (keep budgets; Hermite, blue noise, packed endpoints, local contact and result blend).\n"
+           "--result-blend=0 (PCSS and Angular RGBA with active channel PCF; 0..1) --blend-radius=1 (1|2 pixels) --blend-sigma=0.2 (0.05..0.5).\n"
+           "--contact-guard=0 (0..1) --contact-max-gap=1 (0.05..3 m). PCSS mean/geometric/depth bands.\n"
            "--shared-pattern=0|1 (same random disk at each pixel; use rotation off for less grain).\n"
            "--depth-bias=0.00015 --normal-bias=0.002 --max-radius=3 --rotate-samples\n"
            "--map-backend=raster|analytic --camera=0|1 --warmup=12 --measure=30 --output=results/manual\n"
@@ -265,7 +334,7 @@ Options parseOptions(int argc, char** argv) {
             std::exit(0);
         }
         if (key == "--version") {
-            std::cout << "gfx-research-shadows 0.16.1, " << GFX_SHADOWS_COMPILER << ", " << GFX_SHADOWS_BUILD_TYPE
+            std::cout << "gfx-research-shadows 0.31.0, " << GFX_SHADOWS_COMPILER << ", " << GFX_SHADOWS_BUILD_TYPE
                       << ", base " << GFX_SHADOWS_BASE_REVISION << '\n';
             std::exit(0);
         }
@@ -295,6 +364,29 @@ Options parseOptions(int argc, char** argv) {
         }
         if (key == "--headless") {
             o.headless = true;
+            continue;
+        }
+        if (key == "--pcss-angular") {
+            applyPcssAngularPreset(o.settings);o.method="angular-rgba";continue;
+        }
+        if (key == "--fixed-angular" || key == "--world-angular") {
+            if(key=="--world-angular")applyWorldAngularPreset(o.settings);else applyFixedAngularPreset(o.settings);
+            o.method="angular-rgba";continue;
+        }
+        if (key == "--moment-angular") {
+            applyMomentAngularPreset(o.settings);o.method="angular-rgba";
+            continue;
+        }
+        if (key == "--shared-angular") {
+            applySharedAngularPreset(o.settings);o.method="angular-rgba";
+            continue;
+        }
+        if (key == "--smooth-angular") {
+            applySmoothAngularPreset(o.settings);o.method="angular-rgba";
+            continue;
+        }
+        if (key == "--clean-blue-noise") {
+            applyCleanBlueNoisePreset(o.settings);
             continue;
         }
         if (key == "--soft-packed") {
@@ -345,6 +437,93 @@ Options parseOptions(int argc, char** argv) {
             if(value!="0"&&value!="1")throw std::runtime_error("Expected --tri-result-masks=0|1");
             t.triResultMasks=value=="1";
         }
+        else if(key=="--multiview-variant"){
+            int variant=-1;
+            for(int candidate=0;candidate<multiViewVariantCount;++candidate)
+                if(value==multiViewVariantId(candidate))variant=candidate;
+            if(variant<0)throw std::runtime_error("Expected --multiview-variant=rgba|separate|rgba-cascaded|separate-cascaded");
+            applyMultiViewVariant(t,variant);o.method="angular-rgba";
+        }
+        else if(key=="--multiview-storage"||key=="--rgba-storage"){
+            if(value=="rgba")t.multiViewStorage=0;
+            else if(value=="array")t.multiViewStorage=1;
+            else if(value=="separate")t.multiViewStorage=2;
+            else throw std::runtime_error("Expected --multiview-storage=rgba|array|separate");
+        }
+        else if(key=="--rgba-offset"){
+            if(value!="0"&&value!="1")throw std::runtime_error("Expected --rgba-offset=0|1");
+            t.rgbaOffset=value=="1";
+        }
+        else if(key=="--rgba-pcf"||key=="--rgba-filter"){
+            if(value=="off")t.rgbaPcfMode=0;
+            else if(value=="fixed")t.rgbaPcfMode=1;
+            else if(value=="adaptive")t.rgbaPcfMode=2;
+            else if(value=="shared")t.rgbaPcfMode=3;
+            else if(value=="pcss")t.rgbaPcfMode=4;
+            else throw std::runtime_error("Expected --rgba-filter=off|fixed|adaptive|shared|pcss");
+        }
+        else if(key=="--rgba-pcss-bounds"||key=="--rgba-stable-focus"){
+            if(value!="0"&&value!="1")throw std::runtime_error("Expected a 0|1 boolean for "+key);
+            if(key=="--rgba-pcss-bounds")t.rgbaPcssCasterBounds=value=="1";else t.rgbaStableFocus=value=="1";
+        }
+        else if(key=="--rgba-pcss-blockers")t.rgbaPcssBlockerSamples=std::stoi(value);
+        else if(key=="--rgba-pcss-search-radius")t.rgbaPcssSearchRadius=std::stof(value);
+        else if(key=="--rgba-pcss-mean"){
+            if(value=="arithmetic")t.rgbaPcssMean=0;
+            else if(value=="geometric")t.rgbaPcssMean=1;
+            else throw std::runtime_error("Expected --rgba-pcss-mean=arithmetic|geometric");
+        }
+        else if(key=="--rgba-moments"){
+            if(value!="0"&&value!="1")throw std::runtime_error("Expected --rgba-moments=0|1");
+            t.rgbaMoments=value=="1";
+        }
+        else if(key=="--rgba-moment-strength")t.rgbaMomentStrength=std::stof(value);
+        else if(key=="--rgba-shared-adaptive"){
+            if(value!="0"&&value!="1")throw std::runtime_error("Expected --rgba-shared-adaptive=0|1");
+            t.rgbaSharedAdaptive=value=="1";
+        }
+        else if(key=="--rgba-shared-radius")t.rgbaSharedRadius=std::stof(value);
+        else if(key=="--rgba-pcf-sharp"){
+            if(value!="0"&&value!="1")throw std::runtime_error("Expected --rgba-pcf-sharp=0|1");
+            t.rgbaPcfSharp=value=="1";
+        }
+        else if(key=="--rgba-pcf-samples")t.rgbaPcfSamples=std::stoi(value);
+        else if(key=="--rgba-pcf-strength"||key=="--rgba-pcss-strength")t.rgbaPcfStrength=std::stof(value);
+        else if(key=="--rgba-pcf-radius")t.rgbaPcfRadius=std::stof(value);
+        else if(key=="--rgba-pcf-units"){
+            if(value!="texels"&&value!="world")throw std::runtime_error("Expected --rgba-pcf-units=texels|world");
+            t.rgbaPcfWorldUnits=value=="world";
+        }
+        else if(key=="--rgba-pcf-world-radius")t.rgbaPcfWorldRadius=std::stof(value);
+        else if(key=="--rgba-pcf-max-radius")t.rgbaPcfMaxRadius=std::stof(value);
+        else if(key=="--rgba-reconstruct"){
+            if(value!="0"&&value!="1")throw std::runtime_error("Expected --rgba-reconstruct=0|1");
+            t.rgbaReconstruct=value=="1";
+        }
+        else if(key=="--rgba-edge-contact")t.rgbaEdgeContactRange=std::stof(value);
+        else if(key=="--rgba-edge-search")t.rgbaEdgeSearch=std::stoi(value);
+        else if(key=="--rgba-reconstruct-strength")t.rgbaReconstructStrength=std::stof(value);
+        else if(key=="--rgba-cascades"){
+            if(value!="0"&&value!="1")throw std::runtime_error("Expected --rgba-cascades=0|1");
+            t.rgbaCascades=value=="1";
+        }
+        else if(key=="--rgba-extent")t.rgbaExtent=std::stof(value);
+        else if(key=="--rgba-cascade-scale")t.rgbaCascadeScale=std::stof(value);
+        else if(key=="--rgba-cascade-blend")t.rgbaCascadeBlend=std::stof(value);
+        else if(key=="--rgba-angular-mix")t.rgbaAngularMix=std::stof(value);
+        else if(key=="--rgba-mix"){
+            if(value=="weighted")t.rgbaMixMode=0;
+            else if(value=="min")t.rgbaMixMode=1;
+            else if(value=="product")t.rgbaMixMode=2;
+            else if(value=="geometric")t.rgbaMixMode=3;
+            else if(value=="hybrid")t.rgbaMixMode=4;
+            else throw std::runtime_error("Expected --rgba-mix=weighted|min|product|geometric|hybrid");
+        }
+        else if(key=="--rgba-geometric-blend")t.rgbaGeometricBlend=std::stof(value);
+        else if(key=="--rgba-radius")t.rgbaRadius=std::stof(value);
+        else if(key=="--rgba-rotation")t.rgbaRotation=std::stof(value);
+        else if(key=="--rgba-center-weight")t.rgbaCenterWeight=std::stof(value);
+        else if(key=="--rgba-smoothing")t.rgbaSmoothing=std::stoi(value);
         else if (key == "--tri-radius") t.triRadius=std::stof(value);
         else if (key == "--tri-rotation") t.triRotation=std::stof(value);
         else if (key == "--arr-smoothing") t.arrSmoothing=std::stoi(value);
@@ -361,6 +540,13 @@ Options parseOptions(int argc, char** argv) {
             t.smoothing = std::stoi(value);
         else if (key == "--sample-pattern")
             t.samplePattern = parseSamplePattern(value);
+        else if (key == "--result-blend") t.resultBlend=std::stof(value);
+        else if (key == "--blend-radius") t.resultBlendRadius=std::stoi(value);
+        else if (key == "--blend-sigma") t.resultBlendSigma=std::stof(value);
+        else if (key == "--contact-guard") t.contactGuard=std::stof(value);
+        else if (key == "--contact-max-gap") t.contactMaxGap=std::stof(value);
+        else if (key == "--blue-noise-tile")
+            t.blueNoiseTile = std::stof(value);
         else if (key == "--sample-seed")
             t.sampleSeed = std::stoi(value);
         else if (key == "--shared-pattern") {
@@ -378,6 +564,7 @@ Options parseOptions(int argc, char** argv) {
             if(value!="nearest"&&value!="interval")throw std::runtime_error("--layer-depth must be nearest or interval");
             t.packedIntervals=value=="interval";
         }
+        else if (key == "--gsm-sharpness") t.gsmSharpness=std::stof(value);
         else if (key == "--prefilter-radius") t.prefilterRadius = std::stoi(value);
         else if (key == "--csm-terms") t.csmTerms = std::stoi(value);
         else if (key == "--csm-bias") t.csmBias = std::stof(value);
@@ -442,24 +629,32 @@ Options parseOptions(int argc, char** argv) {
             throw std::runtime_error("Unknown option: " + key);
     }
     const auto& t = o.settings;
-    for (float v : {t.angle, t.warp, t.depthBias, t.normalBias, t.maxRadiusWorld, t.fixedPcfRadius, t.dpcfRadius,
+    for (float v : {t.gsmSharpness,t.rgbaPcssSearchRadius,t.rgbaPcfWorldRadius,t.rgbaGeometricBlend,t.angle, t.warp, t.depthBias, t.normalBias, t.maxRadiusWorld, t.fixedPcfRadius, t.dpcfRadius,
                     t.dpcfRatioScale, t.chsSunSize, t.cameraYaw, t.cameraPitch, t.cameraDistance, t.cameraTarget.x,
-                    t.cameraTarget.y, t.cameraTarget.z, t.triRadius, t.triRotation, t.arrSmoothingRadius, t.layerSeparation, t.layerMinFilterTexels, t.vsmMinVariance, t.bleedReduction, t.esmExponent, t.csmBias})
+                    t.rgbaMomentStrength,t.rgbaSharedRadius,t.rgbaPcfStrength,t.rgbaPcfRadius,t.rgbaPcfMaxRadius,t.rgbaEdgeContactRange,t.rgbaReconstructStrength,t.rgbaExtent,t.rgbaCascadeScale,t.rgbaCascadeBlend,t.rgbaAngularMix,t.rgbaRadius,t.rgbaRotation,t.rgbaCenterWeight,t.cameraTarget.y, t.cameraTarget.z, t.resultBlend, t.resultBlendSigma, t.contactGuard, t.contactMaxGap, t.blueNoiseTile, t.triRadius, t.triRotation, t.arrSmoothingRadius, t.layerSeparation, t.layerMinFilterTexels, t.vsmMinVariance, t.bleedReduction, t.esmExponent, t.csmBias})
         if (!std::isfinite(v))
             throw std::runtime_error("Non-finite argument");
-    if (t.width < 16 || t.width > 8192 || t.height < 16 || t.height > 8192 || t.mapResolution < 32 ||
+    if (t.rgbaPcssBlockerSamples<1 || t.rgbaPcssBlockerSamples>128 || t.rgbaPcssSearchRadius<0 || t.rgbaPcssSearchRadius>20 ||
+        t.rgbaPcfWorldRadius<0 || t.rgbaPcfWorldRadius>3 || t.rgbaGeometricBlend<0 || t.rgbaGeometricBlend>1 ||
+        t.width < 16 || t.width > 8192 || t.height < 16 || t.height > 8192 || t.mapResolution < 32 ||
         t.mapResolution > 8192 || !std::has_single_bit(unsigned(t.mapResolution)) || t.filterSamples < 1 ||
         t.filterSamples > 256 || t.blockerSamples < 1 || t.blockerSamples > 256 || t.referenceSamples < 16 ||
         t.referenceSamples > 16384 || t.angle <= 0 || t.angle > 10 || t.warp < 0 || t.warp > 16 || t.camera < 0 ||
         t.camera > 1 || o.measure < 1 || o.warmup < 0 || t.fixedPcfRadius < 0 || t.fixedPcfRadius > 8 ||
         t.depthBias < 0 || t.depthBias > 0.01 || t.normalBias < 0 || t.normalBias > 0.1 || t.maxRadiusWorld <= 0 ||
-        t.maxRadiusWorld > 20 || t.smoothing < 0 || t.smoothing > 7 || t.samplePattern < 0 || t.samplePattern > 2 ||
-        t.sampleSeed < 0 || t.dpcfTaps < 1 || t.dpcfTaps > 64 || t.dpcfRadius <= 0 || t.dpcfRadius > 128 ||
+        t.maxRadiusWorld > 20 || t.smoothing < 0 || t.smoothing > 7 || t.samplePattern < 0 || t.samplePattern > 3 || t.blueNoiseTile < 0.01f || t.blueNoiseTile > 64.0f ||
+        t.rgbaMomentStrength<0 || t.rgbaMomentStrength>1 || t.rgbaSharedRadius<0 || t.rgbaSharedRadius>3 || (t.rgbaPcfSamples!=8&&t.rgbaPcfSamples!=16&&t.rgbaPcfSamples!=32&&t.rgbaPcfSamples!=64) || t.rgbaPcfStrength<0 || t.rgbaPcfStrength>1 || t.rgbaPcfRadius<0 || t.rgbaPcfRadius>32 || t.rgbaPcfMaxRadius<0 || t.rgbaPcfMaxRadius>64 ||
+        t.rgbaEdgeContactRange<0 || t.rgbaEdgeContactRange>3 ||
+        t.rgbaEdgeSearch<2 || t.rgbaEdgeSearch>128 || t.rgbaReconstructStrength<0 || t.rgbaReconstructStrength>1 ||
+        t.rgbaExtent<0.5f || t.rgbaExtent>128 || t.rgbaCascadeScale<1 || t.rgbaCascadeScale>4 || t.rgbaCascadeBlend<0 || t.rgbaCascadeBlend>0.5f || t.rgbaAngularMix<0 || t.rgbaAngularMix>1 ||
+        t.rgbaRadius<0 || t.rgbaRadius>1 || t.rgbaRotation<0 || t.rgbaRotation>360 || t.rgbaCenterWeight<0 || t.rgbaCenterWeight>1 || t.rgbaSmoothing<0 || t.rgbaSmoothing>3 ||
+        t.resultBlend < 0 || t.resultBlend > 1 || t.resultBlendSigma < 0.05f || t.resultBlendSigma > 0.5f ||
+        t.resultBlendRadius < 1 || t.resultBlendRadius > 2 || t.contactGuard < 0 || t.contactGuard > 1 || t.contactMaxGap < 0.05f || t.contactMaxGap > 3 || t.sampleSeed < 0 || t.dpcfTaps < 1 || t.dpcfTaps > 64 || t.dpcfRadius <= 0 || t.dpcfRadius > 128 ||
         t.dpcfRatioScale < 1 || t.dpcfRatioScale > 1000 || t.chsSunSize <= 0 || t.chsSunSize > 100 ||
         (t.chsKernel != 7 && t.chsKernel != 9 && t.chsKernel != 11 && t.chsKernel != 13 && t.chsKernel != 15) ||
         t.cameraPitch < -1.45 || t.cameraPitch > 1.45 || t.cameraDistance < 0.5 || t.cameraDistance > 60)
         throw std::runtime_error("Argument outside supported range");
-    if (t.prefilterRadius < 0 || t.prefilterRadius > 16 || t.csmTerms < 4 || t.csmTerms > 16 || t.csmTerms % 2 ||
+    if (t.gsmSharpness<1 || t.gsmSharpness>128 || t.prefilterRadius < 0 || t.prefilterRadius > 16 || t.csmTerms < 4 || t.csmTerms > 16 || t.csmTerms % 2 ||
         t.layerSeparation < 1.5f || t.layerSeparation > 32 || t.layerMinFilterTexels < 0 || t.layerMinFilterTexels > 4 || t.vsmMinVariance < 1e-10f || t.vsmMinVariance > 0.01f ||
         t.bleedReduction < 0 || t.bleedReduction > 0.95f || t.esmExponent < 1 || t.esmExponent > 80 || t.csmBias < 0 || t.csmBias > 0.1f)
         throw std::runtime_error("Prefilter/layer argument outside supported range");
@@ -487,7 +682,7 @@ Options parseOptions(int argc, char** argv) {
     if (scene.isStress() && scene.casterCount()>maxCasters && t.analyticMaps)
         throw std::runtime_error("Analytic diagnostic maps support 32 objects; use the raster map backend");
     if (o.method != "all")
-        (void)parseMethod(o.method);
+        o.method=methodId(parseMethod(o.method));
     return o;
 }
 void runExperiment(Renderer& renderer, const Options& o) {
@@ -497,8 +692,18 @@ void runExperiment(Renderer& renderer, const Options& o) {
     auto selected = methods(o);
     int expected = int(configs.size() * selected.size()), done = 0, index = 0;
     manifest(o.output / "run_manifest.json", o, expected, false);
+    renderer.validateMultiViewStorage(o.output / "multiview_storage_gpu.csv");
+    renderer.validateRgbaDepthScale(o.output / "rgba_depth_scale_gpu.csv");
+    renderer.validateRgbaPcss(o.output / "rgba_pcss_gpu.csv");
+    renderer.validateRgbaMoments(o.output / "rgba_moments_gpu.csv");
+    renderer.validateRgbaShared(o.output / "rgba_shared_gpu.csv");
+    renderer.validateRgbaBlend(o.output / "rgba_blend_gpu.csv");
+    renderer.validateRgbaPcf(o.output / "rgba_pcf_gpu.csv");
+    renderer.validateRgba(o.output / "rgba_depth_gpu.csv");
     renderer.validateFilters(o.output / "filter_gpu.csv");
     renderer.validateSampling(o.output / "sampling_gpu.csv");
+    renderer.validateBlueNoise(o.output / "blue_noise_gpu.csv");
+    renderer.validateContactBlend(o.output / "contact_blend_gpu.csv");
     renderer.validatePrefilter(o.output / "prefilter_gpu.csv");
     renderer.validateIntervals(o.output / "interval_gpu.csv");
     renderer.validateAngular(o.output / "angular_gpu.csv");
@@ -513,7 +718,7 @@ void runExperiment(Renderer& renderer, const Options& o) {
            "dpcf_taps,dpcf_radius,"
            "dpcf_ratio_scale,chs_kernel,chs_sun_size,warp,smoothing,smoothing_kernel,configured_sample_pattern,"
            "sample_pattern,sample_seed,rotate_"
-           "samples,penumbra_mode,prefilter_passes,prefilter_radius,csm_terms,csm_bias,vsm_min_variance,bleed_reduction,esm_exponent,esm_fallback,layer_separation,map_storage,stored_depth_components,angular_queries,angular_smoothing,angular_smoothing_width,screen_filter_bytes,angular_direction_bytes,tri_signed_margin,tri_radius,tri_rotation,tri_result_masks,layer_min_filter_texels,shared_sample_pattern\n";
+           "samples,penumbra_mode,prefilter_passes,prefilter_radius,csm_terms,csm_bias,vsm_min_variance,bleed_reduction,esm_exponent,esm_fallback,layer_separation,map_storage,stored_depth_components,angular_queries,angular_smoothing,angular_smoothing_width,screen_filter_bytes,angular_direction_bytes,tri_signed_margin,tri_radius,tri_rotation,tri_result_masks,layer_min_filter_texels,shared_sample_pattern,blue_noise_tile_m,sampling_texture_bytes,result_blend,result_blend_radius,result_blend_sigma,result_blend_bytes,contact_guard,contact_max_gap,rgba_pcf_mode,rgba_pcf_samples,rgba_pcf_strength,rgba_pcf_radius,rgba_pcf_max_radius,rgba_shared_adaptive,rgba_shared_radius_m,rgba_moments,rgba_moment_strength,rgba_pcf_world_units,rgba_pcf_world_radius_m,rgba_mix_mode,rgba_geometric_blend,rgba_pcss_blocker_samples,rgba_pcss_mean,rgba_pcss_search_radius_m,rgba_pcss_bounds,rgba_stable_focus,multiview_storage,map_texture_count,multiview_variant,gsm_sharpness,gsm_prefilter_radius\n";
     timings << "case_id,sample,map_gpu_ms,shadow_gpu_ms,total_gpu_ms\n";
     captures << "case_id,kind,width,height,path\n";
     convergence << "config_id,lower_samples,reference_samples,rmse,max_abs_error,cpu_gpu_max_abs_error\n";
@@ -590,14 +795,30 @@ void runExperiment(Renderer& renderer, const Options& o) {
                 << c.settings.prefilterRadius << ',' << c.settings.csmTerms << ',' << c.settings.csmBias << ','
                 << c.settings.vsmMinVariance << ',' << c.settings.bleedReduction << ',' << c.settings.esmExponent << ','
                 << (c.settings.esmFallback ? 1 : 0) << ',' << c.settings.layerSeparation << ','
-                << (arr?"none":method==Method::GeometricLayered&&c.settings.packedIntervals?"r32ui-unorm16-minmax":"d32f") << ','
-                << (arr?0:method==Method::GeometricLayered&&c.settings.packedIntervals?2:1) << ','
+                << mapStorageId(method,c.settings) << ','
+                << (method==Method::AngularRgba?4:arr?0:usesPackedDepth(method,c.settings)?2:1) << ','
                 << angularSamples(method,c.settings) << ',' << angularSmoothing(method,c.settings) << ',' << c.settings.arrSmoothingRadius << ','
                 << (angularSmoothing(method,c.settings)?std::uint64_t(c.settings.width)*c.settings.height*8:0) << ','
                 << (method==Method::Reference?16384*16:0) << ',' << (c.settings.triSignedMargin?1:0) << ','
                 << c.settings.triRadius << ',' << c.settings.triRotation << ',' << (method==Method::ArrTriangulation&&c.settings.triResultMasks?1:0) << ','
                 << (method==Method::GeometricLayered?c.settings.layerMinFilterTexels:0.0f) << ','
-                << (effectiveSamplePattern(method,c.settings)!=0&&c.settings.sharedSamplePattern?1:0) << '\n';
+                << (effectiveSamplePattern(method,c.settings)>0&&effectiveSamplePattern(method,c.settings)<3&&c.settings.sharedSamplePattern?1:0) << ','
+                << (effectiveSamplePattern(method,c.settings)==3?c.settings.blueNoiseTile:0.0f) << ',' << samplingTextureBytes(method,c.settings) << ','
+                << (usesResultBlend(method,c.settings)?c.settings.resultBlend:0.0f) << ','
+                << (usesResultBlend(method,c.settings)?c.settings.resultBlendRadius:0) << ','
+                << (usesResultBlend(method,c.settings)?c.settings.resultBlendSigma:0.0f) << ',' << resultBlendBytes(method,c.settings) << ','
+                << (usesPcss(method)?c.settings.contactGuard:0.0f) << ',' << (usesPcss(method)&&c.settings.contactGuard>0?c.settings.contactMaxGap:0.0f) << ',' << (method==Method::AngularRgba&&c.settings.rgbaPcfMode!=0?c.settings.rgbaPcfMode:0) << ',' << (method==Method::AngularRgba&&c.settings.rgbaPcfMode!=0?c.settings.rgbaPcfSamples:0) << ',' << (method==Method::AngularRgba&&c.settings.rgbaPcfMode!=0?c.settings.rgbaPcfStrength:0) << ',' << (method==Method::AngularRgba&&c.settings.rgbaPcfMode!=0?c.settings.rgbaPcfRadius:0) << ',' << (method==Method::AngularRgba&&c.settings.rgbaPcfMode!=0?c.settings.rgbaPcfMaxRadius:0) << ',' << (method==Method::AngularRgba&&c.settings.rgbaPcfMode==3&&c.settings.rgbaSharedAdaptive?1:0) << ',' << (method==Method::AngularRgba&&c.settings.rgbaPcfMode==3?c.settings.rgbaSharedRadius:0) << ',' << (usesMomentReconstruction(method,c.settings)?1:0) << ',' << (usesMomentReconstruction(method,c.settings)?c.settings.rgbaMomentStrength:0)
+                << ',' << ((method==Method::AngularRgba&&c.settings.rgbaPcfMode==1&&c.settings.rgbaPcfWorldUnits)?1:0) << ',' << ((method==Method::AngularRgba&&c.settings.rgbaPcfMode==1&&c.settings.rgbaPcfWorldUnits)?c.settings.rgbaPcfWorldRadius:0)
+                << ',' << ((method==Method::AngularRgba&&(!c.settings.rgbaCascades||c.settings.rgbaAngularMix>0))?c.settings.rgbaMixMode:0) << ',' << ((method==Method::AngularRgba&&(!c.settings.rgbaCascades||c.settings.rgbaAngularMix>0))&&c.settings.rgbaMixMode==4?c.settings.rgbaGeometricBlend:0)
+                << ',' << (method==Method::AngularRgba&&c.settings.rgbaPcfMode==4?c.settings.rgbaPcssBlockerSamples:0) << ',' << (method==Method::AngularRgba&&c.settings.rgbaPcfMode==4?c.settings.rgbaPcssMean:0)
+                << ',' << (method==Method::AngularRgba&&c.settings.rgbaPcfMode==4?c.settings.rgbaPcssSearchRadius:0)
+                << ',' << (method==Method::AngularRgba&&c.settings.rgbaPcfMode==4&&c.settings.rgbaPcssCasterBounds?1:0)
+                << ',' << (method==Method::AngularRgba&&c.settings.rgbaStableFocus?1:0)
+                << ',' << (method==Method::AngularRgba?multiViewStorageId(c.settings.multiViewStorage):"none")
+                << ',' << mapTextureCount(method,c.settings)
+                << ',' << (method==Method::AngularRgba?multiViewVariantId(c.settings):"none")
+                << ',' << (method==Method::Gsm?c.settings.gsmSharpness:0.0f)
+                << ',' << (method==Method::Gsm?c.settings.prefilterRadius:0) << '\n';
             raw.flush();
             std::cout << '[' << ++done << '/' << expected << "] " << c.scene << " / " << methodId(method)
                       << " RMSE=" << m.rmse << " GPU=" << median(tt) << " ms\n"

@@ -17,6 +17,9 @@ bool boxEndpoints(vec3 o,vec3 d,vec3 lo,vec3 hi,out vec2 t){
     return t.y>=t.x&&t.y>0.0;
 }
 #endif
+#ifdef RGBA_DEPTH
+layout(location=0) out vec4 outDepth;
+#endif
 void main(){
     vec2 p=unwarpPoint(vUv*2.0-1.0);
     vec4 a=uInverseLightVp*vec4(p,-1,1),b=uInverseLightVp*vec4(p,1,1);
@@ -54,5 +57,11 @@ void main(){
         }
     }
     if(nearest>1e28)discard;
-    vec4 clip=uLightVp*vec4(origin+direction*nearest,1);gl_FragDepth=clip.z/clip.w*0.5+0.5;
+    vec4 clip=uLightVp*vec4(origin+direction*nearest,1);float d=clip.z/clip.w*0.5+0.5;
+#ifdef RGBA_DEPTH
+    if(d<0.0||d>1.0)discard;
+    outDepth=vec4(d);
+#else
+    gl_FragDepth=d;
+#endif
 }

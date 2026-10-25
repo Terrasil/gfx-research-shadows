@@ -28,7 +28,7 @@ def main():
         command.append("--map-backend=analytic")
     command += extra
     source_hashes = {}
-    for directory in ("src", "include", "shaders", "tools", "tests", "upstream"):
+    for directory in ("src", "include", "shaders", "tools", "tests", "upstream", "assets"):
         for path in sorted((ROOT / directory).rglob("*")):
             if path.is_file() and "__pycache__" not in path.parts:
                 source_hashes[str(path.relative_to(ROOT)).replace("\\", "/")] = hashlib.sha256(path.read_bytes()).hexdigest()

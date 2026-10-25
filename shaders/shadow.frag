@@ -11,9 +11,11 @@ uniform int uMapResolution,uFilterSamples,uBlockerSamples,uRotateSamples,uDpcfTa
 uniform int uInnerPenumbra;
 uniform float uLayerSeparation,uVsmMinVariance,uBleedReduction,uEsmExponent,uCsmBias;
 uniform int uCsmTerms,uEsmFallback;
+uniform float uGsmSharpness;
 layout(binding=3) uniform sampler2DArray uBasis;
 #if SHADOW_METHOD >= 8
 #include "prefilter_math.glsl"
+#include "geometric_map.glsl"
 #endif
 const int uMethod=SHADOW_METHOD;
 const int uChsKernel=CHS_FILTER_SIZE;
@@ -29,6 +31,12 @@ vec2 receiverNormalGradient(vec3 normal){
     return (uExtent/uDepthRange)*vec2(dot(normal,tangent),dot(normal,bitangent))/denominator;
 }
 #include "pcss_sampling.glsl"
+#if SHADOW_METHOD == 2 || SHADOW_METHOD == 4 || SHADOW_METHOD == 7
+#include "blue_noise.glsl"
+#ifdef CONTACT_GUARD_ENABLED
+#include "contact_guard.glsl"
+#endif
+#endif
 float depthGap(vec2 p,float receiverDepth,vec2 origin,vec2 gradient){
     vec2 uv=warpPoint(p)*0.5+0.5;
     if(any(lessThan(uv,vec2(0)))||any(greaterThanEqual(uv,vec2(1))))return -1.0;
@@ -69,7 +77,7 @@ float filtered(vec2 p,float depth,vec2 gradient,float radius,float angle,uint fi
     return visible/float(uFilterSamples);
 #endif
 }
-float pcss(vec3 light,vec2 gradient,float angle,bool geometric){
+float pcss(vec3 light,vec2 gradient,vec2 angles,bool geometric){
     // Artistic containment in the central hard-shadow mask. The same biased
     // comparison is used by the Hard method, so no shadow can extend outside it.
     bool inner=uInnerPenumbra!=0;
@@ -77,18 +85,18 @@ float pcss(vec3 light,vec2 gradient,float angle,bool geometric){
     float scale=uDepthRange*uTanAngle/uExtent,maxRadius=uMaxRadiusWorld/uExtent;
     float searchRadius=min(max(light.z,0.0)*scale,maxRadius),sum=0.0,logs=0.0,count=0.0;
     uint blockerKey=0u,filterKey=0u;
-    if(uSamplePattern!=0){
+    if(uSamplePattern==1||uSamplePattern==2){
         uvec2 pixel=uSharedSamples!=0?uvec2(0):uvec2(gl_FragCoord.xy);
         blockerKey=diskSeed(pixel,uint(uSampleSeed),0u);
         filterKey=diskSeed(pixel,uint(uSampleSeed),1u);
     }
     for(int i=0;i<uBlockerSamples;++i){
 #if (SHADOW_METHOD == 2 || SHADOW_METHOD == 4) && (SHADOW_SMOOTHING == 2 || SHADOW_SMOOTHING == 3)
-        vec2 uv=warpPoint(light.xy+diskSample(i,uBlockerSamples,angle,uSamplePattern,blockerKey)*searchRadius)*0.5+0.5;
+        vec2 uv=warpPoint(light.xy+diskSample(i,uBlockerSamples,angles.x,uSamplePattern,blockerKey)*searchRadius)*0.5+0.5;
         vec3 stats=smoothBlockers(uv,light.z,light.xy,gradient);
         logs+=stats.x;sum+=stats.y;count+=stats.z;
 #else
-        float gap=depthGap(light.xy+diskSample(i,uBlockerSamples,angle,uSamplePattern,blockerKey)*searchRadius,light.z,light.xy,gradient);
+        float gap=depthGap(light.xy+diskSample(i,uBlockerSamples,angles.x,uSamplePattern,blockerKey)*searchRadius,light.z,light.xy,gradient);
         if(gap>uDepthBias){sum+=gap;if(geometric)logs+=log(max(gap,1e-8));++count;}
 #endif
     }
@@ -96,7 +104,7 @@ float pcss(vec3 light,vec2 gradient,float angle,bool geometric){
     float mean=sum/count,gap=geometric?min(mean,exp(logs/count)):mean;
     float radius=min(gap*scale,maxRadius);
     outDiagnostic=vec4(radius*uExtent,min(mean*scale,maxRadius)*uExtent,0,1);
-    float visibility=filtered(light.xy,light.z,gradient,radius,angle,filterKey);
+    float visibility=filtered(light.xy,light.z,gradient,radius,angles.y,filterKey);
     // For a locally straight symmetric edge V=0.5 at the hard outline.
     // Remap that value to 1 so the transition occupies the inside half.
     // This is a heuristic for complex silhouettes, not area-light integration.
@@ -115,7 +123,8 @@ void main(){
     float depth=texture(uDepth,vUv).r;
     if(depth>=1.0){outVisibility=1.0;return;}
     vec3 normal=normalize(texture(uNormal,vUv).xyz);
-    vec3 position=worldPosition(vUv,depth)+normal*uNormalBias;
+    vec3 world=worldPosition(vUv,depth);
+    vec3 position=world+normal*uNormalBias;
     vec4 clip=uLightVp*vec4(position,1);
     vec3 light=vec3(clip.xy/clip.w,clip.z/clip.w*0.5+0.5);
     if(any(greaterThan(abs(light.xy),vec2(1)))||light.z<=0||light.z>=1){outVisibility=1.0;return;}
@@ -139,15 +148,21 @@ void main(){
         outVisibility=sum/float((radius*2+1)*(radius*2+1));return;
 #else
     float angle=0.0;
-    if(uRotateSamples!=0||uMethod==5)angle=6.28318530718*fract(52.9829189*fract(dot(gl_FragCoord.xy,vec2(0.06711056,0.00583715))));
+    if((uRotateSamples!=0&&uSamplePattern!=3)||uMethod==5)angle=6.28318530718*fract(52.9829189*fract(dot(gl_FragCoord.xy,vec2(0.06711056,0.00583715))));
+#if SHADOW_METHOD == 2 || SHADOW_METHOD == 4 || SHADOW_METHOD == 7
+    vec2 angles=vec2(angle);
+    if(uSamplePattern==3)angles=worldBlueNoiseAngles(world.xz,uint(uSampleSeed));
+#endif
 #if SHADOW_METHOD == 7
-    outVisibility=geometricLayers(light,gradient,angle);
+    outVisibility=geometricLayers(light,gradient,angles);
 #elif SHADOW_METHOD >= 8
     float t=light.z-uDepthBias;
 #if SHADOW_METHOD == 8
     outVisibility=varianceVisibility(texture(uBasis,vec3(uv,0)).xy,t,uVsmMinVariance,uBleedReduction);
 #elif SHADOW_METHOD == 9
     outVisibility=fourierVisibility(uBasis,uv,t,uCsmTerms,uCsmBias);
+#elif SHADOW_METHOD == 13
+    outVisibility=geometricMapVisibility(texture(uBasis,vec3(uv,0)).r,t,uGsmSharpness);
 #else
     float response=exponentialLogResponse(texture(uBasis,vec3(uv,0)).r,t,uEsmExponent);
     if(uEsmFallback!=0&&response>log(1.02)){
@@ -156,7 +171,7 @@ void main(){
     }else outVisibility=exp(min(response,0.0));
 #endif
 #elif SHADOW_METHOD == 2 || SHADOW_METHOD == 4
-    outVisibility=pcss(light,gradient,angle,uMethod==4);
+    outVisibility=pcss(light,gradient,angles,uMethod==4);
 #else
     float lightScale=uTanAngle/tan(radians(1.5));
 #if SHADOW_METHOD == 5
@@ -171,5 +186,17 @@ void main(){
         outDiagnostic=vec4(float(uChsKernel/2)*2.0*uExtent/float(uMapResolution),0,1.0-outVisibility,1);return;
 #endif
 #endif
+#endif
+#if (SHADOW_METHOD == 2 || SHADOW_METHOD == 4 || SHADOW_METHOD == 7) && defined(CONTACT_GUARD_ENABLED)
+    if(uContactGuard>0.0&&(uInnerPenumbra==0||depthGap(light.xy,light.z,light.xy,gradient)>uDepthBias)){
+        vec4 protection=contactProtection(light,gradient);
+        float bound=1.0-protection.x;
+        outVisibility=min(outVisibility,bound);
+        if(protection.x>0.0){
+            outDiagnostic.x=outDiagnostic.a>0.5?mix(outDiagnostic.x,min(outDiagnostic.x,protection.y),protection.x):protection.y;
+            outDiagnostic.a=1.0;
+        }
+        outDiagnostic.z=protection.x;
+    }
 #endif
 }

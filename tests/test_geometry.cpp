@@ -32,17 +32,32 @@ int main() {
         ceiling.id = "ceiling";
         ceiling.boxes.push_back({{-5, 1, -5}, {5, 2, 5}, {1, 1, 1}, 0});
         require(cpuVisibility(ceiling, {0, 0, 0}, {0, 1, 0}, 128, 1.5) == 0.0, "Opaque ceiling must block source");
+        for(float distance:{8.0f,32.0f,128.0f,512.0f}){
+            const float range=distance*2;
+            const auto vp=glm::ortho(-8.0f,8.0f,-8.0f,8.0f,0.0f,range)*
+                glm::lookAt(glm::vec3(0,distance,0),glm::vec3(0),glm::vec3(0,0,1));
+            const float nearest=casterNearDepth(ceiling,vp);
+            const float gap=(0.5f-nearest)*range;
+            require(std::abs(gap-2.0f)<0.0001f,"Caster search bound changed with camera distance");
+            require(casterNearDepth(empty,vp)==1.0f,"Empty scene must have no caster bound");
+            require(casterNearDepth(ceiling,vp,0)==1.0f,"Dropped caster still affects bound");
+        }
         for (int count : {0, 1, 17, 32, 4096, 1'000'000, 10'000'000}) {
             const auto stress = makeScene("dense-stress", count);
             require(stress.casterCount() == count, "Stress population count changed");
             require(stress.boxes.size() == (count <= maxCasters ? std::size_t(count) : 0u), "Large stress scenes must not allocate per-object CPU data");
             if (count == 0) continue;
             const int grid = stressGrid(count);
+            const auto vp=glm::ortho(-8.0f,8.0f,-8.0f,8.0f,0.0f,64.0f)*
+                glm::lookAt(glm::vec3(0,32,0),glm::vec3(0),glm::vec3(0,0,1));
+            const float nearest=casterNearDepth(stress,vp);
             require(std::int64_t(grid) * grid >= count && std::int64_t(grid - 1) * (grid - 1) < count, "Stress grid does not cover exact population");
             for (int i : {0, count / 2, count - 1}) {
                 const auto box = stressBox(i, count);
                 require(box.lo.x >= -6.001f && box.hi.x <= 6.001f && box.lo.z >= -6.001f && box.hi.z <= 6.001f, "Stress caster outside fixed field");
                 require(box.lo.x < box.hi.x && box.lo.y < box.hi.y && box.lo.z < box.hi.z, "Degenerate stress caster");
+                const auto clip=vp*glm::vec4(0,box.hi.y,0,1);
+                require(nearest<=clip.z*0.5f+0.5f,"Procedural caster lies outside depth bound");
             }
         }
         bool referenceRejected = false;

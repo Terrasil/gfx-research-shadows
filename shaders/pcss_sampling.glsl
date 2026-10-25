@@ -13,7 +13,8 @@ vec2 vogel(int i,int count,float angle){
     return vec2(cos(a),sin(a))*r;
 }
 vec2 diskSample(int i,int count,float angle,int pattern,uint key){
-    if(pattern==0)return vogel(i,count,angle);
+    // Pattern 3 receives its world-space blue-noise rotation from the caller.
+    if(pattern==0||pattern==3)return vogel(i,count,angle);
     uint value=key+uint(i)*0x9e3779b9u;
     vec2 xi=vec2(diskRandom(value),diskRandom(value+0x68bc21ebu));
     float area=xi.x,azimuth=xi.y;

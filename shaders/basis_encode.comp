@@ -10,6 +10,9 @@ layout(r32f,binding=0) writeonly uniform image2DArray uOutput;
 #endif
 uniform int uSize,uLayers;
 uniform float uExponent;
+#if BASIS_METHOD == 3
+#include "geometric_map.glsl"
+#endif
 void main(){
     ivec3 p=ivec3(gl_GlobalInvocationID);if(any(greaterThanEqual(p,ivec3(uSize,uSize,uLayers))))return;
     float d=texelFetch(uMaps,ivec3(p.xy,0),0).r;vec4 value=vec4(0);
@@ -20,8 +23,10 @@ void main(){
     float a=3.14159265358979323846*float(4*p.z+1)*q;
     float b=3.14159265358979323846*float(4*p.z+3)*q;
     value=vec4(cos(a),sin(a),cos(b),sin(b));
-#else
+#elif BASIS_METHOD == 2
     value.x=exp(uExponent*(d-1.0));
+#else
+    value.x=geometricMapEncode(d);
 #endif
     imageStore(uOutput,p,value);
 }
