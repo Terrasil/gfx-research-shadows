@@ -1,0 +1,27 @@
+#version 460 core
+layout(local_size_x=64) in;
+layout(std430,binding=6) buffer Result{vec4 values[];};
+uniform int uFixture,uSamples;
+#include "rgba_moments.glsl"
+void main(){
+    int id=int(gl_GlobalInvocationID.x);if(id>=260)return;
+    float center=float(id%65-32)*0.0375,angle=0.13+float(id/65)*0.58;
+    vec2 normal=vec2(cos(angle),sin(angle)),points[4];points[0]=vec2(0);
+    for(int c=1;c<4;++c){float a=0.37+float(c-1)*2.09439510239;points[c]=vec2(cos(a),sin(a));}
+    RgbaPcfMoment observations[4];float raw=0.0;
+    for(int c=0;c<4;++c){
+        float sum=0.0;vec2 mean=vec2(0),lit=vec2(0);vec3 second=vec3(0);
+        for(int j=0;j<uSamples;++j){
+            float r=sqrt((float(j)+0.5)/float(uSamples)),a=float(j)*2.39996322973;
+            vec2 point=r*vec2(cos(a),sin(a));float margin=center+dot(normal,points[c])+0.5*dot(normal,point);
+            float value=uFixture==2?(center>=0.0?1.0:0.0):uFixture==3?(abs(margin)>=0.15?1.0:0.0):(margin>=0.0?1.0:0.0);
+            sum+=value;mean+=point;lit+=point*value;second+=vec3(point.x*point.x,point.x*point.y,point.y*point.y);
+        }
+        float count=float(uSamples),gap=uFixture==1&&c==0?0.1:4.0;
+        observations[c]=rgbaMomentFromSums(sum/count,mean/count,lit/count,second/count,0.5,gap,1.0);
+        raw+=sum/count*0.25;
+    }
+    vec2 fit=rgbaMomentReconstruct(points,observations);
+    float reference=uFixture==2?(center>=0.0?1.0:0.0):uFixture==3?1.0-(rgbaDiskCoverage(0.15-center)-rgbaDiskCoverage(-0.15-center)):rgbaDiskCoverage(center);
+    values[id]=vec4(raw,fit,reference);
+}

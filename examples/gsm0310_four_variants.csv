@@ -1,0 +1,5 @@
+case_id,scene,objects,variant,cascades,storage,map_bytes,textures,map_gpu_ms,shadow_gpu_ms,total_gpu_ms,hardware_timings,visibility_rmse_vs_rgba,visibility_max_error_vs_rgba,rmse_vs_geometry,penumbra_rmse_vs_geometry
+s0-angular-rgba,dense-stress,33,rgba,0,rgba,16384,1,2.279523,4.91546,7.480873,0,,,,
+s0-angular-rgba,dense-stress,33,separate,0,separate,16384,4,0.826064,7.095229,8.372428,0,,,,
+s0-angular-rgba,dense-stress,33,rgba-cascaded,1,rgba,16384,1,2.7613,8.011342,11.018082,0,,,,
+s0-angular-rgba,dense-stress,33,separate-cascaded,1,separate,16384,4,1.873021,6.006659,8.19132,0,,,,

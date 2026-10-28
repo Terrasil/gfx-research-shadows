@@ -1,0 +1,18 @@
+{
+  "near_core_pixels": 1512,
+  "soft_pixels": 787,
+  "methods": {
+    "front-raw": {
+      "near_core_rmse": 0.02635136597949525,
+      "soft_rmse": 0.12210768980265921
+    },
+    "front-edge": {
+      "near_core_rmse": 0.027117895195114535,
+      "soft_rmse": 0.0976378165999952
+    },
+    "front-half": {
+      "near_core_rmse": 0.024595292111123476,
+      "soft_rmse": 0.10159833507103272
+    }
+  }
+}

@@ -1,0 +1,1934 @@
+{
+  "version": "0.26.0",
+  "ctest_targets_passed": 3,
+  "analyzer_tests_passed": 22,
+  "quality_cases": 40,
+  "quality_experiments": 20,
+  "stress_methods": 13,
+  "stress_objects": 33,
+  "both_arr_methods_active": true,
+  "hardware_timings": false,
+  "pixel_identity_checks": {
+    "world-weighted == world-hybrid0": 0.0,
+    "world-geometric == world-hybrid1": 0.0,
+    "world-weighted == world-moment0": 0.0,
+    "world-radius0 == pcf-off": 0.0,
+    "fixed-weighted == 0.25 baseline": 0.0
+  },
+  "region_checks": {
+    "near_pixels": 1512,
+    "far_soft_pixels": 787,
+    "cases": {
+      "fixed-weighted": {
+        "near_rmse": 0.11890504201261477,
+        "far_soft_rmse": 0.1326168418270238
+      },
+      "fixed-geometric": {
+        "near_rmse": 0.014936289190393082,
+        "far_soft_rmse": 0.2718307019593931
+      },
+      "fixed-hybrid25": {
+        "near_rmse": 0.0899693098371993,
+        "far_soft_rmse": 0.14627150265682362
+      },
+      "fixed-moments": {
+        "near_rmse": 0.11890504201261477,
+        "far_soft_rmse": 0.1324189026905518,
+        "near_max_pixel_change": 0.0
+      },
+      "world-weighted": {
+        "near_rmse": 0.1556685676280579,
+        "far_soft_rmse": 0.15998239297282627
+      },
+      "world-moments": {
+        "near_rmse": 0.15467815407668414,
+        "far_soft_rmse": 0.15692539199296882,
+        "near_max_pixel_change": 0.05089367926120758
+      },
+      "equal-weighted": {
+        "near_rmse": 0.11034603096974205,
+        "far_soft_rmse": 0.12567215276053256
+      },
+      "equal-moments": {
+        "near_rmse": 0.10987389355089021,
+        "far_soft_rmse": 0.12077542579761845,
+        "near_max_pixel_change": 0.015316575765609741
+      }
+    }
+  },
+  "invalid_cli_arguments": [
+    {
+      "argument": "--rgba-pcf-units=bad",
+      "rejected": true,
+      "reason": "Expected --rgba-pcf-units=texels|world"
+    },
+    {
+      "argument": "--rgba-pcf-world-radius=-0.01",
+      "rejected": true,
+      "reason": "Argument outside supported range"
+    },
+    {
+      "argument": "--rgba-pcf-world-radius=3.01",
+      "rejected": true,
+      "reason": "Argument outside supported range"
+    },
+    {
+      "argument": "--rgba-pcf-world-radius=nan",
+      "rejected": true,
+      "reason": "Non-finite argument"
+    },
+    {
+      "argument": "--rgba-pcf-world-radius=inf",
+      "rejected": true,
+      "reason": "Non-finite argument"
+    },
+    {
+      "argument": "--rgba-geometric-blend=-0.1",
+      "rejected": true,
+      "reason": "Argument outside supported range"
+    },
+    {
+      "argument": "--rgba-geometric-blend=1.1",
+      "rejected": true,
+      "reason": "Argument outside supported range"
+    },
+    {
+      "argument": "--rgba-geometric-blend=nan",
+      "rejected": true,
+      "reason": "Non-finite argument"
+    },
+    {
+      "argument": "--rgba-geometric-blend=inf",
+      "rejected": true,
+      "reason": "Non-finite argument"
+    },
+    {
+      "argument": "--rgba-mix=bad",
+      "rejected": true,
+      "reason": "Expected --rgba-mix=weighted|min|product|geometric|hybrid"
+    }
+  ],
+  "oracles": {
+    "rgba_blend_oracles": {
+      "cases": 6144,
+      "preservation_max_abs_error": 8.940000001400605e-08,
+      "noisy_ramp_rmse": [
+        0.05006245537035229,
+        0.027657137516781876,
+        0.020729712742089373
+      ],
+      "protected_edge_violations": 0
+    },
+    "rgba_shared_oracles": {
+      "cases": 6656,
+      "max_visibility_error": 6.352701853451492e-07,
+      "max_radius_error": 1.235541252642136e-09,
+      "max_center_error": 1.0083386116910287e-06,
+      "max_receiver_plane_error": 7.450580597e-09
+    },
+    "rgba_moment_oracles": {
+      "cases": 3120,
+      "reference_max_abs_error": 8.576246121050346e-07,
+      "fallback_max_abs_error": 0.0,
+      "active_cases": 300,
+      "fixture_rmse": {
+        "0-16": {
+          "raw_rmse": 0.0711971701292602,
+          "reconstructed_rmse": 0.0657287485934965
+        },
+        "0-32": {
+          "raw_rmse": 0.07028158812270817,
+          "reconstructed_rmse": 0.06380498097087259
+        },
+        "0-64": {
+          "raw_rmse": 0.06995637979600806,
+          "reconstructed_rmse": 0.06277207161127613
+        },
+        "1-16": {
+          "raw_rmse": 0.0711971701292602,
+          "reconstructed_rmse": 0.0711971701292602
+        },
+        "1-32": {
+          "raw_rmse": 0.07028158812270817,
+          "reconstructed_rmse": 0.07028158812270817
+        },
+        "1-64": {
+          "raw_rmse": 0.06995637979600806,
+          "reconstructed_rmse": 0.06995637979600806
+        },
+        "2-16": {
+          "raw_rmse": 0.0,
+          "reconstructed_rmse": 0.0
+        },
+        "2-32": {
+          "raw_rmse": 0.0,
+          "reconstructed_rmse": 0.0
+        },
+        "2-64": {
+          "raw_rmse": 0.0,
+          "reconstructed_rmse": 0.0
+        },
+        "3-16": {
+          "raw_rmse": 0.05722757691340781,
+          "reconstructed_rmse": 0.05721879901447793
+        },
+        "3-32": {
+          "raw_rmse": 0.055684233893334184,
+          "reconstructed_rmse": 0.055628377966969095
+        },
+        "3-64": {
+          "raw_rmse": 0.05491719776999089,
+          "reconstructed_rmse": 0.05479419139138244
+        }
+      }
+    },
+    "prefilter_oracles": {
+      "cases": 384,
+      "basis_max_abs_error": {
+        "vsm": 1.398246112227497e-07,
+        "csm": 6.321189156832663e-07,
+        "esm": 9.590815327250451e-11
+      },
+      "visibility_max_abs_error": {
+        "vsm": 3.3113885843094604e-07,
+        "csm": 1.9979845178319522e-07,
+        "esm": 5.731307624046167e-07
+      }
+    },
+    "angular_oracles": {
+      "cases": 416,
+      "circle_planes": 160,
+      "ray_box_signs": 96,
+      "max_coverage_error": 2.563000000010973e-06,
+      "ray_mask_cases": 160,
+      "max_mask_error": 1.5052938262538618e-07
+    },
+    "angular_filter_oracles": {
+      "cases": 1024,
+      "max_abs_error": 3.0078717816461875e-07,
+      "depth_step_guard": true
+    },
+    "interval_oracles": {
+      "cases": 256,
+      "concurrent_updates": 4096,
+      "exact": true
+    },
+    "filter_oracles": {
+      "cases": 320,
+      "max_abs_error": {
+        "dpcf": 9.841014469991194e-08,
+        "chs": 2.1846677977777063e-07,
+        "smooth_visibility": 1.0672222064411763e-07,
+        "smooth_gap": 1.0742797984519825e-07,
+        "smooth_mean_gap": 1.2198937993090908e-07
+      }
+    },
+    "sampling_oracles": {
+      "cases": 1568,
+      "max_abs_coordinate_error": {
+        "vogel": 4.178330975476707e-05,
+        "random": 5.185277473507277e-07,
+        "stratified": 5.508414513688553e-07
+      },
+      "disk_sets": {
+        "random-48-stream0": {
+          "points": 48,
+          "mean_radius_squared": 0.5207329767633073,
+          "centroid": [
+            -0.09163320584291666,
+            0.013475170047083332
+          ]
+        },
+        "random-48-stream1": {
+          "points": 48,
+          "mean_radius_squared": 0.4739021851557851,
+          "centroid": [
+            -0.04761590769664582,
+            -0.003994119490416666
+          ]
+        },
+        "random-96-stream0": {
+          "points": 96,
+          "mean_radius_squared": 0.49828468991477076,
+          "centroid": [
+            -0.04567442810228125,
+            0.027286502037083334
+          ]
+        },
+        "random-96-stream1": {
+          "points": 96,
+          "mean_radius_squared": 0.4714895147036033,
+          "centroid": [
+            -0.025873509992260412,
+            -0.020147743719114583
+          ]
+        },
+        "random-256-stream0": {
+          "points": 256,
+          "mean_radius_squared": 0.5107742652920823,
+          "centroid": [
+            -0.023800404502648437,
+            0.05672949677042187
+          ]
+        },
+        "random-256-stream1": {
+          "points": 256,
+          "mean_radius_squared": 0.4869679603900945,
+          "centroid": [
+            -0.03787882126527734,
+            -0.03979215239631641
+          ]
+        },
+        "stratified-48-stream0": {
+          "points": 48,
+          "mean_radius_squared": 0.5025867756902468,
+          "centroid": [
+            -0.00013371305166666385,
+            -0.00025759222291666994
+          ]
+        },
+        "stratified-48-stream1": {
+          "points": 48,
+          "mean_radius_squared": 0.49027235850916895,
+          "centroid": [
+            -0.004658486379527087,
+            -0.013483769571666667
+          ]
+        },
+        "stratified-96-stream0": {
+          "points": 96,
+          "mean_radius_squared": 0.4969455466112395,
+          "centroid": [
+            0.0069302310073125,
+            0.0005945465704166671
+          ]
+        },
+        "stratified-96-stream1": {
+          "points": 96,
+          "mean_radius_squared": 0.4929816566749114,
+          "centroid": [
+            0.002671310001020837,
+            -0.006057874826875
+          ]
+        },
+        "stratified-256-stream0": {
+          "points": 256,
+          "mean_radius_squared": 0.5020638850827697,
+          "centroid": [
+            -0.0026891397608593734,
+            0.001125249329496093
+          ]
+        },
+        "stratified-256-stream1": {
+          "points": 256,
+          "mean_radius_squared": 0.49872110456670793,
+          "centroid": [
+            -0.0026054637494921876,
+            -0.0022350997259335927
+          ]
+        }
+      }
+    },
+    "blue_noise_oracles": {
+      "cases": 128,
+      "max_phase_error": 3.874283933669176e-07,
+      "max_point_error": 1.477573482344674e-05,
+      "periodic_phase_mismatches": 0
+    },
+    "contact_blend_oracles": {
+      "cases": 1152,
+      "max_abs_error": {
+        "contact": 3.323519097486738e-06,
+        "blend": 2.4455687064328657e-07
+      },
+      "protected_core_violations": 0,
+      "packed_hidden_support_cases": 6,
+      "geometry_step_guard": true
+    },
+    "rgba_mix_oracles": {
+      "cases": 3936,
+      "max_abs_error": 1.2867883025791116e-07
+    },
+    "rgba_edge_oracles": {
+      "cases": 384,
+      "fixtures": {
+        "0": {
+          "raw_rmse": 0.0847686007513515,
+          "reconstructed_rmse": 0.0020550260865836484,
+          "near_core_max_visibility": 0
+        },
+        "1": {
+          "raw_rmse": 0.016792082953970302,
+          "reconstructed_rmse": 0.016792082964122178,
+          "near_core_max_visibility": 0.0
+        },
+        "2": {
+          "raw_rmse": 0.10850731716638855,
+          "reconstructed_rmse": 0.10903031928076246,
+          "near_core_max_visibility": 0.0
+        }
+      }
+    },
+    "rgba_pcf_oracles": {
+      "cases": 18432,
+      "max_visibility_error": 2.0549630090016535e-05,
+      "max_radius_error": 5.153814408437318e-06,
+      "max_sharp_support_error": 2.6265478717535373e-06,
+      "max_blocker_gap_error": 0.00019810908549722228
+    }
+  },
+  "experiments": {
+    "equal-moments": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/equal-moments",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--rgba-cascade-scale=1",
+        "--rgba-moments=1"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 1,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 1,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.027507664",
+          "penumbra_rmse": "0.1467139432",
+          "gradient_rmse": "0.02385809377"
+        }
+      ]
+    },
+    "equal-weighted": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/equal-weighted",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--rgba-cascade-scale=1"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 1,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.02840603312",
+          "penumbra_rmse": "0.1506611548",
+          "gradient_rmse": "0.02464763288"
+        }
+      ]
+    },
+    "fixed-geometric": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/fixed-geometric",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--fixed-angular",
+        "--rgba-mix=geometric"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 3,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 0,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.03639181556",
+          "penumbra_rmse": "0.2630761528",
+          "gradient_rmse": "0.02095921017"
+        }
+      ]
+    },
+    "fixed-hybrid25": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/fixed-hybrid25",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--fixed-angular",
+        "--rgba-mix=hybrid",
+        "--rgba-geometric-blend=0.25"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 4,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 0,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.02758150455",
+          "penumbra_rmse": "0.1468236233",
+          "gradient_rmse": "0.01629980867"
+        }
+      ]
+    },
+    "fixed-moments": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/fixed-moments",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--fixed-angular",
+        "--rgba-moments=1"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 0,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 1,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.02937460617",
+          "penumbra_rmse": "0.1353319492",
+          "gradient_rmse": "0.01643092843"
+        }
+      ]
+    },
+    "fixed-weighted": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/fixed-weighted",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--fixed-angular"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 0,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.02938554267",
+          "penumbra_rmse": "0.1354864443",
+          "gradient_rmse": "0.0164562701"
+        }
+      ]
+    },
+    "four-moments": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/four-moments",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--scene=crossing-four",
+        "--rgba-cascade-scale=1",
+        "--rgba-moments=1"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 1,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 1,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.03137684468",
+          "penumbra_rmse": "0.1159474967",
+          "gradient_rmse": "0.02583460783"
+        }
+      ]
+    },
+    "four-weighted": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/four-weighted",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--scene=crossing-four",
+        "--rgba-cascade-scale=1"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 1,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.0316047732",
+          "penumbra_rmse": "0.1171146064",
+          "gradient_rmse": "0.02582592153"
+        }
+      ]
+    },
+    "pcf-off": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/pcf-off",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--rgba-pcf=off"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 0,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.02645844449",
+          "penumbra_rmse": "0.1407616149",
+          "gradient_rmse": "0.0167675504"
+        }
+      ]
+    },
+    "sloped-moments": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/sloped-moments",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--scene=sloped",
+        "--rgba-cascade-scale=1",
+        "--rgba-moments=1"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 1,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 1,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.02712922596",
+          "penumbra_rmse": "0.1264162302",
+          "gradient_rmse": "0.02006088155"
+        }
+      ]
+    },
+    "sloped-weighted": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/sloped-weighted",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--scene=sloped",
+        "--rgba-cascade-scale=1"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 1,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.02950244162",
+          "penumbra_rmse": "0.1369474638",
+          "gradient_rmse": "0.02171277153"
+        }
+      ]
+    },
+    "world-geometric": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/world-geometric",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--rgba-mix=geometric"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 3,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.03574337356",
+          "penumbra_rmse": "0.2190670697",
+          "gradient_rmse": "0.02517676004"
+        }
+      ]
+    },
+    "world-hybrid0": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/world-hybrid0",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--rgba-mix=hybrid",
+        "--rgba-geometric-blend=0"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 4,
+        "rgba_geometric_blend": 0,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.03680345403",
+          "penumbra_rmse": "0.1815599877",
+          "gradient_rmse": "0.02568898014"
+        }
+      ]
+    },
+    "world-hybrid1": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/world-hybrid1",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--rgba-mix=hybrid",
+        "--rgba-geometric-blend=1"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 4,
+        "rgba_geometric_blend": 1,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.03574337356",
+          "penumbra_rmse": "0.2190670697",
+          "gradient_rmse": "0.02517676004"
+        }
+      ]
+    },
+    "world-hybrid25": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/world-hybrid25",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--rgba-mix=hybrid",
+        "--rgba-geometric-blend=0.25"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 4,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.03526392058",
+          "penumbra_rmse": "0.1834407715",
+          "gradient_rmse": "0.0253443788"
+        }
+      ]
+    },
+    "world-joint": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/world-joint",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--result-blend=0.5",
+        "--blend-radius=2",
+        "--blend-sigma=0.35"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.03747981228",
+          "penumbra_rmse": "0.1840660994",
+          "gradient_rmse": "0.02583136373"
+        }
+      ]
+    },
+    "world-moment0": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/world-moment0",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--rgba-moments=1",
+        "--rgba-moment-strength=0"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 1,
+        "rgba_moment_strength": 0,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.03680345403",
+          "penumbra_rmse": "0.1815599877",
+          "gradient_rmse": "0.02568898014"
+        }
+      ]
+    },
+    "world-moments": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/world-moments",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--rgba-moments=1"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 1,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.03653118421",
+          "penumbra_rmse": "0.1793319919",
+          "gradient_rmse": "0.02568048548"
+        }
+      ]
+    },
+    "world-radius0": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/world-radius0",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular",
+        "--rgba-pcf-world-radius=0"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.02645844449",
+          "penumbra_rmse": "0.1407616149",
+          "gradient_rmse": "0.0167675504"
+        }
+      ]
+    },
+    "world-weighted": {
+      "command": [
+        "gfx-research-shadows",
+        "--benchmark",
+        "--output=results/mixing0260/world-weighted",
+        "--headless",
+        "--scene=mixed-overlap",
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--warmup=0",
+        "--measure=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--world-angular"
+      ],
+      "settings": {
+        "rgba_offset": 1,
+        "rgba_radius": 1,
+        "rgba_rotation": 0,
+        "rgba_center_weight": 0.25,
+        "rgba_smoothing": 1,
+        "rgba_cascades": 1,
+        "rgba_extent": 14,
+        "rgba_cascade_scale": 4,
+        "rgba_cascade_blend": 0,
+        "rgba_angular_mix": 1,
+        "rgba_mix_mode": 0,
+        "rgba_geometric_blend": 0.25,
+        "rgba_reconstruct": 0,
+        "rgba_reconstruct_strength": 0.5,
+        "rgba_edge_search": 64,
+        "rgba_edge_contact": 1,
+        "rgba_pcf_mode": 1,
+        "rgba_pcf_samples": 32,
+        "rgba_pcf_strength": 0.5,
+        "rgba_pcf_radius": 2,
+        "rgba_pcf_world_units": 1,
+        "rgba_pcf_world_radius_m": 0.25,
+        "rgba_pcf_max_radius": 16,
+        "rgba_pcf_sharp": 1,
+        "rgba_shared_adaptive": 1,
+        "rgba_shared_radius_m": 0.25,
+        "rgba_moments": 0,
+        "rgba_moment_strength": 0.5,
+        "reference_samples": 512,
+        "warp": 8,
+        "camera_yaw": -2.9,
+        "camera_pitch": 0.5,
+        "camera_distance": 7,
+        "camera_target": [
+          -2.9,
+          0.4,
+          -2.95
+        ]
+      },
+      "metrics": [
+        {
+          "method": "arr",
+          "rmse": "0",
+          "penumbra_rmse": "0",
+          "gradient_rmse": "0"
+        },
+        {
+          "method": "angular-rgba",
+          "rmse": "0.03680345403",
+          "penumbra_rmse": "0.1815599877",
+          "gradient_rmse": "0.02568898014"
+        }
+      ]
+    }
+  }
+}

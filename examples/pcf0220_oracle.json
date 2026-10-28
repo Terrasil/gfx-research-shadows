@@ -1,0 +1,6 @@
+{
+  "cases": 6144,
+  "max_visibility_error": 2.0549630090016535e-05,
+  "max_radius_error": 5.153814408437318e-06,
+  "max_sharp_support_error": 2.6265478717535373e-06
+}

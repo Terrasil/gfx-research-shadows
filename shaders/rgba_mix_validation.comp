@@ -1,0 +1,24 @@
+#version 460 core
+layout(local_size_x=64) in;
+layout(std430,binding=6) buffer Result{float results[];};
+#include "rgba_mixing.glsl"
+void main(){
+    int id=int(gl_GlobalInvocationID.x);if(id>=1312)return;
+    if(id>=1280){
+        int fixture=(id-1280)%8,mode=int[](0,2,3,4)[(id-1280)/8];
+        vec4 patterns[8]=vec4[](vec4(0,1,1,1),vec4(0,1,1,1),vec4(0),vec4(1),
+            vec4(0.37),vec4(1e-9,0.5,0.8,1),vec4(0.3,0,0,0),vec4(0.2,0.4,0.6,0.8));
+        results[id]=rgbaCombinedVisibility(patterns[fixture],vec4(1),fixture==7?vec4(0):vec4(1),
+            false,0.0,1.0,fixture==1?0.0:fixture==6?1.0:0.25,mode);
+        return;
+    }
+    int bits=id%16,angularSlot=(id/16)%4,widthSlot=(id/64)%2,cascades=(id/128)%2,mode=id/256;
+    vec4 values,margins,valid;
+    for(int k=0;k<4;++k){
+        values[k]=float((id*7+k*5)%17)/16.0;
+        margins[k]=float((id*3+k*7)%11)/10.0;
+        valid[k]=(bits&(1<<k))!=0?1.0:0.0;
+    }
+    float mixes[4]=float[](0.0,0.25,0.75,1.0);
+    results[id]=rgbaCombinedVisibility(values,margins,valid,cascades!=0,widthSlot==0?0.0:0.3,mixes[angularSlot],float((id/7)%3)*0.5,mode);
+}

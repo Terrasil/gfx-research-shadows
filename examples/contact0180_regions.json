@@ -1,0 +1,96 @@
+{
+  "mask": "receiver && ARR mixed<0.01 && ARR single-low<0.01; soft: receiver && 0.01<ARR mixed<0.99 && ARR single-low>0.99; soft stencil requires center and 4 neighbors in mask",
+  "high_frequency": "error - 0.25*(left+right+up+down)",
+  "metrics": [
+    {
+      "variant": "front-geom-base",
+      "method": "geometric",
+      "rmse": 0.02037045889,
+      "near_umbra_rmse": 0.10331171555016662,
+      "soft_high_frequency_error": 0.020248843013859888,
+      "near_pixels": 6053,
+      "soft_interior_pixels": 2047
+    },
+    {
+      "variant": "front-geom-blend",
+      "method": "geometric",
+      "rmse": 0.02039475955,
+      "near_umbra_rmse": 0.10363325061204572,
+      "soft_high_frequency_error": 0.010959575987798436,
+      "near_pixels": 6053,
+      "soft_interior_pixels": 2047
+    },
+    {
+      "variant": "front-geom-clean",
+      "method": "geometric",
+      "rmse": 0.009405569069,
+      "near_umbra_rmse": 0.007199663557091676,
+      "soft_high_frequency_error": 0.010791436191662864,
+      "near_pixels": 6053,
+      "soft_interior_pixels": 2047
+    },
+    {
+      "variant": "front-geom-guard-d32",
+      "method": "geometric",
+      "rmse": 0.01965630229,
+      "near_umbra_rmse": 0.10090242335705404,
+      "soft_high_frequency_error": 0.020248843013859888,
+      "near_pixels": 6053,
+      "soft_interior_pixels": 2047
+    },
+    {
+      "variant": "front-geom-guard-packed",
+      "method": "geometric",
+      "rmse": 0.009984724589,
+      "near_umbra_rmse": 0.008448161197152863,
+      "soft_high_frequency_error": 0.02024912577957247,
+      "near_pixels": 6053,
+      "soft_interior_pixels": 2047
+    },
+    {
+      "variant": "front-geom-guard-packed-blend",
+      "method": "geometric",
+      "rmse": 0.009424686145,
+      "near_umbra_rmse": 0.007245637319407537,
+      "soft_high_frequency_error": 0.01093139194041625,
+      "near_pixels": 6053,
+      "soft_interior_pixels": 2047
+    },
+    {
+      "variant": "front-geom-packed",
+      "method": "geometric",
+      "rmse": 0.02037039548,
+      "near_umbra_rmse": 0.10331147989346454,
+      "soft_high_frequency_error": 0.02024912577957247,
+      "near_pixels": 6053,
+      "soft_interior_pixels": 2047
+    },
+    {
+      "variant": "front-layer-base",
+      "method": "geometric-layered",
+      "rmse": 0.01833381426,
+      "near_umbra_rmse": 0.10767404157119262,
+      "soft_high_frequency_error": 0.02909112536488643,
+      "near_pixels": 6053,
+      "soft_interior_pixels": 2047
+    },
+    {
+      "variant": "front-layer-clean",
+      "method": "geometric-layered",
+      "rmse": 0.007638178512,
+      "near_umbra_rmse": 0.0018096261823414177,
+      "soft_high_frequency_error": 0.008429216896091492,
+      "near_pixels": 6053,
+      "soft_interior_pixels": 2047
+    },
+    {
+      "variant": "front-pcss-clean",
+      "method": "pcss",
+      "rmse": 0.0112503624,
+      "near_umbra_rmse": 0.007413079778033967,
+      "soft_high_frequency_error": 0.008885744373960383,
+      "near_pixels": 6053,
+      "soft_interior_pixels": 2047
+    }
+  ]
+}

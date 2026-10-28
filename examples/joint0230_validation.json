@@ -1,0 +1,216 @@
+{
+  "version": "0.23.0",
+  "hardware_timings": false,
+  "reference": "ARR exact AABBs, 512 directions",
+  "camera_front": {
+    "yaw": -2.9,
+    "pitch": 0.5,
+    "distance": 7,
+    "target": [
+      -2.9,
+      0.4,
+      -2.95
+    ]
+  },
+  "comparison_settings": {
+    "width": 320,
+    "height": 240,
+    "map_resolution": 512,
+    "pcf_samples": 16,
+    "pcf_strength": 0.5,
+    "blend_strength": 0.85,
+    "blend_radius": 2,
+    "blend_sigma": 0.35
+  },
+  "comparison": [
+    {
+      "case": "front-base",
+      "rmse": 0.01484728007,
+      "penumbra_rmse": 0.1038731276,
+      "gradient_rmse": 0.01336060593,
+      "shadow_gpu_ms": 1285.397237
+    },
+    {
+      "case": "front-joint",
+      "rmse": 0.01435489259,
+      "penumbra_rmse": 0.0985291364,
+      "gradient_rmse": 0.0128598638,
+      "shadow_gpu_ms": 1382.549199
+    },
+    {
+      "case": "high-base",
+      "rmse": 0.01013751455,
+      "penumbra_rmse": 0.07627390929,
+      "gradient_rmse": 0.008408590666,
+      "shadow_gpu_ms": 11.050433
+    },
+    {
+      "case": "high-joint",
+      "rmse": 0.01047191935,
+      "penumbra_rmse": 0.07980343933,
+      "gradient_rmse": 0.008752057036,
+      "shadow_gpu_ms": 13.878297
+    },
+    {
+      "case": "four-base",
+      "rmse": 0.009584383939,
+      "penumbra_rmse": 0.08262758595,
+      "gradient_rmse": 0.0110661369,
+      "shadow_gpu_ms": 11.75769
+    },
+    {
+      "case": "four-joint",
+      "rmse": 0.01000876015,
+      "penumbra_rmse": 0.08770730538,
+      "gradient_rmse": 0.01181715305,
+      "shadow_gpu_ms": 12.5936
+    },
+    {
+      "case": "sloped-base",
+      "rmse": 0.01164597014,
+      "penumbra_rmse": 0.08409674372,
+      "gradient_rmse": 0.009744575671,
+      "shadow_gpu_ms": 11.557373
+    },
+    {
+      "case": "sloped-joint",
+      "rmse": 0.01162369605,
+      "penumbra_rmse": 0.08397026885,
+      "gradient_rmse": 0.009548589332,
+      "shadow_gpu_ms": 12.442625
+    },
+    {
+      "case": "nearest-base",
+      "rmse": 0.01787776113,
+      "penumbra_rmse": 0.1217239761,
+      "gradient_rmse": 0.01634324992,
+      "shadow_gpu_ms": 9.142235
+    },
+    {
+      "case": "nearest-joint",
+      "rmse": 0.01757179543,
+      "penumbra_rmse": 0.1170615504,
+      "gradient_rmse": 0.01591236472,
+      "shadow_gpu_ms": 10.608061
+    },
+    {
+      "case": "cascades-base",
+      "rmse": 0.01257727998,
+      "penumbra_rmse": 0.115914363,
+      "gradient_rmse": 0.01354995269,
+      "shadow_gpu_ms": 9.625014
+    },
+    {
+      "case": "cascades-joint",
+      "rmse": 0.01255173555,
+      "penumbra_rmse": 0.1162820651,
+      "gradient_rmse": 0.01356867491,
+      "shadow_gpu_ms": 13.406696
+    }
+  ],
+  "regions": {
+    "front-base": {
+      "near": {
+        "pixels": 1512,
+        "rmse": 0.02653880440820846
+      },
+      "soft": {
+        "pixels": 787,
+        "rmse": 0.0910354627386858
+      }
+    },
+    "front-joint": {
+      "near": {
+        "pixels": 1512,
+        "rmse": 0.026538866599085754
+      },
+      "soft": {
+        "pixels": 787,
+        "rmse": 0.08793183121620887
+      }
+    }
+  },
+  "fixtures": {
+    "cases": 6144,
+    "preservation_max_abs_error": 8.940000001400605e-08,
+    "noisy_ramp_rmse": [
+      0.05006245537035229,
+      0.027657137516781876,
+      0.020729712742089373
+    ],
+    "protected_edge_violations": 0
+  },
+  "controls": {
+    "cases": [
+      {
+        "case": "preset",
+        "method": "angular-rgba",
+        "rmse": 0.01435489259,
+        "shadow_passes": 2
+      },
+      {
+        "case": "off",
+        "method": "angular-rgba",
+        "rmse": 0.02142295812,
+        "shadow_passes": 1
+      },
+      {
+        "case": "off-with-blend",
+        "method": "angular-rgba",
+        "rmse": 0.02142295812,
+        "shadow_passes": 1
+      },
+      {
+        "case": "zero-strength",
+        "method": "angular-rgba",
+        "rmse": 0.02142295812,
+        "shadow_passes": 1
+      },
+      {
+        "case": "zero-cap",
+        "method": "angular-rgba",
+        "rmse": 0.02142295812,
+        "shadow_passes": 1
+      },
+      {
+        "case": "fixed",
+        "method": "angular-rgba",
+        "rmse": 0.0224085005,
+        "shadow_passes": 2
+      },
+      {
+        "case": "cubic",
+        "method": "angular-rgba",
+        "rmse": 0.02308440816,
+        "shadow_passes": 2
+      },
+      {
+        "case": "analytic",
+        "method": "angular-rgba",
+        "rmse": 0.02770199713,
+        "shadow_passes": 2
+      },
+      {
+        "case": "pcss",
+        "method": "pcss",
+        "rmse": 0.02131168581,
+        "shadow_passes": 2
+      }
+    ],
+    "identity_max_abs_error": {
+      "off-with-blend": 0.0,
+      "zero-strength": 0.0,
+      "zero-cap": 0.0,
+      "preset": 0.0
+    }
+  },
+  "quality_native_cases": 42,
+  "stress_native_methods": 13,
+  "ctest_targets": 3,
+  "analyzer_tests": 14,
+  "limits": [
+    "Four light directions remain an approximation",
+    "Some crossing scenes have worse RMSE after smoothing",
+    "Software renderer timings are not hardware FPS"
+  ]
+}

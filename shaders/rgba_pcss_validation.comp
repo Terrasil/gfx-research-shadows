@@ -1,0 +1,23 @@
+#version 460 core
+layout(local_size_x=8,local_size_y=8) in;
+#include "rgba_depth_read.glsl"
+layout(std430,binding=6) buffer Result{vec4 values[];};
+uniform int uMapResolution,uSmoothing;
+uniform float uDepthBias,uTanAngle;
+uniform vec4 uBiasScale,uDepthRanges,uExtents;
+#include "warp.glsl"
+#include "rgba_visibility.glsl"
+#include "rgba_pcf.glsl"
+void main(){
+    ivec2 p=ivec2(gl_GlobalInvocationID.xy);if(any(greaterThanEqual(p,ivec2(16))))return;
+    vec3 light=vec3((vec2(p)+vec2(0.37,0.63))/8.0-1.0,0.5+float((p.x+p.y)%3)*0.001);
+    vec2 gradient=vec2(float(p.x%3-1),float(p.y%3-1))*0.0003;
+    int channel=(p.x+p.y)%4,index=(p.y*16+p.x)*2;
+    vec3 stats=uPcfStrength>0.0&&uPcfMaxRadius>0.0?rgbaPcssBlockers(light,channel,gradient):vec3(0);
+    float gap=0.0,footprint=0.0;
+    float radius=rgbaPcfRadiusInfo(light,channel,gradient,gap,footprint);
+    float center=rgbaPcfGap(light.xy,light,channel,gradient);
+    float sharp=rgbaPcfSharpSupport(visibility(light,channel,gradient),center,uExtents[channel],0.02+float(p.y%3)*0.01);
+    values[index]=vec4(rgbaChannelVisibilityAtRadius(light,channel,gradient,radius,gap),gap,radius,stats.y);
+    values[index+1]=vec4(stats.z,center,sharp,0);
+}

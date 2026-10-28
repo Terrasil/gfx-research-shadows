@@ -1,0 +1,19 @@
+#version 460 core
+layout(local_size_x=64) in;
+#include "rgba_depth_read.glsl"
+layout(std430,binding=6) buffer Result{vec4 values[];};
+uniform int uMapResolution,uSmoothing;
+uniform float uDepthBias,uTanAngle,uReceiverDepth;
+uniform vec4 uBiasScale,uDepthRanges,uExtents;
+#include "warp.glsl"
+#include "rgba_visibility.glsl"
+#include "rgba_pcf.glsl"
+void main(){
+    int i=int(gl_GlobalInvocationID.x);if(i>=64)return;
+    float x=(float(i)+0.37)/64.0*0.7-0.35;
+    vec3 light=vec3(x/uExtents[0],0.013/uExtents[0],uReceiverDepth);
+    vec3 stats=rgbaPcssBlockers(light,0,vec2(0));
+    float gap=0.0,footprint=0.0;
+    float radius=rgbaPcfRadiusInfo(light,0,vec2(0),gap,footprint);
+    values[i]=vec4(rgbaChannelVisibilityAtRadius(light,0,vec2(0),radius,gap),gap,radius*uExtents[0],stats.z*uExtents[0]);
+}

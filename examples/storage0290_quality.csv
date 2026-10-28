@@ -1,0 +1,4 @@
+case_id,scene,objects,storage,map_bytes,textures,map_gpu_ms,shadow_gpu_ms,total_gpu_ms,hardware_timings,visibility_rmse_vs_rgba,visibility_max_error_vs_rgba,rmse_vs_geometry,penumbra_rmse_vs_geometry
+c0-angular-rgba,mixed-overlap,,rgba,1048576,1,33.1009395,19.77258,52.8735195,0,0.0,0.0,0.01379253996,0.1017978664
+c0-angular-rgba,mixed-overlap,,array,1048576,1,30.3518665,26.1765375,56.528404,0,0.0,0.0,0.01379253996,0.1017978664
+c0-angular-rgba,mixed-overlap,,separate,1048576,4,41.9598755,54.0962415,96.056117,0,0.0,0.0,0.01379253996,0.1017978664

@@ -1,0 +1,395 @@
+{
+  "version": "0.25.0",
+  "reference": "ARR exact AABBs, 512 directions",
+  "hardware_timings": false,
+  "comparison_settings": {
+    "width": 320,
+    "height": 240,
+    "map_resolution": 512,
+    "pcf_samples_default": 32,
+    "pcf_strength": 0.5,
+    "moment_strength": 0.5,
+    "result_blend": 0
+  },
+  "comparison": [
+    {
+      "case": "front-base",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=0",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95"
+      ],
+      "rmse": 0.0147690439,
+      "penumbra_rmse": 0.1026150154,
+      "gradient_rmse": 0.01338015989,
+      "shadow_gpu_ms": 3228.12657
+    },
+    {
+      "case": "front-moment",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95"
+      ],
+      "rmse": 0.01447423293,
+      "penumbra_rmse": 0.09984257487,
+      "gradient_rmse": 0.01332284226,
+      "shadow_gpu_ms": 18.792289
+    },
+    {
+      "case": "high-base",
+      "scene": "single-high",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=0"
+      ],
+      "rmse": 0.01002442897,
+      "penumbra_rmse": 0.07411373288,
+      "gradient_rmse": 0.008360571586,
+      "shadow_gpu_ms": 18.51082
+    },
+    {
+      "case": "high-moment",
+      "scene": "single-high",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=1"
+      ],
+      "rmse": 0.009284224005,
+      "penumbra_rmse": 0.06654333313,
+      "gradient_rmse": 0.008047593488,
+      "shadow_gpu_ms": 17.795266
+    },
+    {
+      "case": "four-base",
+      "scene": "crossing-four",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=0"
+      ],
+      "rmse": 0.009445820724,
+      "penumbra_rmse": 0.08040852674,
+      "gradient_rmse": 0.01089350022,
+      "shadow_gpu_ms": 15.423884
+    },
+    {
+      "case": "four-moment",
+      "scene": "crossing-four",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=1"
+      ],
+      "rmse": 0.009025774227,
+      "penumbra_rmse": 0.07580175246,
+      "gradient_rmse": 0.01047101676,
+      "shadow_gpu_ms": 15.952775
+    },
+    {
+      "case": "sloped-base",
+      "scene": "sloped",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=0"
+      ],
+      "rmse": 0.01152570866,
+      "penumbra_rmse": 0.08229691645,
+      "gradient_rmse": 0.009663974716,
+      "shadow_gpu_ms": 17.252417
+    },
+    {
+      "case": "sloped-moment",
+      "scene": "sloped",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=1"
+      ],
+      "rmse": 0.01098775753,
+      "penumbra_rmse": 0.07712907532,
+      "gradient_rmse": 0.009574445022,
+      "shadow_gpu_ms": 15.922934
+    },
+    {
+      "case": "cascade-base",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=0",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--rgba-cascades=1",
+        "--rgba-extent=16",
+        "--rgba-center-weight=0.5"
+      ],
+      "rmse": 0.009745318709,
+      "penumbra_rmse": 0.06804070424,
+      "gradient_rmse": 0.01019626337,
+      "shadow_gpu_ms": 17.876987
+    },
+    {
+      "case": "cascade-moment",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--rgba-cascades=1",
+        "--rgba-extent=16",
+        "--rgba-center-weight=0.5"
+      ],
+      "rmse": 0.009673002872,
+      "penumbra_rmse": 0.0673628761,
+      "gradient_rmse": 0.01011986117,
+      "shadow_gpu_ms": 19.698039
+    },
+    {
+      "case": "front16-base",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=0",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--rgba-pcf-samples=16"
+      ],
+      "rmse": 0.01484728007,
+      "penumbra_rmse": 0.1038731276,
+      "gradient_rmse": 0.01336060593,
+      "shadow_gpu_ms": 14.709831
+    },
+    {
+      "case": "front16-moment",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--rgba-pcf-samples=16"
+      ],
+      "rmse": 0.01451643126,
+      "penumbra_rmse": 0.1007824892,
+      "gradient_rmse": 0.01323123268,
+      "shadow_gpu_ms": 14.176004
+    },
+    {
+      "case": "analytic-base",
+      "scene": "sloped",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=0",
+        "--map-backend=analytic",
+        "--warp=0"
+      ],
+      "rmse": 0.01249650962,
+      "penumbra_rmse": 0.09140299108,
+      "gradient_rmse": 0.01168824639,
+      "shadow_gpu_ms": 18.52399
+    },
+    {
+      "case": "analytic-moment",
+      "scene": "sloped",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=1",
+        "--map-backend=analytic",
+        "--warp=0"
+      ],
+      "rmse": 0.01209104919,
+      "penumbra_rmse": 0.08761398116,
+      "gradient_rmse": 0.01168777574,
+      "shadow_gpu_ms": 24.135641
+    },
+    {
+      "case": "nearest-base",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=0",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--rgba-smoothing=0"
+      ],
+      "rmse": 0.01556570854,
+      "penumbra_rmse": 0.1097016425,
+      "gradient_rmse": 0.01557048884,
+      "shadow_gpu_ms": 13.364962
+    },
+    {
+      "case": "nearest-moment",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--moment-angular",
+        "--rgba-moments=1",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--rgba-smoothing=0"
+      ],
+      "rmse": 0.01534173961,
+      "penumbra_rmse": 0.1076279656,
+      "gradient_rmse": 0.01553968896,
+      "shadow_gpu_ms": 14.020351
+    }
+  ],
+  "regions": {
+    "front-base": {
+      "near": {
+        "pixels": 1512,
+        "rmse": 0.02651816466817969
+      },
+      "soft": {
+        "pixels": 787,
+        "rmse": 0.08891894363968356
+      }
+    },
+    "front-moment": {
+      "near": {
+        "pixels": 1512,
+        "rmse": 0.02651816466817969,
+        "max_abs_change": 0.0
+      },
+      "soft": {
+        "pixels": 787,
+        "rmse": 0.08495212480120055
+      }
+    },
+    "front16-base": {
+      "near": {
+        "pixels": 1512,
+        "rmse": 0.02653880440820846
+      },
+      "soft": {
+        "pixels": 787,
+        "rmse": 0.0910354627386858
+      }
+    },
+    "front16-moment": {
+      "near": {
+        "pixels": 1512,
+        "rmse": 0.02653880440820846,
+        "max_abs_change": 0.0
+      },
+      "soft": {
+        "pixels": 787,
+        "rmse": 0.08665505201014895
+      }
+    }
+  },
+  "fixtures": {
+    "cases": 3120,
+    "reference_max_abs_error": 8.576246121050346e-07,
+    "fallback_max_abs_error": 0.0,
+    "active_cases": 300,
+    "fixture_rmse": {
+      "0-16": {
+        "raw_rmse": 0.0711971701292602,
+        "reconstructed_rmse": 0.0657287485934965
+      },
+      "0-32": {
+        "raw_rmse": 0.07028158812270817,
+        "reconstructed_rmse": 0.06380498097087259
+      },
+      "0-64": {
+        "raw_rmse": 0.06995637979600806,
+        "reconstructed_rmse": 0.06277207161127613
+      },
+      "1-16": {
+        "raw_rmse": 0.0711971701292602,
+        "reconstructed_rmse": 0.0711971701292602
+      },
+      "1-32": {
+        "raw_rmse": 0.07028158812270817,
+        "reconstructed_rmse": 0.07028158812270817
+      },
+      "1-64": {
+        "raw_rmse": 0.06995637979600806,
+        "reconstructed_rmse": 0.06995637979600806
+      },
+      "2-16": {
+        "raw_rmse": 0.0,
+        "reconstructed_rmse": 0.0
+      },
+      "2-32": {
+        "raw_rmse": 0.0,
+        "reconstructed_rmse": 0.0
+      },
+      "2-64": {
+        "raw_rmse": 0.0,
+        "reconstructed_rmse": 0.0
+      },
+      "3-16": {
+        "raw_rmse": 0.05722757691340781,
+        "reconstructed_rmse": 0.05721879901447793
+      },
+      "3-32": {
+        "raw_rmse": 0.055684233893334184,
+        "reconstructed_rmse": 0.055628377966969095
+      },
+      "3-64": {
+        "raw_rmse": 0.05491719776999089,
+        "reconstructed_rmse": 0.05479419139138244
+      }
+    }
+  },
+  "controls": {
+    "identity_max_abs_error": {
+      "off / zero": 0.0,
+      "no-offset-base / no-offset-moment": 0.0,
+      "shared-base / shared-moment": 0.0
+    },
+    "invalid_arguments": {
+      "--rgba-moments=2": "Expected --rgba-moments=0|1",
+      "--rgba-moment-strength=-0.01": "Argument outside supported range",
+      "--rgba-moment-strength=1.01": "Argument outside supported range",
+      "--rgba-moment-strength=nan": "Non-finite argument",
+      "--rgba-moment-strength=inf": "Non-finite argument"
+    }
+  },
+  "ctest_targets": 3,
+  "analyzer_tests": 17,
+  "quality_cases": 48,
+  "stress_methods": 13,
+  "limits": [
+    "Local single-edge reconstruction",
+    "At least two reliable partial views required",
+    "Surfaces hidden in every view remain unavailable",
+    "No universal accuracy guarantee",
+    "Software-renderer timings are not hardware FPS"
+  ]
+}

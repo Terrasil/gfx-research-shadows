@@ -1,0 +1,361 @@
+{
+  "version": "0.24.0",
+  "reference": "ARR exact AABBs, 512 directions",
+  "hardware_timings": false,
+  "comparison": [
+    {
+      "case": "front-shared",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--shared-angular"
+      ],
+      "rmse": 0.01493893877,
+      "penumbra_rmse": 0.1066762397,
+      "gradient_rmse": 0.01371433152,
+      "shadow_gpu_ms": 2040.750199,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "front-per-channel",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--shared-angular",
+        "--rgba-pcf=adaptive"
+      ],
+      "rmse": 0.01484728007,
+      "penumbra_rmse": 0.1038731276,
+      "gradient_rmse": 0.01336060593,
+      "shadow_gpu_ms": 18.39622,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "front-manual",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--shared-angular",
+        "--rgba-shared-adaptive=0",
+        "--rgba-shared-radius=0.12"
+      ],
+      "rmse": 0.01652194527,
+      "penumbra_rmse": 0.1140256824,
+      "gradient_rmse": 0.01545837923,
+      "shadow_gpu_ms": 22.324535,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "high",
+      "scene": "single-high",
+      "flags": [
+        "--shared-angular"
+      ],
+      "rmse": 0.01013581542,
+      "penumbra_rmse": 0.07640804003,
+      "gradient_rmse": 0.008444818943,
+      "shadow_gpu_ms": 13.879324,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "four",
+      "scene": "crossing-four",
+      "flags": [
+        "--shared-angular"
+      ],
+      "rmse": 0.01081963161,
+      "penumbra_rmse": 0.0970013074,
+      "gradient_rmse": 0.01321820273,
+      "shadow_gpu_ms": 13.189772,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "sloped",
+      "scene": "sloped",
+      "flags": [
+        "--shared-angular"
+      ],
+      "rmse": 0.01182028868,
+      "penumbra_rmse": 0.0867835581,
+      "gradient_rmse": 0.01023271576,
+      "shadow_gpu_ms": 11.372014,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "cascades",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--shared-angular",
+        "--rgba-cascades=1",
+        "--rgba-extent=16",
+        "--rgba-center-weight=0.5"
+      ],
+      "rmse": 0.009914976231,
+      "penumbra_rmse": 0.07197331004,
+      "gradient_rmse": 0.01036365622,
+      "shadow_gpu_ms": 15.578204,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "cascade-original-correct",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--method=angular-rgba",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--rgba-pcf=off",
+        "--rgba-smoothing=0",
+        "--rgba-cascades=1",
+        "--rgba-extent=16",
+        "--rgba-angular-mix=1",
+        "--rgba-center-weight=0.5"
+      ],
+      "rmse": 0.01714851716,
+      "penumbra_rmse": 0.1327929789,
+      "gradient_rmse": 0.02123496607,
+      "shadow_gpu_ms": 6.416358,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "cascade-manual",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--shared-angular",
+        "--rgba-cascades=1",
+        "--rgba-extent=16",
+        "--rgba-center-weight=0.5",
+        "--rgba-shared-adaptive=0"
+      ],
+      "rmse": 0.01857298629,
+      "penumbra_rmse": 0.1120506063,
+      "gradient_rmse": 0.0139208876,
+      "shadow_gpu_ms": 27.031681,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "min",
+      "scene": "crossing-four",
+      "flags": [
+        "--shared-angular",
+        "--rgba-mix=min"
+      ],
+      "rmse": 0.05998248163,
+      "penumbra_rmse": 0.5643596483,
+      "gradient_rmse": 0.04395510618,
+      "shadow_gpu_ms": 13.728013,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "product",
+      "scene": "crossing-four",
+      "flags": [
+        "--shared-angular",
+        "--rgba-mix=product"
+      ],
+      "rmse": 0.060440733,
+      "penumbra_rmse": 0.5689260995,
+      "gradient_rmse": 0.0441203837,
+      "shadow_gpu_ms": 14.223268,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "near-edge",
+      "scene": "crossing-four",
+      "flags": [
+        "--shared-angular",
+        "--rgba-cascades=1",
+        "--rgba-extent=3",
+        "--rgba-angular-mix=0.5"
+      ],
+      "rmse": 0.01353361429,
+      "penumbra_rmse": 0.1262313633,
+      "gradient_rmse": 0.01532574609,
+      "shadow_gpu_ms": 11.333144,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "analytic",
+      "scene": "sloped",
+      "flags": [
+        "--shared-angular",
+        "--map-backend=analytic",
+        "--warp=0"
+      ],
+      "rmse": 0.01295765681,
+      "penumbra_rmse": 0.09684338495,
+      "gradient_rmse": 0.01212770917,
+      "shadow_gpu_ms": 15.42478,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "bicubic",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--shared-angular",
+        "--rgba-smoothing=3"
+      ],
+      "rmse": 0.01128831908,
+      "penumbra_rmse": 0.09614438056,
+      "gradient_rmse": 0.01231850888,
+      "shadow_gpu_ms": 22.110939,
+      "shadow_passes": 1,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "joint-blend",
+      "scene": "mixed-overlap",
+      "flags": [
+        "--shared-angular",
+        "--result-blend=0.85",
+        "--blend-radius=2",
+        "--blend-sigma=0.35"
+      ],
+      "rmse": 0.01062263605,
+      "penumbra_rmse": 0.09367446797,
+      "gradient_rmse": 0.01109089467,
+      "shadow_gpu_ms": 161.768103,
+      "shadow_passes": 2,
+      "method": "angular-rgba"
+    },
+    {
+      "case": "cascade-bilinear",
+      "scene": "mixed-overlap",
+      "method": "angular-rgba",
+      "flags": [
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--arr-samples=4",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=mixed-overlap",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--rgba-pcf=off",
+        "--rgba-smoothing=1",
+        "--rgba-cascades=1",
+        "--rgba-extent=16",
+        "--rgba-angular-mix=1",
+        "--rgba-center-weight=0.5"
+      ],
+      "rmse": 0.01319783104,
+      "penumbra_rmse": 0.1008759636,
+      "gradient_rmse": 0.01506975889,
+      "shadow_gpu_ms": 6.886487,
+      "shadow_passes": 1
+    },
+    {
+      "case": "cascade-per-channel",
+      "scene": "mixed-overlap",
+      "method": "angular-rgba",
+      "flags": [
+        "--width=320",
+        "--height=240",
+        "--shadow-resolution=512",
+        "--reference-samples=512",
+        "--arr-samples=4",
+        "--warmup=0",
+        "--measure=1",
+        "--scene=mixed-overlap",
+        "--camera-yaw=-2.9",
+        "--camera-pitch=0.5",
+        "--camera-distance=7",
+        "--camera-target-x=-2.9",
+        "--camera-target-y=0.4",
+        "--camera-target-z=-2.95",
+        "--rgba-pcf=adaptive",
+        "--rgba-smoothing=1",
+        "--rgba-cascades=1",
+        "--rgba-extent=16",
+        "--rgba-angular-mix=1",
+        "--rgba-center-weight=0.5"
+      ],
+      "rmse": 0.009721584242,
+      "penumbra_rmse": 0.06807566182,
+      "gradient_rmse": 0.009981491336,
+      "shadow_gpu_ms": 13.896373,
+      "shadow_passes": 1
+    }
+  ],
+  "fixtures": {
+    "cases": 6656,
+    "max_visibility_error": 6.352701853451492e-07,
+    "max_radius_error": 1.235541252642136e-09,
+    "max_center_error": 1.0083386116910287e-06,
+    "max_receiver_plane_error": 7.450580597e-09
+  },
+  "controls": {
+    "identity_max_abs_error": {
+      "radius-zero": 0.0,
+      "strength-zero": 0.0,
+      "cap-zero": 0.0
+    },
+    "invalid_arguments": {
+      "--rgba-shared-radius=-0.01": 1,
+      "--rgba-shared-radius=3.01": 1,
+      "--rgba-shared-radius=nan": 1,
+      "--rgba-shared-radius=inf": 1,
+      "--rgba-shared-adaptive=2": 1,
+      "--rgba-pcf=unknown": 1
+    }
+  },
+  "ctest_targets": 3,
+  "analyzer_tests": 15,
+  "quality_cases": 44,
+  "stress_methods": 13,
+  "limits": [
+    "Only four light directions",
+    "Does not recover surfaces hidden in every map",
+    "No universal RMSE improvement over per-channel PCF",
+    "Software-renderer timings are not hardware FPS"
+  ]
+}

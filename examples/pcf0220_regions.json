@@ -1,0 +1,30 @@
+{
+  "near_pixels": 1512,
+  "soft_pixels": 787,
+  "methods": {
+    "front-off": {
+      "near_rmse": 0.02635136597949525,
+      "soft_rmse": 0.12210768980265921
+    },
+    "front-adaptive": {
+      "near_rmse": 0.02653880440820846,
+      "soft_rmse": 0.0910354627386858
+    },
+    "front-no-guard": {
+      "near_rmse": 0.031240711447034462,
+      "soft_rmse": 0.0910354627386858
+    },
+    "front-fixed": {
+      "near_rmse": 0.035631624158209016,
+      "soft_rmse": 0.11700515438941324
+    },
+    "front8": {
+      "near_rmse": 0.026555037054743727,
+      "soft_rmse": 0.09103017546360886
+    },
+    "front32": {
+      "near_rmse": 0.02651816466817969,
+      "soft_rmse": 0.08891894363968356
+    }
+  }
+}

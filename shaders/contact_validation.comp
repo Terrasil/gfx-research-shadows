@@ -1,0 +1,16 @@
+#version 460 core
+layout(local_size_x=1) in;
+layout(binding=2) uniform sampler2DArray uMaps;
+layout(std430,binding=0) buffer Results{vec4 values[];};
+uniform int uMapResolution;
+uniform float uDepthBias,uDepthRange,uTanAngle,uExtent,uMaxRadiusWorld;
+#include "warp.glsl"
+#include "map_read.glsl"
+#include "pcss_sampling.glsl"
+#include "contact_guard.glsl"
+void main(){
+    int c=int(gl_GlobalInvocationID.x);
+    vec2 uv=vec2((float(c%16)+0.37)/16.0,(float(c/16)+0.63)/4.0);
+    vec2 gradient=vec2(float(c%3-1)*0.002,float((c/3)%3-1)*0.001);
+    values[c]=contactProtection(vec3(uv*2.0-1.0,0.5+float(c%3)*0.001),gradient);
+}

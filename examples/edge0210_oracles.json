@@ -1,0 +1,20 @@
+{
+  "cases": 384,
+  "fixtures": {
+    "0": {
+      "raw_rmse": 0.0847686007513515,
+      "reconstructed_rmse": 0.0020550260865836484,
+      "near_core_max_visibility": 0
+    },
+    "1": {
+      "raw_rmse": 0.016792082953970302,
+      "reconstructed_rmse": 0.016792082964122178,
+      "near_core_max_visibility": 0.0
+    },
+    "2": {
+      "raw_rmse": 0.10850731716638855,
+      "reconstructed_rmse": 0.10903031928076246,
+      "near_core_max_visibility": 0.0
+    }
+  }
+}

@@ -1,0 +1,20 @@
+#version 460 core
+layout(local_size_x=64) in;
+#include "rgba_depth_read.glsl"
+layout(std430,binding=6) buffer Result{vec4 values[];};
+uniform int uMapResolution,uEdgeSearch;
+uniform vec4 uBiasScale,uExtents,uDepthRanges;
+uniform float uDepthBias,uTanAngle,uTriRadius,uTriRotation;
+uniform vec3 uSun;
+#include "warp.glsl"
+#define TRI_COUNT 4
+#include "tri_reconstruction.glsl"
+#include "rgba_edge.glsl"
+void main(){
+    int i=int(gl_GlobalInvocationID.x);if(i>=128)return;
+    vec3 light=vec3((float(i)+0.5)/64.0-1.0,0.0,0.5);
+    vec2 points[4];RgbaEdgeInfo edges[4];trianglePoints(uTriRadius,uTriRotation,points);
+    float raw=0.0;
+    for(int k=0;k<4;++k){edges[k]=rgbaEdgeInfo(light,k,vec2(0));raw+=rgbaDepthState(light.xy*0.5+0.5,light,k,vec2(0)).x*0.25;}
+    values[i]=vec4(light.x*uExtents.x,raw,rgbaReconstructedDisk(points,edges,vec3(0,1,0),raw,1.0),0);
+}
